@@ -785,7 +785,7 @@ Feature: Validation of applications in Various segments
     And Verify the cart page
     Then User validate added product on the cart
 
-  @smoke @Regression @home @AU @HK @JP @KR @MY @NZ @SG @TW @TH
+  @smoke @Regression @home @AU @HK @JP @KR @MY @NZ @SG @TW @TH 
   Scenario: Verify the user able see all the components in Home page
     When User enter the store credentials
     And User click on login button in storePage

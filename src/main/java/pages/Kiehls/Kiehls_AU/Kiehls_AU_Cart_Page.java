@@ -8,6 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.reusableMethods.CommonActions;
+import com.utilities.ConfigReader;
 
 import io.appium.java_client.AppiumDriver;
 
@@ -250,10 +251,25 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 	public boolean user_click_the_checkout_button() throws InterruptedException {
 		try {
-			webdriverwait(cart_check_out_button);
-			cart_check_out_button.click();
-			Thread.sleep(2000);
-			return true;
+
+			switch (ConfigReader.getData("appEnv")) {
+			case "UAT": {
+				webdriverwait(cart_check_out_button);
+				cart_check_out_button.click();
+				Thread.sleep(2000);
+				return true;
+			}
+			case "PROD": {
+				return true;
+
+			}
+
+			default: {
+			}
+				return false;
+
+			}
+
 		} catch (
 
 		Exception e) {
@@ -266,14 +282,29 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 	public boolean verify_the_successfull_popup_with_qr_code_and_transaction_id_and_click_close_button() {
 		try {
 
-			webdriverwait(cart_check_out_successfull_popup);
+			switch (ConfigReader.getData("appEnv")) {
+			case "UAT": {
 
-			Assert.assertTrue(cart_check_out_successfull_popup.isDisplayed());
-			Assert.assertTrue(cart_check_out_qr_code.isDisplayed());
-			Assert.assertTrue(cart_check_out_transaction_id_text.isDisplayed());
+				webdriverwait(cart_check_out_successfull_popup);
 
-			cart_check_out_close_button.click();
-			return true;
+				Assert.assertTrue(cart_check_out_successfull_popup.isDisplayed());
+				Assert.assertTrue(cart_check_out_qr_code.isDisplayed());
+				Assert.assertTrue(cart_check_out_transaction_id_text.isDisplayed());
+
+				cart_check_out_close_button.click();
+				return true;
+			}
+			case "PROD": {
+				return true;
+
+			}
+
+			default: {
+			}
+				return false;
+
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);
@@ -334,15 +365,31 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 	public boolean user_click_search_button_and_verify_the_changed_customer() throws InterruptedException {
 		try {
-			webdriverwait(cart_change_customer_search_button);
-			cart_change_customer_search_button.click();
-			Thread.sleep(2000);
-			webdriverwait(cart_customer_name);
-			if (cart_customer_name.getText().equals("")) {
-				Assert.assertTrue(true);
+
+			switch (ConfigReader.getData("appEnv")) {
+			case "UAT": {
+
+				webdriverwait(cart_change_customer_search_button);
+				cart_change_customer_search_button.click();
+				Thread.sleep(2000);
+				webdriverwait(cart_customer_name);
+				if (cart_customer_name.getText().equals("")) {
+					Assert.assertTrue(true);
+
+				}
+				return true;
+			}
+			case "PROD": {
+				return true;
 
 			}
-			return true;
+
+			default: {
+			}
+				return false;
+
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);

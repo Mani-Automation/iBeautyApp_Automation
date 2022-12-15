@@ -23,6 +23,7 @@ import com.driverfactory.DriverManager;
 import com.google.common.collect.ImmutableMap;
 
 import com.reusableMethods.CommonActions;
+import com.utilities.ConfigReader;
 import com.utilities.ExcelData;
 
 import io.appium.java_client.AppiumDriver;
@@ -259,34 +260,49 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 
 	public boolean user_click_save_button_in_calender() throws InterruptedException {
 		try {
-			Thread.sleep(2000);
 
-			if (calender_todo_save_button.isDisplayed()) {
-				calender_todo_save_button.click();
-				reportStatusPASS("User clicked save button");
-				return true;
+			switch (ConfigReader.getData("appEnv")) {
+			case "UAT": {
+				Thread.sleep(2000);
 
-			} else if (calender_promotion_save_button.isDisplayed()) {
-				calender_promotion_save_button.click();
-				reportStatusPASS("User clicked save button");
-				return true;
+				if (calender_todo_save_button.isDisplayed()) {
+					calender_todo_save_button.click();
+					reportStatusPASS("User clicked save button");
+					return true;
 
-			} else if (calender_service_booking_save_button.isDisplayed()) {
-				calender_service_booking_save_button.click();
-				reportStatusPASS("User clicked save button");
-				return true;
+				} else if (calender_promotion_save_button.isDisplayed()) {
+					calender_promotion_save_button.click();
+					reportStatusPASS("User clicked save button");
+					return true;
 
-			} else if (calender_event_reservation_save_button.isDisplayed()) {
-				calender_event_reservation_save_button.click();
-				reportStatusPASS("User clicked save button");
+				} else if (calender_service_booking_save_button.isDisplayed()) {
+					calender_service_booking_save_button.click();
+					reportStatusPASS("User clicked save button");
+					return true;
+
+				} else if (calender_event_reservation_save_button.isDisplayed()) {
+					calender_event_reservation_save_button.click();
+					reportStatusPASS("User clicked save button");
+					return true;
+
+				}
+
+				else {
+					return false;
+
+				}
+			}
+			case "PROD": {
 				return true;
 
 			}
 
-			else {
+			default: {
+			}
 				return false;
 
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);
@@ -297,19 +313,35 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 
 	public boolean verify_user_able_to_view_created_todo_list_event() throws InterruptedException {
 		try {
-			Thread.sleep(2000);
 
-			for (int i = 0; i <= 20; i++) {
-				if (!calender_todo_created_event.isDisplayed()) {
-					swipeDown();
-				} else if (calender_todo_created_event.isDisplayed()) {
-					calender_todo_created_event.click();
-					reportStatusPASS("User clicked created event on the timeline");
+			switch (ConfigReader.getData("appEnv")) {
+			case "UAT": {
 
-					break;
+				Thread.sleep(2000);
+
+				for (int i = 0; i <= 20; i++) {
+					if (!calender_todo_created_event.isDisplayed()) {
+						swipeDown();
+					} else if (calender_todo_created_event.isDisplayed()) {
+						calender_todo_created_event.click();
+						reportStatusPASS("User clicked created event on the timeline");
+
+						break;
+					}
 				}
+				return true;
 			}
-			return true;
+			case "PROD": {
+				return true;
+
+			}
+
+			default: {
+			}
+				return false;
+
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);
