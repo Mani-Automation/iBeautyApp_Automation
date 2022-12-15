@@ -3,6 +3,7 @@ package pages.Kiehls.Kiehls_AU;
 import org.openqa.selenium.support.PageFactory;
 
 import com.reusableMethods.CommonActions;
+import com.utilities.ConfigReader;
 import com.utilities.ExcelData;
 
 import io.appium.java_client.AppiumDriver;
@@ -399,10 +400,26 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean verify_the_customer_details_and_click_update_button() {
 		try {
-			webdriverwait(C360_update_member_update_button);
-			C360_update_member_update_button.click();
-			webdriverwait(C360_purchase_history);
-			return true;
+
+			switch (ConfigReader.getData("appEnv")) {
+			case "UAT": {
+
+				webdriverwait(C360_update_member_update_button);
+				C360_update_member_update_button.click();
+				webdriverwait(C360_purchase_history);
+				return true;
+			}
+			case "PROD": {
+				return true;
+
+			}
+
+			default: {
+			}
+				return false;
+
+			}
+
 		} catch (
 
 		Exception e) {
@@ -414,11 +431,27 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean user_click_the_edit_button_and_update_member_page_should_be_displayed() {
 		try {
-			webdriverwait(C360_profile_customer_edit_button);
 
-			C360_profile_customer_edit_button.click();
-			webdriverwait(C360_update_member_page);
-			return true;
+			switch (ConfigReader.getData("appEnv")) {
+			case "UAT": {
+
+				webdriverwait(C360_profile_customer_edit_button);
+
+				C360_profile_customer_edit_button.click();
+				webdriverwait(C360_update_member_page);
+				return true;
+			}
+			case "PROD": {
+				return true;
+
+			}
+
+			default: {
+			}
+				return false;
+
+			}
+
 		} catch (
 
 		Exception e) {
@@ -643,7 +676,23 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 	public boolean verify_the_customer_note_should_be_displayed_in_notes_section() {
 		try {
 //
-			return true;
+
+			switch (ConfigReader.getData("appEnv")) {
+			case "UAT": {
+
+				return true;
+			}
+			case "PROD": {
+				return true;
+
+			}
+
+			default: {
+			}
+				return false;
+
+			}
+
 		} catch (
 
 		Exception e) {
@@ -721,10 +770,24 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 	public boolean user_click_the_save_button() throws InterruptedException {
 		try {
 
-			webdriverwait(C360_summary_create_note_save_button);
-			C360_summary_create_note_save_button.click();
-			Thread.sleep(2000);
-			return true;
+			switch (ConfigReader.getData("appEnv")) {
+			case "UAT": {
+				webdriverwait(C360_summary_create_note_save_button);
+				C360_summary_create_note_save_button.click();
+				Thread.sleep(2000);
+				return true;
+			}
+			case "PROD": {
+				return true;
+
+			}
+
+			default: {
+			}
+				return false;
+
+			}
+
 		} catch (
 
 		Exception e) {

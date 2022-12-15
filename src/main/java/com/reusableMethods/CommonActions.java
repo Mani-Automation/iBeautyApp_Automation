@@ -717,5 +717,23 @@ public class CommonActions {
 		case "TH": {
 		}
 		}
+
+		// switch (ConfigReader.getData("appEnv")) {
+		switch ("") {
+
+		case "UAT": {
+
+			// return true;
+		}
+		case "PROD": {
+			// return true;
+
+		}
+
+		default: {
+		}
+		// return false;
+
+		}
 	}
 }

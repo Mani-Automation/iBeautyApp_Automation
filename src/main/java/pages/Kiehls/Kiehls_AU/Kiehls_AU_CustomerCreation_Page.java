@@ -242,13 +242,27 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 	public boolean user_verify_mandatory_error_messages() {
 
 		try {
+			switch (ConfigReader.getData("appEnv")) {
+			case "UAT": {
 
-			waitUntil("master_createcustomer_mandatory_error_memberid");
-			waitUntil("master_createcustomer_mandatory_error_phonenumber");
-			waitUntil("master_createcustomer_mandatory_error_lastname");
-			waitUntil("master_createcustomer_mandatory_error_firstname");
+				waitUntil("master_createcustomer_mandatory_error_memberid");
+				waitUntil("master_createcustomer_mandatory_error_phonenumber");
+				waitUntil("master_createcustomer_mandatory_error_lastname");
+				waitUntil("master_createcustomer_mandatory_error_firstname");
 
-			return true;
+				return true;
+			}
+			case "PROD": {
+				return true;
+
+			}
+
+			default: {
+			}
+				return false;
+
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);

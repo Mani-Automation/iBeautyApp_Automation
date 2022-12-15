@@ -66,43 +66,57 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 	public boolean user_verify_the_consultation_home_page() {
 		try {
 
-			if (ConfigReader.getData("app").equals("Kiehls")) {
-				try {
-					waitUntil("master_consultation_page");
+			switch (ConfigReader.getData("appEnv")) {
+			case "UAT": {
+				if (ConfigReader.getData("app").equals("Kiehls")) {
+					try {
+						waitUntil("master_consultation_page");
 
-					return true;
+						return true;
 
-				} catch (Exception e) {
-					waitUntil("master_consultation_page_with_member");
-					return true;
+					} catch (Exception e) {
+						waitUntil("master_consultation_page_with_member");
+						return true;
 
+					}
+				} else if (ConfigReader.getData("app").equals("Lancome")) {
+					try {
+						waitUntil("master_consultation_page");
+
+						return true;
+
+					} catch (Exception e) {
+						waitUntil("master_consultation_page_with_member");
+						return true;
+
+					}
+				} else if (ConfigReader.getData("app").equals("Armani")) {
+					try {
+						waitUntil("master_start_consultation_member_button");
+
+						return true;
+
+					} catch (Exception e) {
+						waitUntil("master_consultation_page_with_member");
+						webdriverwait(driver
+								.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"Healthy Skin Check\"]")));
+						return true;
+
+					}
 				}
-			} else if (ConfigReader.getData("app").equals("Lancome")) {
-				try {
-					waitUntil("master_consultation_page");
+				return false;
 
-					return true;
-
-				} catch (Exception e) {
-					waitUntil("master_consultation_page_with_member");
-					return true;
-
-				}
-			} else if (ConfigReader.getData("app").equals("Armani")) {
-				try {
-					waitUntil("master_start_consultation_member_button");
-
-					return true;
-
-				} catch (Exception e) {
-					waitUntil("master_consultation_page_with_member");
-					webdriverwait(
-							driver.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"Healthy Skin Check\"]")));
-					return true;
-
-				}
 			}
-			return false;
+			case "PROD": {
+				return true;
+
+			}
+
+			default: {
+			}
+				return false;
+
+			}
 
 		} catch (Exception e) {
 			return false;
@@ -136,9 +150,23 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 	public boolean user_click_save_button_to_save_form() {
 		try {
-			waitUntil("master_consultation_save_button");
-			click("master_consultation_save_button");
-			return true;
+
+			switch (ConfigReader.getData("appEnv")) {
+			case "UAT": {
+
+				waitUntil("master_consultation_save_button");
+				click("master_consultation_save_button");
+				return true;
+			}
+			case "PROD": {
+
+			}
+
+			default: {
+			}
+				return false;
+
+			}
 
 		} catch (Exception e) {
 			return false;
@@ -263,100 +291,114 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 	public boolean user_select_skin_options() {
 		try {
 
-			if (consultationPageSkipMode == false) {
+			switch (ConfigReader.getData("appEnv")) {
+			case "UAT": {
 
-				// swipeScreenUntilElementVisible("master_consultation_skincare_very_frequently",
-				// Direction.UP);
-				// click("master_consultation_skincare_very_frequently");
+				if (consultationPageSkipMode == false) {
 
-				swipeScreenUntilElementVisible("master_consultation_skincare_combination1", Direction.UP);
-				click("master_consultation_skincare_combination1");
+					// swipeScreenUntilElementVisible("master_consultation_skincare_very_frequently",
+					// Direction.UP);
+					// click("master_consultation_skincare_very_frequently");
 
-				swipeScreenUntilElementVisible("master_consultation_skincare_eye_cream", Direction.UP);
-				click("master_consultation_skincare_toner");
-				click("master_consultation_skincare_eye_cream");
-				click("master_consultation_skincare_sunscreen");
+					swipeScreenUntilElementVisible("master_consultation_skincare_combination1", Direction.UP);
+					click("master_consultation_skincare_combination1");
 
-				swipeScreenUntilElementVisible("master_consultation_skincare_peer", Direction.UP);
-				click("master_consultation_skincare_peer");
+					swipeScreenUntilElementVisible("master_consultation_skincare_eye_cream", Direction.UP);
+					click("master_consultation_skincare_toner");
+					click("master_consultation_skincare_eye_cream");
+					click("master_consultation_skincare_sunscreen");
 
-				// swipeScreenUntilElementVisible("master_consultation_skincare_hairspray",
-				// Direction.UP);
-				// click("master_consultation_skincare_hairspray");
+					swipeScreenUntilElementVisible("master_consultation_skincare_peer", Direction.UP);
+					click("master_consultation_skincare_peer");
 
-				// swipeScreenUntilElementVisible("master_consultation_skincare_textview1",
-				// Direction.UP);
-				// sendkeys("master_consultation_skincare_textview1",ExcelData.getExcelData("customer_testdata",
-				// "sample_text"));
-				// click("master_consultation_skincare_header");
+					// swipeScreenUntilElementVisible("master_consultation_skincare_hairspray",
+					// Direction.UP);
+					// click("master_consultation_skincare_hairspray");
 
-				// swipeScreenUntilElementVisible("master_consultation_skincare_combination2",
-				// Direction.UP);
-				// click("master_consultation_skincare_combination2");
+					// swipeScreenUntilElementVisible("master_consultation_skincare_textview1",
+					// Direction.UP);
+					// sendkeys("master_consultation_skincare_textview1",ExcelData.getExcelData("customer_testdata",
+					// "sample_text"));
+					// click("master_consultation_skincare_header");
 
-				// swipeScreenUntilElementVisible("master_consultation_skincare_textview2",
-				// Direction.UP);
-				// sendkeys("master_consultation_skincare_textview2",
-				// ExcelData.getExcelData("customer_testdata", "sample_text"));
-				// click("master_consultation_skincare_header");
+					// swipeScreenUntilElementVisible("master_consultation_skincare_combination2",
+					// Direction.UP);
+					// click("master_consultation_skincare_combination2");
 
-				swipeScreenUntilElementVisible("master_consultation_skincare_tzone", Direction.UP);
-				click("master_consultation_skincare_tzone");
-				click("master_consultation_skincare_cheeks");
+					// swipeScreenUntilElementVisible("master_consultation_skincare_textview2",
+					// Direction.UP);
+					// sendkeys("master_consultation_skincare_textview2",
+					// ExcelData.getExcelData("customer_testdata", "sample_text"));
+					// click("master_consultation_skincare_header");
 
-				click("master_save_button");
+					swipeScreenUntilElementVisible("master_consultation_skincare_tzone", Direction.UP);
+					click("master_consultation_skincare_tzone");
+					click("master_consultation_skincare_cheeks");
+
+					click("master_save_button");
+					return true;
+
+				} else if (consultationPageSkipMode == true) {
+					click("master_skip_button");
+
+					Thread.sleep(1000);
+					click("master_skip_button");
+
+					Thread.sleep(1000);
+					click("master_skip_button");
+
+					waitUntil("master_consultation_skincare_combination1");
+					click("master_consultation_skincare_combination1");
+
+					waitUntil("master_next_button");
+					click("master_next_button");
+
+					Thread.sleep(1000);
+					click("master_skip_button");
+
+					waitUntil("master_consultation_skincare_toner");
+					click("master_consultation_skincare_toner");
+					click("master_consultation_skincare_eye_cream");
+					click("master_consultation_skincare_sunscreen");
+
+					click("master_next_button");
+
+					waitUntil("master_consultation_skincare_peer");
+					click("master_consultation_skincare_peer");
+
+					click("master_next_button");
+
+					Thread.sleep(1000);
+					click("master_skip_button");
+					Thread.sleep(1000);
+					click("master_skip_button");
+					Thread.sleep(1000);
+					click("master_skip_button");
+					Thread.sleep(1000);
+					click("master_skip_button");
+					Thread.sleep(1000);
+					click("master_skip_button");
+
+					waitUntil("master_consultation_skincare_tzone");
+					click("master_consultation_skincare_tzone");
+					click("master_consultation_skincare_cheeks");
+
+					waitUntil("master_submit_button");
+					click("master_submit_button");
+
+					return true;
+				} else {
+					return false;
+
+				}
+			}
+			case "PROD": {
 				return true;
 
-			} else if (consultationPageSkipMode == true) {
-				click("master_skip_button");
+			}
 
-				Thread.sleep(1000);
-				click("master_skip_button");
-
-				Thread.sleep(1000);
-				click("master_skip_button");
-
-				waitUntil("master_consultation_skincare_combination1");
-				click("master_consultation_skincare_combination1");
-
-				waitUntil("master_next_button");
-				click("master_next_button");
-
-				Thread.sleep(1000);
-				click("master_skip_button");
-
-				waitUntil("master_consultation_skincare_toner");
-				click("master_consultation_skincare_toner");
-				click("master_consultation_skincare_eye_cream");
-				click("master_consultation_skincare_sunscreen");
-
-				click("master_next_button");
-
-				waitUntil("master_consultation_skincare_peer");
-				click("master_consultation_skincare_peer");
-
-				click("master_next_button");
-
-				Thread.sleep(1000);
-				click("master_skip_button");
-				Thread.sleep(1000);
-				click("master_skip_button");
-				Thread.sleep(1000);
-				click("master_skip_button");
-				Thread.sleep(1000);
-				click("master_skip_button");
-				Thread.sleep(1000);
-				click("master_skip_button");
-
-				waitUntil("master_consultation_skincare_tzone");
-				click("master_consultation_skincare_tzone");
-				click("master_consultation_skincare_cheeks");
-
-				waitUntil("master_submit_button");
-				click("master_submit_button");
-
-				return true;
-			} else {
+			default: {
+			}
 				return false;
 
 			}
