@@ -559,7 +559,7 @@ Feature: Validation of applications in Various segments
     Then Verify the customer note should be displayed in notes section
 
   ##create customer----------------------------------------------------
-  @smoke @Regression @Customercreation @AU @HK @JP @KR @MY @NZ @SG @TW @TH @positive @master @cc
+  @smoke @Regression @Customercreation @AU @HK @JP @KR @MY @NZ @SG @TW @TH @positive @master @demo2
   Scenario: Verify if user is able to create a new customer with only mandatory fields
     When User enter the store credentials
     And User click on login button in storePage
@@ -571,9 +571,9 @@ Feature: Validation of applications in Various segments
     And User add member details
     And User click terms and conditions checkbox
     And User click confirm button
-    And User verify the consultation home page
+    #And User verify the consultation home page
 
-  @smoke @Regression @Customercreation @AU @HK @JP @KR @MY @NZ @SG @TW @TH @positive @master
+  @smoke @Regression @Customercreation @AU @HK @JP @KR @MY @NZ @SG @TW @TH @positive @master @demo2
   Scenario: Verify if user is able to create a new customer with all fields
     When User enter the store credentials
     And User click on login button in storePage
@@ -587,8 +587,8 @@ Feature: Validation of applications in Various segments
     And User add communicate channals details
     And User click terms and conditions checkbox
     And User click confirm button
+    And User verify the consultation home page
 
-  #And User verify the consultation home page
   @smoke @Regression @Customercreation @AU @HK @JP @KR @MY @NZ @SG @TW @TH @negative @master
   Scenario: Verify if user is able to create a new customer with all fields
     When User enter the store credentials
@@ -785,7 +785,7 @@ Feature: Validation of applications in Various segments
     And Verify the cart page
     Then User validate added product on the cart
 
-  @smoke @Regression @home @AU @HK @JP @KR @MY @NZ @SG @TW @TH 
+  @smoke @Regression @home @AU @HK @JP @KR @MY @NZ @SG @TW @TH
   Scenario: Verify the user able see all the components in Home page
     When User enter the store credentials
     And User click on login button in storePage
@@ -797,3 +797,11 @@ Feature: Validation of applications in Various segments
     Then Verify topten items on the home page
     Then Verify members items on the home page
     Then Verify side navigation items on the home page
+
+  @smoke @Regression @setting @AU @HK @JP @KR @MY @NZ @SG @TW @TH
+  Scenario: Verify the user able see all setting options
+    When User enter the store credentials
+    And User click on login button in storePage
+    Then User enter the ba credentials
+    And User click on login button in baPage
+    Then User is on home page
