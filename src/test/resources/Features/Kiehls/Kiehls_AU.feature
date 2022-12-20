@@ -13,7 +13,7 @@ Feature: Validation of applications in Various segments
     And User click on login button in baPage
     Then User is on home page
 
-  @smoke @Regression @Login @Negative  @master
+  @smoke @Regression @Login @Negative @master
   Scenario: Verify the user able to see the error message in store and BA page.
     When User enter the wrong store credentials
     And User click on login button in storePage
@@ -25,7 +25,7 @@ Feature: Validation of applications in Various segments
     And User click on login button in baPage
     Then User is on home page
 
-  @resetPassword 
+  @resetPassword
   Scenario: Verify the user able to see the error message in store and BA page.
     When User enter the store credentials
     And User click on login button in storePage
@@ -35,11 +35,11 @@ Feature: Validation of applications in Various segments
     And User click on close button in Pop Up
     And User click on Reset Password
     And User enters store Manager userName and passWord
-   #And User click on next button
-   #And User enters the newPassword and confirm passWord
-   #And User click on submit button
-  
-  @smoke @Regression @PLP  @master
+
+  #And User click on next button
+  #And User enters the newPassword and confirm passWord
+  #And User click on submit button
+  @smoke @Regression @PLP @master
   Scenario: Verify user able to navigate PLP from home page product category
     When User enter the store credentials
     And User click on login button in storePage
@@ -141,8 +141,8 @@ Feature: Validation of applications in Various segments
     And User enter the title in calender
     And User click Save button in calender
     Then Verify user able to view created ToDo list Event
-   #And User click the Delete Event button
-  
+
+  #And User click the Delete Event button
   @smoke @Regression @BACalendar @master
   Scenario: Verify user able to create Promotion Activity in the calendar
     When User enter the store credentials
@@ -158,9 +158,9 @@ Feature: Validation of applications in Various segments
     And User enter the Customer name in calender
     And User enther the Phone number in calender
     And User click Save button in calender
-   #Then Verify user able to view created Promotion Event
-   #And User click the Delete Event button
-  
+
+  #Then Verify user able to view created Promotion Event
+  #And User click the Delete Event button
   @smoke @Regression @BACalendar @master
   Scenario: Verify user able to create Service booking in the calendar
     When User enter the store credentials
@@ -176,9 +176,9 @@ Feature: Validation of applications in Various segments
     And User enter the Customer name in calender
     And User enther the Phone number in calender
     And User click Save button in calender
-   #Then Verify user able to view created service booking Event
-   #And User click the Delete Event button
-  
+
+  #Then Verify user able to view created service booking Event
+  #And User click the Delete Event button
   @smoke @Regression @BACalendar @master
   Scenario: Verify user able to create Event Reservation in the calendar
     When User enter the store credentials
@@ -194,9 +194,9 @@ Feature: Validation of applications in Various segments
     And User enter the Customer name in calender
     And User enther the Phone number in calender
     And User click Save button in calender
-   #Then Verify user able to view created reservation Event
-   #And User click the Delete Event button
-  
+
+  #Then Verify user able to view created reservation Event
+  #And User click the Delete Event button
   @smoke @Regression @BACallbacklist @master
   Scenario: Verify the customer callback list page
     When User enter the store credentials
@@ -271,7 +271,7 @@ Feature: Validation of applications in Various segments
     And User click the BA Home button from right navigation and Click "DASHBOARD" then verify the page
     Then User click first notification on the list and user able to navigate Notification page
 
-  @smoke @Regression @BAdashboard 
+  @smoke @Regression @BAdashboard
   Scenario: Verify the customer calBacklist on dashBoard page
     When User enter the store credentials
     And User click on login button in storePage
@@ -605,9 +605,9 @@ Feature: Validation of applications in Various segments
     Then User should navigate to PLP page successfully
     And User click the product and verify user get navigate to PDP page
     Then Verify the product description, tips and ingriedients tabs in PDP
-    
+
   ##create customer----------------------------------------------------
-  @Regression @Customercreation  @positive 
+  @Regression @Customercreation @positive
   Scenario: Verify if user is able to create a new customer with only mandatory fields
     When User enter the store credentials
     And User click on login button in storePage
@@ -619,9 +619,9 @@ Feature: Validation of applications in Various segments
     And User add member details
     And User click terms and conditions checkbox
     And User click confirm button
-    #And User verify the consultation home page
 
-  @Regression @Customercreation @positive 
+  #And User verify the consultation home page
+  @Regression @Customercreation @positive
   Scenario: Verify if user is able to create a new customer with all fields
     When User enter the store credentials
     And User click on login button in storePage
@@ -649,7 +649,7 @@ Feature: Validation of applications in Various segments
     And User add communicate channals details
     And User click terms and conditions checkbox
     And User click confirm button
-    And User verify mandatory error messages  
+    And User verify mandatory error messages
 
   @Regression @consultation @master
   Scenario: Verify user able to create consultation for survey with generic user
@@ -685,8 +685,8 @@ Feature: Validation of applications in Various segments
     Then User enter text look and feel of your skin on text field
     And User click save button to save form
     And User verify the consultation home page
-   #Then User verify is survey form created successfully
-   
+
+  #Then User verify is survey form created successfully
   @Regressionn @consultation @master
   Scenario: Verify user able to update consultation for survey with member
     When User enter the store credentials
@@ -805,3 +805,15 @@ Feature: Validation of applications in Various segments
     Then User enter the ba credentials
     And User click on login button in baPage
     Then User is on home page
+    And User click setting icon on the right navigation
+    Then User click Language Switch and verify the languages
+    Then User click Training Manual and verify the document
+    Then User click Version Details and verify the details
+    Then User click Technical Assistance Helpline and verify the details
+    Then User click Delete Cache or Refresh App and verify
+    Then User click Password Management and verify
+    And User click the change password button in Password management and verify the popup
+    Then User enter current password
+    Then User enter new password
+    Then User enter confirm password
+    And User click cancel button
