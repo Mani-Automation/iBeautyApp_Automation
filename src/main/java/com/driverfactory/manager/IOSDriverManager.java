@@ -31,11 +31,9 @@ public class IOSDriverManager extends Factory {
 		switch (env) {
 		case "UAT": {
 			appPath = System.getProperty("user.dir") + "/apps/" + ConfigReader.getData("app") + " UAT.ipa";
-			break;
 		}
 		case "PROD": {
 			appPath = System.getProperty("user.dir") + "/apps/" + ConfigReader.getData("app") + " PROD.ipa";
-			break;
 		}
 		}
 

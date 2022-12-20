@@ -104,7 +104,6 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 					}
 				}
-				return false;
 
 			}
 			case "PROD": {
