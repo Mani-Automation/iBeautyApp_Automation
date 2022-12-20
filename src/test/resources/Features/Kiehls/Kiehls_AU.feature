@@ -5,7 +5,7 @@ Feature: Validation of applications in Various segments
     Then User select the country
     And User click on proceed button
 
-  @smoke @Regression @Login @positive @AU @HK @JP @KR @MY @NZ @SG @TW @TH @master
+  @smoke @Regression @Login @positive @master
   Scenario: Verify the user able to login the application
     When User enter the store credentials
     And User click on login button in storePage
