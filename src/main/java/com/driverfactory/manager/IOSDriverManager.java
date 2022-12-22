@@ -43,13 +43,10 @@ public class IOSDriverManager extends Factory {
 		desiredCapabilities.setCapability("platformVersion", ConfigReader.getData("platformVersion"));
 		desiredCapabilities.setCapability("deviceName", ConfigReader.getData("deviceName"));
 		desiredCapabilities.setCapability("udid", ConfigReader.getData("udid"));
-//		desiredCapabilities.setCapability("bundleId", "com.photon.loreal.ibeauty.kiehls");
-		// desiredCapabilities.setCapability("xcodeOrgId", "M72NAL3U5D");
 		desiredCapabilities.setCapability("xcodeSigningId", "iPhone Developer");
 		desiredCapabilities.setCapability("updatedWDABundleId", ConfigReader.getData(bundleID));
 		desiredCapabilities.setCapability("realMobile", "true");
 		desiredCapabilities.setCapability("autoAcceptAlerts", true);
-//		desiredCapabilities.setCapability("nativeWebTap","true");
 		desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
 		desiredCapabilities.setCapability(MobileCapabilityType.APP, appPath);
 
