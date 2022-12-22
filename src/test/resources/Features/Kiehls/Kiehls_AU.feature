@@ -607,7 +607,7 @@ Feature: Validation of applications in Various segments
     Then Verify the product description, tips and ingriedients tabs in PDP
 
   ##create customer----------------------------------------------------
-  @Regression @Customercreation @positive
+  @Regression @Customercreation  @positive @demo
   Scenario: Verify if user is able to create a new customer with only mandatory fields
     When User enter the store credentials
     And User click on login button in storePage
@@ -619,9 +619,21 @@ Feature: Validation of applications in Various segments
     And User add member details
     And User click terms and conditions checkbox
     And User click confirm button
+    And User verify the consultation home page
+    
+  @Regression @Customercreation  @positive @demo3
+  Scenario: Verify if user is able to create a new customer with only mandatory fields
+    When User enter the store credentials
+    And User click on login button in storePage
+    Then User enter the ba credentials
+    And User click on login button in baPage
+    Then User is on home page
+    And User click the Create button on Customer search
+    And User click confirm button
+    And User verify mandatory error messages 
+    
 
-  #And User verify the consultation home page
-  @Regression @Customercreation @positive
+  @Regression @Customercreation @positive @demo1
   Scenario: Verify if user is able to create a new customer with all fields
     When User enter the store credentials
     And User click on login button in storePage
@@ -637,7 +649,7 @@ Feature: Validation of applications in Various segments
     And User click confirm button
     And User verify the consultation home page
 
-  @Regression @Customercreation @negative
+  @Regression @Customercreation @negative @demo2
   Scenario: Verify if user is able to create a new customer with all fields
     When User enter the store credentials
     And User click on login button in storePage
@@ -651,7 +663,7 @@ Feature: Validation of applications in Various segments
     And User click confirm button
     And User verify mandatory error messages
 
-  @Regression @consultation @master
+  @Regression @consultation @master 
   Scenario: Verify user able to create consultation for survey with generic user
     When User enter the store credentials
     And User click on login button in storePage

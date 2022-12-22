@@ -218,6 +218,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 				if (segment.equals("AU")) {
 
 				} else if (segment.equals("JP")) {
+					swipeScreenUntilElementVisible("master_createcustomer_confirm_button", Direction.UP);
 					waitUntil("master_createcustomer_confirm_button");
 					click("master_createcustomer_confirm_button");
 				}
@@ -244,7 +245,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 		try {
 			switch (ConfigReader.getData("appEnv")) {
 			case "UAT": {
-
+				swipeScreenUntilElementVisible("master_createcustomer_memberid", Direction.DOWN);
 				waitUntil("master_createcustomer_mandatory_error_memberid");
 				waitUntil("master_createcustomer_mandatory_error_phonenumber");
 				waitUntil("master_createcustomer_mandatory_error_lastname");

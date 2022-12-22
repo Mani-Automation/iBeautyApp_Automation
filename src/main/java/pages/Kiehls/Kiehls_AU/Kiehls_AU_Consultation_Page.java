@@ -92,14 +92,14 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 					}
 				} else if (ConfigReader.getData("app").equals("Armani")) {
 					try {
-						waitUntil("master_start_consultation_member_button");
+						waitUntil("master_consultation_page");
 
 						return true;
 
 					} catch (Exception e) {
 						waitUntil("master_consultation_page_with_member");
-						webdriverwait(driver
-								.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"Healthy Skin Check\"]")));
+					//	webdriverwait(driver
+					//			.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"Healthy Skin Check\"]")));
 						return true;
 
 					}
