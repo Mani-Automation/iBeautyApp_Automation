@@ -26,16 +26,19 @@ public class IOSDriverManager extends Factory {
 
 		String appPath = System.getProperty("user.dir") + "/apps/" + ConfigReader.getData("app") + " UAT.ipa";
 		String bundleID = ConfigReader.getData("app") + "_BundleId";
-		//String env = ConfigReader.getData("appEnv").toString();
+		// String env = ConfigReader.getData("appEnv").toString();
 
-		//switch (env) {
-		//case "UAT": {
-		//	appPath = System.getProperty("user.dir") + "/apps/" + ConfigReader.getData("app") + " UAT.ipa";
-		//}
-		//case "PROD": {
-		//	appPath = System.getProperty("user.dir") + "/apps/" + ConfigReader.getData("app") + " PROD.ipa";
-		//}
-		//}
+		// switch (env) {
+		// case "UAT": {
+		// appPath = System.getProperty("user.dir") + "/apps/" +
+		// ConfigReader.getData("app") + " UAT.ipa";
+
+		// }
+		// case "PROD": {
+		// appPath = System.getProperty("user.dir") + "/apps/" +
+		// ConfigReader.getData("app") + " PROD.ipa";
+		// }
+		// }
 
 		DesiredCapabilities desiredCapabilities;
 		desiredCapabilities = new DesiredCapabilities();
@@ -49,6 +52,7 @@ public class IOSDriverManager extends Factory {
 		desiredCapabilities.setCapability("autoAcceptAlerts", true);
 		desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
 		desiredCapabilities.setCapability(MobileCapabilityType.APP, appPath);
+
 
 		return desiredCapabilities;
 	}
