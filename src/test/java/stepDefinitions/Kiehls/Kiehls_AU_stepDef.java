@@ -20,6 +20,7 @@ import pages.Kiehls.Kiehls_AU.Kiehls_AU_CustomerCreation_Page;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_Login_Page;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_PDP_Page;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_PLP_Page;
+import pages.Kiehls.Kiehls_AU.Kiehls_AU_Settings_Page;
 
 public class Kiehls_AU_stepDef extends CommonActions {
 
@@ -44,7 +45,10 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	Kiehls_AU_BACalender_Page baCalendarPage = new Kiehls_AU_BACalender_Page(driver);
 
 	Kiehls_AU_BATransactions_Page baTransactionPage = new Kiehls_AU_BATransactions_Page(driver);
+
 	Kiehls_AU_Consultation_Page consultationPage = new Kiehls_AU_Consultation_Page(driver);
+
+	Kiehls_AU_Settings_Page settingPage = new Kiehls_AU_Settings_Page(driver);
 
 	// callback - start
 
@@ -1037,6 +1041,68 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	@Then("^Verify side navigation items on the home page$")
 	public void verify_side_navigation_items_on_the_home_page() throws Throwable {
 		Assert.assertTrue(login.verify_side_navigation_items_on_the_home_page());
+	}
+//settings
+
+	@Then("^User click Language Switch and verify the languages$")
+	public void user_click_language_switch_and_verify_the_languages() throws Throwable {
+		Assert.assertTrue(settingPage.user_click_language_switch_and_verify_the_languages());
+	}
+
+	@Then("^User click Training Manual and verify the document$")
+	public void user_click_training_manual_and_verify_the_document() throws Throwable {
+		Assert.assertTrue(settingPage.user_click_training_manual_and_verify_the_document());
+	}
+
+	@Then("^User click Version Details and verify the details$")
+	public void user_click_version_details_and_verify_the_details() throws Throwable {
+		Assert.assertTrue(settingPage.user_click_version_details_and_verify_the_details());
+	}
+
+	@Then("^User click Technical Assistance Helpline and verify the details$")
+	public void user_click_technical_assistance_helpline_and_verify_the_details() throws Throwable {
+		Assert.assertTrue(settingPage.user_click_technical_assistance_helpline_and_verify_the_details());
+	}
+
+	@Then("^User click Delete Cache or Refresh App and verify$")
+	public void user_click_delete_cache_or_refresh_app_and_verify() throws Throwable {
+		Assert.assertTrue(settingPage.user_click_delete_cache_or_refresh_app_and_verify());
+	}
+
+	@Then("^User click Password Management and verify$")
+	public void user_click_password_management_and_verify() throws Throwable {
+		Assert.assertTrue(settingPage.user_click_password_management_and_verify());
+	}
+
+	@Then("^User enter current password$")
+	public void user_enter_current_password() throws Throwable {
+		Assert.assertTrue(settingPage.user_enter_current_password());
+	}
+
+	@Then("^User enter new password$")
+	public void user_enter_new_password() throws Throwable {
+		Assert.assertTrue(settingPage.user_enter_new_password());
+	}
+
+	@Then("^User enter confirm password$")
+	public void user_enter_confirm_password() throws Throwable {
+		Assert.assertTrue(settingPage.user_enter_confirm_password());
+	}
+
+	@And("^User click setting icon on the right navigation$")
+	public void user_click_setting_icon_on_the_right_navigation() throws Throwable {
+		Assert.assertTrue(settingPage.user_click_setting_icon_on_the_right_navigation());
+	}
+
+	@And("^User click the change password button in Password management and verify the popup$")
+	public void user_click_the_change_password_button_in_password_management_and_verify_the_popup() throws Throwable {
+		Assert.assertTrue(
+				settingPage.user_click_the_change_password_button_in_password_management_and_verify_the_popup());
+	}
+
+	@And("^User click cancel button$")
+	public void user_click_cancel_button() throws Throwable {
+		Assert.assertTrue(settingPage.user_click_cancel_button());
 	}
 
 }
