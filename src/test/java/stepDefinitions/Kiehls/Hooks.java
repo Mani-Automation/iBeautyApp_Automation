@@ -43,9 +43,8 @@ public class Hooks {
 			driver = driverFactory.getDriver(Target.valueOf(target.toUpperCase()));
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			DriverManager.setDriver(driver);
-			report.startTest(driver,scenario.getName());
+			report.startTest(driver, scenario.getName());
 
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -65,6 +64,7 @@ public class Hooks {
 	public void quitBrowser() {
 
 		DriverManager.quit();
+
 
 	}
 

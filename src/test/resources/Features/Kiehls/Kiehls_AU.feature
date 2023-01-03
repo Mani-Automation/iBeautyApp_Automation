@@ -5,7 +5,7 @@ Feature: Validation of applications in Various segments
     Then User select the country
     And User click on proceed button
 
-  @smoke @Regression @Login @positive @master
+  @smoke @Regression @Login @positive @master @demo
   Scenario: Verify the user able to login the application
     When User enter the store credentials
     And User click on login button in storePage
@@ -13,7 +13,7 @@ Feature: Validation of applications in Various segments
     And User click on login button in baPage
     Then User is on home page
 
-  @smoke @Regression @Login @Negative @master
+  @smoke @Regression @Login @Negative @master @demo
   Scenario: Verify the user able to see the error message in store and BA page.
     When User enter the wrong store credentials
     And User click on login button in storePage
@@ -607,7 +607,7 @@ Feature: Validation of applications in Various segments
     Then Verify the product description, tips and ingriedients tabs in PDP
 
   ##create customer----------------------------------------------------
-  @Regression @Customercreation  @positive @demo
+  @Regression @Customercreation  @positive 
   Scenario: Verify if user is able to create a new customer with only mandatory fields
     When User enter the store credentials
     And User click on login button in storePage
@@ -621,7 +621,7 @@ Feature: Validation of applications in Various segments
     And User click confirm button
     And User verify the consultation home page
     
-  @Regression @Customercreation  @positive @demo3
+  @Regression @Customercreation  @positive 
   Scenario: Verify if user is able to create a new customer with only mandatory fields
     When User enter the store credentials
     And User click on login button in storePage
@@ -633,7 +633,7 @@ Feature: Validation of applications in Various segments
     And User verify mandatory error messages 
     
 
-  @Regression @Customercreation @positive @demo1
+  @Regression @Customercreation @positive 
   Scenario: Verify if user is able to create a new customer with all fields
     When User enter the store credentials
     And User click on login button in storePage
@@ -649,7 +649,7 @@ Feature: Validation of applications in Various segments
     And User click confirm button
     And User verify the consultation home page
 
-  @Regression @Customercreation @negative @demo2
+  @Regression @Customercreation @negative 
   Scenario: Verify if user is able to create a new customer with all fields
     When User enter the store credentials
     And User click on login button in storePage

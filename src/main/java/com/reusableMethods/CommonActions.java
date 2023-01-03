@@ -80,6 +80,7 @@ public class CommonActions {
 	public CommonActions() {
 		try {
 			exwait = new WebDriverWait(DriverManager.getDriver(), 25);
+			driver = DriverManager.getDriver();
 		} catch (Exception e) {
 		}
 	}
@@ -571,33 +572,30 @@ public class CommonActions {
 	}
 
 	public void waitUntil(String locatorString) throws IOException {
+		driver = DriverManager.getDriver();
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(loc.getData(locatorString)))));
 	}
 
 	public void click(String locatorString) throws IOException {
-
+		 driver = DriverManager.getDriver();
 		driver.findElement(By.xpath(loc.getData(locatorString))).click();
 	}
 
 	public String gettext(String locatorString) throws IOException {
-
 		return driver.findElement(By.xpath(loc.getData(locatorString))).getText().toString();
 	}
 
 	public void clear(String locatorString) throws IOException {
-
 		driver.findElement(By.xpath(loc.getData(locatorString))).clear();
 	}
 
 	public void sendkeys(String locatorString, String data) throws IOException {
-
 		driver.findElement(By.xpath(loc.getData(locatorString))).sendKeys(data);
 	}
 
 	public WebElement webElement(String locatorString) throws IOException {
-
 		return driver.findElement(By.xpath(loc.getData(locatorString)));
 	}
 

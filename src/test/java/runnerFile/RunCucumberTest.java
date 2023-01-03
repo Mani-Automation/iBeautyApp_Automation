@@ -8,6 +8,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
+import com.driverfactory.DriverManager;
 import com.utilities.ConfigReader;
 import com.utilities.ExtentReport;
 import com.utilities.JvmReport;
@@ -19,13 +20,13 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = { "src/test/resources/Features" }, glue = { "stepDefinitions" }, dryRun = false, plugin = {
-		"pretty", "json:target/ResultsMobile/cucumber.json"}, monochrome = true, tags = "@demo"
+		"pretty", "json:target/ResultsMobile/cucumber.json" }, monochrome = true, tags = "@smoke"
 
 )
 public class RunCucumberTest {
 
 	static ExtentReport extent_report = new ExtentReport();
-	static ReportWeb report = new ReportWeb ();
+	static ReportWeb report = new ReportWeb();
 	static String start_time;
 
 	@BeforeClass
@@ -39,6 +40,7 @@ public class RunCucumberTest {
 		ExtentReport.startReport(start_time);
 
 	}
+
 	@AfterClass
 	public static void afterClass() throws IOException {
 
@@ -51,13 +53,12 @@ public class RunCucumberTest {
 		extent_report.endReport();
 
 	}
-	
+
 	@AfterClass
-	public static void closeBrowser()  {
-	   report.generateReport(System.getProperty("user.dir") + "/target/ResultsMobile/cucumber.json", start_time);
+	public static void closeBrowser() {
 
-
+		report.generateReport(System.getProperty("user.dir") + "/target/ResultsMobile/cucumber.json", start_time);
+		DriverManager.getDriver().close();
 	}
 
 }
-        
