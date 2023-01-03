@@ -24,21 +24,21 @@ public class IOSDriverManager extends Factory {
 
 	private DesiredCapabilities getOptions() throws IOException {
 
-		String appPath = System.getProperty("user.dir") + "/apps/" + ConfigReader.getData("app") + " UAT.ipa";
+		String appPath = null;
 		String bundleID = ConfigReader.getData("app") + "_BundleId";
-		// String env = ConfigReader.getData("appEnv").toString();
+		String env = ConfigReader.getData("appEnv").toString();
 
-		// switch (env) {
-		// case "UAT": {
-		// appPath = System.getProperty("user.dir") + "/apps/" +
-		// ConfigReader.getData("app") + " UAT.ipa";
+		 switch (env) {
 
-		// }
-		// case "PROD": {
-		// appPath = System.getProperty("user.dir") + "/apps/" +
-		// ConfigReader.getData("app") + " PROD.ipa";
-		// }
-		// }
+			case "PROD":
+
+				appPath = System.getProperty("user.dir") + "/apps/" + ConfigReader.getData("app") + " UAT.ipa";
+			break;
+			case "UAT":
+
+				appPath = System.getProperty("user.dir") + "/apps/" + ConfigReader.getData("app") + " PROD.ipa";
+			break;
+			}
 
 		DesiredCapabilities desiredCapabilities;
 		desiredCapabilities = new DesiredCapabilities();
