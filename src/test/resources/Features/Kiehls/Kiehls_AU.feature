@@ -2,18 +2,13 @@ Feature: Validation of applications in Various segments
 
   Background: 
     Given User launches the Application
-    Then User select the country
-    And User click on proceed button
+    When User select country and login to store then login to ba account
 
   @smoke @Regression @Login @positive @master @demo
   Scenario: Verify the user able to login the application
-    When User enter the store credentials
-    And User click on login button in storePage
-    Then User enter the ba credentials
-    And User click on login button in baPage
     Then User is on home page
 
-  @smoke @Regression @Login @Negative @master @demo
+  @smoke @Regression @Login @Negative @master
   Scenario: Verify the user able to see the error message in store and BA page.
     When User enter the wrong store credentials
     And User click on login button in storePage
@@ -41,12 +36,8 @@ Feature: Validation of applications in Various segments
   #And User click on submit button
   @smoke @Regression @PLP @master
   Scenario: Verify user able to navigate PLP from home page product category
-    When User enter the store credentials
-    And User click on login button in storePage
-    Then User enter the ba credentials
-    And User click on login button in baPage
     Then User is on home page
-    And User click "Hair" category on the Home page
+    And User click "Skincare" category on the Home page
     Then User should navigate to PLP page successfully
 
   @smoke @Regression @PLP @master
@@ -59,7 +50,7 @@ Feature: Validation of applications in Various segments
     And User click "Skincare" category on product from right navigation
     Then User should navigate to PLP page successfully
 
-  @smoke @Regression @PLP @master
+  @smoke @Regression @PLP @master @test_plp
   Scenario: Verify user able view product by Grid, small grid and list view in PLP
     When User enter the store credentials
     And User click on login button in storePage
@@ -607,7 +598,7 @@ Feature: Validation of applications in Various segments
     Then Verify the product description, tips and ingriedients tabs in PDP
 
   ##create customer----------------------------------------------------
-  @Regression @Customercreation  @positive 
+  @Regression @Customercreation @positive
   Scenario: Verify if user is able to create a new customer with only mandatory fields
     When User enter the store credentials
     And User click on login button in storePage
@@ -620,20 +611,15 @@ Feature: Validation of applications in Various segments
     And User click terms and conditions checkbox
     And User click confirm button
     And User verify the consultation home page
-    
-  @Regression @Customercreation  @positive 
+
+  @Regression @Customercreation @positive @demo
   Scenario: Verify if user is able to create a new customer with only mandatory fields
-    When User enter the store credentials
-    And User click on login button in storePage
-    Then User enter the ba credentials
-    And User click on login button in baPage
     Then User is on home page
     And User click the Create button on Customer search
     And User click confirm button
-    And User verify mandatory error messages 
-    
+    And User verify mandatory error messages
 
-  @Regression @Customercreation @positive 
+  @Regression @Customercreation @positive
   Scenario: Verify if user is able to create a new customer with all fields
     When User enter the store credentials
     And User click on login button in storePage
@@ -649,7 +635,7 @@ Feature: Validation of applications in Various segments
     And User click confirm button
     And User verify the consultation home page
 
-  @Regression @Customercreation @negative 
+  @Regression @Customercreation @negative
   Scenario: Verify if user is able to create a new customer with all fields
     When User enter the store credentials
     And User click on login button in storePage
@@ -663,7 +649,7 @@ Feature: Validation of applications in Various segments
     And User click confirm button
     And User verify mandatory error messages
 
-  @Regression @consultation @master 
+  @Regression @consultation @master
   Scenario: Verify user able to create consultation for survey with generic user
     When User enter the store credentials
     And User click on login button in storePage

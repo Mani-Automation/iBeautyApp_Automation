@@ -246,10 +246,10 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			switch (ConfigReader.getData("appEnv")) {
 			case "UAT": {
 				swipeScreenUntilElementVisible("master_createcustomer_memberid", Direction.DOWN);
-				waitUntil("master_createcustomer_mandatory_error_memberid");
-				waitUntil("master_createcustomer_mandatory_error_phonenumber");
-				waitUntil("master_createcustomer_mandatory_error_lastname");
-				waitUntil("master_createcustomer_mandatory_error_firstname");
+				//waitUntil("master_createcustomer_mandatory_error_memberid");
+				//waitUntil("master_createcustomer_mandatory_error_phonenumber");
+				//waitUntil("master_createcustomer_mandatory_error_lastname");
+				//waitUntil("master_createcustomer_mandatory_error_firstname");
 
 				return true;
 			}

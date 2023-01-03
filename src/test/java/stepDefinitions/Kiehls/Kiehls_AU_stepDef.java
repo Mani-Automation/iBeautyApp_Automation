@@ -722,6 +722,10 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	}
 
 	// login
+	@When("^User select country and login to store then login to ba account$")
+    public void user_select_country_and_login_to_store_then_login_to_ba_account()  {
+		Assert.assertTrue(login.user_select_country_and_login_to_store_then_login_to_ba_account());
+    }
 
 	@Given("User launches the Application")
 	public void user_launches_the_application() throws Exception {
@@ -866,13 +870,13 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	@And("^User click \"([^\"]*)\" category on product from right navigation$")
 	public void user_click_something_category_on_product_from_right_navigation(String product)
-			throws InterruptedException {
+			throws InterruptedException, IOException {
 		Assert.assertTrue(plpPage.click_category_from_right_navigation(product));
 
 	}
 
 	@And("^Verify user able to see grid and small and list view$")
-	public void verify_user_able_to_see_grid_and_small_and_list_view() throws InterruptedException {
+	public void verify_user_able_to_see_grid_and_small_and_list_view() throws InterruptedException, IOException {
 
 		Assert.assertTrue(plpPage.verify_plp_small_grid_view());
 		Assert.assertTrue(plpPage.verify_plp_list_view());

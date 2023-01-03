@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.tools.ant.ExitStatusException;
 import org.junit.Assert;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -23,71 +24,6 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 		PageFactory.initElements(driver, this);
 
 	}
-
-	// menu
-
-	// skincare
-	// (//XCUIElementTypeCell[@name="cell_0"])[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[1]
-	// Body
-	// (//XCUIElementTypeCell[@name="cell_0"])[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[1]
-	// men
-	// (//XCUIElementTypeCell[@name="cell_0"])[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[1]
-	// Hair
-	// (//XCUIElementTypeCell[@name="cell_0"])[4]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[1]
-
-	// right side navigation
-	// product btn
-	// //XCUIElementTypeTable[@name="sideMenuTbl"]/XCUIElementTypeButton[5]
-	// skincare //XCUIElementTypeApplication[@name="Kiehls
-	// UAT"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[5]/XCUIElementTypePopover/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[1]/XCUIElementTypeButton
-	// body //XCUIElementTypeApplication[@name="Kiehls
-	// UAT"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[5]/XCUIElementTypePopover/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeButton
-	// men
-	// hair
-	// pet
-	// others
-	// gifts
-
-	// plp
-	// min price //XCUIElementTypeApplication[@name="Kiehls
-	// UAT"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[3]/XCUIElementTypeButton[1]
-	// 4 gird //XCUIElementTypeButton[@name="GridIcon"]
-	// 4-1 add to cart (//XCUIElementTypeButton[@name="addToCartButton"])[1]
-	// 9 gird //XCUIElementTypeButton[@name="SmallGridIcon"]
-	// 9-1 addcart (//XCUIElementTypeStaticText[@name="ADD TO CART"])[1]
-	// list //XCUIElementTypeButton[@name="ListIcon"]
-	// list 10+addtocart (//XCUIElementTypeButton[@name="addToCartButton"])[1]
-
-	// filter //XCUIElementTypeButton[@name="btnFilter"]
-	// sort //XCUIElementTypeButton[@name="btnSort"]
-
-	// min price input (//XCUIElementTypeTextField[@name="txtPrice"])[1]
-	// max price input (//XCUIElementTypeTextField[@name="txtPrice"])[2]
-	// search product //XCUIElementTypeTextField[@name="txtProduct"]
-
-	// plp menu
-	// skincare //XCUIElementTypeStaticText[@name="Skincare"] or
-	// (//XCUIElementTypeCell[@name="cell_0"])[1]/XCUIElementTypeOther
-	// body //XCUIElementTypeStaticText[@name="Body"] or
-	// (//XCUIElementTypeCell[@name="cell_1"])[1]/XCUIElementTypeOther
-
-	// gird
-
-	// @FindBy(xpath = "")
-	// public WebElement plp_small_gird_button;
-
-	// filter
-	// by sub cat
-	// //XCUIElementTypeTable[@name="tblCategory"]/XCUIElementTypeButton[1]
-	// by cus concern
-	// //XCUIElementTypeTable[@name="tblCategory"]/XCUIElementTypeButton[2]
-	// by product line
-	// //XCUIElementTypeTable[@name="tblCategory"]/XCUIElementTypeButton[3]
-	// sub-facewash //XCUIElementTypeStaticText[@name="Face Wash"] or
-	// (//XCUIElementTypeCell[@name="cell_0"])[2]
-	// grid first product name
-	// (//XCUIElementTypeCell[@name="cell_0"])[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeStaticText[1]
-	// search result //XCUIElementTypeStaticText[@name="Search results for"]
 
 	@FindBy(xpath = "//XCUIElementTypeTable[@name=\"tblCategory\"]/XCUIElementTypeButton[1]")
 	public WebElement plp_filter_by_sub_category;
@@ -149,8 +85,6 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 	@FindBy(xpath = "(//XCUIElementTypeButton[@name=\"addToCartButton\"])[12]")
 	public WebElement plp_add_to_cart_button_12th_position_2;
 	//
-	@FindBy(xpath = "(//XCUIElementTypeCell[@name=\"cell_0\"])[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[1]")
-	public WebElement home_product_skincare;
 
 	@FindBy(xpath = "(//XCUIElementTypeCell[@name=\"cell_0\"])[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeImage[1]")
 	public WebElement home_product_body;
@@ -201,72 +135,73 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 	public boolean click_category_from_home_page(String product) throws InterruptedException {
 
 		try {
-			
 
 			if (product.equalsIgnoreCase("Skincare")) {
-				home_product_skincare.click();
-				reportStatusPASS("User clicked Skincare category on the Home page");
-				return true;
+
+				try {
+					waitUntil("master_skincare_button");
+					click("master_skincare_button");
+					return true;
+
+				} catch (NoSuchElementException e) {
+					waitUntil("master_skincare2_button");
+					click("master_skincare2_button");
+					return true;
+
+				} catch (Exception e) {
+					e.printStackTrace();
+					reportStatusException(e);
+					return false;
+
+				}
 
 			} else if (product.equalsIgnoreCase("Body")) {
-				home_product_body.click();
-				reportStatusPASS("User clicked Body category on the Home page");
 
+				waitUntil("master_body_button");
+				click("master_body_button");
 				return true;
 
 			} else if (product.equalsIgnoreCase("Men")) {
-				home_product_men.click();
-				reportStatusPASS("User clicked Men category on the Home page");
 
+				waitUntil("master_men_button");
+				click("master_men_button");
 				return true;
 
 			} else if (product.equalsIgnoreCase("Hair")) {
-				home_product_hair.click();
-				reportStatusPASS("User clicked Hair category on the Home page");
 
+				waitUntil("master_hair_button");
+				click("master_hair_button");
 				return true;
 
 			} else {
 				System.out.println("Please check category name!. ie : Skincare/Body/Men/Hair");
-				reportStatusFAIL("Please check category name!. ie : Skincare/Body/Men/Hair");
 				Assert.assertFalse(false);
 				return false;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);
+			return false;
+
 		}
-		return false;
 	}
 
 	public boolean verify_user_should_navigate_to_PLP_page() throws InterruptedException {
 		try {
-			webdriverwait(plp_min_price);
-			if (plp_min_price.isDisplayed()) {
-
-				reportStatusPASS("User successfully navigate to PLP");
-
-				return true;
-			} else {
-				return false;
-
-			}
-
+			waitUntil("master_plp_filter_button");
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);
+			return false;
 		}
-		return false;
 
 	}
 
-	public boolean click_category_from_right_navigation(String product) throws InterruptedException {
+	public boolean click_category_from_right_navigation(String product) throws InterruptedException, IOException {
 
-		// XCUIElementTypeButton[@name="menubutton"]
-
-		Thread.sleep(3000);
-		right_navigation_product_button.click();
-		Thread.sleep(2000);
+		waitUntil("master_right_nav_product_button");
+		click("master_right_nav_product_button");
 
 		if (product.equalsIgnoreCase("Skincare")) {
 			right_navigation_product_skincare.click();
@@ -317,9 +252,11 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 		}
 	}
 
-	public boolean verify_plp_small_grid_view() throws InterruptedException {
-		plp_small_gird_button.click();
-		Thread.sleep(2000);
+	public boolean verify_plp_small_grid_view() throws InterruptedException, IOException {
+
+		waitUntil("master_plp_small_gird_button");
+		click("master_plp_small_gird_button");
+
 		if ((plp_add_to_cart_button_1st_position.isDisplayed() || plp_add_to_cart_button_1st_position_2.isDisplayed())
 				&& (plp_add_to_cart_button_12th_position.isDisplayed()
 						|| plp_add_to_cart_button_12th_position_2.isDisplayed())) {

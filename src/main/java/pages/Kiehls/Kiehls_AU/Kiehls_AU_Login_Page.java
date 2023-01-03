@@ -4,12 +4,14 @@ import java.io.IOException;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.driverfactory.DriverManager;
 import com.reusableMethods.CommonActions;
 import com.utilities.ConfigReader;
 import com.utilities.ExtentReport;
@@ -34,14 +36,99 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 	}
 
-	/****************** Locators ******************/
+	boolean first_test = DriverManager.first_test;
 
-	public boolean loginDescriptionMessage() throws InterruptedException, IOException {
+	public boolean user_select_country_and_login_to_store_then_login_to_ba_account() {
+
 		try {
 
-			waitUntil("master_login_select_country_page");
-			return true;
+			if (first_test == true) {
+				// select country
 
+				waitUntil("master_login_select_country");
+				click("master_login_select_country");
+				waitUntil("master_login_select_country_list");
+				String required_country = "//XCUIElementTypeStaticText[@name=\"" + getCountryName() + "\"]";
+				driver.findElement(By.xpath(required_country)).click();
+				reportStatusPASS(getCountryName() + " country was selected successfully");
+
+				// click login button
+				waitUntil("master_proceed_button");
+				click("master_proceed_button");
+				reportStatusPASS("User clicked proceed button successfully");
+
+				// enter store credentials
+
+				waitUntil("master_store_username_test_field");
+				click("master_store_username_test_field");
+				clear("master_store_username_test_field");
+				sendkeys("master_store_username_test_field",
+						ExcelData.getExcelData("store_credentials", "valid_username"));
+
+				click("master_store_password_test_field");
+				clear("master_store_password_test_field");
+				sendkeys("master_store_password_test_field",
+						ExcelData.getExcelData("store_credentials", "valid_password"));
+
+				// click log in button
+				click("master_login_button");
+
+				// enter ba credentials
+				waitUntil("master_ba_username_test_field");
+				click("master_ba_username_test_field");
+				clear("master_ba_username_test_field");
+				sendkeys("master_ba_username_test_field", ExcelData.getExcelData("ba_credentials", "valid_username"));
+				click("master_ba_login_page");
+				System.out.println("  User enters the BA username");
+				click("master_ba_password_test_field");
+				clear("master_ba_password_test_field");
+				sendkeys("master_ba_password_test_field", ExcelData.getExcelData("ba_credentials", "valid_password"));
+
+				reportStatusPASS("User enters the BA password");
+
+				// ba login button
+				click("master_login_button");
+				return true;
+
+			} else {
+				waitUntil("master_login_button");
+				click("master_ba_password_test_field");
+				clear("master_ba_password_test_field");
+				sendkeys("master_ba_password_test_field", ExcelData.getExcelData("ba_credentials", "valid_password"));
+
+				// ba login button
+				click("master_login_button");
+
+				return true;
+
+			}
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+			reportStatusException(e);
+			return false;
+		}
+
+	}
+
+	public boolean loginDescriptionMessage() throws Exception {
+
+		try {
+
+			if (first_test == true) {
+
+				waitUntil("master_login_select_country_page");
+
+				return true;
+
+			} else {
+
+				waitUntil("master_login_button");
+
+				return true;
+
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);
