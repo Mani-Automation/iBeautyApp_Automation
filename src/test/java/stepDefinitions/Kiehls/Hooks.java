@@ -43,6 +43,7 @@ public class Hooks {
 			driver = driverFactory.getDriver(Target.valueOf(target.toUpperCase()));
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			DriverManager.setDriver(driver);
+
 			report.startTest(driver, scenario.getName());
 
 		} catch (Exception e) {
@@ -56,15 +57,18 @@ public class Hooks {
 		if (scenario.isFailed()) {
 			byte[] screenshot = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.BYTES);
 			scenario.attach(screenshot, "image/png", "MyscreenShot");
+
 		}
 
 	}
 
 	@After(order = 0)
-	public void quitBrowser() {
+	public void quitBrowser() throws IOException, InterruptedException {
+		DriverManager.first_test = false;
+		String bundile_id = ConfigReader.getData("app") + "_BundleId";
+		driver.terminateApp(ConfigReader.getData(bundile_id));
 
-		DriverManager.quit();
-
+		//DriverManager.quit();
 
 	}
 
