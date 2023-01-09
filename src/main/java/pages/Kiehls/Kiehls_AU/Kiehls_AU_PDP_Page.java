@@ -1,17 +1,20 @@
 package pages.Kiehls.Kiehls_AU;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.reusableMethods.CommonActions;
 import com.utilities.ExtentReport;
+import com.utilities.LocatorManager;
 
 import io.appium.java_client.AppiumDriver;
 
 public class Kiehls_AU_PDP_Page extends CommonActions {
 	AppiumDriver driver;
+	LocatorManager locator = new LocatorManager();
 
 	public Kiehls_AU_PDP_Page(AppiumDriver driver)
 
@@ -21,49 +24,14 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 
 	}
 
-	// XCUIElementTypeImage[@name="btnWishList"]
-	// XCUIElementTypeButton[@name="btnBuyNow"]
-	// XCUIElementTypeButton[@name="CHECK STOCK"]
-	// XCUIElementTypeButton[@name="ADVANCE CHECK STOCK"]
-
-	// XCUIElementTypeStaticText[@name="Out of Stock"]
-	// XCUIElementTypeButton[@name="btnSub"]
-	// XCUIElementTypeButton[@name="btnAdd"]
-//	(//XCUIElementTypeStaticText[@name="1"])[2]
-	@FindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"1\"])[2]")
-	public WebElement pdp_product_buynow_count_text1;
-
-	@FindBy(xpath = "//XCUIElementTypeButton[@name=\"ADVANCE CHECK STOCK\"]")
-	public WebElement pdp_product_advance_check_stock_button;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Out of Stock\"]")
-	public WebElement pdp_product_out_of_stock;
-
-	// XCUIElementTypeStaticText[@name="Stock Availability"]
-	// XCUIElementTypeApplication[@name="Kiehls
-	// UAT"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTextField
-	// XCUIElementTypeButton[@name="Search"]
-	// XCUIElementTypeStaticText[@name="IO0 AUS Kiehls MYER Charlestown"]
-//searchresultwithcount	//XCUIElementTypeApplication[@name="Kiehls UAT"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell/XCUIElementTypeOther[1]/XCUIElementTypeOther
-
-//	(//XCUIElementTypeButton[@name="btnProduct"])[2]
-//			(//XCUIElementTypeStaticText[@name="PRODUCT DESCRIPTION"])[2]
-//					(//XCUIElementTypeButton[@name="btnTips"])[2]
-//							(//XCUIElementTypeStaticText[@name="TIPS"])[2]
-//	(//XCUIElementTypeButton[@name="btnIngredient"])[2]
-//	(//XCUIElementTypeStaticText[@name="INGRIEDIENTS"])[2]
-//ingre text	//XCUIElementTypeApplication[@name="Kiehls UAT"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeCell[2]/XCUIElementTypeWebView/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]
-
-	// XCUIElementTypeButton[@name="upArrow"]
-	public boolean verify_user_can_do_check_stock_and_advance_check_stock_in_pdp() throws InterruptedException {
+	public boolean verify_user_can_do_check_stock_in_pdp_page() {
 		try {
-			Thread.sleep(2000);
-			pdp_product_advance_check_stock_button.click();
-			reportStatusPASS("User clicked Advance check stock button on PDP");
 
-			Thread.sleep(2000);
-			Assert.assertTrue(pdp_product_out_of_stock.isDisplayed());
-			reportStatusPASS("Verified user able to see Stock status on PDP");
+			waitUntil("master_pdp_check_stock_button");
+			click("master_pdp_check_stock_button");
+
+			waitUntil("master_pdp_stock_info_label");
+
 			return true;
 
 		} catch (Exception e) {
@@ -72,29 +40,80 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 			return false;
 
 		}
-
 	}
 
-	@FindBy(xpath = "(//XCUIElementTypeButton[@name=\"btnProduct\"])[2]")
-	public WebElement pdp_product_description_tab;
+	public boolean verify_user_can_do_check_advance_check_stock_in_pdp_page() {
+		try {
 
-	@FindBy(xpath = "(//XCUIElementTypeButton[@name=\"btnTips\"])[2]")
-	public WebElement pdp_product_tips_tab;
+			waitUntil("master_pdp_adv_check_stock_button");
+			click("master_pdp_adv_check_stock_button");
 
-	@FindBy(xpath = "(//XCUIElementTypeButton[@name=\"btnIngredient\"])[2]")
-	public WebElement pdp_product_ingridents_tab;
+			waitUntil("master_pdp_search_adv_stock_textfield");
+
+			sendkeys("master_pdp_search_adv_stock_textfield", "Kie");
+			waitUntil("master_pdp_search_adv_stock_first_store");
+			click("master_pdp_search_adv_stock_first_store");
+			waitUntil("master_pdp_x_close_button");
+			waitUntil("master_pdp_adv_search_search_button");
+			click("master_pdp_adv_search_search_button");
+
+			waitUntil("master_pdp_adv_stock_search_result");
+
+			click("master_pdp_Xclose_button");
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			reportStatusException(e);
+			return false;
+
+		}
+	}
 
 	public boolean user_click_buy_now_button_and_verify_the_count_increased_in_cart() throws InterruptedException {
 		try {
-			Thread.sleep(3000);
-			pdp_product_BuyNow_button.click();
-			reportStatusPASS("User clicked Buy Now button on PDP");
+			String pdp_product_name = driver.findElement(By.xpath(locator.getData("master_pdp_product_name")))
+					.getText();
 
-			Thread.sleep(1000);
+			waitUntil("master_pdp_buynow_button");
+			click("master_pdp_buynow_button");
 
-			Assert.assertTrue(pdp_product_buynow_count_text1.isDisplayed());
-			reportStatusPASS("Verified user able to see Procuct count displayed on PDP");
-			return true;
+			waitUntil("master_pdp_product_count_add_button");
+
+			waitUntil("master_home_right_nav_cart_button");
+			click("master_home_right_nav_cart_button");
+
+			String cart_product_name = driver.findElement(By.xpath(locator.getData("master_cart_first_product_name")))
+					.getText();
+
+			if (pdp_product_name.equalsIgnoreCase(cart_product_name)) {
+				System.out.println("PDP to Cart : Same product!");
+
+				waitUntil("master_cart_first_product_image");
+				click("master_cart_first_product_image");
+
+				waitUntil("master_pdp_product_count_add_button");
+				click("master_pdp_product_count_add_button");
+
+				waitUntil("master_done_button");
+				click("master_done_button");
+
+				return true;
+
+			} else {
+				System.out.println("PDP to Cart : Product missmached!");
+
+				waitUntil("master_cart_first_product_image");
+				click("master_cart_first_product_image");
+
+				waitUntil("master_pdp_product_count_add_button");
+				click("master_pdp_product_count_add_button");
+
+				waitUntil("master_done_button");
+				click("master_done_button");
+				return false;
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);
@@ -105,20 +124,18 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 
 	public boolean verify_the_product_description_tips_and_ingriedients_tabs_in_pdp() throws InterruptedException {
 
-		// webdriverwait(pdp_product_check_stock_button);
-
 		try {
 			Thread.sleep(3000);
 
-			swipeDown();
+			swipeScreenUntilElementVisible("master_pdp_product_des_tab", Direction.UP);
 
-			webdriverwait(pdp_product_description_tab);
-			Assert.assertTrue(pdp_product_description_tab.isDisplayed());
-			reportStatusPASS("Verified user able to see Product Description on PDP");
-			Assert.assertTrue(pdp_product_tips_tab.isDisplayed());
-			reportStatusPASS("Verified user able to see Product Tips on PDP");
-			Assert.assertTrue(pdp_product_ingridents_tab.isDisplayed());
-			reportStatusPASS("Verified user able to see Product Ingridents on PDP");
+			waitUntil("master_pdp_product_des_tab");
+			waitUntil("master_pdp_product_tip_tab");
+			waitUntil("master_pdp_product_ingridents_tab");
+
+			swipeScreenUntilElementVisible("master_pdp_product_up_arrow", Direction.UP);
+			click("master_pdp_product_up_arrow");
+
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -128,73 +145,39 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 		}
 	}
 
-	// navigate to pdp
-	// XCUIElementTypeCell[@name="cell_0"])[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]
-	// XCUIElementTypeCell[@name="cell_0"])[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeImage[1]
-//	@FindBy(xpath = "(//XCUIElementTypeCell[@name=\"cell_0\"])[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeStaticText[1]")
-
-	@FindBy(xpath = "// XCUIElementTypeCell[@name=\"cell_0\"])[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeImage[1]")
-	public WebElement first_product_on_plp;
-
-	@FindBy(xpath = "")
-	public WebElement pdp_product_name;
-
 	public boolean click_the_first_product_and_navigate_to_PDP() {
 
 		try {
-			webdriverwait(first_product_on_plp);
-			first_product_on_plp.click();
-			reportStatusPASS("User clicked first product on the PLP");
-			webdriverwait(pdp_product_name);
-			return pdp_product_name.isDisplayed();
+
+			waitUntil("master_plp_first_product");
+			click("master_plp_first_product");
+
+			waitUntil("master_pdp_buynow_button");
+
+			return true;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);
+			return false;
 
 		}
-		return false;
 	}
-	// verify pdp page
-
-	@FindBy(xpath = "")
-	public WebElement pdp_product_price;
-
-	@FindBy(xpath = "")
-	public WebElement pdp_product_image;
-
-	@FindBy(xpath = "//XCUIElementTypeImage[@name=\"btnWishList\"]")
-	public WebElement pdp_product_wishlist_icon;
-
-	@FindBy(xpath = "//XCUIElementTypeButton[@name=\"btnBuyNow\"]")
-	public WebElement pdp_product_BuyNow_button;
-
-	@FindBy(xpath = "//XCUIElementTypeButton[@name=\"CHECK STOCK\"]")
-	public WebElement pdp_product_check_stock_button;
-
-	@FindBy(xpath = "//XCUIElementTypeButton[@name=\"ADVANCE CHECK STOCK\"]")
-	public WebElement pdp_product_image_advance_check_stock_button;
 
 	public boolean validate_product_name_price_image_quantity_buy_now_and_wishlist_button_are_available_in_pdp() {
 		try {
-			if (pdp_product_wishlist_icon.isDisplayed()) {
-				reportStatusPASS("User navigate to PDP and Product wishlist icon is visible successfully");
-				return true;
+			waitUntil("master_pdp_product_image");
 
-			} else if (pdp_product_BuyNow_button.isDisplayed()) {
-				reportStatusPASS("User navigate to PDP and Product BUY NOW button is visible successfully");
-				return true;
+			waitUntil("master_pdp_product_name");
 
-			} else if (pdp_product_check_stock_button.isDisplayed()) {
-				reportStatusPASS("User navigate to PDP and Product Check stock button is visible successfully");
-				return true;
+			waitUntil("master_pdp_check_stock_button");
 
-			} else if (pdp_product_image_advance_check_stock_button.isDisplayed()) {
-				reportStatusPASS("User navigate to PDP and Product Advance Check Stock button is visible successfully");
-				return true;
+			waitUntil("master_pdp_adv_check_stock_button");
 
-			} else {
-				return false;
-			}
+			waitUntil("master_pdp_price_label");
+
+			return true;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);

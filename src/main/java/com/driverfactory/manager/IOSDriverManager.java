@@ -28,17 +28,18 @@ public class IOSDriverManager extends Factory {
 		String bundleID = ConfigReader.getData("app") + "_BundleId";
 		String env = ConfigReader.getData("appEnv").toString();
 
-		 switch (env) {
+		switch (env) {
 
-			case "PROD":
-
-				appPath = System.getProperty("user.dir") + "/apps/" + ConfigReader.getData("app") + " UAT.ipa";
+		case "UAT": {
+			appPath = System.getProperty("user.dir") + "/apps/" + ConfigReader.getData("app") + " UAT.ipa";
 			break;
-			case "UAT":
+		}
+		case "PROD": {
 
-				appPath = System.getProperty("user.dir") + "/apps/" + ConfigReader.getData("app") + " PROD.ipa";
+			appPath = System.getProperty("user.dir") + "/apps/" + ConfigReader.getData("app") + " PROD.ipa";
 			break;
-			}
+		}
+		}
 
 		DesiredCapabilities desiredCapabilities;
 		desiredCapabilities = new DesiredCapabilities();
@@ -53,7 +54,6 @@ public class IOSDriverManager extends Factory {
 		desiredCapabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "XCUITest");
 		desiredCapabilities.setCapability(MobileCapabilityType.APP, appPath);
 		desiredCapabilities.setCapability("noReset", true);
-
 
 		return desiredCapabilities;
 	}

@@ -50,12 +50,10 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 				waitUntil("master_login_select_country_list");
 				String required_country = "//XCUIElementTypeStaticText[@name=\"" + getCountryName() + "\"]";
 				driver.findElement(By.xpath(required_country)).click();
-				reportStatusPASS(getCountryName() + " country was selected successfully");
 
 				// click login button
 				waitUntil("master_proceed_button");
 				click("master_proceed_button");
-				reportStatusPASS("User clicked proceed button successfully");
 
 				// enter store credentials
 
@@ -79,7 +77,6 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 				clear("master_ba_username_test_field");
 				sendkeys("master_ba_username_test_field", ExcelData.getExcelData("ba_credentials", "valid_username"));
 				click("master_ba_login_page");
-				System.out.println("  User enters the BA username");
 				click("master_ba_password_test_field");
 				clear("master_ba_password_test_field");
 				sendkeys("master_ba_password_test_field", ExcelData.getExcelData("ba_credentials", "valid_password"));
@@ -95,7 +92,6 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 				click("master_ba_password_test_field");
 				clear("master_ba_password_test_field");
 				sendkeys("master_ba_password_test_field", ExcelData.getExcelData("ba_credentials", "valid_password"));
-
 				// ba login button
 				click("master_login_button");
 
@@ -118,15 +114,27 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 			if (first_test == true) {
 
-				waitUntil("master_login_select_country_page");
+				try {
+					waitUntil("master_login_select_country_page");
 
-				return true;
+					return true;
+				} catch (NoSuchElementException e) {
+					waitUntil("master_ba_switch_store");
+					click("master_ba_switch_store");
+
+					waitUntil("master_store_username_test_field");
+					waitUntil("master_nav_back_button");
+					click("master_nav_back_button");
+					
+					waitUntil("master_done_button");
+					click("master_done_button");
+
+					return true;
+				}
 
 			} else {
 
-				waitUntil("master_login_button");
-
-				return true;
+				return false;
 
 			}
 		} catch (Exception e) {

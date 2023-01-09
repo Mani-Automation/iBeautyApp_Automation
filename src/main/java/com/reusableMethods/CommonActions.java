@@ -578,6 +578,19 @@ public class CommonActions {
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(loc.getData(locatorString)))));
 	}
 
+	
+	public void waitUntilElementVisibleAndClick(String locatorString) throws IOException {
+		driver = DriverManager.getDriver();
+		
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(loc.getData(locatorString)))));
+		
+		driver.findElement(By.xpath(loc.getData(locatorString))).click();
+
+	}
+
+	
+	
 	public void click(String locatorString) throws IOException {
 		 driver = DriverManager.getDriver();
 		driver.findElement(By.xpath(loc.getData(locatorString))).click();

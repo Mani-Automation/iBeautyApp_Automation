@@ -77,7 +77,6 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 			webdriverwait(ba_home_callback_first_item);
 			ba_home_callback_first_item.click();
-			reportStatusPASS("User clicked created customer in the callback list");
 
 			Thread.sleep(3000);
 
@@ -100,31 +99,42 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 		// BA HOME -> 1) Dashboard 2) Notification 3) CALLBACK LIST 4) CALENDAR 5)
 		// Transactions
 		try {
-			webdriverwait(ba_home_button);
-			ba_home_button.click();
-			reportStatusPASS("User clicked BA Home button on the right navigation");
+
+			waitUntil("master_home_right_nav_ba_button");
+			click("master_home_right_nav_ba_button");
 
 			String ba_home_item = "//XCUIElementTypeStaticText[@name=\"" + ba_home + "\"]";
 			webdriverwait(driver.findElement(By.xpath(ba_home_item)));
 			driver.findElement(By.xpath(ba_home_item)).click();
-			reportStatusPASS("User clicked " + ba_home + " button on the right navigation sub menu");
 
 			if (ba_home.equalsIgnoreCase("DASHBOARD")) {
 				Assert.assertTrue(ba_home_dashboard_page.isDisplayed());
+				return true;
+
 			} else if (ba_home.equalsIgnoreCase("Notification")) {
 				Assert.assertTrue(ba_home_notification_page.isDisplayed());
+				return true;
+
 			} else if (ba_home.equalsIgnoreCase("CALLBACK LIST")) {
 				Assert.assertTrue(ba_home_Callback_list_page.isDisplayed());
 				reportStatusPASS("User able to see Callback list page successfully");
+				return true;
 
 			} else if (ba_home.equalsIgnoreCase("CALENDAR")) {
-				Assert.assertTrue(ba_home_calender_page.isDisplayed());
-				reportStatusPASS("User able to see Calender page successfully");
+
+				waitUntil("master_calender_month_label");
+
+				return true;
 
 			} else if (ba_home.equalsIgnoreCase("Transactions")) {
 				Assert.assertTrue(ba_home_transactions_page.isDisplayed());
+				return true;
+
 			}
-			return true;
+			else
+			{
+				return false;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 

@@ -3,17 +3,20 @@ package pages.Kiehls.Kiehls_AU;
 import static org.junit.Assert.assertThat;
 
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.reusableMethods.CommonActions;
 import com.utilities.ConfigReader;
+import com.utilities.LocatorManager;
 
 import io.appium.java_client.AppiumDriver;
 
 public class Kiehls_AU_Cart_Page extends CommonActions {
 	AppiumDriver driver;
+	LocatorManager locator = new LocatorManager();
 
 	public Kiehls_AU_Cart_Page(AppiumDriver driver)
 
@@ -23,32 +26,16 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 	}
 
-//cart	//XCUIElementTypeTable[@name="sideMenuTbl"]/XCUIElementTypeButton[6]
-	// XCUIElementTypeButton[@name="menubutton"]
-	// XCUIElementTypeButton[@name="menubutton"]
-//cart	//XCUIElementTypeTable[@name="sideMenuTbl"]/XCUIElementTypeButton[6]
-
-//clickcart	//XCUIElementTypeApplication[@name="Kiehls UAT"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeTable/XCUIElementTypeButton[6]
-	// XCUIElementTypeApplication[@name="Kiehls
-	// UAT"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]
-
-	// XCUIElementTypeButton[@name="btnCheckout"]
-//	(//XCUIElementTypeOther[@name="btnAddItem"])[2]
-	// (//XCUIElementTypeOther[@name="btnSample"])[2]
-	// XCUIElementTypeButton[@name="calculator"]
-//checkstock		//XCUIElementTypeApplication[@name="Kiehls UAT"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeButton[2]
-	// XCUIElementTypeButton[@name="btnChange"]
-
-	// additem
-
 	@FindBy(xpath = "//XCUIElementTypeApplication[@name=\"Kiehls UAT\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]")
 	public WebElement home_cart_button;
 
 	public boolean click_cart_button_and_verify_the_cart_page() throws InterruptedException {
 		try {
-			webdriverwait(home_cart_button);
-			home_cart_button.click();
-			Thread.sleep(2000);
+
+			// waitUntilElementVisibleAndClick("master_home_cart");
+
+			waitUntil("master_cart_checkout_button");
+
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -71,13 +58,9 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 	public boolean user_click_the_add_item_button() throws InterruptedException {
 		try {
 
-			webdriverwait(cart_add_item_button);
+			waitUntilElementVisibleAndClick("master_cart_additem_button");
+			waitUntil("master_close_button");
 
-			cart_add_item_button.click();
-
-			Thread.sleep(2000);
-
-			Assert.assertTrue(cart_add_first_product.isDisplayed());
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -88,14 +71,16 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 	public boolean user_search_the_product_and_add_it_to_cart() throws InterruptedException {
 		try {
-			webdriverwait(cart_add_item_close_button);
+			waitUntil("master_cart_additem_search_product_text_field");
+			sendkeys("master_cart_additem_search_product_text_field", "21_PRIDE_UFC49G");
 
-			cart_add_item_product_name_field.sendKeys("");
+			waitUntilElementVisibleAndClick("master_cart_additem_search_product_button");
 
-			Thread.sleep(1000);
+			waitUntilElementVisibleAndClick("master_cart_additem_search_product_first_item");
 
-			cart_add_item_first_product_name.click();
+			waitUntil("master_cart_first_product_name");
 			return true;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);
@@ -106,10 +91,17 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 	public boolean verify_user_able_to_view_the_product_in_cart() throws InterruptedException {
 		try {
 
-			Thread.sleep(2000);
+			if (driver.findElement(By.xpath(locator.getData("master_cart_first_product_name"))).getText()
+					.equalsIgnoreCase("21_PRIDE_UFC49G")) {
+				// remove item needs to be add
+				System.out.println("Cart - Additem : Producted added");
+				return true;
 
-			Assert.assertTrue(cart_add_first_product.isDisplayed());
-			return true;
+			} else {
+				System.out.println("Cart - Additem : Producted not added");
+
+				return false;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);
@@ -129,9 +121,10 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 	public boolean user_click_the_sample_button() throws InterruptedException {
 		try {
-			Thread.sleep(1000);
-			cart_sample_button.click();
-			webdriverwait(cart_sample_add_cart_button);
+			  
+			
+			waitUntilElementVisibleAndClick("master_cart_addsample_button");
+			waitUntil("master_close_button");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

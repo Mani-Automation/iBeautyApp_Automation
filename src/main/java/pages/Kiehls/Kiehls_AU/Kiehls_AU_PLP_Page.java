@@ -138,22 +138,9 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 			if (product.equalsIgnoreCase("Skincare")) {
 
-				try {
-					waitUntil("master_skincare_button");
-					click("master_skincare_button");
-					return true;
-
-				} catch (NoSuchElementException e) {
-					waitUntil("master_skincare2_button");
-					click("master_skincare2_button");
-					return true;
-
-				} catch (Exception e) {
-					e.printStackTrace();
-					reportStatusException(e);
-					return false;
-
-				}
+				waitUntil("master_skincare_button");
+				click("master_skincare_button");
+				return true;
 
 			} else if (product.equalsIgnoreCase("Body")) {
 
@@ -188,7 +175,7 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 	public boolean verify_user_should_navigate_to_PLP_page() throws InterruptedException {
 		try {
-			waitUntil("master_plp_filter_button");
+			waitUntil("master_plp_small_gird_button");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -200,12 +187,23 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 	public boolean click_category_from_right_navigation(String product) throws InterruptedException, IOException {
 
-		waitUntil("master_right_nav_product_button");
-		click("master_right_nav_product_button");
+		waitUntil("master_home_menu");
+		click("master_home_menu");
+
+		waitUntil("testtt");
+		click("testtt");
+
+		// waitUntil("master_right_nav_product_button");
+		// click("master_right_nav_product_button");
 
 		if (product.equalsIgnoreCase("Skincare")) {
-			right_navigation_product_skincare.click();
-			reportStatusPASS("User clicked " + product + " category from right navigation");
+
+			waitUntil("master_right_nav_skincare_button");
+			click("master_right_nav_skincare_button");
+
+			// right_navigation_product_skincare.click();
+			// reportStatusPASS("User clicked " + product + " category from right
+			// navigation");
 			return true;
 
 		} else if (product.equalsIgnoreCase("Body")) {
@@ -305,7 +303,10 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 	}
 
 	public boolean verify_search_product_with_price() throws InterruptedException {
+		
 		webdriverwait(plp_first_product_name);
+		
+		
 		String before_do = plp_first_product_name.getText().toString();
 		System.out.println(before_do);
 		webdriverwait(plp_min_price_input);
@@ -338,23 +339,23 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 	public boolean verify_plp_filter() throws InterruptedException {
 		try {
-			webdriverwait(plp_filter_button);
-			plp_filter_button.click();
+			waitUntil("master_plp_filter_button");
+			click("master_plp_filter_button");
 
-			reportStatusPASS("User clicked filter button on the PLP");
-			Thread.sleep(2000);
-			webdriverwait(plp_filter_by_sub_category_facewash);
+			waitUntil("master_plp_by_sub_catagory");
+
 			if (plp_filter_by_sub_category_facewash.isDisplayed()) {
-				String before_do = plp_first_product_name.getText().toString();
+
+				String before_do = webElement("master_plp_first_product_name").getText().toString();
 				System.out.println(before_do);
 				System.out.println("1copy");
-				plp_filter_by_sub_category_facewash.click();
+				waitUntil("master_plp_sub_catagory_item");
+				click("master_plp_sub_catagory_item");
 				System.out.println("face wash clicked");
-
 				Thread.sleep(3000);
-				if (!before_do.equals(plp_first_product_name.getText().toString())) {
-					System.out.println(plp_first_product_name.getText());
-					reportStatusPASS("Verified user able to filter the Product on the PLP");
+
+				if (!before_do.equals(webElement("master_plp_first_product_name").getText())) {
+					System.out.println(webElement("master_plp_first_product_name").getText());
 					return true;
 
 				}

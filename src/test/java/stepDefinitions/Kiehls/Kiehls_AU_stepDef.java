@@ -723,9 +723,9 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	// login
 	@When("^User select country and login to store then login to ba account$")
-    public void user_select_country_and_login_to_store_then_login_to_ba_account()  {
+	public void user_select_country_and_login_to_store_then_login_to_ba_account() {
 		Assert.assertTrue(login.user_select_country_and_login_to_store_then_login_to_ba_account());
-    }
+	}
 
 	@Given("User launches the Application")
 	public void user_launches_the_application() throws Exception {
@@ -831,10 +831,17 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	}
 
-	@Then("^Verify user can do check stock and Advance check stock in PDP$")
-	public void verify_user_can_do_check_stock_and_advance_check_stock_in_pdp() throws InterruptedException {
-		Assert.assertTrue(pdpPage.verify_user_can_do_check_stock_and_advance_check_stock_in_pdp());
+	@Then("^Verify user can do check stock in pdp page$")
+	public void verify_user_can_do_check_stock_in_pdp_page() {
+		Assert.assertTrue(pdpPage.verify_user_can_do_check_stock_in_pdp_page());
 	}
+
+	@Then("^Verify user can do check Advance check stock in pdp page$")
+	public void verify_user_can_do_check_advance_check_stock_in_pdp_page() {
+		Assert.assertTrue(pdpPage.verify_user_can_do_check_advance_check_stock_in_pdp_page());
+	}
+
+	
 
 	@Then("^User click BUY NOW button and verify the count increased in cart$")
 	public void user_click_buy_now_button_and_verify_the_count_increased_in_cart() throws InterruptedException {

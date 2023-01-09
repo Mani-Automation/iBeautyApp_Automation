@@ -31,9 +31,6 @@ public class DriverManager {
 		driver.remove();
 	}
 
-	public static void uninstall() throws IOException {
-		String bundile_id = ConfigReader.getData("app") + "_BundleId";
-		driver.get().removeApp(bundile_id);
-	}
+
 
 }

@@ -4,11 +4,11 @@ Feature: Validation of applications in Various segments
     Given User launches the Application
     When User select country and login to store then login to ba account
 
-  @smoke @Regression @Login @positive @master @demo
+  @smoke @Regression @Login @positive @master @pass
   Scenario: Verify the user able to login the application
     Then User is on home page
 
-  @smoke @Regression @Login @Negative @master
+  @smoke @Regression @Login @Negative @master @rework
   Scenario: Verify the user able to see the error message in store and BA page.
     When User enter the wrong store credentials
     And User click on login button in storePage
@@ -20,7 +20,7 @@ Feature: Validation of applications in Various segments
     And User click on login button in baPage
     Then User is on home page
 
-  @resetPassword
+  @resetPassword @rework
   Scenario: Verify the user able to see the error message in store and BA page.
     When User enter the store credentials
     And User click on login button in storePage
@@ -34,7 +34,7 @@ Feature: Validation of applications in Various segments
   #And User click on next button
   #And User enters the newPassword and confirm passWord
   #And User click on submit button
-  @smoke @Regression @PLP @master
+  @smoke @Regression @PLP @master @pass
   Scenario: Verify user able to navigate PLP from home page product category
     Then User is on home page
     And User click "Skincare" category on the Home page
@@ -42,69 +42,45 @@ Feature: Validation of applications in Various segments
 
   @smoke @Regression @PLP @master
   Scenario: Verify user able to navigate PLP from Right navigation bar to product category
-    When User enter the store credentials
-    And User click on login button in storePage
-    Then User enter the ba credentials
-    And User click on login button in baPage
     Then User is on home page
     And User click "Skincare" category on product from right navigation
     Then User should navigate to PLP page successfully
 
-  @smoke @Regression @PLP @master @test_plp
+  @smoke @Regression @PLP @master @pass
   Scenario: Verify user able view product by Grid, small grid and list view in PLP
-    When User enter the store credentials
-    And User click on login button in storePage
-    Then User enter the ba credentials
-    And User click on login button in baPage
     Then User is on home page
     And User click "Skincare" category on the Home page
     Then User should navigate to PLP page successfully
     And Verify user able to see grid and small and list view
 
-  @smoke @Regression @PLP @master
+  @smoke @Regression @PLP @master @fail
   Scenario: Verify user able filter the products in PLP
-    When User enter the store credentials
-    And User click on login button in storePage
-    Then User enter the ba credentials
-    And User click on login button in baPage
     Then User is on home page
     And User click "Skincare" category on the Home page
     Then User should navigate to PLP page successfully
     And Verify user able to filter the product in PLP
 
-  @smoke @Regression @PLP @Negative @master
+  @smoke @Regression @PLP @Negative @master @fail
   Scenario: Verify user able Sort the products in PLP
-    When User enter the store credentials
-    And User click on login button in storePage
-    Then User enter the ba credentials
-    And User click on login button in baPage
     Then User is on home page
     And User click "Skincare" category on the Home page
     Then User should navigate to PLP page successfully
     And Verify user able to sort the product in PLP
 
-  @smoke @Regression @PLP @master
+  @smoke @Regression @PLP @master @fail
   Scenario: Verify user able search a product based on price
-    When User enter the store credentials
-    And User click on login button in storePage
-    Then User enter the ba credentials
-    And User click on login button in baPage
     Then User is on home page
     And User click "Skincare" category on the Home page
     Then User should navigate to PLP page successfully
     And Verify user able to search a product base on min and max price
 
-  @smoke @Regression @BACalendar @master
+  @smoke @Regression @BACalendar @master @fail
   Scenario: Verify the customer Calendar page
-    When User enter the store credentials
-    And User click on login button in storePage
-    Then User enter the ba credentials
-    And User click on login button in baPage
     Then User is on home page
     # BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "CALENDAR" then verify the page
 
-  @smoke @Regression @BACalendar @master
+  @smoke @Regression @BACalendar @master @fail
   Scenario: Verify the Day, Week, Month and year tab working properly
     When User enter the store credentials
     And User click on login button in storePage
@@ -348,19 +324,11 @@ Feature: Validation of applications in Various segments
 
   @smoke @Regression @Cart @master
   Scenario: Verify user able to navigate cart page successfully
-    When User enter the store credentials
-    And User click on login button in storePage
-    Then User enter the ba credentials
-    And User click on login button in baPage
     Then User is on home page
     And User click the Cart button from right navigation and verify the cart page
 
   @smoke @Regression @Cart @master
   Scenario: Verify user able to add product from cart page
-    When User enter the store credentials
-    And User click on login button in storePage
-    Then User enter the ba credentials
-    And User click on login button in baPage
     Then User is on home page
     And User click the Cart button from right navigation and verify the cart page
     Then User click the Add Item button
@@ -369,10 +337,6 @@ Feature: Validation of applications in Various segments
 
   @smoke @Regression @Cart @master
   Scenario: Verify user able to add sample from cart page
-    When User enter the store credentials
-    And User click on login button in storePage
-    Then User enter the ba credentials
-    And User click on login button in baPage
     Then User is on home page
     And User click the Cart button from right navigation and verify the cart page
     Then User click the Sample button
@@ -549,50 +513,41 @@ Feature: Validation of applications in Various segments
     And User click the save button
     Then Verify the customer note should be displayed in notes section
 
-  @smoke @Regression @PDP @master
+  @smoke @Regression @PDP @master @pass
   Scenario: Verify user able to navigate PDP from home page category product
-    When User enter the store credentials
-    And User click on login button in storePage
-    Then User enter the ba credentials
-    And User click on login button in baPage
-    Then User is on home page
-    And User click "Hair" category on the Home page
+    And User click "Skincare" category on the Home page
     Then User should navigate to PLP page successfully
     And User click the product and verify user get navigate to PDP page
     Then Validate Product name, price, image, quantity, Buy Now and wishlist button are available in PDP
 
-  @smoke @Regression @PDP @master
-  Scenario: Verify user can do check stock and Advance check stock
-    When User enter the store credentials
-    And User click on login button in storePage
-    Then User enter the ba credentials
-    And User click on login button in baPage
+  @smoke @Regression @PDP @master @passs
+  Scenario: Verify user can do check stock in pdp page
     Then User is on home page
-    And User click "Hair" category on the Home page
+    And User click "Skincare" category on the Home page
     Then User should navigate to PLP page successfully
     And User click the product and verify user get navigate to PDP page
-    Then Verify user can do check stock and Advance check stock in PDP
+    Then Verify user can do check stock in pdp page
 
-  @smoke @Regression @PDP @master
-  Scenario: Verify user can click buy now button and add to cart in PDP
-    When User enter the store credentials
-    And User click on login button in storePage
-    Then User enter the ba credentials
-    And User click on login button in baPage
+  @smoke @Regression @PDP @master @fail
+  Scenario: Verify user can do check Advance check stock in pdp page
     Then User is on home page
-    And User click "Hair" category on the Home page
+    And User click "Skincare" category on the Home page
+    Then User should navigate to PLP page successfully
+    And User click the product and verify user get navigate to PDP page
+    Then Verify user can do check Advance check stock in pdp page
+
+  @smoke @Regression @PDP @master @fail
+  Scenario: Verify user can click buy now button and add to cart in PDP
+    Then User is on home page
+    And User click "Skincare" category on the Home page
     Then User should navigate to PLP page successfully
     And User click the product and verify user get navigate to PDP page
     Then User click BUY NOW button and verify the count increased in cart
 
-  @smoke @Regression @PDP @master
+  @smoke @Regression @PDP @master @test
   Scenario: Verify the product description, tips and ingredients tabs in PDP
-    When User enter the store credentials
-    And User click on login button in storePage
-    Then User enter the ba credentials
-    And User click on login button in baPage
     Then User is on home page
-    And User click "Hair" category on the Home page
+    And User click "Skincare" category on the Home page
     Then User should navigate to PLP page successfully
     And User click the product and verify user get navigate to PDP page
     Then Verify the product description, tips and ingriedients tabs in PDP
@@ -612,7 +567,7 @@ Feature: Validation of applications in Various segments
     And User click confirm button
     And User verify the consultation home page
 
-  @Regression @Customercreation @positive @demo
+  @Regression @Customercreation @positive
   Scenario: Verify if user is able to create a new customer with only mandatory fields
     Then User is on home page
     And User click the Create button on Customer search
@@ -731,7 +686,7 @@ Feature: Validation of applications in Various segments
     And Verify mandatory error messages in the form
     And User verify the consultation home page
 
-  @Regression @consultation @master @test_now
+  @Regression @consultation @master
   Scenario: Verify build routine
     When User enter the store credentials
     And User click on login button in storePage

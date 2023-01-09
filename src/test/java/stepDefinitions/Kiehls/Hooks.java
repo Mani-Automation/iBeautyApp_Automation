@@ -67,8 +67,7 @@ public class Hooks {
 		DriverManager.first_test = false;
 		String bundile_id = ConfigReader.getData("app") + "_BundleId";
 		driver.terminateApp(ConfigReader.getData(bundile_id));
-
-		//DriverManager.quit();
+		DriverManager.quit();
 
 	}
 
