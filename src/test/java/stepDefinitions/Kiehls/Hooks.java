@@ -64,9 +64,14 @@ public class Hooks {
 
 	@After(order = 0)
 	public void quitBrowser() throws IOException, InterruptedException {
-		DriverManager.first_test = false;
+
+		DriverManager.first_test = "second";
+
 		String bundile_id = ConfigReader.getData("app") + "_BundleId";
+
 		driver.terminateApp(ConfigReader.getData(bundile_id));
+		// driver.closeApp();
+
 		DriverManager.quit();
 
 	}

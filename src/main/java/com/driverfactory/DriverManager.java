@@ -7,7 +7,7 @@ import com.utilities.ConfigReader;
 import io.appium.java_client.AppiumDriver;
 
 public class DriverManager {
-	public static boolean first_test = true;
+	public static String first_test;
 
 	private static ThreadLocal<AppiumDriver> driver = new ThreadLocal<>();
 
@@ -30,7 +30,5 @@ public class DriverManager {
 
 		driver.remove();
 	}
-
-
 
 }

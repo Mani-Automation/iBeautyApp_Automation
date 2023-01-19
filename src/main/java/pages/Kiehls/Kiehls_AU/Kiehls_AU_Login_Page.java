@@ -36,13 +36,13 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 	}
 
-	boolean first_test = DriverManager.first_test;
+	String firstTest = DriverManager.first_test;
 
 	public boolean user_select_country_and_login_to_store_then_login_to_ba_account() {
 
 		try {
 
-			if (first_test == true) {
+			if (firstTest == "first") {
 				// select country
 
 				waitUntil("master_login_select_country");
@@ -88,7 +88,10 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 				return true;
 
 			} else {
-				waitUntil("master_login_button");
+				waitUntil("master_ba_username_test_field");
+				click("master_ba_username_test_field");
+				clear("master_ba_username_test_field");
+				sendkeys("master_ba_username_test_field", ExcelData.getExcelData("ba_credentials", "valid_username"));
 				click("master_ba_password_test_field");
 				clear("master_ba_password_test_field");
 				sendkeys("master_ba_password_test_field", ExcelData.getExcelData("ba_credentials", "valid_password"));
@@ -112,7 +115,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 		try {
 
-			if (first_test == true) {
+			if (firstTest == "first") {
 
 				try {
 					waitUntil("master_login_select_country_page");
@@ -125,18 +128,21 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 					waitUntil("master_store_username_test_field");
 					waitUntil("master_nav_back_button");
 					click("master_nav_back_button");
-					
+
 					waitUntil("master_done_button");
 					click("master_done_button");
 
 					return true;
 				}
 
+			} else if (firstTest == "second") {
+				firstTest = "second";
+				waitUntil("master_login_button");
+				return true;
 			} else {
-
 				return false;
-
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);
@@ -249,6 +255,8 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 	public boolean clickLoginBtnInBaPage() throws InterruptedException, IOException {
 
 		try {
+
+			waitUntilElementVisibleAndClick("master_ba_dashboard_calender_addnew_button");
 
 			click("master_login_button");
 			reportStatusPASS("User clicked BA login button successfully");
@@ -573,6 +581,27 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			waitUntil("master_home_ba_home");
 			waitUntil("master_home_settings");
 			waitUntil("master_home_logoff_button");
+			return true;
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+			reportStatusException(e);
+			return false;
+
+		}
+	}
+
+	public boolean user_click_logout_button_on_home_page_and_click_switch_store_button_on_ba_page() {
+		try {
+
+			waitUntilElementVisibleAndClick("master_home_logoff_button");
+			waitUntil("master_logout_confrim_yes_button");
+			click("master_logout_confrim_yes_button");
+			waitUntil("master_ba_switch_store");
+			click("master_ba_switch_store");
+
+			waitUntil("master_store_username_test_field");
 			return true;
 		} catch (
 

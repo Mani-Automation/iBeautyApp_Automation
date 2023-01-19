@@ -17,6 +17,7 @@ import io.appium.java_client.AppiumDriver;
 public class Kiehls_AU_Cart_Page extends CommonActions {
 	AppiumDriver driver;
 	LocatorManager locator = new LocatorManager();
+	public static String sampleProductName;
 
 	public Kiehls_AU_Cart_Page(AppiumDriver driver)
 
@@ -32,7 +33,7 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 	public boolean click_cart_button_and_verify_the_cart_page() throws InterruptedException {
 		try {
 
-			// waitUntilElementVisibleAndClick("master_home_cart");
+			waitUntilElementVisibleAndClick("master_home_cart");
 
 			waitUntil("master_cart_checkout_button");
 
@@ -71,6 +72,7 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 	public boolean user_search_the_product_and_add_it_to_cart() throws InterruptedException {
 		try {
+
 			waitUntil("master_cart_additem_search_product_text_field");
 			sendkeys("master_cart_additem_search_product_text_field", "21_PRIDE_UFC49G");
 
@@ -121,8 +123,7 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 	public boolean user_click_the_sample_button() throws InterruptedException {
 		try {
-			  
-			
+
 			waitUntilElementVisibleAndClick("master_cart_addsample_button");
 			waitUntil("master_close_button");
 			return true;
@@ -136,11 +137,13 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 	public boolean user_search_the_product_and_click_add_to_cart_button() throws InterruptedException {
 		try {
 
-			cart_add_item_product_name_field.sendKeys("");
-			Thread.sleep(2000);
-			cart_sample_search_first_product.click();
-			Thread.sleep(1000);
-			cart_sample_add_cart_button.click();
+			waitUntil("master_cart_sample_first_product_name");
+			sampleProductName = driver.findElement(By.xpath(locator.getData("master_cart_sample_first_product_name")))
+					.getText();
+			click("master_cart_sample_first_product_name");
+
+			waitUntilElementVisibleAndClick("master_cart_sample_add_to_cart_button");
+
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -151,9 +154,21 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 	public boolean verify_user_able_to_view_the_sample_product_in_cart() throws InterruptedException {
 		try {
-			Thread.sleep(2000);
-			Assert.assertTrue(cart_add_first_product.isDisplayed());
-			return true;
+
+			waitUntil("master_cart_first_product_name");
+
+			if (driver.findElement(By.xpath(locator.getData("master_cart_first_product_name"))).getText()
+					.equals(sampleProductName)) {
+
+				waitUntilElementVisibleAndClick("master_cart_product_sub_button");
+				waitUntilElementVisibleAndClick("master_done_button");
+				return true;
+
+			} else {
+				System.out.println("Add sample in cart - Failed!");
+				return false;
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);
@@ -216,11 +231,8 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 	public boolean user_click_the_check_stock_button_and_verify_the_stock_availablity() throws InterruptedException {
 		try {
 
-			Thread.sleep(1000);
-			cart_check_stock_button.click();
-			Thread.sleep(2000);
-
-			Assert.assertTrue(cart_check_stock_status_text.isDisplayed());
+			waitUntilElementVisibleAndClick("master_cart_check_stock_button");
+			waitUntil("master_cart_product_check_stock_label");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -327,8 +339,9 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 	public boolean user_click_the_change_button() {
 		try {
-			webdriverwait(cart_change_customer_button);
-			cart_change_customer_button.click();
+			
+			waitUntilElementVisibleAndClick("master_cart_change_customer_button");
+			
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -339,6 +352,11 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 	public boolean user_select_phone_and_enter_the_number() throws InterruptedException {
 		try {
+			
+			waitUntilElementVisibleAndClick("master_cart_change_customer_customer_dropdown");
+
+			
+			
 			webdriverwait(cart_change_customer_popup);
 
 			cart_change_customer_search_type_dropdown.click();

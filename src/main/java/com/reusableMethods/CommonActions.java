@@ -567,6 +567,8 @@ public class CommonActions {
 	// MM
 
 	public void webdriverwait(WebElement locator) {
+		driver = DriverManager.getDriver();
+
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.visibilityOf(locator));
 	}
@@ -578,21 +580,18 @@ public class CommonActions {
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(loc.getData(locatorString)))));
 	}
 
-	
 	public void waitUntilElementVisibleAndClick(String locatorString) throws IOException {
 		driver = DriverManager.getDriver();
-		
+
 		WebDriverWait wait = new WebDriverWait(driver, 10);
 		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(loc.getData(locatorString)))));
-		
+
 		driver.findElement(By.xpath(loc.getData(locatorString))).click();
 
 	}
 
-	
-	
 	public void click(String locatorString) throws IOException {
-		 driver = DriverManager.getDriver();
+		driver = DriverManager.getDriver();
 		driver.findElement(By.xpath(loc.getData(locatorString))).click();
 	}
 
@@ -605,10 +604,14 @@ public class CommonActions {
 	}
 
 	public void sendkeys(String locatorString, String data) throws IOException {
+		driver = DriverManager.getDriver();
+
 		driver.findElement(By.xpath(loc.getData(locatorString))).sendKeys(data);
 	}
 
 	public WebElement webElement(String locatorString) throws IOException {
+		driver = DriverManager.getDriver();
+
 		return driver.findElement(By.xpath(loc.getData(locatorString)));
 	}
 
@@ -626,7 +629,7 @@ public class CommonActions {
 
 	public void swipeScreenUntilElementVisible(String locatorStrings, Direction dir)
 			throws IOException, InterruptedException {
-
+		driver = DriverManager.getDriver();
 		for (int i = 0; i <= 15; i++) {
 
 			if (!driver.findElement(By.xpath(loc.getData(locatorStrings))).isDisplayed()) {
@@ -660,24 +663,32 @@ public class CommonActions {
 	}
 
 	public void reportStatusFAIL(String fail_description) {
+		driver = DriverManager.getDriver();
+
 		setExtentTest();
 		test.log(LogStatus.FAIL, fail_description + test.addScreenCapture(Screenshots.capture(driver)));
 
 	}
 
 	public void reportStatusSKIP(String description) {
+		driver = DriverManager.getDriver();
+
 		setExtentTest();
 		test.log(LogStatus.SKIP, description);
 
 	}
 
 	public void reportStatusException(Exception exception) {
+		driver = DriverManager.getDriver();
+
 		setExtentTest();
 		test.log(LogStatus.FAIL, exception + test.addScreenCapture(Screenshots.capture(driver)));
 
 	}
 
 	public void reportStatusPASSwithScreenshot(String description) {
+		driver = DriverManager.getDriver();
+
 		setExtentTest();
 		test.log(LogStatus.PASS, description + test.addScreenCapture(Screenshots.capture(driver)));
 

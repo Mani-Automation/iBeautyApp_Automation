@@ -75,14 +75,9 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 			throws InterruptedException {
 		try {
 
-			webdriverwait(ba_home_callback_first_item);
-			ba_home_callback_first_item.click();
+			waitUntilElementVisibleAndClick("master_callbacklist_page_titleLabel");
 
-			Thread.sleep(3000);
-
-			webdriverwait(ba_home_customer_callback_list_page);
-			Assert.assertTrue(ba_home_customer_callback_list_page.isDisplayed());
-			reportStatusPASS("User is on Callback detail page");
+			waitUntil("master_callbacklist_total_cus_page");
 
 			return true;
 		} catch (Exception e) {
@@ -100,24 +95,24 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 		// Transactions
 		try {
 
-			waitUntil("master_home_right_nav_ba_button");
-			click("master_home_right_nav_ba_button");
+			waitUntilElementVisibleAndClick("master_home_right_nav_ba_button");
 
 			String ba_home_item = "//XCUIElementTypeStaticText[@name=\"" + ba_home + "\"]";
 			webdriverwait(driver.findElement(By.xpath(ba_home_item)));
 			driver.findElement(By.xpath(ba_home_item)).click();
 
 			if (ba_home.equalsIgnoreCase("DASHBOARD")) {
-				Assert.assertTrue(ba_home_dashboard_page.isDisplayed());
+				waitUntil("master_ba_dashboard_calender_addnew_button");
 				return true;
 
-			} else if (ba_home.equalsIgnoreCase("Notification")) {
+			} else if (ba_home.equalsIgnoreCase("NOTIFICATION")) {
 				Assert.assertTrue(ba_home_notification_page.isDisplayed());
 				return true;
 
 			} else if (ba_home.equalsIgnoreCase("CALLBACK LIST")) {
-				Assert.assertTrue(ba_home_Callback_list_page.isDisplayed());
-				reportStatusPASS("User able to see Callback list page successfully");
+
+				waitUntil("master_ba_callback_page");
+
 				return true;
 
 			} else if (ba_home.equalsIgnoreCase("CALENDAR")) {
@@ -126,13 +121,13 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 				return true;
 
-			} else if (ba_home.equalsIgnoreCase("Transactions")) {
-				Assert.assertTrue(ba_home_transactions_page.isDisplayed());
+			} else if (ba_home.equalsIgnoreCase("TRANSACTIONS")) {
+
+				waitUntil("master_transaction_history_tab");
+
 				return true;
 
-			}
-			else
-			{
+			} else {
 				return false;
 			}
 		} catch (Exception e) {
@@ -171,8 +166,9 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 	public boolean verify_the_title_in_callback_list() {
 
 		try {
-			Assert.assertTrue(ba_home_Callback_list_title.isDisplayed());
-			reportStatusPASS("User verified Title of the customer in CallBack list");
+
+			waitUntil("master_callbacklist_page_titleLabel");
+
 			return true;
 		}
 
@@ -187,8 +183,8 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 	public boolean verify_the_count_in_callback_list() {
 		try {
-			Assert.assertTrue(ba_home_Callback_list_count.isDisplayed());
-			reportStatusPASS("User verified Call count in CallBack list");
+
+			waitUntil("master_callbacklist_page_countLabel");
 
 			return true;
 		}
@@ -203,8 +199,9 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 	public boolean verify_the_not_picked_call_in_callback_list() {
 		try {
-			Assert.assertTrue(ba_home_Callback_list_not_picked.isDisplayed());
-			reportStatusPASS("User verified call not picked count in CallBack list");
+
+			waitUntil("master_callbacklist_page_notYetCalledLabel");
+
 			return true;
 
 		}
@@ -219,8 +216,9 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 	public boolean verify_the_called_in_callback_list() {
 		try {
-			Assert.assertTrue(ba_home_Callback_list_called.isDisplayed());
-			reportStatusPASS("User verified picked call count in CallBack list");
+
+			waitUntil("master_callbacklist_page_calledLabel");
+
 			return true;
 
 		}
@@ -235,8 +233,9 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 	public boolean verify_the_missed_call_in_callback_list() {
 		try {
-			Assert.assertTrue(ba_home_Callback_list_missed_call.isDisplayed());
-			reportStatusPASS("User verified missed call count in CallBack list");
+
+			waitUntil("master_callbacklist_page_didNotPickupLabel");
+
 			return true;
 
 		}
@@ -251,8 +250,9 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 	public boolean verify_the_reminder_in_callback_list() {
 		try {
-			Assert.assertTrue(ba_home_Callback_list_reminder.isDisplayed());
-			reportStatusPASS("User verified reminder count in CallBack list");
+
+			waitUntil("master_callbacklist_page_reservationLabel");
+
 			return true;
 
 		}
@@ -267,8 +267,9 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 	public boolean verify_the_created_date_in_callback_list() {
 		try {
-			Assert.assertTrue(ba_home_Callback_list_created_date.isDisplayed());
-			reportStatusPASS("User verified callback created date in CallBack list");
+
+			waitUntil("master_callbacklist_page_createdDateLabel");
+
 			return true;
 
 		}
@@ -283,8 +284,9 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 	public boolean verify_the_updated_date_in_callback_list() {
 		try {
-			Assert.assertTrue(ba_home_Callback_list_updated_date.isDisplayed());
-			reportStatusPASS("User verified callback updated date in CallBack list");
+
+			waitUntil("master_callbacklist_page_updatedDateLabel");
+
 			return true;
 
 		}
@@ -317,9 +319,9 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 	public boolean user_click_the_first_customer_detials() throws InterruptedException {
 		try {
-			webdriverwait(ba_home_customer_callback_first_item_detail_button);
-			ba_home_customer_callback_first_item_detail_button.click();
-			Thread.sleep(1000);
+
+			waitUntilElementVisibleAndClick("master_callbacklist_page_titleLabel");
+
 			return true;
 
 		}
@@ -336,8 +338,9 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 	public boolean verify_the_member_level() {
 		try {
-			Assert.assertTrue(ba_home_customer_callback_member_level.isDisplayed());
-			reportStatusPASS("User able to see customer member level");
+
+			waitUntilElementVisibleAndClick("master_callbacklist_downarrow_button");
+			waitUntil("master_callbacklist_member_level_point_label");
 			return true;
 		}
 
@@ -353,8 +356,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 	public boolean verify_the_balance_points() {
 		try {
-			Assert.assertTrue(ba_home_customer_callback_balance_points.isDisplayed());
-			reportStatusPASS("User able to see customer balance points");
+			waitUntil("master_callbacklist_balance_value_label");
 			return true;
 		}
 
