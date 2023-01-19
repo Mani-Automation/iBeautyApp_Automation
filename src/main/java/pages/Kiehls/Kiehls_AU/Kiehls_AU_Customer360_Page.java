@@ -204,10 +204,11 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean tap_on_customer_search_dropdown() throws InterruptedException {
 		try {
-			webdriverwait(C360_home_customer_search_dropdown);
-			C360_home_customer_search_dropdown.click();
+
+			waitUntilElementVisibleAndClick("master_c360_home_customer_search_dropdown");
 
 			return true;
+
 		} catch (
 
 		Exception e) {
@@ -233,9 +234,9 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean tap_on_mobile_number_from_the_dropdown_list() throws InterruptedException {
 		try {
-			webdriverwait(C360_home_customer_search_dropdown_mobile_number_list);
-			C360_home_customer_search_dropdown_mobile_number_list.click();
-			Thread.sleep(2000);
+
+			waitUntilElementVisibleAndClick("master_c360_home_customer_search_mobile_list");
+
 			return true;
 		} catch (
 

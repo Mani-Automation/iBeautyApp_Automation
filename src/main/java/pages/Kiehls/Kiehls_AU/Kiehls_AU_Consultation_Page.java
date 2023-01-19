@@ -53,8 +53,9 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 	public boolean user_click_start_consultation_button() {
 		try {
-			waitUntil("master_start_consultation_button");
-			click("master_start_consultation_button");
+			
+			waitUntilElementVisibleAndClick("master_start_consultation_button");
+
 			return true;
 
 		} catch (Exception e) {
@@ -98,8 +99,9 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 					} catch (Exception e) {
 						waitUntil("master_consultation_page_with_member");
-					//	webdriverwait(driver
-					//			.findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"Healthy Skin Check\"]")));
+						// webdriverwait(driver
+						// .findElement(By.xpath("//XCUIElementTypeStaticText[@name=\"Healthy Skin
+						// Check\"]")));
 						return true;
 
 					}

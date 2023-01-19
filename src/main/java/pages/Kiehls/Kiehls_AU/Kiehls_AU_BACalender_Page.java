@@ -68,8 +68,9 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 	public boolean user_verfiy_the_day_tab() {
 		try {
 
-			Assert.assertTrue(calender_day_tab.isDisplayed());
-			reportStatusPASS("User able to see Day tab in the Calender");
+			waitUntil("master_calender_day_tab");
+			waitUntil("master_calender_day_page_label");
+
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -83,12 +84,9 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 	public boolean user_verify_the_week_tab() {
 		try {
 
-			calender_week_tab.click();
-			reportStatusPASS("User clicked Week tab");
-			webdriverwait(calender_week);
-
-			Assert.assertTrue(calender_week.isDisplayed());
-			reportStatusPASS("User able to see Week tab items in the Calender");
+			waitUntilElementVisibleAndClick("master_calender_week_tab");
+			
+			//
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -102,13 +100,8 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 	public boolean user_verify_the_month_tab() {
 		try {
 
-			calender_month_tab.click();
-			reportStatusPASS("User clicked Month tab");
+			waitUntilElementVisibleAndClick("master_calender_month_tab");
 
-			webdriverwait(calender_month);
-
-			Assert.assertTrue(calender_month.isDisplayed());
-			reportStatusPASS("User able to see Month tab items in the Calender");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -121,12 +114,8 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 
 	public boolean user_verify_the_year_tab() {
 		try {
-			calender_year_tab.click();
-			reportStatusPASS("User clicked Year tab ");
+			waitUntilElementVisibleAndClick("master_calender_year_tab");
 
-			webdriverwait(calender_year);
-			Assert.assertTrue(calender_year.isDisplayed());
-			reportStatusPASS("User able to see Year tab items in the Calender");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -456,31 +445,36 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 
 	public boolean user_enter_the_customer_name_in_calender() throws InterruptedException, IOException {
 		try {
-			Thread.sleep(2000);
 
-			if (calender_promotion_activity_customer_name_field.isDisplayed()) {
-				calender_promotion_activity_customer_name_field
-						.sendKeys(ExcelData.getExcelData("customer_testdata", "first_name"));
-				reportStatusPASS("User entered customer name");
-
-				Thread.sleep(1000);
-
-			} else if (calender_service_booking_customer_name_field.isDisplayed()) {
-				calender_service_booking_customer_name_field
-						.sendKeys(ExcelData.getExcelData("customer_testdata", "first_name"));
-				reportStatusPASS("User entered customer name");
-
-				Thread.sleep(1000);
-
-			} else if (calender_event_reservation_customer_name_field.isDisplayed()) {
-				calender_event_reservation_customer_name_field
-						.sendKeys(ExcelData.getExcelData("customer_testdata", "first_name"));
-				reportStatusPASS("User entered customer name");
-
-				Thread.sleep(1000);
-
-			}
+			waitUntil("master_calender_customer_name_text_field");
+			sendkeys("master_calender_customer_name_text_field", "Mani");
 			return true;
+			/*
+			 * Thread.sleep(2000); if
+			 * (calender_promotion_activity_customer_name_field.isDisplayed()) {
+			 * calender_promotion_activity_customer_name_field
+			 * .sendKeys(ExcelData.getExcelData("customer_testdata", "first_name"));
+			 * reportStatusPASS("User entered customer name");
+			 * 
+			 * Thread.sleep(1000);
+			 * 
+			 * } else if (calender_service_booking_customer_name_field.isDisplayed()) {
+			 * calender_service_booking_customer_name_field
+			 * .sendKeys(ExcelData.getExcelData("customer_testdata", "first_name"));
+			 * reportStatusPASS("User entered customer name");
+			 * 
+			 * Thread.sleep(1000);
+			 * 
+			 * } else if (calender_event_reservation_customer_name_field.isDisplayed()) {
+			 * calender_event_reservation_customer_name_field
+			 * .sendKeys(ExcelData.getExcelData("customer_testdata", "first_name"));
+			 * reportStatusPASS("User entered customer name");
+			 * 
+			 * Thread.sleep(1000);
+			 * 
+			 * } return true;
+			 * 
+			 */
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);

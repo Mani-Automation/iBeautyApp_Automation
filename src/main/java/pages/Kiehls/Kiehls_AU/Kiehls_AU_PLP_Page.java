@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.tools.ant.ExitStatusException;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,6 +19,7 @@ import io.appium.java_client.AppiumDriver;
 
 public class Kiehls_AU_PLP_Page extends CommonActions {
 	AppiumDriver driver;
+	LocatorManager locator = new LocatorManager();
 
 	public Kiehls_AU_PLP_Page(AppiumDriver driver) {
 		this.driver = driver;
@@ -187,23 +189,13 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 	public boolean click_category_from_right_navigation(String product) throws InterruptedException, IOException {
 
-		waitUntil("master_home_menu");
-		click("master_home_menu");
-
-		waitUntil("testtt");
-		click("testtt");
-
-		// waitUntil("master_right_nav_product_button");
-		// click("master_right_nav_product_button");
+		waitUntilElementVisibleAndClick("master_home_products");
 
 		if (product.equalsIgnoreCase("Skincare")) {
 
 			waitUntil("master_right_nav_skincare_button");
 			click("master_right_nav_skincare_button");
 
-			// right_navigation_product_skincare.click();
-			// reportStatusPASS("User clicked " + product + " category from right
-			// navigation");
 			return true;
 
 		} else if (product.equalsIgnoreCase("Body")) {
@@ -302,69 +294,65 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 	}
 
-	public boolean verify_search_product_with_price() throws InterruptedException {
-		
-		webdriverwait(plp_first_product_name);
-		
-		
-		String before_do = plp_first_product_name.getText().toString();
-		System.out.println(before_do);
-		webdriverwait(plp_min_price_input);
+	public boolean verify_search_product_with_price() throws InterruptedException, IOException {
 
-		plp_min_price_input.click();
-		plp_min_price_input.clear();
-		plp_min_price_input.sendKeys("1");
-		reportStatusPASS("User entered Minimum price to search the product on PLP");
+		waitUntil("master_plp_min_price_text_field");
 
-		Thread.sleep(1000);
-		plp_max_price_input.click();
-		plp_max_price_input.clear();
-		plp_max_price_input.sendKeys("20");
-		reportStatusPASS("User entered Maximum price to search the product on PLP");
+		waitUntilElementVisibleAndClick("master_plp_sort_button");
 
-		webdriverwait(plp_product_search_result_text);
-		if (plp_product_search_result_text.isDisplayed()
-				&& !before_do.equals(plp_first_product_name.getText().toString())) {
+		waitUntil("master_plp_first_product_price_label");
 
-			reportStatusPASS("Verified user able to search the Product with Min & Max price on the PLP");
+		String before_do = driver.findElement(By.xpath(locator.getData("master_plp_first_product_price_label")))
+				.getText();
+
+		click("master_plp_min_price_text_field");
+
+		waitUntilElementVisibleAndClick("master_number_3_button");
+		click("master_number_0_button");
+		click("master_number_0_button");
+		click("master_number_0_button");
+		click("master_ok_button");
+
+		Thread.sleep(2000);
+
+		waitUntilElementVisibleAndClick("master_plp_max_price_text_field");
+		waitUntilElementVisibleAndClick("master_number_0_button");
+		click("master_ok_button");
+
+		if (!driver.findElement(By.xpath(locator.getData("master_plp_first_product_price_label"))).getText()
+				.equals(before_do)) {
 
 			return true;
-		}
 
-		else {
-			reportStatusFAIL("false - Min and Max Price");
+		} else {
+			System.out.println("Failed to search product with Min and Max price!");
 			return false;
 		}
+
 	}
 
 	public boolean verify_plp_filter() throws InterruptedException {
 		try {
-			waitUntil("master_plp_filter_button");
-			click("master_plp_filter_button");
+
+			waitUntilElementVisibleAndClick("master_plp_filter_button");
 
 			waitUntil("master_plp_by_sub_catagory");
 
-			if (plp_filter_by_sub_category_facewash.isDisplayed()) {
+			String before_do = driver.findElement(By.xpath(locator.getData("master_plp_filter_first_product_name")))
+					.getText();
+			waitUntilElementVisibleAndClick("master_plp_sub_catagory_item");
 
-				String before_do = webElement("master_plp_first_product_name").getText().toString();
-				System.out.println(before_do);
-				System.out.println("1copy");
-				waitUntil("master_plp_sub_catagory_item");
-				click("master_plp_sub_catagory_item");
-				System.out.println("face wash clicked");
-				Thread.sleep(3000);
+			waitUntil("master_plp_filtered_first_product_name");
 
-				if (!before_do.equals(webElement("master_plp_first_product_name").getText())) {
-					System.out.println(webElement("master_plp_first_product_name").getText());
-					return true;
+			if (!driver.findElement(By.xpath(locator.getData("master_plp_filtered_first_product_name"))).getText()
+					.equals(before_do)) {
 
-				}
+				return true;
 
 			} else {
-				reportStatusFAIL("false - filter");
+				System.out.println("Filter not working or Product not found on sub category!");
 				return false;
 			}
-			return false;
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -374,25 +362,21 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 		}
 	}
 
-	public boolean verify_plp_sort() throws InterruptedException {
+	public boolean verify_plp_sort() throws InterruptedException, IOException {
 
-		String before_do = plp_first_product_name.getText().toString();
+		waitUntil("master_plp_sort_button");
 
-		plp_sort_button.click();
-		reportStatusPASS("User clicked Sort button on the PLP");
+		String before_do = driver.findElement(By.xpath(locator.getData("master_plp_first_product_price_label")))
+				.getText();
+		click("master_plp_sort_button");
 
-		Thread.sleep(2000);
-
-		if (!before_do.equals(plp_first_product_name.getText().toString())) {
-			reportStatusPASS("Verified user able to Sort the Product on the PLP");
+		if (!driver.findElement(By.xpath(locator.getData("master_plp_first_product_price_label"))).getText()
+				.equals(before_do)) {
 
 			return true;
 
-		}
-
-		else {
-			reportStatusFAIL("false - Sort");
-
+		} else {
+			System.out.println("Only one product exsist or product not found in PLP");
 			return false;
 		}
 

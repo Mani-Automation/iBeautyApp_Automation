@@ -59,7 +59,7 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 
 			waitUntil("master_pdp_adv_stock_search_result");
 
-			click("master_pdp_Xclose_button");
+			click("master_pdp_x_close_button");
 			return true;
 
 		} catch (Exception e) {
@@ -75,42 +75,36 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 			String pdp_product_name = driver.findElement(By.xpath(locator.getData("master_pdp_product_name")))
 					.getText();
 
-			waitUntil("master_pdp_buynow_button");
-			click("master_pdp_buynow_button");
+			waitUntilElementVisibleAndClick("master_pdp_buynow_button");
 
 			waitUntil("master_pdp_product_count_add_button");
 
-			waitUntil("master_home_right_nav_cart_button");
-			click("master_home_right_nav_cart_button");
+			waitUntilElementVisibleAndClick("master_home_cart");
+
+			waitUntil("master_cart_first_product_name");
 
 			String cart_product_name = driver.findElement(By.xpath(locator.getData("master_cart_first_product_name")))
 					.getText();
 
-			if (pdp_product_name.equalsIgnoreCase(cart_product_name)) {
-				System.out.println("PDP to Cart : Same product!");
+			if (pdp_product_name.equals(cart_product_name)) {
 
-				waitUntil("master_cart_first_product_image");
-				click("master_cart_first_product_image");
+//				System.out.println("PDP to Cart : Same product!");
 
-				waitUntil("master_pdp_product_count_add_button");
-				click("master_pdp_product_count_add_button");
+				waitUntilElementVisibleAndClick("master_cart_product_sub_button");
 
-				waitUntil("master_done_button");
-				click("master_done_button");
+				waitUntilElementVisibleAndClick("master_done_button");
 
 				return true;
 
 			} else {
 				System.out.println("PDP to Cart : Product missmached!");
 
-				waitUntil("master_cart_first_product_image");
-				click("master_cart_first_product_image");
-
-				waitUntil("master_pdp_product_count_add_button");
-				click("master_pdp_product_count_add_button");
+				waitUntil("master_cart_product_sub_button");
+				click("master_cart_product_sub_button");
 
 				waitUntil("master_done_button");
 				click("master_done_button");
+
 				return false;
 			}
 
@@ -129,9 +123,9 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 
 			swipeScreenUntilElementVisible("master_pdp_product_des_tab", Direction.UP);
 
-			waitUntil("master_pdp_product_des_tab");
-			waitUntil("master_pdp_product_tip_tab");
-			waitUntil("master_pdp_product_ingridents_tab");
+			waitUntilElementVisibleAndClick("master_pdp_product_tip_tab");
+			waitUntilElementVisibleAndClick("master_pdp_product_ingridents_tab");
+			waitUntilElementVisibleAndClick("master_pdp_product_des_tab");
 
 			swipeScreenUntilElementVisible("master_pdp_product_up_arrow", Direction.UP);
 			click("master_pdp_product_up_arrow");

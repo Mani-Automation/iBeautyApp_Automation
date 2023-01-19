@@ -38,25 +38,11 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "")
-	public WebElement ba_transcation_member_submission_date_title;
-
-	@FindBy(xpath = "")
-	public WebElement ba_transcation_transcation_id_title;
-
-	@FindBy(xpath = "")
-	public WebElement ba_transcation_member_history_tab;
-
-	@FindBy(xpath = "")
-	public WebElement ba_transcation_transcation_history_tab;
-
 	public boolean user_click_the_member_history_and_verify_the_page() {
 		try {
 
-			webdriverwait(ba_transcation_member_history_tab);
-			ba_transcation_member_history_tab.click();
-			webdriverwait(ba_transcation_member_submission_date_title);
-			Assert.assertTrue(ba_transcation_member_submission_date_title.isDisplayed());
+			waitUntilElementVisibleAndClick("master_transaction_member_history_tab");
+			waitUntil("master_transaction_member_history_sub_date");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,10 +53,8 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 
 	public boolean user_click_the_transaction_history_and_verify_the_page() {
 		try {
-			webdriverwait(ba_transcation_transcation_history_tab);
-			ba_transcation_transcation_history_tab.click();
-			webdriverwait(ba_transcation_transcation_id_title);
-			Assert.assertTrue(ba_transcation_transcation_id_title.isDisplayed());
+			waitUntilElementVisibleAndClick("master_transaction_history_tab");
+			waitUntil("master_transaction_history_transaction_id");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -79,60 +63,10 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 		}
 	}
 
-	@FindBy(xpath = "")
-	public WebElement ba_transcation_id;
-
-	@FindBy(xpath = "")
-	public WebElement ba_transcation_date;
-
-	@FindBy(xpath = "")
-	public WebElement ba_transcation_counter_id;
-
-	@FindBy(xpath = "")
-	public WebElement ba_transcation_ba_id;
-
-	@FindBy(xpath = "")
-	public WebElement ba_transcation_ba_name;
-
-	@FindBy(xpath = "")
-	public WebElement ba_transcation_mars_id;
-
-	@FindBy(xpath = "")
-	public WebElement ba_transcation_customer_name;
-
-	@FindBy(xpath = "")
-	public WebElement ba_transcation_customer_phone;
-
-	@FindBy(xpath = "")
-	public WebElement ba_transcation_total_product_quantity;
-
-	@FindBy(xpath = "")
-	public WebElement ba_transcation_total_transcation_price;
-
-	//
-
-	@FindBy(xpath = "")
-	public WebElement ba_member_sumbmission_date;
-
-	@FindBy(xpath = "")
-	public WebElement ba_member_ba_id;
-
-	@FindBy(xpath = "")
-	public WebElement ba_member_ba_name;
-
-	@FindBy(xpath = "")
-	public WebElement ba_member_counter_id;
-
-	@FindBy(xpath = "")
-	public WebElement ba_member_customer_name;
-
-	@FindBy(xpath = "")
-	public WebElement ba_member_customer_phone;
-
 	public boolean verify_the_transcation_id_in_transcation() {
 		try {
 
-			Assert.assertTrue(ba_transcation_id.isDisplayed());
+			waitUntil("master_transaction_history_transaction_id");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -144,7 +78,8 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 
 	public boolean verify_the_transcation_date_in_transcation() {
 		try {
-			Assert.assertTrue(ba_transcation_date.isDisplayed());
+			waitUntil("master_transaction_history_transaction_date");
+
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -156,7 +91,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 
 	public boolean verify_the_counter_id_in_transcation() {
 		try {
-			Assert.assertTrue(ba_transcation_counter_id.isDisplayed());
+			waitUntil("master_transaction_history_counter_id");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -168,7 +103,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 
 	public boolean verify_the_ba_id_in_transcation() {
 		try {
-			Assert.assertTrue(ba_transcation_ba_id.isDisplayed());
+			waitUntil("master_transaction_history_ba_id");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -180,7 +115,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 
 	public boolean verify_the_ba_name_in_transcation() {
 		try {
-			Assert.assertTrue(ba_transcation_ba_name.isDisplayed());
+			waitUntil("master_transaction_history_ba_name");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -192,7 +127,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 
 	public boolean verify_the_mars_id_in_transcation() {
 		try {
-			Assert.assertTrue(ba_transcation_mars_id.isDisplayed());
+			waitUntil("master_transaction_history_mars_id");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -204,7 +139,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 
 	public boolean verify_the_customer_name_in_transcation() {
 		try {
-			Assert.assertTrue(ba_transcation_customer_name.isDisplayed());
+			waitUntil("master_transaction_history_cus_name");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -216,7 +151,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 
 	public boolean verify_the_customer_number_in_transcation() {
 		try {
-			Assert.assertTrue(ba_transcation_customer_phone.isDisplayed());
+			waitUntil("");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -228,7 +163,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 
 	public boolean verify_the_total_product_quantity_in_transcation() {
 		try {
-			Assert.assertTrue(ba_transcation_total_product_quantity.isDisplayed());
+			waitUntil("master_transaction_history_purchase_qty");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -240,7 +175,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 
 	public boolean verify_the_total_transcation_price_in_transcation() {
 		try {
-			Assert.assertTrue(ba_transcation_total_transcation_price.isDisplayed());
+			waitUntil("master_transaction_history_total_price");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -252,7 +187,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 
 	public boolean verify_the_submission_date_in_member() {
 		try {
-			Assert.assertTrue(ba_member_sumbmission_date.isDisplayed());
+			waitUntil("master_transaction_member_history_sub_date");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -264,7 +199,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 
 	public boolean verify_the_counter_id_in_member() {
 		try {
-			Assert.assertTrue(ba_member_counter_id.isDisplayed());
+			waitUntil("master_transaction_member_history_counter_id");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -276,7 +211,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 
 	public boolean verify_the_ba_id_in_member() {
 		try {
-			Assert.assertTrue(ba_member_ba_id.isDisplayed());
+			waitUntil("master_transaction_member_history_ba_id");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -288,7 +223,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 
 	public boolean verify_the_ba_name_in_member() {
 		try {
-			Assert.assertTrue(ba_member_ba_name.isDisplayed());
+			waitUntil("master_transaction_member_history_ba_name");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -300,7 +235,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 
 	public boolean verify_the_customer_name_in_member() {
 		try {
-			Assert.assertTrue(ba_member_customer_name.isDisplayed());
+			waitUntil("master_transaction_member_history_customer_name");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -312,7 +247,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 
 	public boolean verify_the_customer_number_in_member() {
 		try {
-			Assert.assertTrue(ba_member_customer_phone.isDisplayed());
+			waitUntil("master_transaction_member_history_customer_no");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

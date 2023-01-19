@@ -50,7 +50,7 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	Kiehls_AU_Settings_Page settingPage = new Kiehls_AU_Settings_Page(driver);
 
-	// callback - start
+// BA Callback
 
 	@Then("^User click the first call back history and verfify the customer list page$")
 	public void user_click_the_first_call_back_history_and_verfify_the_customer_list_page()
@@ -130,7 +130,7 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(baCallbackPage.verify_the_r12_annual_spent());
 	}
 
-	// callback - end
+	// BA Transaction
 
 	@Then("^User click the Member history and verify the page$")
 	public void user_click_the_member_history_and_verify_the_page() {
@@ -141,13 +141,11 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	public void user_click_the_transaction_history_and_verify_the_page() {
 
 		Assert.assertTrue(baTransactionPage.user_click_the_transaction_history_and_verify_the_page());
-
 	}
 
 	@And("^Verify the Transcation id in transcation$")
 	public void verify_the_transcation_id_in_transcation() {
 		Assert.assertTrue(baTransactionPage.verify_the_transcation_id_in_transcation());
-
 	}
 
 	@And("^Verify the Transcation date in transcation$")
@@ -158,112 +156,91 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	@And("^Verify the Counter id in transcation$")
 	public void verify_the_counter_id_in_transcation() {
 		Assert.assertTrue(baTransactionPage.verify_the_counter_id_in_transcation());
-
 	}
 
 	@And("^Verify the BA id in transcation$")
 	public void verify_the_ba_id_in_transcation() {
 		Assert.assertTrue(baTransactionPage.verify_the_ba_id_in_transcation());
-
 	}
 
 	@And("^Verify the BA name in transcation$")
 	public void verify_the_ba_name_in_transcation() {
 		Assert.assertTrue(baTransactionPage.verify_the_ba_name_in_transcation());
-
 	}
 
 	@And("^Verify the Mars id in transcation$")
 	public void verify_the_mars_id_in_transcation() {
 		Assert.assertTrue(baTransactionPage.verify_the_mars_id_in_transcation());
-
 	}
 
 	@And("^Verify the Customer name in transcation$")
 	public void verify_the_customer_name_in_transcation() {
 		Assert.assertTrue(baTransactionPage.verify_the_customer_name_in_transcation());
-
 	}
 
 	@And("^Verify the Customer number in transcation$")
 	public void verify_the_customer_number_in_transcation() {
 		Assert.assertTrue(baTransactionPage.verify_the_customer_number_in_transcation());
-
 	}
 
 	@And("^Verify the Total product quantity in transcation$")
 	public void verify_the_total_product_quantity_in_transcation() {
 		Assert.assertTrue(baTransactionPage.verify_the_total_product_quantity_in_transcation());
-
 	}
 
 	@And("^Verify the Total transcation price in transcation$")
 	public void verify_the_total_transcation_price_in_transcation() {
 		Assert.assertTrue(baTransactionPage.verify_the_total_transcation_price_in_transcation());
-
 	}
 
 	@And("^Verify the Submission date in member$")
 	public void verify_the_submission_date_in_member() {
 		Assert.assertTrue(baTransactionPage.verify_the_submission_date_in_member());
-
 	}
 
 	@And("^Verify the Counter id in member$")
 	public void verify_the_counter_id_in_member() {
 		Assert.assertTrue(baTransactionPage.verify_the_counter_id_in_member());
-
 	}
 
 	@And("^Verify the BA id in member$")
 	public void verify_the_ba_id_in_member() {
 		Assert.assertTrue(baTransactionPage.verify_the_ba_id_in_member());
-
 	}
 
 	@And("^Verify the BA name in member$")
 	public void verify_the_ba_name_in_member() {
 		Assert.assertTrue(baTransactionPage.verify_the_ba_name_in_member());
-
 	}
 
 	@And("^Verify the Customer name in member$")
 	public void verify_the_customer_name_in_member() {
-
 		Assert.assertTrue(baTransactionPage.verify_the_customer_name_in_member());
-
 	}
 
 	@And("^Verify the Customer number in member$")
 	public void verify_the_customer_number_in_member() {
 		Assert.assertTrue(baTransactionPage.verify_the_customer_number_in_member());
-
 	}
 
 	@Then("^User click the Create Event button$")
 	public void user_click_the_create_event_button() throws InterruptedException {
-
 		Assert.assertTrue(baCalendarPage.user_click_the_create_event_button());
-
 	}
 
 	@Then("^Verify user able to view created Promotion Event$")
 	public void verify_user_able_to_view_created_promotion_event() throws InterruptedException {
 		Assert.assertTrue(baCalendarPage.verify_user_able_to_view_created_promotion_event());
-
 	}
 
 	@And("^User click the Service booking$")
 	public void user_click_the_service_booking() {
-
 		Assert.assertTrue(baCalendarPage.user_click_the_service_booking());
-
 	}
 
 	@And("^User select the Service booking in the Service type$")
 	public void user_select_the_service_booking_in_the_service_type() throws InterruptedException {
 		Assert.assertTrue(baCalendarPage.user_select_the_service_booking_in_the_service_type());
-
 	}
 
 	@And("^User enter the Customer name$")
@@ -283,22 +260,17 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	@And("^User click the Delete Event button$")
 	public void user_click_the_delete_event_button() throws InterruptedException {
-
 		Assert.assertTrue(baCalendarPage.user_click_the_delete_event_button());
-
 	}
 
 	@Then("^User verfiy the Day tab$")
 	public void user_verfiy_the_day_tab() {
-
 		Assert.assertTrue(baCalendarPage.user_verfiy_the_day_tab());
-
 	}
 
 	@And("^User click the event reservaiton$")
 	public void User_click_the_event_reservaiton() {
 		Assert.assertTrue(baCalendarPage.user_click_the_event_reservaiton());
-
 	}
 
 	@And("^User select the Event reservaiton in the Service type$")
@@ -308,74 +280,57 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	@And("^User verify the Week tab$")
 	public void user_verify_the_week_tab() {
-
 		Assert.assertTrue(baCalendarPage.user_verify_the_week_tab());
-
 	}
 
 	@And("^User verify the Month tab$")
 	public void user_verify_the_month_tab() {
-
 		Assert.assertTrue(baCalendarPage.user_verify_the_month_tab());
-
 	}
 
 	@And("^User verify the Year tab$")
 	public void user_verify_the_year_tab() {
-
 		Assert.assertTrue(baCalendarPage.user_verify_the_year_tab());
-
 	}
 
 	@Then("^Verify user able to view created ToDo list Event$")
 	public void verify_user_able_to_view_created_todo_list_event() throws InterruptedException {
-
 		Assert.assertTrue(baCalendarPage.verify_user_able_to_view_created_todo_list_event());
 	}
 
 	@And("^User click the Promotion Activity$")
 	public void user_click_the_promotion_activity() {
 		Assert.assertTrue(baCalendarPage.user_click_the_promotion_activity());
-
 	}
 
 	@And("^User select the Promotion in the Service type$")
 	public void user_select_the_promotion_in_the_service_type() throws InterruptedException {
 		Assert.assertTrue(baCalendarPage.user_select_the_promotion_in_the_service_type());
-
 	}
 
 	@And("^User click the ToDo list$")
 	public void user_click_the_todo_list() {
 		Assert.assertTrue(baCalendarPage.user_click_the_todo_list());
-
 	}
 
 	@And("^User enter the title in calender$")
 	public void user_enter_the_title_in_calender() throws InterruptedException {
-
 		Assert.assertTrue(baCalendarPage.user_enter_the_title_in_calender());
-
 	}
 
 	@And("^User click Save button in calender$")
 	public void user_click_save_button_in_calender() throws InterruptedException {
-
 		Assert.assertTrue(baCalendarPage.user_click_save_button_in_calender());
-
 	}
 
 	@And("^User enter the Customer name in calender$")
 	public void user_enter_the_customer_name_in_calender() throws InterruptedException, IOException {
 		Assert.assertTrue(baCalendarPage.user_enter_the_customer_name_in_calender());
-
 	}
 
 	@And("^User enther the Phone number in calender$")
 	public void user_enther_the_phone_number_in_calender() throws InterruptedException {
-
 		Assert.assertTrue(baCalendarPage.user_enther_the_phone_number_in_calender());
-
 	}
 
 	@Then("^Verify user able to view created service booking Event$")
@@ -775,6 +730,9 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(login.verifuUserIsOnHomePage());
 
 	}
+	 @And("^User click logout button on home page and click switch store button on BA page$")
+	    public void user_click_logout_button_on_home_page_and_click_switch_store_button_on_ba_page() {
+		 Assert.assertTrue(login.user_click_logout_button_on_home_page_and_click_switch_store_button_on_ba_page());	    }
 
 	@When("User enter the wrong store credentials")
 	public void user_enter_the_wrong_store_credentials() throws InterruptedException, IOException {
@@ -841,8 +799,6 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(pdpPage.verify_user_can_do_check_advance_check_stock_in_pdp_page());
 	}
 
-	
-
 	@Then("^User click BUY NOW button and verify the count increased in cart$")
 	public void user_click_buy_now_button_and_verify_the_count_increased_in_cart() throws InterruptedException {
 		Assert.assertTrue(pdpPage.user_click_buy_now_button_and_verify_the_count_increased_in_cart());
@@ -899,13 +855,14 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	}
 
 	@And("^Verify user able to sort the product in PLP$")
-	public void verify_user_able_to_sort_the_product_in_plp() throws InterruptedException {
+	public void verify_user_able_to_sort_the_product_in_plp() throws InterruptedException, IOException {
 		Assert.assertTrue(plpPage.verify_plp_sort());
 
 	}
 
 	@And("^Verify user able to search a product base on min and max price$")
-	public void verify_user_able_to_search_a_product_base_on_min_and_max_price() throws InterruptedException {
+	public void verify_user_able_to_search_a_product_base_on_min_and_max_price()
+			throws InterruptedException, IOException {
 		Assert.assertTrue(plpPage.verify_search_product_with_price());
 
 	}
