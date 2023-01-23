@@ -320,7 +320,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 	public boolean user_click_the_first_customer_detials() throws InterruptedException {
 		try {
 
-			waitUntilElementVisibleAndClick("master_callbacklist_page_titleLabel");
+			waitUntilElementVisibleAndClick("master_callbacklist_downarrow_button");
 
 			return true;
 
@@ -339,7 +339,6 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 	public boolean verify_the_member_level() {
 		try {
 
-			waitUntilElementVisibleAndClick("master_callbacklist_downarrow_button");
 			waitUntil("master_callbacklist_member_level_point_label");
 			return true;
 		}

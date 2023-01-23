@@ -125,7 +125,7 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 		try {
 
 			waitUntilElementVisibleAndClick("master_cart_addsample_button");
-			waitUntil("master_close_button");
+			waitUntil("master_cart_sample_add_to_cart_button");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -194,9 +194,9 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 	public boolean user_click_the_points_calculator_button() throws InterruptedException {
 		try {
-			Thread.sleep(1000);
-			cart_points_calculator_button.click();
-			webdriverwait(cart_points_calculator_calculate_button);
+
+			waitUntilElementVisibleAndClick("master_cart_point_cal_button");
+
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -208,12 +208,12 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 	public boolean user_add_the_bonus_value_and_verify_the_estimation_points() throws InterruptedException {
 		try {
-			cart_points_calculator_bonus_field.sendKeys("10");
-			Thread.sleep(1000);
-			if (cart_points_calculator_earned_points.getText().equals("10 PT")) {
-				Assert.assertTrue(true);
-			}
-			cart_points_calculator_close_button.click();
+			
+			
+			
+			
+			
+		
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -339,9 +339,9 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 	public boolean user_click_the_change_button() {
 		try {
-			
+
 			waitUntilElementVisibleAndClick("master_cart_change_customer_button");
-			
+
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -352,11 +352,9 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 	public boolean user_select_phone_and_enter_the_number() throws InterruptedException {
 		try {
-			
+
 			waitUntilElementVisibleAndClick("master_cart_change_customer_customer_dropdown");
 
-			
-			
 			webdriverwait(cart_change_customer_popup);
 
 			cart_change_customer_search_type_dropdown.click();

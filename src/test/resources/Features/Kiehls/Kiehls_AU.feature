@@ -1,4 +1,4 @@
-Feature: Validation of applications in Various segments
+Feature: iBeauty Regression Test
 
   Background: 
     Given User launches the Application
@@ -29,15 +29,15 @@ Feature: Validation of applications in Various segments
     When User enter the store credentials
     And User click on login button in storePage
     Then User enter the ba credentials
-
-  #And User click on Reset Password
-  #And User enters store Manager userName and passWord
-  # And User click on close button in Pop Up
-  # And User click on Reset Password
-  # And User enters store Manager userName and passWord
-  #And User click on next button
-  #And User enters the newPassword and confirm passWord
-  #And User click on submit button
+  	#And User click on Reset Password
+ 	 	#And User enters store Manager userName and passWord
+ 	 	#And User click on close button in Pop Up
+  	#And User click on Reset Password
+  	#And User enters store Manager userName and passWord
+ 		#And User click on next button
+  	#And User enters the newPassword and confirm passWord
+ 		#And User click on submit button
+ 		
   @master @smoke @Regression @PLP @pass
   Scenario: Verify user able to navigate PLP from home page product category
     Then User is on home page
@@ -81,13 +81,13 @@ Feature: Validation of applications in Various segments
   @master @smoke @Regression @BACalendar @pass
   Scenario: Verify the customer Calendar page
     Then User is on home page
-    # BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
+    #BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "CALENDAR" then verify the page
 
   @master @smoke @Regression @BACalendar @fail
   Scenario: Verify the Day, Week, Month and year tab working properly
     Then User is on home page
-    # BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
+    #BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "CALENDAR" then verify the page
     Then User verfiy the Day tab
     And User verify the Week tab
@@ -97,7 +97,7 @@ Feature: Validation of applications in Various segments
   @master @smoke @Regression @BACalendar
   Scenario: Verify user able to create ToDo list in the calendar
     Then User is on home page
-    # BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
+    #BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "CALENDAR" then verify the page
     Then User click the Create Event button
     And User click the ToDo list
@@ -109,7 +109,7 @@ Feature: Validation of applications in Various segments
   @master @smoke @Regression @BACalendar
   Scenario: Verify user able to create Promotion Activity in the calendar
     Then User is on home page
-    # BA HOME -> 1) DASHBOARD 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
+    #BA HOME -> 1) DASHBOARD 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "CALENDAR" then verify the page
     #Then User click the Create Event button
     #And User click the Promotion Activity
@@ -145,7 +145,7 @@ Feature: Validation of applications in Various segments
     Then User enter the ba credentials
     And User click on login button in baPage
     Then User is on home page
-    # BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
+    #BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "CALENDAR" then verify the page
     Then User click the Create Event button
     And User click the event reservaiton
@@ -159,13 +159,13 @@ Feature: Validation of applications in Various segments
   @master @smoke @Regression @BACallbacklist @pass
   Scenario: Verify the customer callback list page
     Then User is on home page
-    # BA HOME -> 1) DASHBOARD 2) Notification 3) CALLBACK LIST 4) Calendar 5) TRANSACTIONS
+    #BA HOME -> 1) DASHBOARD 2) Notification 3) CALLBACK LIST 4) Calendar 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "CALLBACK LIST" then verify the page
 
   @master @smoke @Regression @BACallbacklist @pass
   Scenario: Verify the callback list title, count, missed call, called, created date, updated date and remainder are present
     Then User is on home page
-    # BA HOME -> 1) Dash board 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS
+    #BA HOME -> 1) Dash board 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "CALLBACK LIST" then verify the page
     And Verify the Title in callback list
     And Verify the Count in callback list
@@ -178,14 +178,14 @@ Feature: Validation of applications in Various segments
   @master @smoke @Regression @BACallbacklist @pass
   Scenario: Verify the customer list page
     Then User is on home page
-    # BA HOME -> 1) Dash board 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS
+    #BA HOME -> 1) Dash board 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "CALLBACK LIST" then verify the page
     Then User click the first call back history and verfify the customer list page
 
-  @master @smoke @Regression @BACallbacklist @ready
+  @master @smoke @Regression @BACallbacklist @pass
   Scenario: Verify the first customer list details
     Then User is on home page
-    # BA HOME -> 1) Dash board 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS
+    #BA HOME -> 1) Dash board 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "CALLBACK LIST" then verify the page
     Then User click the first call back history and verfify the customer list page
     And User click the first customer detials
@@ -195,25 +195,25 @@ Feature: Validation of applications in Various segments
   @master @smoke @Regression @BAdashboard @pass
   Scenario: Verify the customer dashBoard page
     Then User is on home page
-    # BA HOME -> 1) dashBoard 2) Notification 3) CALLBACK LIST 4) Calendar 5) TRANSACTIONS
+    #BA HOME -> 1) dashBoard 2) Notification 3) CALLBACK LIST 4) Calendar 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "DASHBOARD" then verify the page
     Then Verify user able see Customer Notification, Callback List, Calender tab in the Dashboard
 
-  @master @smoke @Regression @BAdashboard @ready
+  @master @smoke @Regression @BAdashboard @pass
   Scenario: Verify the customer notification on dashBoard page
     Then User is on home page
-    # BA HOME -> 1) DASHBOARD 2) Notification 3) CALLBACK LIST 4) Calender 5) TRANSACTIONS
+    #BA HOME -> 1) DASHBOARD 2) Notification 3) CALLBACK LIST 4) Calender 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "DASHBOARD" then verify the page
     Then User click first notification on the list and user able to navigate Notification page
 
-  @master @smoke @Regression @BAdashboard @ready
+  @master @smoke @Regression @BAdashboard @pass
   Scenario: Verify the customer calBacklist on dashBoard page
     Then User is on home page
     # BA HOME -> 1) DASHBOARD 2) Notification 3) CALLBACK LIST 4) Calender 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "DASHBOARD" then verify the page
     Then User click first calback history on the list and user able to navigate Calback List page
 
-  @master @smoke @Regression @BAdashboard @ready
+  @master @smoke @Regression @BAdashboard @pass
   Scenario: Verify the customer calendar on dashBoard page
     Then User is on home page
     # BA HOME -> 1) DASHBOARD 2) Notification 3) CALLBACK LIST 4) Calender 5) TRANSACTIONS
@@ -252,12 +252,12 @@ Feature: Validation of applications in Various segments
     And Verify the Total product quantity in transcation
     And Verify the Total transcation price in transcation
 
-  @master @smoke @Regression @BAtransaction @ready
+  @master @smoke @Regression @BAtransaction @pass
   Scenario: Verify the member details in first history
     Then User is on home page
     # BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "TRANSACTIONS" then verify the page
-    And User click the Transaction history and verify the page
+    Then User click the Member history and verify the page
     And Verify the Submission date in member
     And Verify the Counter id in member
     And Verify the BA id in member
@@ -277,7 +277,7 @@ Feature: Validation of applications in Various segments
     And User search the product and add it to cart
     Then Verify user able to view the product in cart
 
-  @master @smoke @Regression @Cart @ready
+  @master @smoke @Regression @Cart @pass
   Scenario: Verify user able to add sample from cart page
     Then User is on home page
     And User click the Cart button from right navigation and verify the cart page
@@ -285,14 +285,14 @@ Feature: Validation of applications in Various segments
     And User search the product and click Add to cart button
     Then Verify user able to view the sample product in cart
 
-  @master @smoke @Regression @Cart @fail
+  @master @smoke @Regression @Cart @pending
   Scenario: Verify user able to calculate points
     Then User is on home page
     And User click the Cart button from right navigation and verify the cart page
     Then User click the Points calculator button
     And User Add the Bonus value and verify the estimation points
 
-  @master @smoke @Regression @Cart @ready
+  @master @smoke @Regression @Cart @fail
   Scenario: Verify user able to check the stock
     Then User is on home page
     And User click the Cart button from right navigation and verify the cart page
@@ -319,7 +319,7 @@ Feature: Validation of applications in Various segments
     And User select phone and enter the number
     Then User click search button and verify the changed customer
 
-  @master @smoke @Regression @C360
+  @master @smoke @Regression @C360 @fail
   Scenario: Verify customer 360 screen
     Then User is on home page
     Then tap on customer search dropdown
@@ -450,8 +450,8 @@ Feature: Validation of applications in Various segments
     And User click the product and verify user get navigate to PDP page
     Then Verify the product description, tips and ingriedients tabs in PDP
 
-  ##create customer----------------------------------------------------
-  @master @Regression @Customercreation @positive
+  #create customer----------------------------------------------------
+  @master @Regression @Customercreation @positive 
   Scenario: Verify if user is able to create a new customer with only mandatory fields
     Then User is on home page
     And User click the Create button on Customer search
@@ -620,3 +620,4 @@ Feature: Validation of applications in Various segments
     Then User enter new password
     Then User enter confirm password
     And User click cancel button
+  
