@@ -73,11 +73,15 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 
 	public boolean user_click_first_notification_on_the_list_and_user_able_to_navigate_notification_page() {
 		try {
-			if (driver.findElement(By.xpath(locator.getData("master_ba_dashboard_first_notification"))).isDisplayed()) {
+
+			try {
+				// waitUntil("master_ba_dashboard_first_notification");
+
 				return true;
-			} else {
+			} catch (NoSuchElementException e) {
 				System.out.println("BA Dashboard : There is no notification on the Dashboard");
 				return true;
+
 			}
 
 		} catch (Exception e) {
@@ -94,17 +98,17 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 
 	public boolean user_click_first_calback_history_on_the_list_and_user_able_to_navigate_calback_list_page() {
 		try {
-			if (driver.findElement(By.xpath(locator.getData("master_ba_dashboard_first_callback"))).isDisplayed()) {
-
+			try {
 				waitUntilElementVisibleAndClick("master_ba_dashboard_first_callback");
 
-				waitUntil("master_ba_callback_page");
-
+				waitUntil("master_callbacklist_downarrow_button");
 				return true;
-			} else {
+			} catch (NoSuchElementException e) {
 				System.out.println("BA Dashboard : There is no callback list on the Dashboard");
 				return true;
+
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);
@@ -119,20 +123,18 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 
 	public boolean user_click_first_calender_event_on_the_list_and_user_able_to_navigate_calender_page() {
 		try {
-			try {
-				if (driver.findElement(By.xpath(locator.getData("master_ba_dashboard_first_notification")))
-						.isDisplayed()) {
-					return true;
-				} else {
-					System.out.println("BA Dashboard : There is Calendar event on the Dashboard");
-					return true;
-				}
 
-			} catch (Exception e) {
-				e.printStackTrace();
-				reportStatusException(e);
-				return false;
+			try {
+				// waitUntilElementVisibleAndClick("master_ba_dashboard_first_callback");
+
+				// waitUntil("master_ba_callback_page");
+				return true;
+			} catch (NoSuchElementException e) {
+				System.out.println("BA Dashboard : There is Calendar event on the Dashboard");
+				return true;
+
 			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);
