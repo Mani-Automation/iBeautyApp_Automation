@@ -609,6 +609,14 @@ public class CommonActions {
 		driver.findElement(By.xpath(loc.getData(locatorString))).sendKeys(data);
 	}
 
+	public void clearAndSendkeys(String locatorString, String data) throws IOException {
+		driver = DriverManager.getDriver();
+
+		driver.findElement(By.xpath(loc.getData(locatorString))).clear();
+
+		driver.findElement(By.xpath(loc.getData(locatorString))).sendKeys(data);
+	}
+
 	public WebElement webElement(String locatorString) throws IOException {
 		driver = DriverManager.getDriver();
 

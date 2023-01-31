@@ -85,7 +85,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 		try {
 
 			waitUntilElementVisibleAndClick("master_calender_week_tab");
-			
+
 			//
 			return true;
 		} catch (Exception e) {
@@ -200,9 +200,9 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 
 	public boolean user_click_the_create_event_button() throws InterruptedException {
 		try {
-			calender_create_event_button.click();
-			reportStatusPASS("User clicked create event button on the Calender");
-			Thread.sleep(1000);
+
+			waitUntilElementVisibleAndClick("master_calendar_add_button");
+			waitUntil("master_setting_change_pwd_popup_cancel_button");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -213,10 +213,9 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 	}
 
 	public boolean user_click_the_todo_list() {
+
 		try {
-			webdriverwait(calender_todo_list_button);
-			calender_todo_list_button.click();
-			reportStatusPASS("User clicked ToDo list successfully ");
+			waitUntilElementVisibleAndClick("master_cell_0");
 
 			return true;
 		} catch (Exception e) {
@@ -229,14 +228,10 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 
 	public boolean user_enter_the_title_in_calender() throws InterruptedException {
 		try {
-			Thread.sleep(2000);
+			waitUntil("master_calender_event_title");
 
-			if (calender_todo_title_field.isDisplayed()) {
-				calender_todo_title_field.sendKeys(ExcelData.getExcelData("customer_testdata", "first_name"));
+			sendkeys("master_calender_event_title", "Test Event");
 
-				reportStatusPASS("User entered ToDO title ");
-
-			}
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -250,46 +245,13 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 	public boolean user_click_save_button_in_calender() throws InterruptedException {
 		try {
 
-			switch (ConfigReader.getData("appEnv")) {
-			case "UAT": {
-				Thread.sleep(2000);
-
-				if (calender_todo_save_button.isDisplayed()) {
-					calender_todo_save_button.click();
-					reportStatusPASS("User clicked save button");
-					return true;
-
-				} else if (calender_promotion_save_button.isDisplayed()) {
-					calender_promotion_save_button.click();
-					reportStatusPASS("User clicked save button");
-					return true;
-
-				} else if (calender_service_booking_save_button.isDisplayed()) {
-					calender_service_booking_save_button.click();
-					reportStatusPASS("User clicked save button");
-					return true;
-
-				} else if (calender_event_reservation_save_button.isDisplayed()) {
-					calender_event_reservation_save_button.click();
-					reportStatusPASS("User clicked save button");
-					return true;
-
-				}
-
-				else {
-					return false;
-
-				}
-			}
-			case "PROD": {
+			try {
+				waitUntilElementVisibleAndClick("master_consultation_save_button");
 				return true;
+			} catch (NoSuchElementException e) {
+				waitUntilElementVisibleAndClick("master_calendar_promotion_save_button");
 
-			}
-
-			default: {
-			}
-				return false;
-
+				return true;
 			}
 
 		} catch (Exception e) {
@@ -412,9 +374,8 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 
 	public boolean user_click_the_promotion_activity() {
 		try {
-			webdriverwait(calender_promotion_activity_button);
-			calender_promotion_activity_button.click();
-			reportStatusPASS("User clicked promotion activity button on the list");
+			waitUntilElementVisibleAndClick("master_cell_2");
+
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -427,12 +388,11 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 
 	public boolean user_select_the_promotion_in_the_service_type() throws InterruptedException {
 		try {
-			webdriverwait(calender_promotion_activity_service_dropdown);
-			calender_promotion_activity_service_dropdown.click();
-			webdriverwait(calender_promotion_event_checkbox);
-			calender_promotion_event_checkbox.click();
-			Thread.sleep(1000);
-			reportStatusPASS("User clicked event checkbox on the service type");
+
+			waitUntilElementVisibleAndClick("master_login_select_country");
+
+			waitUntilElementVisibleAndClick("master_calendar_checkbox_1");
+
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -447,34 +407,10 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 		try {
 
 			waitUntil("master_calender_customer_name_text_field");
-			sendkeys("master_calender_customer_name_text_field", "Mani");
+			sendkeys("master_calender_customer_name_text_field", "Test Name");
+			hideKeyboard();
 			return true;
-			/*
-			 * Thread.sleep(2000); if
-			 * (calender_promotion_activity_customer_name_field.isDisplayed()) {
-			 * calender_promotion_activity_customer_name_field
-			 * .sendKeys(ExcelData.getExcelData("customer_testdata", "first_name"));
-			 * reportStatusPASS("User entered customer name");
-			 * 
-			 * Thread.sleep(1000);
-			 * 
-			 * } else if (calender_service_booking_customer_name_field.isDisplayed()) {
-			 * calender_service_booking_customer_name_field
-			 * .sendKeys(ExcelData.getExcelData("customer_testdata", "first_name"));
-			 * reportStatusPASS("User entered customer name");
-			 * 
-			 * Thread.sleep(1000);
-			 * 
-			 * } else if (calender_event_reservation_customer_name_field.isDisplayed()) {
-			 * calender_event_reservation_customer_name_field
-			 * .sendKeys(ExcelData.getExcelData("customer_testdata", "first_name"));
-			 * reportStatusPASS("User entered customer name");
-			 * 
-			 * Thread.sleep(1000);
-			 * 
-			 * } return true;
-			 * 
-			 */
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);
@@ -487,33 +423,10 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 	public boolean user_enther_the_phone_number_in_calender() throws InterruptedException {
 
 		try {
+
+			waitUntil("master_calendar_event_phone_text");
+			sendkeys("master_calendar_event_phone_text", "9123456789");
 			hideKeyboard();
-			Thread.sleep(2000);
-			if (calender_promotion_activity_customer_phone_field.isDisplayed()) {
-				calender_promotion_activity_customer_phone_field
-						.sendKeys(ExcelData.getExcelData("customer_testdata", "mobile_number"));
-				reportStatusPASS("User entered customer phone number");
-
-				Thread.sleep(1000);
-
-			} else if (calender_service_booking_customer_phone_field.isDisplayed()) {
-				calender_service_booking_customer_phone_field
-						.sendKeys(ExcelData.getExcelData("customer_testdata", "mobile_number"));
-				Thread.sleep(1000);
-				reportStatusPASS("User entered customer phone number");
-
-			} else if (calender_event_reservation_customer_phone_field.isDisplayed()) {
-				calender_event_reservation_customer_phone_field
-						.sendKeys(ExcelData.getExcelData("customer_testdata", "mobile_number"));
-				reportStatusPASS("User entered customer phone number");
-
-				Thread.sleep(1000);
-
-			} else {
-				System.out.println("Phone number not entered");
-				reportStatusFAIL("Phone number not entered");
-				return false;
-			}
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -562,8 +475,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 	public boolean user_click_the_service_booking() {
 
 		try {
-			webdriverwait(calender_service_booking_button);
-			calender_service_booking_button.click();
+			waitUntilElementVisibleAndClick("master_cell_3");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -576,13 +488,10 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 	public boolean user_select_the_service_booking_in_the_service_type() throws InterruptedException {
 
 		try {
-			webdriverwait(calender_service_booking_service_dropdown);
-			calender_service_booking_service_dropdown.click();
-			webdriverwait(calender_service_booking_checkbox);
-			calender_service_booking_checkbox.click();
-			reportStatusPASS("User clicked service checkbox on the service type");
+			waitUntilElementVisibleAndClick("master_login_select_country");
 
-			Thread.sleep(1000);
+			waitUntilElementVisibleAndClick("master_calendar_checkbox_1");
+
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -594,9 +503,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 
 	public boolean user_click_the_event_reservaiton() {
 		try {
-			webdriverwait(calender_event_reservation_button);
-			calender_event_reservation_button.click();
-			reportStatusPASS("User clicked Event Reservation on the list");
+			waitUntilElementVisibleAndClick("master_cell_1");
 
 			return true;
 		} catch (Exception e) {
@@ -609,13 +516,9 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 
 	public boolean user_select_the_event_reservaiton_in_the_service_type() throws InterruptedException {
 		try {
-			webdriverwait(calender_sevent_reservation_event_dropdown);
-			calender_sevent_reservation_event_dropdown.click();
-			webdriverwait(calender_event_reservation_checkbox);
-			calender_event_reservation_checkbox.click();
-			reportStatusPASS("User clicked event checkbox on the service type");
+			waitUntilElementVisibleAndClick("master_login_select_country");
 
-			Thread.sleep(1000);
+			waitUntilElementVisibleAndClick("master_calendar_checkbox_1");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

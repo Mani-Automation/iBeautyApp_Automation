@@ -484,6 +484,31 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(c360Page.enter_mobile_number_and_tap_on_search_button());
 	}
 
+	@Then("^User verify total number of bottles returned column$")
+	public void user_verify_total_number_of_bottles_returned_column() throws Throwable {
+		Assert.assertTrue(c360Page.user_verify_total_number_of_bottles_returned_column());
+	}
+
+	@Then("^User click Done button$")
+	public void user_click_done_button() throws Throwable {
+		Assert.assertTrue(c360Page.user_click_done_button());
+	}
+
+	@Then("^Verify user able to see recent recycled bottles$")
+	public void verify_user_able_to_see_recent_recycled_bottles() throws Throwable {
+		Assert.assertTrue(c360Page.verify_user_able_to_see_recent_recycled_bottles());
+	}
+
+	@And("^User click the recycle tab$")
+	public void user_click_the_recycle_tab() throws Throwable {
+		Assert.assertTrue(c360Page.user_click_the_recycle_tab());
+	}
+
+	@And("^User Select no of bottles to recycle on dropdown$")
+	public void user_select_no_of_bottles_to_recycle_on_dropdown() throws Throwable {
+		Assert.assertTrue(c360Page.user_select_no_of_bottles_to_recycle_on_dropdown());
+	}
+
 	// new
 
 	@And("^enter Email and tap on search button$")
@@ -548,6 +573,27 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	}
 
 //24
+
+	@Then("^User edit membership info$")
+	public void user_edit_membership_info() throws Throwable {
+		Assert.assertTrue(c360Page.user_edit_membership_info());
+	}
+
+	@And("^User edit member details$")
+	public void user_edit_member_details() throws Throwable {
+		Assert.assertTrue(c360Page.user_edit_member_details());
+	}
+
+	@And("^User edit mailing address$")
+	public void user_edit_mailing_address() throws Throwable {
+		Assert.assertTrue(c360Page.user_edit_mailing_address());
+	}
+
+	@And("^User edit communicate channals details$")
+	public void user_edit_communicate_channals_details() throws Throwable {
+		Assert.assertTrue(c360Page.user_edit_communicate_channals_details());
+	}
+
 	@And("^User click the membership tab and verify Membership screen should be displayed$")
 	public void user_click_the_membership_tab_and_verify_membership_screen_should_be_displayed()
 			throws InterruptedException {
@@ -671,6 +717,11 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(ccPage.user_click_confirm_button());
 	}
 
+	@Then("^User verify Customer ThreeSixty Screen should be displayed$")
+	public void user_verify_customer_threesixty_screen_should_be_displayed() throws Throwable {
+		Assert.assertTrue(ccPage.user_verify_customer_threesixty_screen_should_be_displayed());
+	}
+
 	@And("^User verify mandatory error messages$")
 	public void user_verify_mandatory_error_messages() {
 		Assert.assertTrue(ccPage.user_verify_mandatory_error_messages());
@@ -730,9 +781,11 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(login.verifuUserIsOnHomePage());
 
 	}
-	 @And("^User click logout button on home page and click switch store button on BA page$")
-	    public void user_click_logout_button_on_home_page_and_click_switch_store_button_on_ba_page() {
-		 Assert.assertTrue(login.user_click_logout_button_on_home_page_and_click_switch_store_button_on_ba_page());	    }
+
+	@And("^User click logout button on home page and click switch store button on BA page$")
+	public void user_click_logout_button_on_home_page_and_click_switch_store_button_on_ba_page() {
+		Assert.assertTrue(login.user_click_logout_button_on_home_page_and_click_switch_store_button_on_ba_page());
+	}
 
 	@When("User enter the wrong store credentials")
 	public void user_enter_the_wrong_store_credentials() throws InterruptedException, IOException {
@@ -887,6 +940,12 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	@And("^User click servey button on the consultation page$")
 	public void user_click_servey_button_on_the_consultation_page() {
 		Assert.assertTrue(consultationPage.user_click_servey_button_on_the_consultation_page());
+	}
+
+	@And("^User click servey button on the consultation list page$")
+	public void user_click_servey_button_on_the_consultation_list_page() {
+		Assert.assertTrue(consultationPage.user_click_servey_button_on_the_consultation_list_page());
+
 	}
 
 	@And("^User verify the survey form page$")

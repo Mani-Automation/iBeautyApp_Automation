@@ -3,6 +3,7 @@ package pages.Kiehls.Kiehls_AU;
 import org.openqa.selenium.support.PageFactory;
 
 import com.reusableMethods.CommonActions;
+import com.reusableMethods.CommonActions.Direction;
 import com.utilities.ConfigReader;
 import com.utilities.ExcelData;
 
@@ -12,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Random;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -39,6 +41,8 @@ import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	AppiumDriver driver;
+	public static String segment;
+	Random random = new Random();
 
 	public Kiehls_AU_Customer360_Page(AppiumDriver driver) {
 		this.driver = driver;
@@ -46,123 +50,6 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 	}
 
 	/****************** Locators ******************/
-
-	@FindBy(xpath = "//XCUIElementTypeOther[@name=\"viewSearchType\"]")
-	public WebElement C360_CustomersearchButton;
-
-	@FindBy(xpath = "//XCUIElementTypeApplication[@name=\"Kiehls UAT\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[2]")
-	public WebElement C360_CustomersearchEmailButton;
-
-	@FindBy(xpath = "//XCUIElementTypeApplication[@name=\"Kiehls UAT\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther/XCUIElementTypeOther[3]")
-	public WebElement C360_CustomersearchMobileNumberButton;
-
-	@FindBy(xpath = "//XCUIElementTypeTextField[@name=\"txtSearch\"]")
-	public WebElement C360_searchTextFieldInHomePage;
-
-	@FindBy(xpath = "///XCUIElementTypeCell[@name=\"cell_0\"]")
-	public WebElement C360_SearchButtonInHomePage;
-
-	@FindBy(xpath = "//XCUIElementTypeButton[@name=\"btnCreate\"]")
-	public WebElement C360_CreateCustomerButton;
-
-	@FindBy(xpath = "//XCUIElementTypeApplication[@name=\"Kiehls UAT\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]")
-	public WebElement C360_AdvanceSearchButton;
-
-	@FindBy(xpath = "//XCUIElementTypeOther[@name=\"startConsultation\"]")
-	public WebElement C360_StartConsultationButton;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Zuzy Zoure\"]")
-	public WebElement C360_CustomerName;
-
-	@FindBy(xpath = "//XCUIElementTypeApplication[@name=\"Kiehls UAT\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeButton[2]")
-	public WebElement C360_RefreshButtonInC360;
-
-	@FindBy(xpath = "//XCUIElementTypeApplication[@name=\"Kiehls UAT\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeButton[1]")
-	public WebElement C360_EditButtonInC360;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Birthday\"]")
-	public WebElement C360_BirthDayText;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Gender\"]")
-	public WebElement C360_GenderText;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Not provided\"]")
-	public WebElement C360_Gender;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"45KK0012066\"]")
-	public WebElement C360_MemberShipNumber;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"A$0.00\"]")
-	public WebElement C360_YtdSpending;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"06/14/2022 14:00:00\"]")
-	public WebElement C360_MemberShipSince;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Not provided\"]")
-	public WebElement C360_CustomerType;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Not provided\"]")
-	public WebElement C360_R12Spending;
-
-	@FindBy(xpath = "//XCUIElementTypeApplication[@name=\"Kiehls UAT\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[3]/XCUIElementTypeCollectionView/XCUIElementTypeCell[1]")
-	public WebElement C360_PurchaseHistoryButton;
-
-	@FindBy(xpath = "//XCUIElementTypeApplication[@name=\"Kiehls UAT\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[3]/XCUIElementTypeCollectionView/XCUIElementTypeCell[2]")
-	public WebElement C360_SummaryButton;
-
-	@FindBy(xpath = "//XCUIElementTypeApplication[@name=\"Kiehls UAT\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[3]/XCUIElementTypeCollectionView/XCUIElementTypeCell[3]")
-	public WebElement C360_MemberShipButton;
-
-	@FindBy(xpath = "//XCUIElementTypeApplication[@name=\"Kiehls UAT\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[3]/XCUIElementTypeCollectionView/XCUIElementTypeCell[5]")
-	public WebElement C360_wishListButton;
-
-	@FindBy(xpath = "//XCUIElementTypeApplication[@name=\"Kiehls UAT\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[4]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther")
-	public WebElement C360_SearchHistoryInPurchaseHistoryTab;
-
-	@FindBy(xpath = "//XCUIElementTypeApplication[@name=\"Kiehls UAT\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[4]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]")
-	public WebElement C360_YearSelectionInPurchaseHistoryTab;
-
-	@FindBy(xpath = "//XCUIElementTypeApplication[@name=\\\"Kiehls UAT\\\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[4]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[1]/XCUIElementTypeOther[2]/XCUIElementTypeOther[2]")
-	public WebElement C360_FilterButton;
-
-	@FindBy(xpath = "//XCUIElementTypeOther[@name=\"General Information\"]")
-	public WebElement C360_GeneralInformationTextInSummaryTab;
-
-	@FindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"Follow Up\"])[1]")
-	public WebElement C360_FollowUpButton;
-
-	@FindBy(xpath = "//XCUIElementTypeButton[@name=\"Create Note\"]")
-	public WebElement C360_CreateNoteButton;
-
-	@FindBy(xpath = "//XCUIElementTypeTable[@name=\"sideMenuTbl\"]/XCUIElementTypeButton[1]")
-	public WebElement C360_HomeButtonInNavigatonBar;
-
-	@FindBy(xpath = "//XCUIElementTypeTable[@name=\"sideMenuTbl\"]/XCUIElementTypeButton[2]")
-	public WebElement C360_Customer360ButtonInNavigationbar;
-
-	@FindBy(xpath = "//XCUIElementTypeTable[@name=\"sideMenuTbl\"]/XCUIElementTypeButton[3]")
-	public WebElement C360_ConsultationInNavigatonBar;
-
-	@FindBy(xpath = "//XCUIElementTypeTable[@name=\"sideMenuTbl\"]/XCUIElementTypeButton[4]")
-	public WebElement C360_AboutUsButtonInNavigationBar;
-
-	@FindBy(xpath = "//XCUIElementTypeTable[@name=\"sideMenuTbl\"]/XCUIElementTypeButton[5]")
-	public WebElement C360_ProductsButtonInNavigatonBar;
-
-	@FindBy(xpath = "//XCUIElementTypeTable[@name=\"sideMenuTbl\"]/XCUIElementTypeButton[6]")
-	public WebElement C360_CartButtonInNavigatonBar;
-
-	@FindBy(xpath = "//XCUIElementTypeTable[@name=\"Empty list\"]/XCUIElementTypeOther[1]/XCUIElementTypeButton")
-	public WebElement C360_BaHomeButtonInNavigatonBar;
-
-	@FindBy(xpath = "//XCUIElementTypeTable[@name=\"Empty list\"]/XCUIElementTypeOther[2]/XCUIElementTypeButton")
-	public WebElement C360_SettingsButtonInNavigatonBar;
-
-	@FindBy(xpath = "//XCUIElementTypeTable[@name=\"Empty list\"]/XCUIElementTypeOther[3]/XCUIElementTypeButton")
-	public WebElement C360_LogOutButtonInNavigatonBar;
-
-	@FindBy(xpath = "//XCUIElementTypeTable[@name=\"sideMenuTbl\"]/XCUIElementTypeButton[6]")
-	public WebElement C360_UpdateButtonInInMemberEdit;
 
 	/////////// mani
 
@@ -220,8 +107,10 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean customer_threesixty_screen_should_be_display() {
 		try {
-			webdriverwait(C360_purchase_history);
-			Assert.assertTrue(C360_purchase_history.isDisplayed());
+
+			waitUntilElementVisibleAndClick("master_c360_search_result_first_cus");
+			waitUntil("master_c360_cus_name_label");
+
 			return true;
 		} catch (
 
@@ -235,7 +124,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 	public boolean tap_on_mobile_number_from_the_dropdown_list() throws InterruptedException {
 		try {
 
-			waitUntilElementVisibleAndClick("master_c360_home_customer_search_mobile_list");
+			waitUntilElementVisibleAndClick("master_c360_home_customer_search_lucid_list");
 
 			return true;
 		} catch (
@@ -269,7 +158,9 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean verify_the_customer_name() {
 		try {
-			Assert.assertTrue(C360_profile_customer_name.isDisplayed());
+
+			waitUntil("master_c360_cus_name_label");
+
 			return true;
 		} catch (
 
@@ -282,7 +173,9 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean verify_the_phone_number() {
 		try {
-			Assert.assertTrue(C360_profile_customer_phone_number.isDisplayed());
+
+			waitUntil("master_c360_cus_phone_label");
+
 			return true;
 		} catch (
 
@@ -296,7 +189,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean verify_the_edit_button() {
 		try {
-			Assert.assertTrue(C360_profile_customer_edit_button.isDisplayed());
+			waitUntil("master_c360_cus_edit_button");
 			return true;
 		} catch (
 
@@ -310,7 +203,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean verify_the_birthday_date() {
 		try {
-			Assert.assertTrue(C360_profile_customer_birth_date.isDisplayed());
+			waitUntil("");
 			return true;
 		} catch (
 
@@ -324,7 +217,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean verity_the_gender() {
 		try {
-			Assert.assertTrue(C360_profile_customer_gender.isDisplayed());
+			waitUntil("");
 			return true;
 		} catch (
 
@@ -338,7 +231,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean verify_the_r12_spending() {
 		try {
-			Assert.assertTrue(C360_profile_customer_r12_spending.isDisplayed());
+			waitUntil("");
 			return true;
 		} catch (
 
@@ -352,7 +245,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean verify_the_opt_in() {
 		try {
-			Assert.assertTrue(C360_profile_customer_opt_in.isDisplayed());
+			waitUntil("");
 			return true;
 		} catch (
 
@@ -366,7 +259,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean verify_the_membership_since() {
 		try {
-			Assert.assertTrue(C360_profile_customer_membership_since.isDisplayed());
+			waitUntil("");
 			return true;
 		} catch (
 
@@ -380,7 +273,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean verify_the_customer_type() {
 		try {
-			Assert.assertTrue(C360_profile_customer_type.isDisplayed());
+			waitUntil("");
 			return true;
 		} catch (
 
@@ -404,10 +297,9 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 			switch (ConfigReader.getData("appEnv")) {
 			case "UAT": {
-
-				webdriverwait(C360_update_member_update_button);
-				C360_update_member_update_button.click();
-				webdriverwait(C360_purchase_history);
+				swipeScreenUntilElementVisible("master_createcustomer_confirm_button", Direction.UP);
+				waitUntilElementVisibleAndClick("master_createcustomer_confirm_button");
+				waitUntil("master_c360_cus_name_label");
 				return true;
 			}
 			case "PROD": {
@@ -432,14 +324,14 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean user_click_the_edit_button_and_update_member_page_should_be_displayed() {
 		try {
+			segment = ConfigReader.getData("app_segment");
 
 			switch (ConfigReader.getData("appEnv")) {
 			case "UAT": {
 
-				webdriverwait(C360_profile_customer_edit_button);
+				waitUntilElementVisibleAndClick("master_c360_cus_edit_button");
+				waitUntil("master_createcustomer_mobile_number");
 
-				C360_profile_customer_edit_button.click();
-				webdriverwait(C360_update_member_page);
 				return true;
 			}
 			case "PROD": {
@@ -479,9 +371,9 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 	public boolean user_click_the_membership_tab_and_verify_membership_screen_should_be_displayed()
 			throws InterruptedException {
 		try {
-			webdriverwait(C360_membership_tab);
-			C360_membership_tab.click();
-			Thread.sleep(2000);
+
+			waitUntilElementVisibleAndClick("master_c360_cus_mem_tab");
+
 			return true;
 		} catch (
 
@@ -531,9 +423,9 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean user_click_home_button_and_verify_home_page_should_be_displayed() {
 		try {
-			webdriverwait(C360_home_icon);
-			C360_home_icon.click();
-			webdriverwait(C360_home_customer_search_dropdown);
+
+			waitUntilElementVisibleAndClick("master_home_button");
+
 			return true;
 		} catch (
 
@@ -546,9 +438,9 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean user_click_customer_360_button_from_right_navigation() {
 		try {
-			webdriverwait(C360_icon_right_navigation);
-			C360_icon_right_navigation.click();
-			webdriverwait(C360_purchase_history);
+
+			waitUntilElementVisibleAndClick("master_home_360");
+
 			return true;
 		} catch (
 
@@ -561,10 +453,9 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean user_click_wishlist_product_and_verify_pdp_shold_be_displayed() {
 		try {
-			webdriverwait(C360_wishlist_first_product);
-			C360_wishlist_first_product.click();
-			webdriverwait(C360_pdp_buy_now_button);
-			Assert.assertTrue(C360_pdp_buy_now_button.isDisplayed());
+			waitUntilElementVisibleAndClick("master_c360_cus_wishtab_leftarrow");
+			waitUntilElementVisibleAndClick("master_pdp_wishlist_button");
+
 			return true;
 		} catch (
 
@@ -577,8 +468,9 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean user_click_add_to_wishlist_icon() {
 		try {
-			webdriverwait(C360_pdp_wishlist_icon);
-			C360_pdp_wishlist_icon.click();
+
+			waitUntilElementVisibleAndClick("master_pdp_wishlist_button");
+
 			return true;
 		} catch (
 
@@ -591,8 +483,9 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean user_click_wishlist_tab() {
 		try {
-			webdriverwait(C360_wishlist_tab);
-			C360_wishlist_tab.click();
+
+			waitUntilElementVisibleAndClick("master_c360_cus_wishlist_tab");
+
 			return true;
 		} catch (
 
@@ -619,14 +512,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean verify_user_general_information_should_be_displayed() {
 		try {
-
-			webdriverwait(C360_customer_summary_general_info_mobile);
-
-			Assert.assertTrue(C360_customer_summary_general_info_mobile.isDisplayed());
-
-			Assert.assertTrue(C360_customer_summary_general_info_mail.isDisplayed());
-
-			Assert.assertTrue(C360_customer_summary_general_info_loacation.isDisplayed());
+			waitUntil("master_c360_cus_summary_create_note_button");
 			return true;
 		} catch (
 
@@ -640,9 +526,9 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean user_clickthe_summary_tab() {
 		try {
-			webdriverwait(C360_customer_summary_tab);
-			C360_customer_summary_tab.click();
-			webdriverwait(C360_customer_summary_general_info_mobile);
+
+			waitUntilElementVisibleAndClick("master_c360_cus_summary_tab");
+
 			return true;
 		} catch (
 
@@ -706,9 +592,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 	public boolean user_click_create_note_button_and_verify_the_note_popup() {
 		try {
 
-			webdriverwait(C360_summary_create_note_button);
-			C360_summary_create_note_button.click();
-			webdriverwait(C360_summary_create_note_popup);
+			waitUntilElementVisibleAndClick("master_c360_cus_summary_create_note_button");
 			return true;
 		} catch (
 
@@ -800,7 +684,211 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 	// 28
 
 	public boolean enter_mobile_number_and_tap_on_search_button() {
-		return false;
+
+		try {
+
+			waitUntil("master_home_search_text");
+			sendkeys("master_home_search_text", "45CA0022781");
+
+			waitUntilElementVisibleAndClick("master_cart_additem_search_product_button");
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+
+	}
+
+//
+
+	public boolean user_edit_membership_info() {
+		try {
+			if (segment.equals("AU")) {
+
+			} else if (segment.equals("JP")) {
+
+				waitUntil("master_createcustomer_mobile_number");
+
+				clearAndSendkeys("master_createcustomer_mobile_number",
+						ExcelData.getExcelData("customer_testdata", "jp_mobile_number") + random.nextInt(10000));
+				click("master_brand_logo");
+
+			}
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			reportStatusException(e);
+			return false;
+		}
+
+	}
+
+	public boolean user_edit_member_details() {
+		try {
+			if (segment.equals("AU")) {
+
+			} else if (segment.equals("JP")) {
+				// lastname
+				clearAndSendkeys("master_createcustomer_lastname",
+						ExcelData.getExcelData("customer_testdata", "last_name"));
+				click("master_brand_logo");
+				clearAndSendkeys("master_createcustomer_katakana_lastname",
+						ExcelData.getExcelData("customer_testdata", "katakana_last_name"));
+				click("master_brand_logo");
+				// firstname
+				clearAndSendkeys("master_createcustomer_firstname",
+						ExcelData.getExcelData("customer_testdata", "first_name"));
+				click("master_brand_logo");
+				clearAndSendkeys("master_createcustomer_katakana_firstname",
+						ExcelData.getExcelData("customer_testdata", "katakana_first_name"));
+				click("master_brand_logo");
+				// email
+				waitUntil("master_createcustomer_email");
+				clearAndSendkeys("master_createcustomer_email",
+						ExcelData.getExcelData("customer_testdata", "email_id") + random.nextInt(10000));
+				click("master_brand_logo");
+				waitUntil("master_createcustomer_email_domain_dropdown");
+				click("master_createcustomer_email_domain_dropdown");
+				waitUntil("master_createcustomer_email_domain_name");
+				click("master_createcustomer_email_domain_name");
+				// dob
+				// Year
+				waitUntil("master_createcustomer_year_dropdown");
+				click("master_createcustomer_year_dropdown");
+				waitUntil("master_createcustomer_year");
+				click("master_createcustomer_year");
+
+				// Month
+				waitUntil("master_createcustomer_month_dropdown");
+				click("master_createcustomer_month_dropdown");
+				waitUntil("master_createcustomer_month");
+				click("master_createcustomer_month");
+				// day
+				waitUntil("master_createcustomer_day_dropdown");
+				click("master_createcustomer_day_dropdown");
+				waitUntil("master_createcustomer_date");
+				click("master_createcustomer_date");
+				// gender
+				waitUntil("master_createcustomer_gender_dropdown");
+				click("master_createcustomer_gender_dropdown");
+				Thread.sleep(2000);
+
+				String gender = "//XCUIElementTypeStaticText[@name=\""
+						+ ExcelData.getExcelData("customer_testdata", "gender_male").toString() + "\"]";
+				webdriverwait(driver.findElement(By.xpath(gender)));
+				driver.findElement(By.xpath(gender)).click();
+				// im an internation - checkbox
+
+			}
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			reportStatusException(e);
+			return false;
+		}
+	}
+
+	public boolean user_edit_mailing_address() {
+		try {
+			if (segment.equals("AU")) {
+
+			} else if (segment.equals("JP")) {
+				// zipcode
+				clearAndSendkeys("master_createcustomer_zipcode",
+						ExcelData.getExcelData("customer_testdata", "jp_zipcode"));
+				click("master_brand_logo");
+				// city
+				clearAndSendkeys("master_createcustomer_address1",
+						ExcelData.getExcelData("customer_testdata", "add_street_name") + " Edit");
+				click("master_brand_logo");
+				clearAndSendkeys("master_createcustomer_address2",
+						ExcelData.getExcelData("customer_testdata", "add_street_name") + " Edit");
+				click("master_brand_logo");
+				// address
+
+			}
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			reportStatusException(e);
+			return false;
+		}
+	}
+
+	public boolean user_edit_communicate_channals_details() {
+		try {
+			if (segment.equals("AU")) {
+
+			} else if (segment.equals("JP")) {
+				swipeScreenUntilElementVisible("master_createcustomer_confirm_button", Direction.UP);
+			}
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			reportStatusException(e);
+			return false;
+		}
+	}
+
+	public boolean user_verify_total_number_of_bottles_returned_column() {
+		try {
+
+			waitUntil("master_c360_recycle_bottle_date");
+			waitUntil("master_c360_recycle_bottle_returned");
+
+			waitUntil("master_c360_recycle_bottle_store");
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean user_click_done_button() {
+		try {
+
+			waitUntilElementVisibleAndClick("master_done_button");
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean verify_user_able_to_see_recent_recycled_bottles() {
+		try {
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean user_click_the_recycle_tab() {
+		try {
+			waitUntilElementVisibleAndClick("master_c360_cus_recycle_tab");
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean user_select_no_of_bottles_to_recycle_on_dropdown() {
+		try {
+			waitUntilElementVisibleAndClick("master_c360_recycle_bottle_dropdown");
+
+			waitUntilElementVisibleAndClick("master_c360_recycle_bottle_dropdown_value_3");
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 
 }

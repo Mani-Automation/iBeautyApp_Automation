@@ -229,7 +229,6 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 	public boolean enterBaCredentials() throws InterruptedException, IOException {
 		try {
-
 			waitUntil("master_ba_username_test_field");
 			click("master_ba_username_test_field");
 			clear("master_ba_username_test_field");
@@ -245,7 +244,6 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
 			return false;
 
 		}
@@ -255,11 +253,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 	public boolean clickLoginBtnInBaPage() throws InterruptedException, IOException {
 
 		try {
-
-			waitUntilElementVisibleAndClick("master_ba_dashboard_calender_addnew_button");
-
-			click("master_login_button");
-			reportStatusPASS("User clicked BA login button successfully");
+			waitUntilElementVisibleAndClick("master_login_button");
 
 			return true;
 		} catch (Exception e) {
@@ -345,6 +339,8 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 	public boolean clickResetPassword() throws InterruptedException, IOException {
 
 		try {
+			hideKeyboard();
+
 			waitUntil("master_reset_button");
 			click("master_reset_button");
 			waitUntil("master_reset_popup_text");
@@ -365,15 +361,14 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			waitUntil("master_store_manager_id");
 			click("master_store_manager_id");
 			clear("master_store_manager_id");
-			sendkeys("master_store_manager_id", ExcelData.getExcelData("store_manager_credentials", "valid_username"));
+			sendkeys("master_store_manager_id", ExcelData.getExcelData("ba_credentials", "valid_username"));
 			reportStatusPASS("User entered store manager username ");
 
 			click("master_ba_login_page");
 
 			click("master_store_password_test_field");
 			clear("master_store_password_test_field");
-			sendkeys("master_store_password_test_field",
-					ExcelData.getExcelData("store_manager_credentials", "valid_password"));
+			sendkeys("master_store_password_test_field", ExcelData.getExcelData("ba_credentials", "valid_password"));
 
 			reportStatusPASS("User entered store manager password ");
 
@@ -498,7 +493,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			waitUntil("master_home_socialbutton2");
 			waitUntil("master_home_socialbutton3");
 			waitUntil("master_home_brandlogo");
-			waitUntil("master_home_barcode");
+			waitUntil("master_home_membar_barcode");
 			waitUntil("master_home_staff_button");
 			waitUntil("master_home_location_button");
 			waitUntil("master_home_lan_button");

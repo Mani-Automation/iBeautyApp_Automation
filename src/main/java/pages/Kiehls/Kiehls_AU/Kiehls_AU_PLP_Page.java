@@ -296,38 +296,23 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 	public boolean verify_search_product_with_price() throws InterruptedException, IOException {
 
-		waitUntil("master_plp_min_price_text_field");
+		waitUntil("master_plp_search_product_text");
 
-		waitUntilElementVisibleAndClick("master_plp_sort_button");
+		sendkeys("master_plp_search_product_text", "SP EYE GEL 15ML");
 
-		waitUntil("master_plp_first_product_price_label");
+		waitUntilElementVisibleAndClick("master_plp_first_product");
 
-		String before_do = driver.findElement(By.xpath(locator.getData("master_plp_first_product_price_label")))
-				.getText();
+		waitUntil("master_pdp_product_name");
 
-		click("master_plp_min_price_text_field");
+		String productname = driver.findElement(By.xpath(locator.getData("master_pdp_product_name"))).getText();
 
-		waitUntilElementVisibleAndClick("master_number_3_button");
-		click("master_number_0_button");
-		click("master_number_0_button");
-		click("master_number_0_button");
-		click("master_ok_button");
-
-		Thread.sleep(2000);
-
-		waitUntilElementVisibleAndClick("master_plp_max_price_text_field");
-		waitUntilElementVisibleAndClick("master_number_0_button");
-		click("master_ok_button");
-
-		if (!driver.findElement(By.xpath(locator.getData("master_plp_first_product_price_label"))).getText()
-				.equals(before_do)) {
-
+		if (productname.equals("SP EYE GEL 15ML")) {
 			return true;
-
 		} else {
-			System.out.println("Failed to search product with Min and Max price!");
+			System.out.println("PLP Search Product - Product not able to search!");
 			return false;
 		}
+		//
 
 	}
 
