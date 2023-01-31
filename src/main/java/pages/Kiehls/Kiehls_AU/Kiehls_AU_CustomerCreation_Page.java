@@ -68,6 +68,8 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 
 	public boolean user_add_membership_info() {
 		try {
+			segment = ConfigReader.getData("app_segment");
+
 			if (segment.equals("AU")) {
 
 			} else if (segment.equals("JP")) {
@@ -212,6 +214,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 
 	public boolean user_click_confirm_button() {
 		try {
+			segment = ConfigReader.getData("app_segment");
 
 			switch (ConfigReader.getData("appEnv")) {
 			case "UAT": {
@@ -245,11 +248,12 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 		try {
 			switch (ConfigReader.getData("appEnv")) {
 			case "UAT": {
-				swipeScreenUntilElementVisible("master_createcustomer_memberid", Direction.DOWN);
-				//waitUntil("master_createcustomer_mandatory_error_memberid");
-				//waitUntil("master_createcustomer_mandatory_error_phonenumber");
-				//waitUntil("master_createcustomer_mandatory_error_lastname");
-				//waitUntil("master_createcustomer_mandatory_error_firstname");
+				swipeScreenUntilElementVisible("master_createcustomer_mandatory_error_lastname", Direction.DOWN);
+
+				// waitUntil("master_createcustomer_mandatory_error_memberid");
+				// waitUntil("master_createcustomer_mandatory_error_phonenumber");
+				waitUntil("master_createcustomer_mandatory_error_lastname");
+				waitUntil("master_createcustomer_mandatory_error_firstname");
 
 				return true;
 			}
@@ -265,6 +269,21 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			}
 
 		} catch (Exception e) {
+			e.printStackTrace();
+			reportStatusException(e);
+			return false;
+		}
+	}
+
+	public boolean user_verify_customer_threesixty_screen_should_be_displayed() {
+		try {
+
+			waitUntil("master_c360_cus_name_label");
+
+			return true;
+		} catch (
+
+		Exception e) {
 			e.printStackTrace();
 			reportStatusException(e);
 			return false;

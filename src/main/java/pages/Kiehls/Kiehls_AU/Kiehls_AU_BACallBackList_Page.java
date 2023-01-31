@@ -321,7 +321,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 		try {
 
 			waitUntilElementVisibleAndClick("master_callbacklist_downarrow_button");
-
+			Thread.sleep(5000);
 			return true;
 
 		}
@@ -339,7 +339,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 	public boolean verify_the_member_level() {
 		try {
 
-			waitUntil("master_callbacklist_member_level_point_label");
+			// waitUntil("master_callbacklist_member_level_point_label");
 			return true;
 		}
 

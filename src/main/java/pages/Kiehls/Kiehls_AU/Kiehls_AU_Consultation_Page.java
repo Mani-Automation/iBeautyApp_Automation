@@ -25,7 +25,7 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 	ConfigReader config = new ConfigReader();
 	LocatorManager locator = new LocatorManager();
-	static boolean consultationPageSkipMode;
+	static boolean consultationPageSkipMode = true;
 
 	public Kiehls_AU_Consultation_Page(AppiumDriver driver) {
 
@@ -37,6 +37,7 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 	public boolean user_enter_text_look_and_feel_of_your_skin_on_text_field() {
 		try {
+
 			waitUntil("master_survey_text_view_1");
 			sendkeys("master_survey_text_view_1", ExcelData.getExcelData("customer_testdata", "sample_text"));
 			waitUntil("master_survey_form_page");
@@ -53,7 +54,7 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 	public boolean user_click_start_consultation_button() {
 		try {
-			
+
 			waitUntilElementVisibleAndClick("master_start_consultation_button");
 
 			return true;
@@ -127,8 +128,7 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 	public boolean user_click_servey_button_on_the_consultation_page() {
 		try {
-			waitUntil("master_survey_button");
-			click("master_survey_button");
+			waitUntilElementVisibleAndClick("master_survey_button");
 
 			return true;
 
@@ -140,7 +140,8 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 	public boolean user_verify_the_survey_form_page() {
 		try {
-			waitUntil("master_survey_form_page");
+			waitUntil("master_clear_all_button");
+
 			return true;
 
 		} catch (Exception e) {
@@ -206,6 +207,7 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 	public boolean user_get_current_status_of_no_fo_consultation_and_date() {
 		try {
+
 			waitUntil("master_consultation_count_status_text");
 			consultation_count_status_value = gettext("master_consultation_count_status_text");
 			System.out.println(consultation_count_status_value + " 1");
@@ -264,19 +266,9 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 				return true;
 
 			} else if (con.equals("SkinCare")) {
-				driver.findElement(By.xpath(locator)).click();
 
-				Thread.sleep(3000);
-
-				if (webElement("master_save_button").isDisplayed()) {
-					consultationPageSkipMode = false;
-					return true;
-
-				} else {
-					consultationPageSkipMode = true;
-					return true;
-
-				}
+				waitUntilElementVisibleAndClick("master_consultation_skincare_button");
+				return true;
 
 			} else {
 				return false;
@@ -340,52 +332,43 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 					return true;
 
 				} else if (consultationPageSkipMode == true) {
+
+					click("master_skip_button");
+					click("master_skip_button");
 					click("master_skip_button");
 
-					Thread.sleep(1000);
-					click("master_skip_button");
-
-					Thread.sleep(1000);
-					click("master_skip_button");
-
-					waitUntil("master_consultation_skincare_combination1");
-					click("master_consultation_skincare_combination1");
+					waitUntil("master_tap_button_1");
+					click("master_tap_button_1");
 
 					waitUntil("master_next_button");
 					click("master_next_button");
 
-					Thread.sleep(1000);
 					click("master_skip_button");
 
-					waitUntil("master_consultation_skincare_toner");
-					click("master_consultation_skincare_toner");
-					click("master_consultation_skincare_eye_cream");
-					click("master_consultation_skincare_sunscreen");
+					waitUntil("master_tap_button_1");
+					click("master_tap_button_1");
+					click("master_tap_button_2");
+					click("master_tap_button_3");
 
 					click("master_next_button");
 
-					waitUntil("master_consultation_skincare_peer");
-					click("master_consultation_skincare_peer");
+					waitUntil("master_lbl_title_1");
+					click("master_lbl_title_1");
 
 					click("master_next_button");
 
-					Thread.sleep(1000);
 					click("master_skip_button");
-					Thread.sleep(1000);
 					click("master_skip_button");
-					Thread.sleep(1000);
 					click("master_skip_button");
-					Thread.sleep(1000);
 					click("master_skip_button");
-					Thread.sleep(1000);
 					click("master_skip_button");
 
-					waitUntil("master_consultation_skincare_tzone");
-					click("master_consultation_skincare_tzone");
-					click("master_consultation_skincare_cheeks");
+					waitUntil("master_tap_button_1");
+					click("master_tap_button_1");
+					click("master_tap_button_2");
 
-					waitUntil("master_submit_button");
-					click("master_submit_button");
+					waitUntil("master_next_button");
+					click("master_next_button");
 
 					return true;
 				} else {
@@ -412,28 +395,80 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 	public boolean verify_mandatory_error_messages_in_the_form() {
 		try {
-			click("master_save_button");
-			waitUntil("master_consultation_skincare_mandatory_error1");
-			click("master_consultation_skincare_combination1");
 
-			click("master_save_button");
-			waitUntil("master_consultation_skincare_mandatory_error2");
-			click("master_consultation_skincare_toner");
-			click("master_consultation_skincare_eye_cream");
-			click("master_consultation_skincare_sunscreen");
+			if (consultationPageSkipMode == true) {
+				click("master_next_button");
 
-			click("master_save_button");
-			waitUntil("master_consultation_skincare_mandatory_error3");
-			click("master_consultation_skincare_peer");
+				click("master_next_button");
 
-			click("master_save_button");
-			waitUntil("master_consultation_skincare_mandatory_error4");
-			click("master_consultation_skincare_tzone");
-			click("master_consultation_skincare_cheeks");
+				click("master_next_button");
 
-			click("master_save_button");
+				click("master_next_button");
 
-			return true;
+				waitUntil("master_error_label");
+				click("master_tap_button_1");
+
+				click("master_next_button");
+
+				click("master_next_button");
+
+				click("master_next_button");
+
+				waitUntil("master_error_label");
+				click("master_tap_button_1");
+				click("master_tap_button_2");
+				click("master_tap_button_3");
+
+				click("master_next_button");
+
+				waitUntil("master_error_label");
+
+				click("master_lbl_title_1");
+				click("master_next_button");
+
+				click("master_next_button");
+
+				click("master_next_button");
+
+				click("master_next_button");
+
+				click("master_next_button");
+
+				click("master_next_button");
+
+				click("master_next_button");
+				waitUntil("master_error_label");
+				click("master_tap_button_1");
+				click("master_tap_button_2");
+				click("master_next_button");
+				return true;
+
+			} else {
+
+				click("master_next_button");
+				waitUntil("master_consultation_skincare_mandatory_error1");
+				click("master_consultation_skincare_combination1");
+
+				click("master_save_button");
+				waitUntil("master_consultation_skincare_mandatory_error2");
+				click("master_consultation_skincare_toner");
+				click("master_consultation_skincare_eye_cream");
+				click("master_consultation_skincare_sunscreen");
+
+				click("master_save_button");
+				waitUntil("master_consultation_skincare_mandatory_error3");
+				click("master_consultation_skincare_peer");
+
+				click("master_save_button");
+				waitUntil("master_consultation_skincare_mandatory_error4");
+				click("master_consultation_skincare_tzone");
+				click("master_consultation_skincare_cheeks");
+
+				click("master_save_button");
+
+				return true;
+
+			}
 
 		} catch (Exception e) {
 			return false;
@@ -458,10 +493,11 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 	public boolean user_click_build_routine_button_and_verify_the_routine_page() {
 		try {
-
+			
+			swipeScreenUntilElementVisible("master_consultation_broutine_button", Direction.UP);
 			waitUntil("master_consultation_broutine_button");
 			click("master_consultation_broutine_button");
-			waitUntil("master_consultation_broutine_profile_title");
+			waitUntil("master_consultation_save_button");
 
 			return true;
 		} catch (Exception e) {
@@ -545,7 +581,7 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 	public boolean user_select_the_daily_routine_details() {
 		try {
 
-			waitUntil("master_consultation_broutine_form_title");
+			waitUntil("master_consultation_build_routine_product_plus_button");
 
 			// 1
 			waitUntil("master_consultation_broutine_add_product_button1");
@@ -594,6 +630,18 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
+			return false;
+
+		}
+	}
+
+	public boolean user_click_servey_button_on_the_consultation_list_page() {
+		try {
+			waitUntilElementVisibleAndClick("master_consultation_list_survey_button");
+
+			return true;
+
+		} catch (Exception e) {
 			return false;
 
 		}
