@@ -14,7 +14,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.driverfactory.DriverManager;
 import com.reusableMethods.CommonActions;
 import com.utilities.ConfigReader;
-import com.utilities.ExtentReport;
 import com.utilities.LocatorManager;
 import com.utilities.ExcelData;
 import com.utilities.Screenshots;
@@ -81,8 +80,6 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 				clear("master_ba_password_test_field");
 				sendkeys("master_ba_password_test_field", ExcelData.getExcelData("ba_credentials", "valid_password"));
 
-				reportStatusPASS("User enters the BA password");
-
 				// ba login button
 				click("master_login_button");
 				return true;
@@ -105,7 +102,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 		}
 
@@ -145,7 +142,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 		}
 
@@ -160,12 +157,11 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			waitUntil("master_login_select_country_list");
 			String required_country = "//XCUIElementTypeStaticText[@name=\"" + getCountryName() + "\"]";
 			driver.findElement(By.xpath(required_country)).click();
-			reportStatusPASS(getCountryName() + " country was selected successfully");
 			return true;
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 		}
 
@@ -177,12 +173,11 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 			waitUntil("master_proceed_button");
 			click("master_proceed_button");
-			reportStatusPASS("User clicked proceed button successfully");
 			return true;
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 		}
 
@@ -198,17 +193,15 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			click("master_store_username_test_field");
 			clear("master_store_username_test_field");
 			sendkeys("master_store_username_test_field", ExcelData.getExcelData("store_credentials", "valid_username"));
-			reportStatusPASS("User enters the Store username");
 
 			click("master_store_password_test_field");
 			clear("master_store_password_test_field");
 			sendkeys("master_store_password_test_field", ExcelData.getExcelData("store_credentials", "valid_password"));
-			reportStatusPASS("User enters the Store password");
 			return true;
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 		}
 	}
@@ -217,11 +210,10 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 		try {
 			click("master_login_button");
-			reportStatusPASS("User clicked store login button successfully");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 		}
 
@@ -234,12 +226,9 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			clear("master_ba_username_test_field");
 			sendkeys("master_ba_username_test_field", ExcelData.getExcelData("ba_credentials", "valid_username"));
 			click("master_ba_login_page");
-			reportStatusPASS("User enters the BA username");
 			click("master_ba_password_test_field");
 			clear("master_ba_password_test_field");
 			sendkeys("master_ba_password_test_field", ExcelData.getExcelData("ba_credentials", "valid_password"));
-
-			reportStatusPASS("User enters the BA password");
 
 			return true;
 		} catch (Exception e) {
@@ -258,7 +247,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -270,14 +259,13 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			waitUntil("master_home_search_button");
 
 			if (webElement("master_home_search_button").isDisplayed()) {
-				reportStatusPASS("Home page was displyed successfully");
 				flag = true;
 			}
 
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			Assert.assertTrue(false);
 
 		}
@@ -293,18 +281,15 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			sendkeys("master_store_username_test_field",
 					ExcelData.getExcelData("store_credentials", "invalid_username"));
 
-			reportStatusPASS("User enters invalid Store username");
-
 			click("master_store_password_test_field");
 			clear("master_store_password_test_field");
 			sendkeys("master_store_password_test_field",
 					ExcelData.getExcelData("store_credentials", "invalid_password"));
-			reportStatusPASS("User entered Invalid store password ");
 
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -318,18 +303,16 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			click("master_ba_username_test_field");
 			clear("master_ba_username_test_field");
 			sendkeys("master_ba_username_test_field", ExcelData.getExcelData("ba_credentials", "invalid_username"));
-			reportStatusPASS("User entered Invalid BA username ");
 			click("master_ba_login_page");
 
 			click("master_ba_password_test_field");
 			clear("master_ba_password_test_field");
 			sendkeys("master_ba_password_test_field", ExcelData.getExcelData("ba_credentials", "invalid_password"));
-			reportStatusPASS("User entered Invalid BA password ");
 
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -344,12 +327,11 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			waitUntil("master_reset_button");
 			click("master_reset_button");
 			waitUntil("master_reset_popup_text");
-			reportStatusPASS("User clicked reset button successfully ");
 
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -362,7 +344,6 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			click("master_store_manager_id");
 			clear("master_store_manager_id");
 			sendkeys("master_store_manager_id", ExcelData.getExcelData("ba_credentials", "valid_username"));
-			reportStatusPASS("User entered store manager username ");
 
 			click("master_ba_login_page");
 
@@ -370,12 +351,10 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			clear("master_store_password_test_field");
 			sendkeys("master_store_password_test_field", ExcelData.getExcelData("ba_credentials", "valid_password"));
 
-			reportStatusPASS("User entered store manager password ");
-
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -388,12 +367,10 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			waitUntil("master_close_button");
 			click("master_close_button");
 
-			reportStatusPASS("User clicked close button in the popup ");
-
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -406,14 +383,12 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			waitUntil("master_next_button");
 			click("master_next_button");
 
-			reportStatusPASS("User clicked next button in the popup ");
-
 			return true;
 		} catch (
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -428,21 +403,17 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			clear("master_new_password_popup");
 			sendkeys("master_new_password_popup", ExcelData.getExcelData("store_credentials", "new_password"));
 
-			reportStatusPASS("User entered new password ");
-
 			click("master_ba_login_page");
 			click("master_new_confrim_password_popup");
 			clear("master_new_confrim_password_popup");
 			sendkeys("master_new_confrim_password_popup", ExcelData.getExcelData("store_credentials", "new_password"));
-
-			reportStatusPASS("User entered new confrim password ");
 
 			return true;
 		} catch (
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -455,15 +426,13 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			waitUntil("master_next_button");
 			click("master_next_button");
 
-			reportStatusPASS("User clicked submit button successfully ");
-
 			waitFor(3000);
 			return true;
 		} catch (
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -480,7 +449,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -502,7 +471,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -520,7 +489,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -539,7 +508,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -559,7 +528,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -581,7 +550,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -602,7 +571,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}

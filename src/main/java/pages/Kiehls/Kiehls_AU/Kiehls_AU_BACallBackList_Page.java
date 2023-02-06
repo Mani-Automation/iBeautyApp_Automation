@@ -82,7 +82,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -133,7 +133,6 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 		} catch (Exception e) {
 			e.printStackTrace();
 
-			reportStatusException(e);
 			return false;
 
 		}
@@ -174,7 +173,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 		catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -191,7 +190,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 		catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -208,7 +207,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 		catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -225,7 +224,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 		catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -242,7 +241,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 		catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -259,7 +258,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 		catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -276,7 +275,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 		catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -295,7 +294,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -330,7 +329,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -347,7 +346,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -363,7 +362,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -372,7 +371,6 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 	public boolean verify_the_points_expiring_in_1_month() {
 		try {
 			Assert.assertTrue(ba_home_customer_callback_points_expiring.isDisplayed());
-			reportStatusPASS("User able to see customer expiring details");
 			return true;
 		}
 
@@ -380,7 +378,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -389,7 +387,6 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 	public boolean verify_the_r12_annual_spent() {
 		try {
 			Assert.assertTrue(ba_home_customer_callback_r12_annual_spent.isDisplayed());
-			reportStatusPASS("User able to see customer Anual spent");
 			return true;
 		}
 
@@ -397,7 +394,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}

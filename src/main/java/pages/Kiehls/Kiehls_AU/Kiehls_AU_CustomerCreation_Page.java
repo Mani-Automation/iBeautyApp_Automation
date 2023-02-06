@@ -9,7 +9,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.reusableMethods.CommonActions;
-import com.utilities.ExtentReport;
 import com.utilities.ConfigReader;
 import com.utilities.ExcelData;
 
@@ -41,7 +40,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -60,7 +59,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -84,7 +83,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -148,7 +147,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 	}
@@ -174,7 +173,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 	}
@@ -189,7 +188,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 	}
@@ -207,7 +206,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 	}
@@ -238,7 +237,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 	}
@@ -270,7 +269,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 	}
@@ -285,7 +284,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 	}

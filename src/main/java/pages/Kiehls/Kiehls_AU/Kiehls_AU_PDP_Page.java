@@ -7,7 +7,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.reusableMethods.CommonActions;
-import com.utilities.ExtentReport;
 import com.utilities.LocatorManager;
 
 import io.appium.java_client.AppiumDriver;
@@ -36,7 +35,7 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -64,7 +63,7 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 
 		}
@@ -110,7 +109,7 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 
 		}
@@ -133,7 +132,7 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 
 		}
@@ -152,7 +151,7 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 
 		}
@@ -174,7 +173,7 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 
 		}

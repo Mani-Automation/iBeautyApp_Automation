@@ -12,7 +12,6 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.reusableMethods.CommonActions;
-import com.utilities.ExtentReport;
 import com.utilities.LocatorManager;
 
 import io.appium.java_client.AppiumDriver;
@@ -169,7 +168,7 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -181,7 +180,7 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 		}
 
@@ -200,43 +199,36 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 		} else if (product.equalsIgnoreCase("Body")) {
 			right_navigation_product_body.click();
-			reportStatusPASS("User clicked Body category from right navigation");
-			reportStatusPASS("User clicked " + product + " category from right navigation");
+
 			return true;
 
 		} else if (product.equalsIgnoreCase("Men")) {
 			right_navigation_product_men.click();
-			reportStatusPASS("User clicked " + product + " category from right navigation");
 
 			return true;
 
 		} else if (product.equalsIgnoreCase("Hair")) {
 			right_navigation_product_hair.click();
-			reportStatusPASS("User clicked " + product + " category from right navigation");
 
 			return true;
 
 		} else if (product.equalsIgnoreCase("Pet")) {
 			right_navigation_product_pet.click();
-			reportStatusPASS("User clicked " + product + " category from right navigation");
 
 			return true;
 
 		} else if (product.equalsIgnoreCase("Others")) {
 			right_navigation_product_others.click();
-			reportStatusPASS("User clicked " + product + " category from right navigation");
 
 			return true;
 
 		} else if (product.equalsIgnoreCase("Gift")) {
 			right_navigation_product_gift.click();
-			reportStatusPASS("User clicked " + product + " category from right navigation");
 
 			return true;
 
 		} else {
 			System.out.println("Please check category name!. ie : Skincare/Body/Men/Hair/Pet/Others/Gift");
-			reportStatusFAIL("Please check category name!. ie : Skincare/Body/Men/Hair/Pet/Others/Gift");
 
 			return false;
 		}
@@ -250,11 +242,9 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 		if ((plp_add_to_cart_button_1st_position.isDisplayed() || plp_add_to_cart_button_1st_position_2.isDisplayed())
 				&& (plp_add_to_cart_button_12th_position.isDisplayed()
 						|| plp_add_to_cart_button_12th_position_2.isDisplayed())) {
-			reportStatusPASS("User able to see Small grid view on the PLP");
 
 			return true;
 		} else {
-			reportStatusFAIL("false - Small grid");
 			return false;
 		}
 
@@ -266,11 +256,9 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 		if ((plp_add_to_cart_button_1st_position.isDisplayed() || plp_add_to_cart_button_1st_position_2.isDisplayed())
 				&& (plp_add_to_cart_button_10th_position.isDisplayed()
 						|| plp_add_to_cart_button_10th_position_2.isDisplayed())) {
-			reportStatusPASS("User able to see List view on the PLP");
 
 			return true;
 		} else {
-			reportStatusFAIL("false - List view");
 
 			return false;
 		}
@@ -283,11 +271,9 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 		if ((plp_add_to_cart_button_1st_position.isDisplayed() || plp_add_to_cart_button_1st_position_2.isDisplayed())
 				&& (plp_add_to_cart_button_10th_position.isDisplayed()
 						|| plp_add_to_cart_button_10th_position_2.isDisplayed())) {
-			reportStatusPASS("User able to see Grid view on the PLP");
 
 			return true;
 		} else {
-			reportStatusFAIL("false - Grid");
 
 			return false;
 		}
@@ -341,7 +327,7 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}

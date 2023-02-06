@@ -61,7 +61,7 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 	}
@@ -86,7 +86,7 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 	}
@@ -111,7 +111,7 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 	}
@@ -137,7 +137,7 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 	}
@@ -151,12 +151,11 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 		try {
 			webdriverwait(dashboard_calender_add_new_button);
 			dashboard_calender_add_new_button.click();
-			reportStatusPASS("User clicked Add New button");
 
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 	}
@@ -169,7 +168,7 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 	}

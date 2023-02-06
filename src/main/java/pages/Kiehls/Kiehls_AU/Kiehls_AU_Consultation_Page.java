@@ -12,7 +12,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.reusableMethods.CommonActions;
 import com.utilities.ConfigReader;
-import com.utilities.ExtentReport;
 import com.utilities.LocatorManager;
 import com.utilities.ExcelData;
 import com.utilities.Screenshots;
@@ -493,7 +492,7 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 	public boolean user_click_build_routine_button_and_verify_the_routine_page() {
 		try {
-			
+
 			swipeScreenUntilElementVisible("master_consultation_broutine_button", Direction.UP);
 			waitUntil("master_consultation_broutine_button");
 			click("master_consultation_broutine_button");
@@ -508,21 +507,16 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 	public boolean verify_user_selected_products_and_click_product_types_and_notes() {
 		try {
-			waitUntil("master_next_button");
+			waitUntil("master_consultation_build_routine_next_button");
 
 			waitUntil("master_consultation_broutine_newlabal_product1");
-			waitUntil("master_consultation_broutine_curlabal_product3");
 
-			click("master_consultation_broutine_markallcurrent_button");
-			waitUntil("master_consultation_broutine_1curlabal_product1");
+			waitUntilElementVisibleAndClick("master_consultation_broutine_newlabal_product1");
 
-			click("master_consultation_broutine_day_button");
-			sendkeys("master_consultation_broutine_addnote1", "SampleNote");
+			ClickUsingXandYCords(541, 340);
+			ClickUsingXandYCords(586, 453);
 
-			click("master_consultation_broutine_night_button");
-			click("master_consultation_broutine_dayandnight_button");
-
-			click("master_next_button");
+			waitUntilElementVisibleAndClick("master_consultation_build_routine_next_button");
 
 			return true;
 		} catch (Exception e) {
@@ -533,9 +527,7 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 	public boolean verify_the_skincare_solution_page_and_click_summary() {
 		try {
-			waitUntil("master_consultation_broutine_summary_button");
-			click("master_consultation_broutine_summary_button");
-
+			waitUntilElementVisibleAndClick("master_consultation_broutine_summary_button");
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -558,7 +550,24 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 	public boolean user_validate_added_product_on_the_cart() {
 		try {
 
-			return true;
+			if (driver.findElement(By.xpath(locator.getData("master_checkout_product_count_text1"))).getText()
+					.equals("1")
+					&& driver.findElement(By.xpath(locator.getData("master_checkout_product_count_text2"))).getText()
+							.equals("1")
+					&& driver.findElement(By.xpath(locator.getData("master_checkout_product_totalitem_text"))).getText()
+							.equals("2 items")) {
+
+				waitUntilElementVisibleAndClick("master_cart_product_sub_button1");
+				waitUntilElementVisibleAndClick("master_done_button");
+				Thread.sleep(3000);
+				waitUntilElementVisibleAndClick("master_cart_product_sub_button");
+				waitUntilElementVisibleAndClick("master_done_button");
+				return true;
+
+			} else {
+				return false;
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -569,7 +578,7 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 		try {
 
-			waitUntil("master_consultation_broutine_title");
+			waitUntil("master_add_consultation_button");
 
 			return true;
 		} catch (Exception e) {
@@ -586,30 +595,47 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 			// 1
 			waitUntil("master_consultation_broutine_add_product_button1");
 			click("master_consultation_broutine_add_product_button1");
+			Thread.sleep(3000);
+			// clicking first product
+			ClickUsingXandYCords(150, 410);
 
-			waitUntil("master_consultation_broutine_add_product11");
-			click("master_consultation_broutine_add_product11");
+			// clicking second product
+			ClickUsingXandYCords(350, 410);
+			Thread.sleep(2000);
+
+			// clicking second product
+			ClickUsingXandYCords(350, 410);
+
+			// waitUntil("master_consultation_broutine_add_product11");
+			// click("master_consultation_broutine_add_product11");
+
+			// waitUntil("master_consultation_broutine_add_product12");
+			// click("master_consultation_broutine_add_product12");
+
+			// waitUntil("master_consultation_broutine_add_product12");
+			// click("master_consultation_broutine_add_product12");
 
 			// 2
-			waitUntil("master_consultation_broutine_add_product_button2");
-			click("master_consultation_broutine_add_product_button2");
+			// waitUntil("master_consultation_broutine_add_product_button2");
+			// click("master_consultation_broutine_add_product_button2");
 
-			waitUntil("master_consultation_broutine_add_product21");
-			click("master_consultation_broutine_add_product21");
+			// waitUntil("master_consultation_broutine_add_product21");
+			// click("master_consultation_broutine_add_product21");
 
 			// 3
-			swipeScreenUntilElementVisible("master_consultation_broutine_add_product_button3", Direction.UP);
-			waitUntil("master_consultation_broutine_add_product_button3");
-			click("master_consultation_broutine_add_product_button3");
+			// swipeScreenUntilElementVisible("master_consultation_broutine_add_product_button3",
+			// Direction.UP);
+			// waitUntil("master_consultation_broutine_add_product_button3");
+			// click("master_consultation_broutine_add_product_button3");
 
-			waitUntil("master_consultation_broutine_add_product31");
-			click("master_consultation_broutine_add_product31");
-			Thread.sleep(300);
-			click("master_consultation_broutine_add_product31");
+			// waitUntil("master_consultation_broutine_add_product31");
+			// click("master_consultation_broutine_add_product31");
+			// Thread.sleep(300);
+			// click("master_consultation_broutine_add_product31");
 
 			// save
-			waitUntil("master_save_button");
-			click("master_save_button");
+			waitUntil("master_consultation_save_button");
+			click("master_consultation_save_button");
 
 			return true;
 		} catch (Exception e) {
@@ -624,7 +650,6 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 			waitUntil("master_checkout_product_count_text1");
 			waitUntil("master_checkout_product_count_text2");
-			waitUntil("master_checkout_product_count_text3");
 			waitUntil("master_checkout_product_totalitem_text");
 
 			return true;
@@ -639,6 +664,59 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 		try {
 			waitUntilElementVisibleAndClick("master_consultation_list_survey_button");
 
+			return true;
+
+		} catch (Exception e) {
+			return false;
+
+		}
+	}
+
+	public boolean user_click_add_or_edit_button_on_build_routine_page() {
+		try {
+
+			//
+			waitUntil("master_consultation_build_routine_next_button");
+
+			waitUntilElementVisibleAndClick("master_consultation_buildRoutine_edit_button");
+
+			return true;
+
+		} catch (Exception e) {
+			return false;
+
+		}
+	}
+
+	public boolean user_edit_product_on_build_routine_select_page() {
+		try {
+			waitUntil("master_consultation_build_routine_product_plus_button");
+
+			// 1
+			waitUntil("master_consultation_broutine_add_product_button1");
+			click("master_consultation_broutine_add_product_button1");
+
+			// clicking second product
+			ClickUsingXandYCords(350, 410);
+			Thread.sleep(2000);
+			// clicking second product
+			ClickUsingXandYCords(350, 410);
+			waitUntil("master_consultation_save_button");
+			click("master_consultation_save_button");
+
+			return true;
+
+		} catch (Exception e) {
+			return false;
+
+		}
+	}
+
+	public boolean user_validate_edited_product_on_summary_page() {
+		try {
+			waitUntil("master_consultation_build_routine_next_button");
+			waitUntil("master_consultation_broutine_newlabal_product1");
+			waitUntil("master_consultation_broutine_newlabal_product2");
 			return true;
 
 		} catch (Exception e) {

@@ -74,7 +74,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -90,7 +90,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -105,7 +105,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -119,7 +119,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -206,7 +206,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -220,7 +220,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -235,7 +235,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -256,7 +256,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -275,7 +275,6 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 						swipeDown();
 					} else if (calender_todo_created_event.isDisplayed()) {
 						calender_todo_created_event.click();
-						reportStatusPASS("User clicked created event on the timeline");
 
 						break;
 					}
@@ -295,7 +294,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -307,40 +306,33 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 
 			if (calender_todo_delete_event.isDisplayed()) {
 				calender_todo_delete_event.click();
-				reportStatusPASS("User clicked delete button");
 
 				webdriverwait(calender_todo_delete_confrim_popup);
 				calender_todo_delete_confrim_yes_button.click();
-				reportStatusPASS("User clicked yes button on the confirmation delete popup");
 
 			} else if (calender_promotion_delete_event.isDisplayed()) {
 				calender_promotion_delete_event.click();
-				reportStatusPASS("User clicked delete button");
 
 				webdriverwait(calender_promotion_delete_confrim_popup);
 				calender_promotion_delete_confrim_yes_button.click();
-				reportStatusPASS("User clicked yes button on the confirmation delete popup");
 
 			} else if (calender_service_booking_delete_event.isDisplayed()) {
 				calender_service_booking_delete_event.click();
-				reportStatusPASS("User clicked delete button");
 
 				webdriverwait(calender_service_booking_delete_confrim_popup);
 				calender_service_booking_delete_confrim_yes_button.click();
 
 			} else if (calender_event_reservation_delete_event.isDisplayed()) {
 				calender_event_reservation_delete_event.click();
-				reportStatusPASS("User clicked delete button");
 
 				webdriverwait(calender_event_reservation_delete_confrim_popup);
 				calender_event_reservation_delete_confrim_yes_button.click();
-				reportStatusPASS("User clicked yes button on the confirmation delete popup");
 
 			}
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -379,7 +371,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -396,7 +388,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -413,7 +405,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -430,7 +422,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -451,7 +443,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -479,7 +471,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -495,7 +487,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -508,7 +500,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -522,7 +514,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -543,7 +535,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -564,7 +556,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}

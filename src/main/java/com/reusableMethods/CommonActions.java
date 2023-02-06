@@ -37,7 +37,6 @@ import com.google.common.collect.ImmutableMap;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 import com.utilities.ConfigReader;
-import com.utilities.ExtentReport;
 import com.utilities.LocatorManager;
 import com.utilities.ExcelData;
 import com.utilities.Screenshots;
@@ -65,7 +64,6 @@ public class CommonActions {
 	static WebDriverWait browserWithElementWait = null;
 	static Date date = java.util.Calendar.getInstance().getTime();
 	public static WebDriverWait exwait = null;
-	public static ExtentReport report = new ExtentReport();
 	public static ExtentTest test;
 	LocatorManager loc = new LocatorManager();
 
@@ -660,46 +658,9 @@ public class CommonActions {
 		return ConfigReader.getData("app");
 	}
 
-	public void setExtentTest() {
-		test = report.getExtentTest();
-	}
+	public static void ClickUsingXandYCords(int x, int y) {
 
-	public void reportStatusPASS(String description) {
-		setExtentTest();
-		test.log(LogStatus.PASS, description);
-
-	}
-
-	public void reportStatusFAIL(String fail_description) {
-		driver = DriverManager.getDriver();
-
-		setExtentTest();
-		test.log(LogStatus.FAIL, fail_description + test.addScreenCapture(Screenshots.capture(driver)));
-
-	}
-
-	public void reportStatusSKIP(String description) {
-		driver = DriverManager.getDriver();
-
-		setExtentTest();
-		test.log(LogStatus.SKIP, description);
-
-	}
-
-	public void reportStatusException(Exception exception) {
-		driver = DriverManager.getDriver();
-
-		setExtentTest();
-		test.log(LogStatus.FAIL, exception + test.addScreenCapture(Screenshots.capture(driver)));
-
-	}
-
-	public void reportStatusPASSwithScreenshot(String description) {
-		driver = DriverManager.getDriver();
-
-		setExtentTest();
-		test.log(LogStatus.PASS, description + test.addScreenCapture(Screenshots.capture(driver)));
-
+		new TouchAction((PerformsTouchActions) DriverManager.getDriver()).tap(PointOption.point(x, y)).perform();
 	}
 
 	public void sample(String app, String segment) {

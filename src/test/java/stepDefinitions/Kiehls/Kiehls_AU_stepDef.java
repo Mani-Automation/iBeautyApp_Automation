@@ -1043,6 +1043,21 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(consultationPage.verify_the_cart_page());
 	}
 
+	@And("^User click add or edit button on build routine page$")
+	public void user_click_add_or_edit_button_on_build_routine_page() {
+		Assert.assertTrue(consultationPage.user_click_add_or_edit_button_on_build_routine_page());
+	}
+
+	@Then("^User edit product on build routine select page$")
+	public void user_edit_product_on_build_routine_select_page() {
+		Assert.assertTrue(consultationPage.user_edit_product_on_build_routine_select_page());
+	}
+
+	@And("^User validate edited product on summary page$")
+	public void user_validate_edited_product_on_summary_page() {
+		Assert.assertTrue(consultationPage.user_validate_edited_product_on_summary_page());
+	}
+
 	// home
 
 	@Then("^Verify menu bar items on the home page$")

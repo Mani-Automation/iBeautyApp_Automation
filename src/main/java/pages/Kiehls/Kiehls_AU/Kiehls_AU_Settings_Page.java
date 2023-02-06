@@ -1,17 +1,8 @@
 package pages.Kiehls.Kiehls_AU;
 
-import java.io.IOException;
-
-import org.apache.tools.ant.ExitStatusException;
-import org.junit.Assert;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import com.relevantcodes.extentreports.ExtentReports;
 import com.reusableMethods.CommonActions;
-import com.utilities.ExtentReport;
-import com.utilities.LocatorManager;
 
 import io.appium.java_client.AppiumDriver;
 
@@ -36,7 +27,7 @@ public class Kiehls_AU_Settings_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -54,7 +45,7 @@ public class Kiehls_AU_Settings_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -75,7 +66,7 @@ public class Kiehls_AU_Settings_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -93,7 +84,7 @@ public class Kiehls_AU_Settings_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -111,7 +102,7 @@ public class Kiehls_AU_Settings_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -129,7 +120,7 @@ public class Kiehls_AU_Settings_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -145,7 +136,7 @@ public class Kiehls_AU_Settings_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -162,7 +153,7 @@ public class Kiehls_AU_Settings_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -178,7 +169,7 @@ public class Kiehls_AU_Settings_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -194,7 +185,7 @@ public class Kiehls_AU_Settings_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -212,7 +203,7 @@ public class Kiehls_AU_Settings_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}
@@ -228,7 +219,7 @@ public class Kiehls_AU_Settings_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+
 			return false;
 
 		}

@@ -12,7 +12,6 @@ import com.driverfactory.DriverFactory;
 import com.driverfactory.DriverFactory.Target;
 import com.driverfactory.DriverManager;
 import com.utilities.ConfigReader;
-import com.utilities.ExtentReport;
 
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.After;
@@ -28,7 +27,6 @@ public class Hooks {
 	Scenario scenario;
 
 	String screenshotdir = System.getProperty("user.dir") + "/target/test-output/Screenshots/";
-	ExtentReport report = new ExtentReport();
 
 	@Before(order = 1)
 	public void launchBrowser(Scenario scenario) throws IOException {
@@ -43,8 +41,6 @@ public class Hooks {
 			driver = driverFactory.getDriver(Target.valueOf(target.toUpperCase()));
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			DriverManager.setDriver(driver);
-
-			report.startTest(driver, scenario.getName());
 
 		} catch (Exception e) {
 			e.printStackTrace();

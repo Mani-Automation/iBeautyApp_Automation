@@ -46,7 +46,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 	}
@@ -58,7 +58,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 	}
@@ -70,7 +70,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -83,7 +83,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -95,7 +95,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -107,7 +107,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -119,7 +119,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -131,7 +131,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -143,7 +143,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -155,7 +155,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -167,7 +167,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -179,7 +179,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -191,7 +191,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -203,7 +203,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -215,7 +215,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -227,7 +227,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -239,7 +239,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
@@ -251,7 +251,7 @@ public class Kiehls_AU_BATransactions_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			reportStatusException(e);
+			
 			return false;
 		}
 
