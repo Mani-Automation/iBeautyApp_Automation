@@ -563,6 +563,14 @@ public class CommonActions {
 	}
 
 	// MM
+	public void staticTextClick(String string) {
+
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		String str = "//XCUIElementTypeStaticText[@name='" + string + "']";
+		MobileElement element = (MobileElement) driver.findElementByXPath(str);
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(str))));
+		element.click();
+	}
 
 	public void webdriverwait(WebElement locator) {
 		driver = DriverManager.getDriver();
@@ -663,7 +671,8 @@ public class CommonActions {
 		new TouchAction((PerformsTouchActions) DriverManager.getDriver()).tap(PointOption.point(x, y)).perform();
 	}
 
-	public void sample(String app, String segment) {
+	public void sample(String app, String segment) throws IOException {
+		app = ConfigReader.getData("app").toString();
 
 		switch (app) {
 		case "Kiehls": {
@@ -686,6 +695,7 @@ public class CommonActions {
 		}
 		}
 		// # Segment name
+		segment = ConfigReader.getData("app_segment").toString();
 		switch (segment) {
 		case "AU": {
 		}
@@ -707,6 +717,15 @@ public class CommonActions {
 		}
 		case "TH": {
 		}
+		}
+
+		//
+		segment = ConfigReader.getData("app_segment").toString();
+
+		if (segment.equals("HK") || segment.equals("KR") || segment.equals("TW") || segment.equals("JP")) {
+
+		} else {
+
 		}
 
 		// switch (ConfigReader.getData("appEnv")) {

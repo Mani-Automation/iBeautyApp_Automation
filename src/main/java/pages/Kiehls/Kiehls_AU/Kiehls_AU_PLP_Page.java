@@ -12,6 +12,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.reusableMethods.CommonActions;
+import com.utilities.ConfigReader;
 import com.utilities.LocatorManager;
 
 import io.appium.java_client.AppiumDriver;
@@ -137,6 +138,10 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 		try {
 
+			if (getApplicationName().equals("Valentino")) {
+				product = "Makeup";
+			}
+
 			if (product.equalsIgnoreCase("Skincare")) {
 
 				waitUntil("master_skincare_button");
@@ -159,6 +164,11 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 				waitUntil("master_hair_button");
 				click("master_hair_button");
+				return true;
+
+			} else if (product.equalsIgnoreCase("Makeup")) {
+
+				waitUntilElementVisibleAndClick("master_home_product_category2");
 				return true;
 
 			} else {
@@ -190,10 +200,13 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 		waitUntilElementVisibleAndClick("master_home_products");
 
+		if (getApplicationName().equals("Valentino")) {
+			product = "Fragrance";
+		}
+
 		if (product.equalsIgnoreCase("Skincare")) {
 
-			waitUntil("master_right_nav_skincare_button");
-			click("master_right_nav_skincare_button");
+			waitUntilElementVisibleAndClick("master_right_nav_skincare_button");
 
 			return true;
 
@@ -226,6 +239,22 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 			right_navigation_product_gift.click();
 
 			return true;
+
+		} else if (product.equalsIgnoreCase("Fragrance")) {
+
+			waitUntilElementVisibleAndClick("master_right_nav_fragrance_button");
+			return true;
+
+		} else if (product.equalsIgnoreCase("Redemption")) {
+			// HK, KR, TW, JP
+			String segment = ConfigReader.getData("app_segment").toString();
+			if (segment.equals("HK") || segment.equals("KR") || segment.equals("TW") || segment.equals("JP")) {
+				waitUntilElementVisibleAndClick("master_right_nav_redemption_button");
+
+				return true;
+			} else {
+				return true;
+			}
 
 		} else {
 			System.out.println("Please check category name!. ie : Skincare/Body/Men/Hair/Pet/Others/Gift");
@@ -282,9 +311,13 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 	public boolean verify_search_product_with_price() throws InterruptedException, IOException {
 
-		waitUntil("master_plp_search_product_text");
+		String product_name1 = "SP EYE GEL 15ML";
 
-		sendkeys("master_plp_search_product_text", "SP EYE GEL 15ML");
+		if (getApplicationName().equals("Valentino")) {
+			product_name1 = "VLTN ROSSO MATTE 107A";
+		}
+
+		sendkeys("master_plp_search_product_text", product_name1);
 
 		waitUntilElementVisibleAndClick("master_plp_first_product");
 
@@ -292,7 +325,7 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 		String productname = driver.findElement(By.xpath(locator.getData("master_pdp_product_name"))).getText();
 
-		if (productname.equals("SP EYE GEL 15ML")) {
+		if (productname.equals(product_name1)) {
 			return true;
 		} else {
 			System.out.println("PLP Search Product - Product not able to search!");

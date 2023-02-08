@@ -5,7 +5,7 @@ Feature: iBeauty Regression Test
     When User select country and login to store then login to ba account
 
   @master @smoke @Regression @Login @positive @start @pass
-  Scenario: Verify the user able to login the application
+  Scenario: Verify user able to login the application
     Then User is on home page
 
   @master @smoke @Regression @Login @Negative @pass
@@ -39,20 +39,20 @@ Feature: iBeauty Regression Test
     And User click "Skincare" category on the Home page
     Then User should navigate to PLP page successfully
 
-  @master @smoke @Regression @PLP @pass
+  @master @smoke @Regression @PLP @pass @val
   Scenario: Verify user able to navigate PLP from Right navigation bar to product category
     Then User is on home page
     And User click "Skincare" category on product from right navigation
     Then User should navigate to PLP page successfully
 
-  @master @smoke @Regression @PLP @pass
+  @master @smoke @Regression @PLP @pass @val
   Scenario: Verify user able view product by Grid, small grid and list view in PLP
     Then User is on home page
     And User click "Skincare" category on the Home page
     Then User should navigate to PLP page successfully
     And Verify user able to see grid and small and list view
 
-  @master @smoke @Regression @PLP @pass
+  @master @smoke @Regression @PLP @pass @valF
   Scenario: Verify user able filter the products in PLP
     Then User is on home page
     And User click "Skincare" category on the Home page
@@ -100,7 +100,7 @@ Feature: iBeauty Regression Test
     And User click the Promotion Activity
     And User select the Promotion in the Service type
     And User enter the Customer name in calender
-    And User enther the Phone number in calender
+    And User enter the Phone number in calendar
     And User click Save button in calender
 
   @master @smoke @Regression @BACalendar @pass
@@ -112,10 +112,9 @@ Feature: iBeauty Regression Test
     And User click the Service booking
     And User select the Service booking in the Service type
     And User enter the Customer name in calender
-    And User enther the Phone number in calender
+    And User enter the Phone number in calendar
     And User click Save button in calender
 
- 
   @master @smoke @Regression @BACalendar @pass
   Scenario: Verify user able to create Event Reservation in the calendar
     Then User is on home page
@@ -125,9 +124,8 @@ Feature: iBeauty Regression Test
     And User click the event reservaiton
     And User select the Event reservaiton in the Service type
     And User enter the Customer name in calender
-    And User enther the Phone number in calender
+    And User enter the Phone number in calendar
     And User click Save button in calender
-
 
   @master @smoke @Regression @BACallbacklist @pass
   Scenario: Verify the customer callback list page
@@ -153,14 +151,14 @@ Feature: iBeauty Regression Test
     Then User is on home page
     #BA HOME -> 1) Dash board 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "CALLBACK LIST" then verify the page
-    Then User click the first call back history and verfify the customer list page
+    Then User click the first call back history and verify the customer list page
 
   @master @smoke @Regression @BACallbacklist @pass
   Scenario: Verify the first customer list details
     Then User is on home page
     #BA HOME -> 1) Dash board 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "CALLBACK LIST" then verify the page
-    Then User click the first call back history and verfify the customer list page
+    Then User click the first call back history and verify the customer list page
     And User click the first customer detials
     And Verify the Member level
     And Verify the Balance points
@@ -191,7 +189,7 @@ Feature: iBeauty Regression Test
     Then User is on home page
     # BA HOME -> 1) DASHBOARD 2) Notification 3) CALLBACK LIST 4) Calender 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "DASHBOARD" then verify the page
-    Then User click first calender event on the list and user able to navigate Calender page
+    Then User click first calendar event on the list and user able to navigate Calendar page
 
   @master @smoke @Regression @BAdashboard @pass
   Scenario: Verify the customer add new calendar on dashBoard page
@@ -399,8 +397,7 @@ Feature: iBeauty Regression Test
     And User click the product and verify user get navigate to PDP page
     Then Verify the product description, tips and ingriedients tabs in PDP
 
-  #create customer----------------------------------------------------
-  @master @Regression @Customercreation @positive
+  @master @Regression @Customercreation @positive @test
   Scenario: Verify if user is able to create a new customer with only mandatory fields
     Then User is on home page
     And User click the Create button on Customer search
@@ -612,6 +609,51 @@ Feature: iBeauty Regression Test
     Then Verify user able to see recent recycled bottles
 
   @master_test @smoke @Regression @Gift
-  Scenario: Verify user able to add sample from cart page
+  Scenario: Verify user able to add gift and verify
     Then User is on home page
+    Then tap on customer search dropdown
+    And tap on Mobile Number from the dropdown list
+    And enter Mobile Number and tap on search button
+    Then Customer threeSixty screen should be display
     And User click the Cart button from right navigation and verify the cart page
+    Then User click the Gift button on cart page
+    Then User verify the redemption page
+    And User click add to cart button
+    Then User click proceed button
+    And Verify the gift product on cart page
+    And User click the Checkout button
+    Then validate redeem points popup
+
+  @master_test @smoke @Regression @Gift
+  Scenario: Verify user able to see points label and add more count from redemption page
+    Then User is on home page
+    Then tap on customer search dropdown
+    And tap on Mobile Number from the dropdown list
+    And enter Mobile Number and tap on search button
+    Then Customer threeSixty screen should be display
+    And User click the Cart button from right navigation and verify the cart page
+    Then User click the Gift button on cart page
+    Then User verify the redemption page
+    And Verify points label on Product in Redemption page
+    Then Verify user can add more gifts from redemption page and validate total and balance points
+    And User click the Checkout button
+    Then validate total items and total points in cart page
+
+  @master_test @smoke @Regression @Gift
+  Scenario: Verify user able to navigate redemption from right side navigation
+    Then User is on home page
+    Then tap on customer search dropdown
+    And tap on Mobile Number from the dropdown list
+    And enter Mobile Number and tap on search button
+    Then Customer threeSixty screen should be display
+    And User click "Redemption" category on product from right navigation
+    Then User verify the redemption page
+    And Verify points label on Product in Redemption page
+
+  @master_test @smoke @Regression @ServiceBooking
+  Scenario: Verify the member details in first history
+    Then User is on home page
+    # BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS 6) SERVICE BOOKING
+    And User click the BA Home button from right navigation and Click "SERVICE BOOKING" then verify the page
+    
+

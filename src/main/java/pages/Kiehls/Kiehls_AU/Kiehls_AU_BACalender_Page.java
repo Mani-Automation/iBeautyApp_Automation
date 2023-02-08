@@ -412,7 +412,7 @@ public class Kiehls_AU_BACalender_Page extends CommonActions {
 
 	}
 
-	public boolean user_enther_the_phone_number_in_calender() throws InterruptedException {
+	public boolean user_enter_the_phone_number_in_calendar() throws InterruptedException {
 
 		try {
 
