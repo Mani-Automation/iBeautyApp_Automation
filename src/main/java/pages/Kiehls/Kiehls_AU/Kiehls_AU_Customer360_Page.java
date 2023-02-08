@@ -100,7 +100,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -116,7 +116,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -131,7 +131,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -151,7 +151,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -166,7 +166,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -181,7 +181,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 
@@ -195,7 +195,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 
@@ -209,7 +209,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 
@@ -223,7 +223,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 
@@ -237,7 +237,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 
@@ -251,7 +251,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 
@@ -265,7 +265,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 
@@ -279,7 +279,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 
@@ -317,7 +317,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -349,7 +349,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -379,7 +379,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -397,7 +397,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 
@@ -431,7 +431,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -446,7 +446,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -461,7 +461,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -476,7 +476,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -491,7 +491,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -518,7 +518,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 
@@ -534,7 +534,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 
@@ -584,7 +584,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -598,7 +598,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 
@@ -615,7 +615,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -631,7 +631,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -647,7 +647,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -677,7 +677,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -718,7 +718,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 
@@ -784,7 +784,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -811,7 +811,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -826,7 +826,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -834,10 +834,35 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 	public boolean user_verify_total_number_of_bottles_returned_column() {
 		try {
 
-			waitUntil("master_c360_recycle_bottle_date");
-			waitUntil("master_c360_recycle_bottle_returned");
-
-			waitUntil("master_c360_recycle_bottle_store");
+			segment = ConfigReader.getData("app_segment").toString();
+			switch (segment) {
+			case "AU": {
+				waitUntil("master_c360_recycle_bottle_date");
+				waitUntil("master_c360_recycle_bottle_returned");
+				waitUntil("master_c360_recycle_bottle_store");
+			}
+			case "MY": {
+				waitUntil("master_c360_recycle_bottle_date");
+				waitUntil("master_c360_recycle_bottle_returned");
+				waitUntil("master_c360_recycle_bottle_store");
+			}
+			case "TW": {
+			}
+			case "SG": {
+			}
+			case "HR": {
+			}
+			case "NZ": {
+			}
+			case "JP": {
+			}
+			case "HK": {
+			}
+			case "KR": {
+			}
+			case "TH": {
+			}
+			}
 
 			return true;
 		} catch (Exception e) {
@@ -848,8 +873,34 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean user_click_done_button() {
 		try {
+			segment = ConfigReader.getData("app_segment").toString();
+			switch (segment) {
+			case "AU": {
+				waitUntilElementVisibleAndClick("master_done_button");
 
-			waitUntilElementVisibleAndClick("master_done_button");
+			}
+			case "MY": {
+				waitUntilElementVisibleAndClick("master_done_button");
+
+			}
+			case "TW": {
+			}
+			case "SG": {
+			}
+			case "HR": {
+			}
+			case "NZ": {
+			}
+			case "JP": {
+
+			}
+			case "HK": {
+			}
+			case "KR": {
+			}
+			case "TH": {
+			}
+			}
 
 			return true;
 		} catch (Exception e) {
@@ -860,7 +911,29 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean verify_user_able_to_see_recent_recycled_bottles() {
 		try {
-
+			segment = ConfigReader.getData("app_segment").toString();
+			switch (segment) {
+			case "AU": {
+			}
+			case "MY": {
+			}
+			case "TW": {
+			}
+			case "SG": {
+			}
+			case "HR": {
+			}
+			case "NZ": {
+			}
+			case "JP": {
+			}
+			case "HK": {
+			}
+			case "KR": {
+			}
+			case "TH": {
+			}
+			}
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -870,9 +943,34 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean user_click_the_recycle_tab() {
 		try {
-			waitUntilElementVisibleAndClick("master_c360_cus_recycle_tab");
 
+			segment = ConfigReader.getData("app_segment").toString();
+			switch (segment) {
+			case "AU": {
+				waitUntilElementVisibleAndClick("master_c360_cus_recycle_tab");
+			}
+			case "MY": {
+				waitUntilElementVisibleAndClick("master_c360_cus_recycle_tab");
+			}
+			case "TW": {
+			}
+			case "SG": {
+			}
+			case "HR": {
+			}
+			case "NZ": {
+			}
+			case "JP": {
+			}
+			case "HK": {
+			}
+			case "KR": {
+			}
+			case "TH": {
+			}
+			}
 			return true;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -881,9 +979,36 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean user_select_no_of_bottles_to_recycle_on_dropdown() {
 		try {
-			waitUntilElementVisibleAndClick("master_c360_recycle_bottle_dropdown");
 
-			waitUntilElementVisibleAndClick("master_c360_recycle_bottle_dropdown_value_3");
+			segment = ConfigReader.getData("app_segment").toString();
+			switch (segment) {
+			case "AU": {
+				waitUntilElementVisibleAndClick("master_c360_recycle_bottle_dropdown");
+				waitUntilElementVisibleAndClick("master_c360_recycle_bottle_dropdown_value_3");
+			}
+			case "MY": {
+				waitUntilElementVisibleAndClick("master_c360_recycle_bottle_dropdown");
+				waitUntilElementVisibleAndClick("master_c360_recycle_bottle_dropdown_value_3");
+			}
+			case "TW": {
+			}
+			case "SG": {
+			}
+			case "HR": {
+			}
+			case "NZ": {
+			}
+			case "JP": {
+		
+			}
+			case "HK": {
+			}
+			case "KR": {
+			}
+			case "TH": {
+			}
+			}
+
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();

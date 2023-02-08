@@ -6,6 +6,8 @@ import org.junit.Assert;
 
 import com.driverfactory.DriverManager;
 import com.reusableMethods.CommonActions;
+import com.reusableMethods.CommonActions.Direction;
+import com.utilities.ConfigReader;
 
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.en.*;
@@ -17,6 +19,7 @@ import pages.Kiehls.Kiehls_AU.Kiehls_AU_Cart_Page;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_Consultation_Page;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_Customer360_Page;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_CustomerCreation_Page;
+import pages.Kiehls.Kiehls_AU.Kiehls_AU_Gift_Page;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_Login_Page;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_PDP_Page;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_PLP_Page;
@@ -50,12 +53,13 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	Kiehls_AU_Settings_Page settingPage = new Kiehls_AU_Settings_Page(driver);
 
+	Kiehls_AU_Gift_Page giftPage = new Kiehls_AU_Gift_Page(driver);
+
 // BA Callback
 
-	@Then("^User click the first call back history and verfify the customer list page$")
-	public void user_click_the_first_call_back_history_and_verfify_the_customer_list_page()
-			throws InterruptedException {
-		Assert.assertTrue(baCallbackPage.user_click_the_first_call_back_history_and_verfify_the_customer_list_page());
+	@Then("^User click the first call back history and verify the customer list page$")
+	public void user_click_the_first_call_back_history_and_verify_the_customer_list_page() throws InterruptedException {
+		Assert.assertTrue(baCallbackPage.user_click_the_first_call_back_history_and_verify_the_customer_list_page());
 	}
 
 	@And("^User click the BA Home button from right navigation and Click \"([^\"]*)\" then verify the page$")
@@ -250,7 +254,7 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	@And("^User enther the Phone number$")
 	public void user_enther_the_phone_number() throws InterruptedException {
-		Assert.assertTrue(baCalendarPage.user_enther_the_phone_number_in_calender());
+		Assert.assertTrue(baCalendarPage.user_enter_the_phone_number_in_calendar());
 	}
 
 	@And("^User click Save button$")
@@ -328,9 +332,9 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(baCalendarPage.user_enter_the_customer_name_in_calender());
 	}
 
-	@And("^User enther the Phone number in calender$")
+	@And("^User enter the Phone number in calendar$")
 	public void user_enther_the_phone_number_in_calender() throws InterruptedException {
-		Assert.assertTrue(baCalendarPage.user_enther_the_phone_number_in_calender());
+		Assert.assertTrue(baCalendarPage.user_enter_the_phone_number_in_calendar());
 	}
 
 	@Then("^Verify user able to view created service booking Event$")
@@ -366,10 +370,10 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	}
 
-	@Then("^User click first calender event on the list and user able to navigate Calender page$")
-	public void user_click_first_calender_event_on_the_list_and_user_able_to_navigate_calender_page() {
+	@Then("^User click first calendar event on the list and user able to navigate Calendar page$")
+	public void user_click_first_calendar_event_on_the_list_and_user_able_to_navigate_calendar_page() {
 		Assert.assertTrue(
-				baDashboardPage.user_click_first_calender_event_on_the_list_and_user_able_to_navigate_calender_page());
+				baDashboardPage.user_click_first_calendar_event_on_the_list_and_user_able_to_navigate_calendar_page());
 
 	}
 
@@ -688,28 +692,70 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	////// create customer
 	@Then("^User add membership info$")
-	public void user_add_membership_info() {
-		Assert.assertTrue(ccPage.user_add_membership_info());
+	public void user_add_membership_info() throws IOException {
+		String segment = ConfigReader.getData("app_segment");
+
+		if (segment.equals("AU")) {
+			Assert.assertTrue(ccPage.user_add_membership_info_au());
+
+		} else if (segment.equals("JP")) {
+			Assert.assertTrue(ccPage.user_add_membership_info_jp());
+		}
+
 	}
 
 	@And("^User add member details$")
-	public void user_add_member_details() {
-		Assert.assertTrue(ccPage.user_add_member_details());
+	public void user_add_member_details() throws IOException {
+
+		String segment = ConfigReader.getData("app_segment");
+
+		if (segment.equals("AU")) {
+			Assert.assertTrue(ccPage.user_add_member_details_au());
+
+		} else if (segment.equals("JP")) {
+			Assert.assertTrue(ccPage.user_add_member_details_jp());
+
+		}
+
 	}
 
 	@And("^User add mailing address$")
-	public void user_add_mailing_address() {
-		Assert.assertTrue(ccPage.user_add_mailing_address());
+	public void user_add_mailing_address() throws IOException {
+		String segment = ConfigReader.getData("app_segment");
+
+		
+
+		if (segment.equals("AU")) {
+			Assert.assertTrue(ccPage.user_add_mailing_address_au());
+
+		} else if (segment.equals("JP")) {
+			Assert.assertTrue(ccPage.user_add_mailing_address_jp());
+
+		}
+
 	}
 
 	@And("^User add communicate channals details$")
-	public void user_add_communicate_channals_details() {
-		Assert.assertTrue(ccPage.user_add_communicate_channals_details());
+	public void user_add_communicate_channals_details() throws IOException {
+		
+			Assert.assertTrue(ccPage.user_add_communicate_channals_details());
+
+		
 	}
 
 	@And("^User click terms and conditions checkbox$")
-	public void user_click_terms_and_conditions_checkbox() {
-		Assert.assertTrue(ccPage.user_click_terms_and_conditions_checkbox());
+	public void user_click_terms_and_conditions_checkbox() throws IOException {
+		String segment = ConfigReader.getData("app_segment");
+
+		if (segment.equals("AU")) {
+			Assert.assertTrue(ccPage.user_click_terms_and_conditions_checkbox_au());
+
+
+		} else if (segment.equals("JP")) {
+			Assert.assertTrue(ccPage.user_click_terms_and_conditions_checkbox_jp());
+
+		}
+		
 	}
 
 	@And("^User click confirm button$")
@@ -1145,6 +1191,53 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	@And("^User click cancel button$")
 	public void user_click_cancel_button() throws Throwable {
 		Assert.assertTrue(settingPage.user_click_cancel_button());
+	}
+
+	// gift
+	@Then("^User click the Gift button on cart page$")
+	public void user_click_the_gift_button_on_cart_page() {
+		Assert.assertTrue(giftPage.user_click_the_gift_button_on_cart_page());
+	}
+
+	@Then("^User verify the redemption page$")
+	public void user_verify_the_redemption_page() {
+		Assert.assertTrue(giftPage.user_verify_the_redemption_page());
+	}
+
+	@Then("^User click proceed button$")
+	public void user_click_proceed_button() {
+		Assert.assertTrue(giftPage.user_click_proceed_button());
+	}
+
+	@Then("^validate redeem points popup$")
+	public void validate_redeem_points_popup() {
+		Assert.assertTrue(giftPage.validate_redeem_points_popup());
+	}
+
+	@Then("^Verify user can add more gifts from redemption page and validate total and balance points$")
+	public void verify_user_can_add_more_gifts_from_redemption_page_and_validate_total_and_balance_points() {
+		Assert.assertTrue(
+				giftPage.verify_user_can_add_more_gifts_from_redemption_page_and_validate_total_and_balance_points());
+	}
+
+	@Then("^validate total items and total points in cart page$")
+	public void validate_total_items_and_total_points_in_cart_page() {
+		Assert.assertTrue(giftPage.validate_total_items_and_total_points_in_cart_page());
+	}
+
+	@And("^User click add to cart button$")
+	public void user_click_add_to_cart_button() {
+		Assert.assertTrue(giftPage.user_click_add_to_cart_button());
+	}
+
+	@And("^Verify the gift product on cart page$")
+	public void verify_the_gift_product_on_cart_page() {
+		Assert.assertTrue(giftPage.verify_the_gift_product_on_cart_page());
+	}
+
+	@And("^Verify points label on Product in Redemption page$")
+	public void verify_points_label_on_product_in_redemption_page() {
+		Assert.assertTrue(giftPage.verify_points_label_on_product_in_redemption_page());
 	}
 
 }

@@ -19,9 +19,20 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = { "src/test/resources/Features" }, glue = { "stepDefinitions" }, dryRun = false, plugin = {
-		"pretty", "json:target/ResultsMobile/cucumber.json" }, monochrome = true, tags = "@start"
+		"pretty", "json:target/ResultsMobile/cucumber.json" }, monochrome = true, tags = "@master"
 
 )
+
+/*
+ * 
+ * @master
+ * 
+ * @AU,@MY,@TW,@SG,@NZ,@JP,@HK,@KR,@TH
+ * 
+ * 
+ * 
+ */
+
 public class RunCucumberTest {
 
 	static ReportWeb report = new ReportWeb();
@@ -29,6 +40,10 @@ public class RunCucumberTest {
 
 	@BeforeClass
 	public static void beforeClass() throws IOException {
+
+		System.out.print("App : " + ConfigReader.getData("app") + " | " + "Env : " + ConfigReader.getData("appEnv")
+				+ " | Segment : " + ExcelData.getExcelData("app_segment", "country") + " | Target : "
+				+ ConfigReader.getData("target"));
 
 		LocalDateTime instance = LocalDateTime.now();
 		DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy kk:mm:ss");

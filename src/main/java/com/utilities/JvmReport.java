@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import net.masterthought.cucumber.Configuration;
 import net.masterthought.cucumber.ReportBuilder;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_Login_Page;
-import pages.Lancome.Lancome_AU.*;
 
 public class JvmReport {
 

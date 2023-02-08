@@ -40,7 +40,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 
@@ -59,154 +59,136 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 
 	}
 
-	public boolean user_add_membership_info() {
+	public boolean user_add_membership_info_jp() {
 		try {
-			segment = ConfigReader.getData("app_segment");
 
-			if (segment.equals("AU")) {
-
-			} else if (segment.equals("JP")) {
-				waitUntil("master_createcustomer_memberid");
-				String random_member_id = "573" + String.valueOf(random.nextInt(10000000));
-				sendkeys("master_createcustomer_memberid", random_member_id);
-				sendkeys("master_createcustomer_mobile_number",
-						ExcelData.getExcelData("customer_testdata", "jp_mobile_number") + random.nextInt(10000));
-				click("master_brand_logo");
-
-			}
+			waitUntil("master_createcustomer_memberid");
+			String random_member_id = "573" + String.valueOf(random.nextInt(10000000));
+			sendkeys("master_createcustomer_memberid", random_member_id);
+			sendkeys("master_createcustomer_mobile_number",
+					ExcelData.getExcelData("customer_testdata", "jp_mobile_number") + random.nextInt(10000));
+			click("master_brand_logo");
 			return true;
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 
 	}
 
-	public boolean user_add_member_details() {
+	public boolean user_add_member_details_jp() {
 		try {
-			if (segment.equals("AU")) {
 
-			} else if (segment.equals("JP")) {
-				// lastname
-				sendkeys("master_createcustomer_lastname", ExcelData.getExcelData("customer_testdata", "last_name"));
-				click("master_brand_logo");
-				sendkeys("master_createcustomer_katakana_lastname",
-						ExcelData.getExcelData("customer_testdata", "katakana_last_name"));
-				click("master_brand_logo");
-				// firstname
-				sendkeys("master_createcustomer_firstname", ExcelData.getExcelData("customer_testdata", "first_name"));
-				click("master_brand_logo");
-				sendkeys("master_createcustomer_katakana_firstname",
-						ExcelData.getExcelData("customer_testdata", "katakana_first_name"));
-				click("master_brand_logo");
-				// email
-				waitUntil("master_createcustomer_email");
-				sendkeys("master_createcustomer_email",
-						ExcelData.getExcelData("customer_testdata", "email_id") + random.nextInt(10000));
-				click("master_brand_logo");
-				waitUntil("master_createcustomer_email_domain_dropdown");
-				click("master_createcustomer_email_domain_dropdown");
-				waitUntil("master_createcustomer_email_domain_name");
-				click("master_createcustomer_email_domain_name");
-				// dob
-				// Year
-				waitUntil("master_createcustomer_year_dropdown");
-				click("master_createcustomer_year_dropdown");
-				waitUntil("master_createcustomer_year");
-				click("master_createcustomer_year");
+			// lastname
+			sendkeys("master_createcustomer_lastname", ExcelData.getExcelData("customer_testdata", "last_name"));
+			click("master_brand_logo");
+			sendkeys("master_createcustomer_katakana_lastname",
+					ExcelData.getExcelData("customer_testdata", "katakana_last_name"));
+			click("master_brand_logo");
+			// firstname
+			sendkeys("master_createcustomer_firstname", ExcelData.getExcelData("customer_testdata", "first_name"));
+			click("master_brand_logo");
+			sendkeys("master_createcustomer_katakana_firstname",
+					ExcelData.getExcelData("customer_testdata", "katakana_first_name"));
+			click("master_brand_logo");
+			// email
+			waitUntil("master_createcustomer_email");
+			sendkeys("master_createcustomer_email",
+					ExcelData.getExcelData("customer_testdata", "email_id") + random.nextInt(10000));
+			click("master_brand_logo");
+			waitUntil("master_createcustomer_email_domain_dropdown");
+			click("master_createcustomer_email_domain_dropdown");
+			waitUntil("master_createcustomer_email_domain_name");
+			click("master_createcustomer_email_domain_name");
+			// dob
+			// Year
+			waitUntil("master_createcustomer_year_dropdown");
+			click("master_createcustomer_year_dropdown");
+			waitUntil("master_createcustomer_year");
+			click("master_createcustomer_year");
 
-				// Month
-				waitUntil("master_createcustomer_month_dropdown");
-				click("master_createcustomer_month_dropdown");
-				waitUntil("master_createcustomer_month");
-				click("master_createcustomer_month");
-				// day
-				waitUntil("master_createcustomer_day_dropdown");
-				click("master_createcustomer_day_dropdown");
-				waitUntil("master_createcustomer_date");
-				click("master_createcustomer_date");
-				// gender
-				waitUntil("master_createcustomer_gender_dropdown");
-				click("master_createcustomer_gender_dropdown");
-				Thread.sleep(2000);
+			// Month
+			waitUntil("master_createcustomer_month_dropdown");
+			click("master_createcustomer_month_dropdown");
+			waitUntil("master_createcustomer_month");
+			click("master_createcustomer_month");
+			// day
+			waitUntil("master_createcustomer_day_dropdown");
+			click("master_createcustomer_day_dropdown");
+			waitUntil("master_createcustomer_date");
+			click("master_createcustomer_date");
+			// gender
+			waitUntil("master_createcustomer_gender_dropdown");
+			click("master_createcustomer_gender_dropdown");
+			Thread.sleep(2000);
 
-				String gender = "//XCUIElementTypeStaticText[@name=\""
-						+ ExcelData.getExcelData("customer_testdata", "gender_male").toString() + "\"]";
-				webdriverwait(driver.findElement(By.xpath(gender)));
-				driver.findElement(By.xpath(gender)).click();
-				// im an internation - checkbox
-
-			}
+			String gender = "//XCUIElementTypeStaticText[@name=\""
+					+ ExcelData.getExcelData("customer_testdata", "gender_male").toString() + "\"]";
+			webdriverwait(driver.findElement(By.xpath(gender)));
+			driver.findElement(By.xpath(gender)).click();
+			// im an internation - checkbox
 			return true;
+
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
 
-	public boolean user_add_mailing_address() {
+	public boolean user_add_mailing_address_jp() {
 		try {
-			if (segment.equals("AU")) {
 
-			} else if (segment.equals("JP")) {
-				// zipcode
-				sendkeys("master_createcustomer_zipcode", ExcelData.getExcelData("customer_testdata", "jp_zipcode"));
-				click("master_brand_logo");
-				// city
-				sendkeys("master_createcustomer_address1",
-						ExcelData.getExcelData("customer_testdata", "add_street_name"));
-				click("master_brand_logo");
-				sendkeys("master_createcustomer_address2",
-						ExcelData.getExcelData("customer_testdata", "add_street_name"));
-				click("master_brand_logo");
-				// address
+			// zipcode
+			sendkeys("master_createcustomer_zipcode", ExcelData.getExcelData("customer_testdata", "jp_zipcode"));
+			click("master_brand_logo");
+			// city
+			sendkeys("master_createcustomer_address1", ExcelData.getExcelData("customer_testdata", "add_street_name"));
+			click("master_brand_logo");
+			sendkeys("master_createcustomer_address2", ExcelData.getExcelData("customer_testdata", "add_street_name"));
+			click("master_brand_logo");
+			// address
 
-			}
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
 
 	public boolean user_add_communicate_channals_details() {
 		try {
-			if (segment.equals("AU")) {
 
-			} else if (segment.equals("JP")) {
-				swipeScreenUntilElementVisible("master_createcustomer_confirm_button", Direction.UP);
-			}
+			swipeScreenUntilElementVisible("master_createcustomer_confirm_button", Direction.UP);
+
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
 
-	public boolean user_click_terms_and_conditions_checkbox() {
+	public boolean user_click_terms_and_conditions_checkbox_jp() {
 		try {
-			if (segment.equals("AU")) {
 
-			} else if (segment.equals("JP")) {
-				swipeScreenUntilElementVisible("master_createcustomer_confirm_button", Direction.UP);
-				waitUntil("master_createcustomer_confirm_button");
-				click("master_createcustomer_accept_checkbox");
+			swipeScreenUntilElementVisible("master_createcustomer_confirm_button", Direction.UP);
+			waitUntil("master_createcustomer_confirm_button");
+			click("master_createcustomer_accept_checkbox");
 
-			}
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -237,7 +219,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -269,7 +251,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -284,7 +266,124 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 
 		Exception e) {
 			e.printStackTrace();
-			
+
+			return false;
+		}
+	}
+
+	public boolean user_add_membership_info_au() {
+		try {
+			waitUntilElementVisibleAndClick("master_done_button");
+			return true;
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_add_member_details_au() {
+		try {
+
+			// firstname
+			sendkeys("master_createcustomer_firstname", ExcelData.getExcelData("customer_testdata", "first_name"));
+			click("master_brand_logo");
+
+			// lastname
+			sendkeys("master_createcustomer_lastname", ExcelData.getExcelData("customer_testdata", "last_name"));
+			click("master_brand_logo");
+			// day
+			waitUntil("master_createcustomer_day_dropdown");
+			click("master_createcustomer_day_dropdown");
+			waitUntil("master_createcustomer_date");
+			click("master_createcustomer_date");
+			// Month
+			waitUntil("master_createcustomer_month_dropdown");
+			click("master_createcustomer_month_dropdown");
+			waitUntil("master_createcustomer_month");
+			click("master_createcustomer_month");
+
+			// Year
+			waitUntil("master_createcustomer_year_dropdown");
+			click("master_createcustomer_year_dropdown");
+			waitUntil("master_createcustomer_year");
+			click("master_createcustomer_year");
+
+			// gender
+			waitUntil("master_createcustomer_gender_dropdown");
+			click("master_createcustomer_gender_dropdown");
+			Thread.sleep(2000);
+
+			String gender = "//XCUIElementTypeStaticText[@name=\""
+					+ ExcelData.getExcelData("customer_testdata", "gender_male").toString() + "\"]";
+			webdriverwait(driver.findElement(By.xpath(gender)));
+			driver.findElement(By.xpath(gender)).click();
+			// im an internation - checkbox
+
+			// email
+			waitUntil("master_createcustomer_email");
+			sendkeys("master_createcustomer_email", "testau" + random.nextInt(10000) + "@gmail.com");
+			click("master_brand_logo");
+
+			// phone number
+			sendkeys("master_calendar_event_phone_text", "6161616161");
+			click("master_brand_logo");
+
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_add_mailing_address_au() {
+		try {
+
+			// street no
+			sendkeys("master_au_createcustomer_streetnumber",
+					ExcelData.getExcelData("customer_testdata", "add_street_number"));
+			click("master_brand_logo");
+
+			// street
+			sendkeys("master_au_createcustomer_streetname",
+					ExcelData.getExcelData("customer_testdata", "add_street_name"));
+			click("master_brand_logo");
+
+			// city
+			sendkeys("master_au_createcustomer_city", ExcelData.getExcelData("customer_testdata", "add_pincode"));
+			click("master_brand_logo");
+
+			// state
+
+			waitUntilElementVisibleAndClick("master_au_createcustomer_state_dropdown");
+			staticTextClick(ExcelData.getExcelData("customer_testdata", "add_state_name"));
+
+			// postcode
+
+			sendkeys("master_createcustomer_zipcode", ExcelData.getExcelData("customer_testdata", "jp_zipcode"));
+			click("master_brand_logo");
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_click_terms_and_conditions_checkbox_au() {
+		try {
+
+			swipeScreenUntilElementVisible("master_createcustomer_confirm_button", Direction.UP);
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+
 			return false;
 		}
 	}

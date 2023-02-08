@@ -121,7 +121,7 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 	@FindBy(xpath = "//XCUIElementTypeButton[@name=\"Day\"]")
 	public WebElement dashboard_calender_page;
 
-	public boolean user_click_first_calender_event_on_the_list_and_user_able_to_navigate_calender_page() {
+	public boolean user_click_first_calendar_event_on_the_list_and_user_able_to_navigate_calendar_page() {
 		try {
 
 			try {

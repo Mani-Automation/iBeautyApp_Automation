@@ -21,6 +21,7 @@ import com.driverfactory.DriverManager;
 import com.google.common.collect.ImmutableMap;
 
 import com.reusableMethods.CommonActions;
+import com.utilities.ConfigReader;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
@@ -71,7 +72,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 	// XCUIElementTypeButton[@name="Day"]
 	// XCUIElementTypeButton[@name="navHome"]
 
-	public boolean user_click_the_first_call_back_history_and_verfify_the_customer_list_page()
+	public boolean user_click_the_first_call_back_history_and_verify_the_customer_list_page()
 			throws InterruptedException {
 		try {
 
@@ -98,32 +99,48 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 			waitUntilElementVisibleAndClick("master_home_right_nav_ba_button");
 
 			String ba_home_item = "//XCUIElementTypeStaticText[@name=\"" + ba_home + "\"]";
-			webdriverwait(driver.findElement(By.xpath(ba_home_item)));
-			driver.findElement(By.xpath(ba_home_item)).click();
 
 			if (ba_home.equalsIgnoreCase("DASHBOARD")) {
+				driver.findElement(By.xpath(ba_home_item)).click();
+
 				waitUntil("master_ba_dashboard_calender_addnew_button");
 				return true;
 
 			} else if (ba_home.equalsIgnoreCase("NOTIFICATION")) {
+				driver.findElement(By.xpath(ba_home_item)).click();
+
 				Assert.assertTrue(ba_home_notification_page.isDisplayed());
 				return true;
 
 			} else if (ba_home.equalsIgnoreCase("CALLBACK LIST")) {
+				driver.findElement(By.xpath(ba_home_item)).click();
 
 				waitUntil("master_ba_callback_page");
 
 				return true;
 
 			} else if (ba_home.equalsIgnoreCase("CALENDAR")) {
+				driver.findElement(By.xpath(ba_home_item)).click();
 
 				waitUntil("master_calender_month_label");
 
 				return true;
 
 			} else if (ba_home.equalsIgnoreCase("TRANSACTIONS")) {
+				driver.findElement(By.xpath(ba_home_item)).click();
 
 				waitUntil("master_transaction_history_tab");
+
+				return true;
+
+			} else if (ba_home.equalsIgnoreCase("SERVICE BOOKING")) {
+
+				String segment = ConfigReader.getData("app_segment").toString();
+				if (segment.equals("JP")) {
+					driver.findElement(By.xpath(ba_home_item)).click();
+
+					waitUntil("master_transaction_history_tab");
+				}
 
 				return true;
 
