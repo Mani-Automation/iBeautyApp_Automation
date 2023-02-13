@@ -124,9 +124,20 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 	public boolean tap_on_mobile_number_from_the_dropdown_list() throws InterruptedException {
 		try {
 
-			waitUntilElementVisibleAndClick("master_c360_home_customer_search_lucid_list");
+			String application = ConfigReader.getData("app").toString();
 
-			return true;
+			if (application.equals("Kiehls")) {
+				waitUntilElementVisibleAndClick("master_c360_home_customer_search_lucid_list");
+
+				return true;
+			} else if (application.equals("Valentino")) {
+				waitUntilElementVisibleAndClick("master_c360_home_customer_search_lucid_list");
+				waitUntilElementVisibleAndClick("master_valentino_c360_abc_num_pad");
+				return true;
+			} else {
+				return false;
+			}
+
 		} catch (
 
 		Exception e) {
@@ -999,7 +1010,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 			case "NZ": {
 			}
 			case "JP": {
-		
+
 			}
 			case "HK": {
 			}

@@ -23,7 +23,10 @@ import pages.Kiehls.Kiehls_AU.Kiehls_AU_Gift_Page;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_Login_Page;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_PDP_Page;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_PLP_Page;
+import pages.Kiehls.Kiehls_AU.Kiehls_AU_ProductReservation_Page;
+import pages.Kiehls.Kiehls_AU.Kiehls_AU_ServiceBooking_Page;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_Settings_Page;
+import pages.Kiehls.Kiehls_AU.Kiehls_AU_Voucher_page;
 
 public class Kiehls_AU_stepDef extends CommonActions {
 
@@ -54,6 +57,12 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	Kiehls_AU_Settings_Page settingPage = new Kiehls_AU_Settings_Page(driver);
 
 	Kiehls_AU_Gift_Page giftPage = new Kiehls_AU_Gift_Page(driver);
+
+	Kiehls_AU_Voucher_page voucher = new Kiehls_AU_Voucher_page(driver);
+
+	Kiehls_AU_ProductReservation_Page reservation = new Kiehls_AU_ProductReservation_Page(driver);
+
+	Kiehls_AU_ServiceBooking_Page service = new Kiehls_AU_ServiceBooking_Page(driver);
 
 // BA Callback
 
@@ -723,8 +732,6 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	public void user_add_mailing_address() throws IOException {
 		String segment = ConfigReader.getData("app_segment");
 
-		
-
 		if (segment.equals("AU")) {
 			Assert.assertTrue(ccPage.user_add_mailing_address_au());
 
@@ -737,10 +744,9 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	@And("^User add communicate channals details$")
 	public void user_add_communicate_channals_details() throws IOException {
-		
-			Assert.assertTrue(ccPage.user_add_communicate_channals_details());
 
-		
+		Assert.assertTrue(ccPage.user_add_communicate_channals_details());
+
 	}
 
 	@And("^User click terms and conditions checkbox$")
@@ -750,12 +756,11 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		if (segment.equals("AU")) {
 			Assert.assertTrue(ccPage.user_click_terms_and_conditions_checkbox_au());
 
-
 		} else if (segment.equals("JP")) {
 			Assert.assertTrue(ccPage.user_click_terms_and_conditions_checkbox_jp());
 
 		}
-		
+
 	}
 
 	@And("^User click confirm button$")
@@ -1238,6 +1243,110 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	@And("^Verify points label on Product in Redemption page$")
 	public void verify_points_label_on_product_in_redemption_page() {
 		Assert.assertTrue(giftPage.verify_points_label_on_product_in_redemption_page());
+	}
+
+//voucher 
+
+	@Then("^User click add to cart button on first voucher$")
+	public void user_click_add_to_cart_button_on_first_voucher() throws Throwable {
+		Assert.assertTrue(voucher.user_click_add_to_cart_button_on_first_voucher());
+	}
+
+	@Then("^Validate minimum spent limit popup$")
+	public void validate_minimum_spent_limit_popup() throws Throwable {
+		Assert.assertTrue(voucher.validate_minimum_spent_limit_popup());
+	}
+
+	@Then("^User click add to cart button on second voucher$")
+	public void user_click_add_to_cart_button_on_second_voucher() throws Throwable {
+		Assert.assertTrue(voucher.user_click_add_to_cart_button_on_second_voucher());
+	}
+
+	@Then("^Validate cannot combine voucher popup$")
+	public void validate_cannot_combine_voucher_popup() throws Throwable {
+		Assert.assertTrue(voucher.validate_cannot_combine_voucher_popup());
+	}
+
+	@And("^User click the Voucher Redemption button from right navigation and verify the page$")
+	public void user_click_the_voucher_redemption_button_from_right_navigation_and_verify_the_page() throws Throwable {
+		Assert.assertTrue(voucher.user_click_the_voucher_redemption_button_from_right_navigation_and_verify_the_page());
+	}
+
+	@And("^Verify redeem requst page components$")
+	public void verify_redeem_requst_page_components() throws Throwable {
+		Assert.assertTrue(voucher.verify_redeem_requst_page_components());
+	}
+
+	@And("^User click reedem button$")
+	public void user_click_reedem_button() throws Throwable {
+		Assert.assertTrue(voucher.user_click_reedem_button());
+	}
+
+	// product reservation
+	@Then("^User click the reserve button on cart page$")
+	public void user_click_the_reserve_button_on_cart_page() throws Throwable {
+		Assert.assertTrue(reservation.user_click_the_reserve_button_on_cart_page());
+	}
+
+	@Then("^User enter the reservation id$")
+	public void user_enter_the_reservation_id() throws Throwable {
+		Assert.assertTrue(reservation.user_enter_the_reservation_id());
+	}
+
+	@Then("^User validate generic customer popup and click proceed button$")
+	public void user_validate_generic_customer_popup_and_click_proceed_button() throws Throwable {
+		Assert.assertTrue(reservation.user_validate_generic_customer_popup_and_click_proceed_button());
+	}
+
+	@Then("^Validate product reservation success popup$")
+	public void validate_product_reservation_success_popup() throws Throwable {
+		Assert.assertTrue(reservation.validate_product_reservation_success_popup());
+	}
+
+	@And("^User click add to cart button from PLP page$")
+	public void user_click_add_to_cart_button_from_plp_page() throws Throwable {
+		Assert.assertTrue(reservation.user_click_add_to_cart_button_from_plp_page());
+	}
+
+	@And("^Varify the reservation id popup$")
+	public void varify_the_reservation_id_popup() throws Throwable {
+		Assert.assertTrue(reservation.varify_the_reservation_id_popup());
+	}
+
+	/// service booking
+	@Then("^Verify the upcoming bookings page$")
+	public void verify_the_upcoming_bookings_page() throws Throwable {
+		Assert.assertTrue(service.verify_the_upcoming_bookings_page());
+	}
+
+	@Then("^User click refresh button and it should navigate to list page$")
+	public void user_click_refresh_button_and_it_should_navigate_to_list_page() throws Throwable {
+		Assert.assertTrue(service.user_click_refresh_button_and_it_should_navigate_to_list_page());
+	}
+
+	@Then("^User click Customers button and validate customer list page$")
+	public void user_click_customers_button_and_validate_customer_list_page() throws Throwable {
+		Assert.assertTrue(service.user_click_customers_button_and_validate_customer_list_page());
+	}
+
+	@Then("^Verifty the customer details$")
+	public void verifty_the_customer_details() throws Throwable {
+		Assert.assertTrue(service.verifty_the_customer_details());
+	}
+
+	@And("^User click calendar button on upcoming booking page$")
+	public void user_click_calendar_button_on_upcoming_booking_page() throws Throwable {
+		Assert.assertTrue(service.user_click_calendar_button_on_upcoming_booking_page());
+	}
+
+	@And("^User click first customer on the list$")
+	public void user_click_first_customer_on_the_list() throws Throwable {
+		Assert.assertTrue(service.user_click_first_customer_on_the_list());
+	}
+
+	@And("^User click all bookings button and verify the list page$")
+	public void user_click_all_bookings_button_and_verify_the_list_page() throws Throwable {
+		Assert.assertTrue(service.user_click_all_bookings_button_and_verify_the_list_page());
 	}
 
 }

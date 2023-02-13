@@ -457,16 +457,38 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 	public boolean verify_menu_bar_items_on_the_home_page() {
 		try {
-			waitUntil("master_home_ba_name");
-			waitUntil("master_home_socialbutton1");
-			waitUntil("master_home_socialbutton2");
-			waitUntil("master_home_socialbutton3");
-			waitUntil("master_home_brandlogo");
-			waitUntil("master_home_membar_barcode");
-			waitUntil("master_home_staff_button");
-			waitUntil("master_home_location_button");
-			waitUntil("master_home_lan_button");
-			return true;
+
+			String application = ConfigReader.getData("app").toString();
+
+			if (application.equals("Kiehls")) {
+
+				waitUntil("master_home_ba_name");
+				waitUntil("master_home_socialbutton1");
+				waitUntil("master_home_socialbutton2");
+				// waitUntil("master_home_socialbutton3");
+				waitUntil("master_home_brandlogo");
+				waitUntil("master_home_membar_barcode");
+				waitUntil("master_home_staff_button");
+				waitUntil("master_home_location_button");
+				waitUntil("master_home_lan_button");
+				return true;
+			} else if (application.equals("Valentino")) {
+
+				waitUntil("master_home_ba_name");
+				waitUntil("master_home_socialbutton1");
+				waitUntil("master_home_socialbutton2");
+				waitUntil("master_home_socialbutton3");
+				waitUntil("master_home_brandlogo");
+				waitUntil("master_home_membar_barcode");
+				waitUntil("master_home_staff_button");
+				waitUntil("master_home_location_button");
+				waitUntil("master_home_lan_button");
+				return true;
+			} else {
+				System.out.println("Error - Application name not found!");
+				return false;
+			}
+
 		} catch (
 
 		Exception e) {

@@ -195,24 +195,16 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 
 	public boolean user_click_confirm_button() {
 		try {
-			segment = ConfigReader.getData("app_segment");
 
-			switch (ConfigReader.getData("appEnv")) {
-			case "UAT": {
-				if (segment.equals("AU")) {
+			String seg = ConfigReader.getData("app_segment").toString();
 
-				} else if (segment.equals("JP")) {
-					swipeScreenUntilElementVisible("master_createcustomer_confirm_button", Direction.UP);
-					waitUntil("master_createcustomer_confirm_button");
-					click("master_createcustomer_confirm_button");
-				}
+			if (seg.equals("HK") || seg.equals("KR") || seg.equals("TW") || seg.equals("JP") || seg.equals("AU")) {
+				swipeScreenUntilElementVisible("master_createcustomer_confirm_button", Direction.UP);
+				waitUntil("master_createcustomer_confirm_button");
+				click("master_createcustomer_confirm_button");
+
 				return true;
-			}
-			case "PROD": {
-			}
-
-			default: {
-			}
+			} else {
 				return false;
 
 			}
