@@ -720,9 +720,17 @@ public class CommonActions {
 		}
 
 		//
-		segment = ConfigReader.getData("app_segment").toString();
+		String seg = ConfigReader.getData("app_segment").toString();
 
-		if (segment.equals("HK") || segment.equals("KR") || segment.equals("TW") || segment.equals("JP")) {
+		if (seg.equals("HK") || seg.equals("KR") || seg.equals("TW") || seg.equals("JP")) {
+
+		} else {
+
+		}
+		//
+		String application = ConfigReader.getData("app").toString();
+
+		if (application.equals("Kiehls") || application.equals("Valentino")) {
 
 		} else {
 
