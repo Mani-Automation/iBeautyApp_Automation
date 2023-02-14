@@ -206,9 +206,19 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 		if (product.equalsIgnoreCase("Skincare")) {
 
-			waitUntilElementVisibleAndClick("master_right_nav_skincare_button");
+			String application = ConfigReader.getData("app").toString();
 
-			return true;
+			if (application.equals("Kiehls") || application.equals("Valentino")) {
+				waitUntilElementVisibleAndClick("master_right_nav_skincare_button");
+
+				return true;
+			} else if (application.equals("Lancome")) {
+				waitUntilElementVisibleAndClick("master_right_nav_skincare_button");
+
+				return true;
+			} else {
+				return false;
+			}
 
 		} else if (product.equalsIgnoreCase("Body")) {
 			right_navigation_product_body.click();

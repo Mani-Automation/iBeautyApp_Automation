@@ -1027,4 +1027,383 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 		}
 	}
 
+	public boolean tap_on_mobile_number_from_the_dropdown_list_kr() {
+		try {
+
+			String application = ConfigReader.getData("app").toString();
+
+			if (application.equals("Kiehls")) {
+				waitUntilElementVisibleAndClick("master_kr_c360_home_customer_search_name_list");
+
+				return true;
+			} else if (application.equals("Valentino")) {
+				waitUntilElementVisibleAndClick("master_c360_home_customer_search_lucid_list");
+				waitUntilElementVisibleAndClick("master_valentino_c360_abc_num_pad");
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean enter_mobile_number_and_tap_on_search_button_kr() {
+		try {
+
+			String application = ConfigReader.getData("app").toString();
+
+			if (application.equals("Kiehls")) {
+
+				waitUntil("master_home_search_text");
+				sendkeys("master_home_search_text", "test");
+
+				waitUntilElementVisibleAndClick("master_cart_additem_search_product_button");
+
+				return true;
+			} else if (application.equals("Valentino")) {
+
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_click_the_edit_button_and_update_member_page_should_be_displayed_kr() throws IOException {
+
+		try {
+			String application = ConfigReader.getData("app").toString();
+
+			if (application.equals("Kiehls") || application.equals("Valentino")) {
+
+				waitUntilElementVisibleAndClick("master_c360_cus_edit_button");
+				// popup
+				waitUntilElementVisibleAndClick("master_kr_createcustomer_popup");
+				waitUntil("master_calendar_event_phone_text");
+				return true;
+			}
+
+			else {
+				return false;
+			}
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+
+	}
+
+	public boolean user_edit_membership_info_kr() {
+		try {
+
+			String application = ConfigReader.getData("app").toString();
+
+			if (application.equals("Kiehls") || application.equals("Valentino")) {
+
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_edit_member_details_kr() {
+
+		try {
+
+			String application = ConfigReader.getData("app").toString();
+
+			if (application.equals("Kiehls") || application.equals("Valentino")) {
+
+				// phone number
+				sendkeys("master_calendar_event_phone_text", "6161616161");
+				click("master_brand_logo");
+
+				// Year
+				waitUntil("master_createcustomer_year_dropdown");
+				click("master_createcustomer_year_dropdown");
+				waitUntil("master_createcustomer_year");
+				click("master_createcustomer_year");
+
+				// Month
+				waitUntil("master_createcustomer_month_dropdown");
+				click("master_createcustomer_month_dropdown");
+				waitUntil("master_createcustomer_month");
+				click("master_createcustomer_month");
+
+				// day
+				waitUntil("master_createcustomer_day_dropdown");
+				click("master_createcustomer_day_dropdown");
+				waitUntil("master_createcustomer_date");
+				click("master_createcustomer_date");
+
+				// gender
+				waitUntil("master_createcustomer_gender_dropdown");
+				click("master_createcustomer_gender_dropdown");
+				Thread.sleep(2000);
+
+				String gender = "//XCUIElementTypeStaticText[@name=\""
+						+ ExcelData.getExcelData("customer_testdata", "gender_male").toString() + "\"]";
+				webdriverwait(driver.findElement(By.xpath(gender)));
+				driver.findElement(By.xpath(gender)).click();
+				// im an internation - checkbox
+
+				// email
+				waitUntil("master_createcustomer_email");
+				sendkeys("master_createcustomer_email", "newtestnew" + random.nextInt(10000) + "@gmail.com");
+				click("master_brand_logo");
+
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+
+	}
+
+	public boolean user_edit_mailing_address_kr() {
+
+		try {
+			String application = ConfigReader.getData("app").toString();
+
+			if (application.equals("Kiehls") || application.equals("Valentino")) {
+				// add2
+				sendkeys("master_createcustomer_address2",
+						ExcelData.getExcelData("customer_testdata", "newTestStreet"));
+				click("master_brand_logo");
+
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+
+	}
+
+	public boolean user_click_the_edit_button_and_update_member_page_should_be_displayed_tw() {
+
+		try {
+			String application = ConfigReader.getData("app").toString();
+
+			if (application.equals("Kiehls") || application.equals("Valentino")) {
+
+				waitUntilElementVisibleAndClick("master_c360_cus_edit_button");
+
+				waitUntil("master_calendar_event_phone_text");
+				return true;
+			}
+
+			else {
+				return false;
+			}
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_edit_member_details_tw() {
+
+		try {
+			// phone number
+			sendkeys("master_calendar_event_phone_text", "6161616161");
+			click("master_brand_logo");
+
+			// Year
+			waitUntil("master_createcustomer_year_dropdown");
+			click("master_createcustomer_year_dropdown");
+			waitUntil("master_createcustomer_year");
+			click("master_createcustomer_year");
+
+			// Month
+			waitUntil("master_createcustomer_month_dropdown");
+			click("master_createcustomer_month_dropdown");
+			waitUntil("master_createcustomer_month");
+			click("master_createcustomer_month");
+
+			// day
+			waitUntil("master_createcustomer_day_dropdown");
+			click("master_createcustomer_day_dropdown");
+			waitUntil("master_createcustomer_date");
+			click("master_createcustomer_date");
+
+			// gender
+			waitUntil("master_createcustomer_gender_dropdown");
+			click("master_createcustomer_gender_dropdown");
+			Thread.sleep(2000);
+
+			String gender = "//XCUIElementTypeStaticText[@name=\""
+					+ ExcelData.getExcelData("customer_testdata", "gender_male").toString() + "\"]";
+			webdriverwait(driver.findElement(By.xpath(gender)));
+			driver.findElement(By.xpath(gender)).click();
+			// im an internation - checkbox
+
+			// email
+			waitUntil("master_createcustomer_email");
+			sendkeys("master_createcustomer_email", "newtestnew" + random.nextInt(10000) + "@gmail.com");
+			click("master_brand_logo");
+
+			return false;
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_edit_mailing_address_tw() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	public boolean tap_on_mobile_number_from_the_dropdown_list_my() {
+		try {
+
+			waitUntilElementVisibleAndClick("master_kr_c360_home_customer_search_name_list");
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+
+		return true;
+	}
+
+	public boolean enter_mobile_number_and_tap_on_search_button_my() {
+		try {
+
+			String application = ConfigReader.getData("app").toString();
+
+			if (application.equals("Kiehls")) {
+
+				waitUntil("master_home_search_text");
+				sendkeys("master_home_search_text", "a@a.com");
+
+				waitUntilElementVisibleAndClick("master_cart_additem_search_product_button");
+
+				return true;
+			} else if (application.equals("Valentino")) {
+
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_edit_membership_info_my() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	public boolean user_edit_member_details_my() {
+		try {
+
+			// local
+
+			// title
+			waitUntilElementVisibleAndClick("master_hk_createcustomer_title_dropdown");
+			staticTextClick("Mrs");
+
+			// fn
+			sendkeys("master_createcustomer_firstname", ExcelData.getExcelData("customer_testdata", "last_name"));
+			click("master_brand_logo");
+
+			sendkeys("master_createcustomer_lastname", ExcelData.getExcelData("customer_testdata", "first_name"));
+			click("master_brand_logo");
+			// phone
+			// phone number
+			waitUntilElementVisibleAndClick("master_calendar_event_phone_text");
+
+			sendkeys("master_calendar_event_phone_text", "18465" + random.nextInt(10000));
+			click("master_brand_logo");
+			// email
+			waitUntil("master_createcustomer_email");
+			sendkeys("master_createcustomer_email", "testau" + random.nextInt(10000) + "@gmail.com");
+			click("master_brand_logo");
+
+			// gender
+			waitUntil("master_createcustomer_gender_dropdown");
+			click("master_createcustomer_gender_dropdown");
+
+			// Year
+			waitUntil("master_createcustomer_year_dropdown");
+			click("master_createcustomer_year_dropdown");
+			waitUntil("master_createcustomer_year");
+			click("master_createcustomer_year");
+
+			// Month
+			waitUntil("master_createcustomer_month_dropdown");
+			click("master_createcustomer_month_dropdown");
+			waitUntil("master_createcustomer_month");
+			click("master_createcustomer_month");
+
+			// day
+			waitUntil("master_createcustomer_day_dropdown");
+			click("master_createcustomer_day_dropdown");
+			waitUntil("master_createcustomer_date");
+			click("master_createcustomer_date");
+
+			// lang
+			waitUntil("master_my_createcustomer_language");
+			click("master_my_createcustomer_language");
+
+			staticTextClick("English");
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
 }

@@ -142,7 +142,7 @@ public class CommonActions {
 				.release().perform();
 	}
 
-	public void swipeScreen(Direction dir) {
+	public void swipeScreen(int dynamicEdgeBorder, Direction dir) {
 		// Animation default time:
 		// - Android: 300 ms
 		// - iOS: 200 ms
@@ -151,7 +151,7 @@ public class CommonActions {
 
 		final int PRESS_TIME = 200; // ms
 
-		int edgeBorder = 200; // better avoid edges
+		int edgeBorder = dynamicEdgeBorder;// better avoid edges
 		PointOption pointOptionStart, pointOptionEnd;
 
 		// init screen variables
@@ -641,13 +641,35 @@ public class CommonActions {
 
 	}
 
+	public void selectCountryByConfig() throws IOException, InterruptedException {
+
+		String country = getCountryName().toString();
+
+		String str = "//XCUIElementTypeStaticText[@name='" + country + "']";
+
+		driver = DriverManager.getDriver();
+		for (int i = 0; i <= 15; i++) {
+
+			if (!driver.findElement(By.xpath(str)).isDisplayed()) {
+				swipeScreen(330, Direction.UP);
+
+			} else {
+				break;
+			}
+
+		}
+		MobileElement element = (MobileElement) driver.findElementByXPath(str);
+		element.click();
+
+	}
+
 	public void swipeScreenUntilElementVisible(String locatorStrings, Direction dir)
 			throws IOException, InterruptedException {
 		driver = DriverManager.getDriver();
 		for (int i = 0; i <= 15; i++) {
 
 			if (!driver.findElement(By.xpath(loc.getData(locatorStrings))).isDisplayed()) {
-				swipeScreen(dir);
+				swipeScreen(200, dir);
 			} else {
 				break;
 			}

@@ -71,7 +71,15 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 			case "UAT": {
 				if (ConfigReader.getData("app").equals("Kiehls")) {
 					try {
-						waitUntil("master_consultation_page");
+
+						String segment = ConfigReader.getData("app_segment");
+
+						if (segment.equals("AU") || segment.equals("JP") || segment.equals("KR")) {
+							waitUntil("master_consultation_page");
+
+						} else if (segment.equals("TW")) {
+							waitUntil("master_start_button");
+						}
 
 						return true;
 
@@ -119,7 +127,9 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 			}
 
-		} catch (Exception e) {
+		} catch (
+
+		Exception e) {
 			return false;
 
 		}

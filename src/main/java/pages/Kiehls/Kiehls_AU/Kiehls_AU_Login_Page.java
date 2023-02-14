@@ -47,8 +47,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 				waitUntil("master_login_select_country");
 				click("master_login_select_country");
 				waitUntil("master_login_select_country_list");
-				String required_country = "//XCUIElementTypeStaticText[@name=\"" + getCountryName() + "\"]";
-				driver.findElement(By.xpath(required_country)).click();
+				selectCountryByConfig();
 
 				// click login button
 				waitUntil("master_proceed_button");
@@ -155,8 +154,8 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			waitUntil("master_login_select_country");
 			click("master_login_select_country");
 			waitUntil("master_login_select_country_list");
-			String required_country = "//XCUIElementTypeStaticText[@name=\"" + getCountryName() + "\"]";
-			driver.findElement(By.xpath(required_country)).click();
+
+			selectCountryByConfig();
 			return true;
 
 		} catch (Exception e) {

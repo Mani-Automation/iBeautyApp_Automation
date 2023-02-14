@@ -488,13 +488,39 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	}
 
 	@And("^tap on Mobile Number from the dropdown list$")
-	public void tap_on_Mobile_Number_from_the_dropdown_list() throws InterruptedException {
-		Assert.assertTrue(c360Page.tap_on_mobile_number_from_the_dropdown_list());
+	public void tap_on_Mobile_Number_from_the_dropdown_list() throws InterruptedException, IOException {
+
+		String segment = ConfigReader.getData("app_segment");
+
+		if (segment.equals("AU")) {
+			Assert.assertTrue(c360Page.tap_on_mobile_number_from_the_dropdown_list());
+
+		} else if (segment.equals("JP")) {
+			Assert.assertTrue(c360Page.tap_on_mobile_number_from_the_dropdown_list());
+
+		} else if (segment.equals("KR") || segment.equals("TW")) {
+			Assert.assertTrue(c360Page.tap_on_mobile_number_from_the_dropdown_list_kr());
+
+		}
+
 	}
 
 	@And("^enter Mobile Number and tap on search button$")
-	public void enter_mobile_number_and_tap_on_search_button() {
-		Assert.assertTrue(c360Page.enter_mobile_number_and_tap_on_search_button());
+	public void enter_mobile_number_and_tap_on_search_button() throws IOException {
+
+		String segment = ConfigReader.getData("app_segment");
+
+		if (segment.equals("AU")) {
+			Assert.assertTrue(c360Page.enter_mobile_number_and_tap_on_search_button());
+
+		} else if (segment.equals("JP")) {
+			Assert.assertTrue(c360Page.enter_mobile_number_and_tap_on_search_button());
+
+		} else if (segment.equals("KR") || segment.equals("TW") || segment.equals("HK")) {
+			Assert.assertTrue(c360Page.enter_mobile_number_and_tap_on_search_button_kr());
+
+		}
+
 	}
 
 	@Then("^User verify total number of bottles returned column$")
@@ -581,25 +607,88 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	}
 
 	@And("^User click the Edit button and update member page should be displayed$")
-	public void user_click_the_edit_button_and_update_member_page_should_be_displayed() {
-		Assert.assertTrue(c360Page.user_click_the_edit_button_and_update_member_page_should_be_displayed());
+	public void user_click_the_edit_button_and_update_member_page_should_be_displayed() throws IOException {
+
+		String segment = ConfigReader.getData("app_segment");
+
+		if (segment.equals("AU")) {
+			Assert.assertTrue(c360Page.user_click_the_edit_button_and_update_member_page_should_be_displayed());
+
+		} else if (segment.equals("JP")) {
+			Assert.assertTrue(c360Page.user_click_the_edit_button_and_update_member_page_should_be_displayed());
+
+		} else if (segment.equals("KR")) {
+			Assert.assertTrue(c360Page.user_click_the_edit_button_and_update_member_page_should_be_displayed_kr());
+
+		} else if (segment.equals("TW")) {
+			Assert.assertTrue(c360Page.user_click_the_edit_button_and_update_member_page_should_be_displayed_tw());
+
+		}
 	}
 
 //24
 
 	@Then("^User edit membership info$")
 	public void user_edit_membership_info() throws Throwable {
-		Assert.assertTrue(c360Page.user_edit_membership_info());
+
+		String segment = ConfigReader.getData("app_segment");
+
+		if (segment.equals("AU")) {
+			Assert.assertTrue(c360Page.user_edit_membership_info());
+
+		} else if (segment.equals("JP")) {
+			Assert.assertTrue(c360Page.user_edit_membership_info());
+
+		} else if (segment.equals("KR") || segment.equals("TW")) {
+			Assert.assertTrue(c360Page.user_edit_membership_info_kr());
+
+		}
 	}
 
 	@And("^User edit member details$")
 	public void user_edit_member_details() throws Throwable {
-		Assert.assertTrue(c360Page.user_edit_member_details());
+
+		String segment = ConfigReader.getData("app_segment");
+
+		if (segment.equals("AU")) {
+			Assert.assertTrue(c360Page.user_edit_member_details());
+
+		} else if (segment.equals("JP")) {
+			Assert.assertTrue(c360Page.user_edit_member_details());
+
+		} else if (segment.equals("KR")) {
+			Assert.assertTrue(c360Page.user_edit_member_details_kr());
+
+		} else if (segment.equals("TW")) {
+			Assert.assertTrue(c360Page.user_edit_member_details_tw());
+
+		}
+	}
+
+	@And("^User click confirm button to update edited changes$")
+	public void user_click_confirm_button_to_update_edited_changes() throws Throwable {
+		Assert.assertTrue(ccPage.user_click_confirm_button_to_update_edited_changes());
 	}
 
 	@And("^User edit mailing address$")
 	public void user_edit_mailing_address() throws Throwable {
-		Assert.assertTrue(c360Page.user_edit_mailing_address());
+
+		String segment = ConfigReader.getData("app_segment");
+
+		if (segment.equals("AU")) {
+			Assert.assertTrue(c360Page.user_edit_mailing_address());
+
+		} else if (segment.equals("JP")) {
+			Assert.assertTrue(c360Page.user_edit_mailing_address());
+
+		} else if (segment.equals("KR")) {
+			Assert.assertTrue(c360Page.user_edit_mailing_address_kr());
+
+		} else if (segment.equals("TW") || segment.equals("HK")) {
+			Assert.assertTrue(c360Page.user_edit_mailing_address_tw());
+
+		}
+
 	}
 
 	@And("^User edit communicate channals details$")
@@ -709,6 +798,14 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 		} else if (segment.equals("JP")) {
 			Assert.assertTrue(ccPage.user_add_membership_info_jp());
+		} else if (segment.equals("KR")) {
+			Assert.assertTrue(ccPage.user_add_membership_info_kr());
+		} else if (segment.equals("TW")) {
+			Assert.assertTrue(ccPage.user_add_membership_info_tw());
+
+		} else if (segment.equals("HK") || segment.equals("MY")) {
+			Assert.assertTrue(ccPage.user_add_membership_info_hk());
+
 		}
 
 	}
@@ -724,8 +821,19 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		} else if (segment.equals("JP")) {
 			Assert.assertTrue(ccPage.user_add_member_details_jp());
 
-		}
+		} else if (segment.equals("KR")) {
+			Assert.assertTrue(ccPage.user_add_member_details_kr());
 
+		} else if (segment.equals("TW")) {
+			Assert.assertTrue(ccPage.user_add_member_details_tw());
+
+		} else if (segment.equals("HK")) {
+			Assert.assertTrue(ccPage.user_add_member_details_hk());
+
+		} else if (segment.equals("MY")) {
+			Assert.assertTrue(ccPage.user_add_member_details_my());
+
+		}
 	}
 
 	@And("^User add mailing address$")
@@ -738,8 +846,18 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		} else if (segment.equals("JP")) {
 			Assert.assertTrue(ccPage.user_add_mailing_address_jp());
 
-		}
+		} else if (segment.equals("KR")) {
+			Assert.assertTrue(ccPage.user_add_mailing_address_kr());
 
+		} else if (segment.equals("TW")) {
+
+			Assert.assertTrue(ccPage.user_add_mailing_address_tw());
+
+		} else if (segment.equals("MY")) {
+
+			Assert.assertTrue(ccPage.user_add_mailing_address_my());
+
+		}
 	}
 
 	@And("^User add communicate channals details$")
@@ -759,8 +877,19 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		} else if (segment.equals("JP")) {
 			Assert.assertTrue(ccPage.user_click_terms_and_conditions_checkbox_jp());
 
-		}
+		} else if (segment.equals("KR")) {
+			Assert.assertTrue(ccPage.user_click_terms_and_conditions_checkbox_kr());
 
+		} else if (segment.equals("TW")) {
+			Assert.assertTrue(ccPage.user_click_terms_and_conditions_checkbox_tw());
+
+		} else if (segment.equals("HK")) {
+			Assert.assertTrue(ccPage.user_click_terms_and_conditions_checkbox_hk());
+
+		} else if (segment.equals("MY")) {
+			Assert.assertTrue(ccPage.user_click_terms_and_conditions_checkbox_my());
+
+		}
 	}
 
 	@And("^User click confirm button$")
