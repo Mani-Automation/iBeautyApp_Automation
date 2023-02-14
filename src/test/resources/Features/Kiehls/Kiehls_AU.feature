@@ -4,7 +4,7 @@ Feature: iBeauty Regression Test
     Given User launches the Application
     When User select country and login to store then login to ba account
 
-  @master @smoke @Regression @Login @positive @start @pass
+  @master @smoke @Regression @Login @positive @start @pass 
   Scenario: Verify user able to login the application
     Then User is on home page
 
@@ -283,7 +283,7 @@ Feature: iBeauty Regression Test
     And User select phone and enter the number
     Then User click search button and verify the changed customer
 
-  @master @smoke @Regression @C360 @pass @vtest
+  @master @smoke @Regression @C360 @pass 
   Scenario: Verify customer 360 screen
     Then User is on home page
     Then tap on customer search dropdown
@@ -294,7 +294,7 @@ Feature: iBeauty Regression Test
     And Verify the phone number
     And Verify the Edit button
 
-  @master @smoke @Regression @C360 @pass @vtest
+  @master @smoke @Regression @C360 @pass 
   Scenario: Verify Membership history
     Then User is on home page
     Then tap on customer search dropdown
@@ -303,7 +303,7 @@ Feature: iBeauty Regression Test
     Then Customer threeSixty screen should be display
     And User click the membership tab and verify Membership screen should be displayed
 
-  @master @smoke @Regression @C360 @pass @vtest
+  @master @smoke @Regression @C360 @pass 
   Scenario: Add Products to Wish List
     Then User is on home page
     Then tap on customer search dropdown
@@ -319,7 +319,7 @@ Feature: iBeauty Regression Test
     And User click wishlist tab
     Then User click wishlist product and verify PDP shold be displayed
 
-  @master @smoke @Regression @C360 @pass @vtest
+  @master @smoke @Regression @C360 @pass 
   Scenario: Verify if user able to view customer summary
     Then User is on home page
     Then tap on customer search dropdown
@@ -329,7 +329,7 @@ Feature: iBeauty Regression Test
     And User click the summary tab
     Then Verify user general information should be displayed
 
-  @master @smoke @Regression @C360 @pass @vtest
+  @master @smoke @Regression @C360 @pass 
   Scenario: Verify if user is able to create customer notes with important message
     Then User is on home page
     Then tap on customer search dropdown
@@ -344,7 +344,7 @@ Feature: iBeauty Regression Test
   # And User toogle and mark the message as important
   #And User click the save button
   # Then Verify the customer note should be displayed in notes section
-  @master @smoke @Regression @C360 @pass @vtest
+  @master @smoke @Regression @C360 @pass 
   Scenario: Verify if user is able to create customer notes without important message
     Then User is on home page
     Then tap on customer search dropdown
@@ -397,6 +397,33 @@ Feature: iBeauty Regression Test
     And User click the product and verify user get navigate to PDP page
     Then Verify the product description, tips and ingriedients tabs in PDP
 
+#--------------- Create and Edit customer ---------------       
+  @master_test @smoke @Regression @EditCustomer @pass
+  Scenario: Verify user able to edit customer on C360 page with all field
+    Then User is on home page
+    Then tap on customer search dropdown
+    And tap on Mobile Number from the dropdown list
+    And enter Mobile Number and tap on search button
+    Then Customer threeSixty screen should be display
+    And User click the Edit button and update member page should be displayed
+    Then User edit membership info
+    And User edit member details
+    And User edit mailing address
+    And User click confirm button to update edited changes
+    Then User verify Customer ThreeSixty Screen should be displayed
+
+  @master_test @smoke @Regression @EditCustomer @pass
+  Scenario: Verify user able to edit customer on C360 page with only member info
+    Then User is on home page
+    Then tap on customer search dropdown
+    And tap on Mobile Number from the dropdown list
+    And enter Mobile Number and tap on search button
+    Then Customer threeSixty screen should be display
+    And User click the Edit button and update member page should be displayed
+    Then User edit membership info
+    And User click confirm button to update edited changes
+    Then User verify Customer ThreeSixty Screen should be displayed
+
   @master @Regression @Customercreation @positive @test
   Scenario: Verify if user is able to create a new customer with only mandatory fields
     Then User is on home page
@@ -447,7 +474,7 @@ Feature: iBeauty Regression Test
     And User click save button to save form
     And User verify the consultation home page
 
-  @master @Regressionn @consultation @pass @vtest
+  @master @Regressionn @consultation @pass 
   Scenario: Verify user able to create consultation for survey with member
     Then User is on home page
     Then tap on customer search dropdown
@@ -465,7 +492,7 @@ Feature: iBeauty Regression Test
     And User click save button to save form
     And User verify the consultation home page
 
-  @master @Regressionn @consultation @pass @vtest
+  @master @Regressionn @consultation @pass 
   Scenario: Verify user able to update consultation for survey with member
     Then User is on home page
     Then tap on customer search dropdown
@@ -501,7 +528,7 @@ Feature: iBeauty Regression Test
     And Verify mandatory error messages in the form
     And User verify the consultation home page
 
-  @master @Regression @consultation @pass @vtest
+  @master @Regression @consultation @pass 
   Scenario: Verify build routine
     Then User is on home page
     Then tap on customer search dropdown
@@ -524,7 +551,7 @@ Feature: iBeauty Regression Test
     And Verify the cart page
     Then User validate added product on the cart
 
-  @master @Regression @consultation @pass @vtest
+  @master @Regression @consultation @pass 
   Scenario: Verify edit build routine
     Then User is on home page
     Then tap on customer search dropdown
@@ -544,7 +571,7 @@ Feature: iBeauty Regression Test
     Then User edit product on build routine select page
     And User validate edited product on summary page
 
-  @master @smoke @Regression @home @pass @vtest
+  @master @smoke @Regression @home @pass 
   Scenario: Verify the user able see all the components in Home page
     Then User is on home page
     Then Verify menu bar items on the home page
@@ -568,32 +595,6 @@ Feature: iBeauty Regression Test
     Then User enter new password
     Then User enter confirm password
     And User click cancel button
-
-  @master_test @smoke @Regression @EditCustomer @pass
-  Scenario: Verify user able to edit customer on C360 page with all field
-    Then User is on home page
-    Then tap on customer search dropdown
-    And tap on Mobile Number from the dropdown list
-    And enter Mobile Number and tap on search button
-    Then Customer threeSixty screen should be display
-    And User click the Edit button and update member page should be displayed
-    Then User edit membership info
-    And User edit member details
-    And User edit mailing address
-    And User click confirm button
-    Then User verify Customer ThreeSixty Screen should be displayed
-
-  @master_test @smoke @Regression @EditCustomer @pass
-  Scenario: Verify user able to edit customer on C360 page with only member info
-    Then User is on home page
-    Then tap on customer search dropdown
-    And tap on Mobile Number from the dropdown list
-    And enter Mobile Number and tap on search button
-    Then Customer threeSixty screen should be display
-    And User click the Edit button and update member page should be displayed
-    Then User edit membership info
-    And User click confirm button
-    Then User verify Customer ThreeSixty Screen should be displayed
 
   @master_test @smoke @Regression @Recycle
   Scenario: Verify the user able see all setting options
