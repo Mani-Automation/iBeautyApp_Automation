@@ -144,26 +144,22 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 			if (product.equalsIgnoreCase("Skincare")) {
 
-				waitUntil("master_skincare_button");
-				click("master_skincare_button");
+				waitUntilElementVisibleAndClick("master_skincare_button");
 				return true;
 
 			} else if (product.equalsIgnoreCase("Body")) {
 
-				waitUntil("master_body_button");
-				click("master_body_button");
+				waitUntilElementVisibleAndClick("master_body_button");
 				return true;
 
 			} else if (product.equalsIgnoreCase("Men")) {
 
-				waitUntil("master_men_button");
-				click("master_men_button");
+				waitUntilElementVisibleAndClick("master_men_button");
 				return true;
 
 			} else if (product.equalsIgnoreCase("Hair")) {
 
-				waitUntil("master_hair_button");
-				click("master_hair_button");
+				waitUntilElementVisibleAndClick("master_hair_button");
 				return true;
 
 			} else if (product.equalsIgnoreCase("Makeup")) {

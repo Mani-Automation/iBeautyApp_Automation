@@ -11,7 +11,7 @@ public class ReportWeb {
 		 
 			public void generateReport(String JsonFile, String start_time)  {
 				
-				Configuration config = new Configuration(new File (System.getProperty("user.dir")+"/target/ResultsMobile/"+ start_time), "iBeauty_MobileAutomation");
+				Configuration config = new Configuration(new File (System.getProperty("user.dir")+"/reports/"+ start_time), "iBeauty_MobileAutomation");
 				
 
 				List <String> JsonFiles = new ArrayList<>();
