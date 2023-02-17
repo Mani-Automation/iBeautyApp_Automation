@@ -107,7 +107,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean customer_threesixty_screen_should_be_display() {
 		try {
-
+			Thread.sleep(3000);
 			waitUntilElementVisibleAndClick("master_c360_search_result_first_cus");
 			waitUntil("master_c360_cus_name_label");
 
@@ -744,52 +744,6 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 				clearAndSendkeys("master_createcustomer_lastname",
 						ExcelData.getExcelData("customer_testdata", "last_name"));
 				click("master_brand_logo");
-				clearAndSendkeys("master_createcustomer_katakana_lastname",
-						ExcelData.getExcelData("customer_testdata", "katakana_last_name"));
-				click("master_brand_logo");
-				// firstname
-				clearAndSendkeys("master_createcustomer_firstname",
-						ExcelData.getExcelData("customer_testdata", "first_name"));
-				click("master_brand_logo");
-				clearAndSendkeys("master_createcustomer_katakana_firstname",
-						ExcelData.getExcelData("customer_testdata", "katakana_first_name"));
-				click("master_brand_logo");
-				// email
-				waitUntil("master_createcustomer_email");
-				clearAndSendkeys("master_createcustomer_email",
-						ExcelData.getExcelData("customer_testdata", "email_id") + random.nextInt(10000));
-				click("master_brand_logo");
-				waitUntil("master_createcustomer_email_domain_dropdown");
-				click("master_createcustomer_email_domain_dropdown");
-				waitUntil("master_createcustomer_email_domain_name");
-				click("master_createcustomer_email_domain_name");
-				// dob
-				// Year
-				waitUntil("master_createcustomer_year_dropdown");
-				click("master_createcustomer_year_dropdown");
-				waitUntil("master_createcustomer_year");
-				click("master_createcustomer_year");
-
-				// Month
-				waitUntil("master_createcustomer_month_dropdown");
-				click("master_createcustomer_month_dropdown");
-				waitUntil("master_createcustomer_month");
-				click("master_createcustomer_month");
-				// day
-				waitUntil("master_createcustomer_day_dropdown");
-				click("master_createcustomer_day_dropdown");
-				waitUntil("master_createcustomer_date");
-				click("master_createcustomer_date");
-				// gender
-				waitUntil("master_createcustomer_gender_dropdown");
-				click("master_createcustomer_gender_dropdown");
-				Thread.sleep(2000);
-
-				String gender = "//XCUIElementTypeStaticText[@name=\""
-						+ ExcelData.getExcelData("customer_testdata", "gender_male").toString() + "\"]";
-				webdriverwait(driver.findElement(By.xpath(gender)));
-				driver.findElement(By.xpath(gender)).click();
-				// im an internation - checkbox
 
 			}
 			return true;
@@ -1091,8 +1045,8 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 				waitUntilElementVisibleAndClick("master_c360_cus_edit_button");
 				// popup
-				waitUntilElementVisibleAndClick("master_kr_createcustomer_popup");
-				waitUntil("master_calendar_event_phone_text");
+				// waitUntilElementVisibleAndClick("master_kr_createcustomer_popup");
+				// waitUntil("master_calendar_event_phone_text");
 				return true;
 			}
 
@@ -1137,40 +1091,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 			if (application.equals("Kiehls") || application.equals("Valentino")) {
 
-				// phone number
-				sendkeys("master_calendar_event_phone_text", "6161616161");
-				click("master_brand_logo");
-
-				// Year
-				waitUntil("master_createcustomer_year_dropdown");
-				click("master_createcustomer_year_dropdown");
-				waitUntil("master_createcustomer_year");
-				click("master_createcustomer_year");
-
-				// Month
-				waitUntil("master_createcustomer_month_dropdown");
-				click("master_createcustomer_month_dropdown");
-				waitUntil("master_createcustomer_month");
-				click("master_createcustomer_month");
-
-				// day
-				waitUntil("master_createcustomer_day_dropdown");
-				click("master_createcustomer_day_dropdown");
-				waitUntil("master_createcustomer_date");
-				click("master_createcustomer_date");
-
-				// gender
-				waitUntil("master_createcustomer_gender_dropdown");
-				click("master_createcustomer_gender_dropdown");
-				Thread.sleep(2000);
-
-				String gender = "//XCUIElementTypeStaticText[@name=\""
-						+ ExcelData.getExcelData("customer_testdata", "gender_male").toString() + "\"]";
-				webdriverwait(driver.findElement(By.xpath(gender)));
-				driver.findElement(By.xpath(gender)).click();
-				// im an internation - checkbox
-
-				// email
+				clear("master_createcustomer_email");
 				waitUntil("master_createcustomer_email");
 				sendkeys("master_createcustomer_email", "newtestnew" + random.nextInt(10000) + "@gmail.com");
 				click("master_brand_logo");
@@ -1195,8 +1116,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 			if (application.equals("Kiehls") || application.equals("Valentino")) {
 				// add2
-				sendkeys("master_createcustomer_address2",
-						ExcelData.getExcelData("customer_testdata", "newTestStreet"));
+				sendkeys("master_createcustomer_address2", "newteststreet");
 				click("master_brand_logo");
 
 				return true;
@@ -1241,27 +1161,6 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 	public boolean user_edit_member_details_tw() {
 
 		try {
-			// phone number
-			sendkeys("master_calendar_event_phone_text", "6161616161");
-			click("master_brand_logo");
-
-			// Year
-			waitUntil("master_createcustomer_year_dropdown");
-			click("master_createcustomer_year_dropdown");
-			waitUntil("master_createcustomer_year");
-			click("master_createcustomer_year");
-
-			// Month
-			waitUntil("master_createcustomer_month_dropdown");
-			click("master_createcustomer_month_dropdown");
-			waitUntil("master_createcustomer_month");
-			click("master_createcustomer_month");
-
-			// day
-			waitUntil("master_createcustomer_day_dropdown");
-			click("master_createcustomer_day_dropdown");
-			waitUntil("master_createcustomer_date");
-			click("master_createcustomer_date");
 
 			// gender
 			waitUntil("master_createcustomer_gender_dropdown");
@@ -1276,10 +1175,11 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 			// email
 			waitUntil("master_createcustomer_email");
-			sendkeys("master_createcustomer_email", "newtestnew" + random.nextInt(10000) + "@gmail.com");
+			clear("master_createcustomer_email");
+			sendkeys("master_createcustomer_email", "ntest" + random.nextInt(10000) + "@gmail.com");
 			click("master_brand_logo");
 
-			return false;
+			return true;
 		} catch (
 
 		Exception e) {
@@ -1290,7 +1190,6 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 	}
 
 	public boolean user_edit_mailing_address_tw() {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
@@ -1404,6 +1303,300 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 			return false;
 		}
+	}
+
+	public boolean user_edit_member_details_hk() {
+		try {
+
+			// fn
+			sendkeys("master_createcustomer_firstname", "Test" + RandomStringGenerate());
+			click("master_brand_logo");
+
+			return true;
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean tap_on_mobile_number_from_the_dropdown_list_th() {
+		try {
+
+			String application = ConfigReader.getData("app").toString();
+
+			if (application.equals("Kiehls")) {
+				waitUntilElementVisibleAndClick("master_kr_c360_home_customer_search_name_list");
+
+				return true;
+			} else if (application.equals("Valentino")) {
+				waitUntilElementVisibleAndClick("master_c360_home_customer_search_lucid_list");
+				waitUntilElementVisibleAndClick("master_valentino_c360_abc_num_pad");
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean enter_mobile_number_and_tap_on_search_button_th() {
+		try {
+
+			String application = ConfigReader.getData("app").toString();
+
+			if (application.equals("Kiehls")) {
+
+				waitUntil("master_home_search_text");
+				sendkeys("master_home_search_text", "a@a.com");
+
+				waitUntilElementVisibleAndClick("master_cart_additem_search_product_button");
+
+				return true;
+			} else if (application.equals("Valentino")) {
+
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_edit_member_details_th() {
+		try {
+			// national id
+
+			// firstname
+			sendkeys("master_createcustomer_firstname", "Test");
+			click("master_brand_logo");
+
+			// lastname
+			sendkeys("master_createcustomer_lastname", "Data");
+			click("master_brand_logo");
+
+			// gender
+			waitUntil("master_createcustomer_gender_dropdown");
+			click("master_createcustomer_gender_dropdown");
+			Thread.sleep(2000);
+
+			String gender = "//XCUIElementTypeStaticText[@name=\""
+					+ ExcelData.getExcelData("customer_testdata", "gender_male").toString() + "\"]";
+			webdriverwait(driver.findElement(By.xpath(gender)));
+			driver.findElement(By.xpath(gender)).click();
+			// im an internation - checkbox
+
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_edit_member_details_sg() {
+		try {
+
+			// gender
+			waitUntil("master_createcustomer_gender_dropdown");
+			click("master_createcustomer_gender_dropdown");
+			Thread.sleep(2000);
+
+			String gender = "//XCUIElementTypeStaticText[@name=\""
+					+ ExcelData.getExcelData("customer_testdata", "gender_male").toString() + "\"]";
+			webdriverwait(driver.findElement(By.xpath(gender)));
+			driver.findElement(By.xpath(gender)).click();
+			// im an internation - checkbox
+
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean tap_on_customer_search_dropdown_nz() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	public boolean enter_mobile_number_and_tap_on_search_button_nz() {
+		try {
+
+			String application = ConfigReader.getData("app").toString();
+
+			if (application.equals("Kiehls")) {
+
+				waitUntil("master_home_search_text");
+				sendkeys("master_home_search_text", "a@a.com");
+
+				waitUntilElementVisibleAndClick("master_cart_additem_search_product_button");
+
+				return true;
+			} else if (application.equals("Valentino")) {
+
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_edit_member_details_nz() {
+
+		try {
+
+			// lastname
+			sendkeys("master_createcustomer_lastname", "Test" + RandomStringGenerate());
+			click("master_brand_logo");
+
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean tap_on_mobile_number_from_the_dropdown_list_au() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	public boolean enter_mobile_number_and_tap_on_search_button_au() {
+		try {
+
+			String application = ConfigReader.getData("app").toString();
+
+			if (application.equals("Kiehls")) {
+
+				waitUntil("master_home_search_text");
+				sendkeys("master_home_search_text", "a@a.com");
+
+				waitUntilElementVisibleAndClick("master_cart_additem_search_product_button");
+
+				return true;
+			} else if (application.equals("Valentino")) {
+
+				return true;
+			} else {
+				return false;
+			}
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_edit_member_details_au() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	public boolean customer_threesixty_screen_should_be_display_au() {
+		try {
+
+			waitUntil("master_c360_cus_name_label");
+
+			return true;
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_click_the_edit_button_and_update_member_page_should_be_displayed_au() {
+		try {
+			segment = ConfigReader.getData("app_segment");
+
+			switch (ConfigReader.getData("appEnv")) {
+			case "UAT": {
+
+				waitUntilElementVisibleAndClick("master_c360_cus_edit_button");
+
+				waitUntilElementVisibleAndClick("master_createcustomer_header_text");
+
+				return true;
+			}
+			case "PROD": {
+				return true;
+
+			}
+
+			default: {
+			}
+				return false;
+
+			}
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_click_the_edit_button_and_update_member_page_should_be_displayed_sg() {
+		try {
+			String application = ConfigReader.getData("app").toString();
+
+			if (application.equals("Kiehls") || application.equals("Valentino")) {
+
+				waitUntilElementVisibleAndClick("master_c360_cus_edit_button");
+
+				return true;
+			}
+
+			else {
+				return false;
+			}
+
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_edit_mailing_address_nz() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 }

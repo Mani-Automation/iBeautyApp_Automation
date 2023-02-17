@@ -51,22 +51,25 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 		try {
 			segment = ConfigReader.getData("app_segment");
 
-			if (segment.equals("JP")) {
-				click("master_create_button");
-			} else if (segment.equals("KR")) {
+			if (segment.equals("KR")) {
 				click("master_create_button");
 				// popup
 				waitUntilElementVisibleAndClick("master_kr_createcustomer_popup");
-			} else if (segment.equals("AU")) {
+				return true;
+
+			} else if (segment.equals("AU") || segment.equals("NZ")) {
+
 				click("master_create_button");
 				// popup
 				waitUntilElementVisibleAndClick("master_done_button");
 
-			} else if (segment.equals("TW") || segment.equals("HK") || segment.equals("MY")) {
+				return true;
+
+			} else {
 				click("master_create_button");
+				return true;
 
 			}
-			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -208,14 +211,21 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 
 			String seg = ConfigReader.getData("app_segment").toString();
 
-			if (seg.equals("HK") || seg.equals("KR") || seg.equals("TW") || seg.equals("JP") || seg.equals("AU")
-					|| seg.equals("MY")) {
+			if (seg.equals("SG")) {
+				swipeScreenUntilElementVisible("master_createcustomer_confirm_button", Direction.UP);
+				waitUntilElementVisibleAndClick("master_createcustomer_confirm_button");
+				waitUntilElementVisibleAndClick("master_sg_createcustomer_proceed_button");
+				return true;
+			} else if (seg.equals("HK")) {
+				swipeScreenUntilElementVisible("master_hk_update_button", Direction.UP);
+				waitUntilElementVisibleAndClick("master_hk_update_button");
+				return true;
+
+			} else {
 
 				swipeScreenUntilElementVisible("master_createcustomer_confirm_button", Direction.UP);
 				waitUntilElementVisibleAndClick("master_createcustomer_confirm_button");
 				return true;
-			} else {
-				return false;
 
 			}
 
@@ -500,11 +510,10 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 		try {
 
 			// last name
-			sendkeys("master_createcustomer_lastname", ExcelData.getExcelData("customer_testdata", "first_name"));
+			sendkeys("master_createcustomer_lastname", "Test" + RandomStringGenerate());
 			click("master_brand_logo");
-
 			// phone number
-			sendkeys("master_calendar_event_phone_text", "6161616161");
+			sendkeys("master_calendar_event_phone_text", "61616" + random.nextInt(10000));
 			click("master_brand_logo");
 
 			// Year
@@ -624,8 +633,10 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 	public boolean user_click_terms_and_conditions_checkbox_hk() {
 		try {
 			swipeScreenUntilElementVisible("master_hk_createcustomer_agree_checkbox1", Direction.UP);
-
 			waitUntilElementVisibleAndClick("master_hk_createcustomer_agree_checkbox1");
+
+			swipeScreenUntilElementVisible("master_hk_createcustomer_agree_checkbox2", Direction.UP);
+			waitUntilElementVisibleAndClick("master_hk_createcustomer_agree_checkbox2");
 
 			return true;
 		} catch (Exception e) {
@@ -650,10 +661,9 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 
 			sendkeys("master_createcustomer_lastname", ExcelData.getExcelData("customer_testdata", "first_name"));
 			click("master_brand_logo");
-			// phone
-			// phone number
-			waitUntilElementVisibleAndClick("master_calendar_event_phone_text");
 
+			// phone number
+			waitUntil("master_calendar_event_phone_text");
 			sendkeys("master_calendar_event_phone_text", "18465" + random.nextInt(10000));
 			click("master_brand_logo");
 			// email
@@ -664,24 +674,27 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			// gender
 			waitUntil("master_createcustomer_gender_dropdown");
 			click("master_createcustomer_gender_dropdown");
-
-			// Year
-			waitUntil("master_createcustomer_year_dropdown");
-			click("master_createcustomer_year_dropdown");
-			waitUntil("master_createcustomer_year");
-			click("master_createcustomer_year");
+			String gender = "//XCUIElementTypeStaticText[@name=\""
+					+ ExcelData.getExcelData("customer_testdata", "gender_male").toString() + "\"]";
+			webdriverwait(driver.findElement(By.xpath(gender)));
+			driver.findElement(By.xpath(gender)).click();
+			// im an internation - checkbox
+			// day
+			waitUntil("master_nz_createcustomer_day_dropdown");
+			click("master_nz_createcustomer_day_dropdown");
+			waitUntil("master_createcustomer_date");
+			click("master_createcustomer_date");
 
 			// Month
 			waitUntil("master_createcustomer_month_dropdown");
 			click("master_createcustomer_month_dropdown");
 			waitUntil("master_createcustomer_month");
 			click("master_createcustomer_month");
-
-			// day
-			waitUntil("master_createcustomer_day_dropdown");
-			click("master_createcustomer_day_dropdown");
-			waitUntil("master_createcustomer_date");
-			click("master_createcustomer_date");
+			// Year
+			waitUntil("master_createcustomer_year_dropdown");
+			click("master_createcustomer_year_dropdown");
+			waitUntil("master_my_createcustomer_year");
+			click("master_my_createcustomer_year");
 
 			// lang
 			waitUntil("master_my_createcustomer_language");
@@ -715,19 +728,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 					ExcelData.getExcelData("customer_testdata", "add_street_name"));
 			click("master_brand_logo");
 
-			// city
-			sendkeys("master_au_createcustomer_city", ExcelData.getExcelData("customer_testdata", "add_pincode"));
-			click("master_brand_logo");
-
-			// state
-
-			waitUntilElementVisibleAndClick("master_au_createcustomer_state_dropdown");
-			staticTextClick(ExcelData.getExcelData("customer_testdata", "add_state_name"));
-
-			// postcode
-			sendkeys("master_createcustomer_zipcode", ExcelData.getExcelData("customer_testdata", "jp_zipcode"));
-			click("master_brand_logo");
-
+		
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -744,9 +745,17 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			if (seg.equals("MY")) {
 
 				return true;
-			} else {
-				return false;
+			}
 
+			else if (seg.equals("HK")) {
+				swipeScreenUntilElementVisible("master_hk_update_button", Direction.UP);
+				waitUntilElementVisibleAndClick("master_hk_update_button");
+				return true;
+
+			} else {
+				swipeScreenUntilElementVisible("master_createcustomer_confirm_button", Direction.UP);
+				waitUntilElementVisibleAndClick("master_createcustomer_confirm_button");
+				return true;
 			}
 
 		} catch (Exception e) {
@@ -754,6 +763,257 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 
 			return false;
 		}
+	}
+
+	public boolean user_add_mailing_address_hk() {
+		try {
+
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_add_member_details_th() {
+		try {
+//national id
+
+			waitUntilElementVisibleAndClick("master_th_createcustomer_customer_type");
+			staticTextClick("Tourist");
+
+			sendkeys("master_th_createcustomer_passport_id", "F324823288");
+			click("master_brand_logo");
+
+			// firstname
+			sendkeys("master_createcustomer_firstname",
+					ExcelData.getExcelData("customer_testdata", "first_name") + RandomStringGenerate());
+			click("master_brand_logo");
+
+			// lastname
+			sendkeys("master_createcustomer_lastname", ExcelData.getExcelData("customer_testdata", "last_name"));
+			click("master_brand_logo");
+
+			// phone number
+			sendkeys("master_calendar_event_phone_text", "082323" + random.nextInt(10000));
+			click("master_brand_logo");
+
+			// email
+			waitUntil("master_createcustomer_email");
+			sendkeys("master_createcustomer_email", "testau" + random.nextInt(10000) + "@gmail.com");
+			click("master_brand_logo");
+
+			// gender
+			waitUntil("master_createcustomer_gender_dropdown");
+			click("master_createcustomer_gender_dropdown");
+			Thread.sleep(2000);
+
+			String gender = "//XCUIElementTypeStaticText[@name=\""
+					+ ExcelData.getExcelData("customer_testdata", "gender_male").toString() + "\"]";
+			webdriverwait(driver.findElement(By.xpath(gender)));
+			driver.findElement(By.xpath(gender)).click();
+			// im an internation - checkbox
+
+			// day
+			waitUntil("master_nz_createcustomer_day_dropdown");
+			click("master_nz_createcustomer_day_dropdown");
+			waitUntil("master_createcustomer_date");
+			click("master_createcustomer_date");
+			// Month
+			waitUntil("master_createcustomer_month_dropdown");
+			click("master_createcustomer_month_dropdown");
+			waitUntil("master_createcustomer_month");
+			click("master_createcustomer_month");
+
+			// Year
+			waitUntil("master_createcustomer_year_dropdown");
+			click("master_createcustomer_year_dropdown");
+			waitUntil("master_sg_createcustomer_year");
+			click("master_sg_createcustomer_year");
+
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_click_terms_and_conditions_checkbox_th() {
+		try {
+			swipeScreenUntilElementVisible("master_th_createcustomer_agree_checkbox1", Direction.UP);
+			waitUntilElementVisibleAndClick("master_th_createcustomer_agree_checkbox1");
+
+			swipeScreenUntilElementVisible("master_th_createcustomer_agree_checkbox2", Direction.UP);
+			waitUntilElementVisibleAndClick("master_th_createcustomer_agree_checkbox2");
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_add_mailing_address_th() {
+
+		//
+
+		try {
+
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_add_member_details_sg() {
+		try {
+
+			// firstname
+			waitUntil("master_createcustomer_firstname");
+			sendkeys("master_createcustomer_firstname", "test" + RandomStringGenerate());
+			click("master_brand_logo");
+
+			// lastname
+			sendkeys("master_createcustomer_lastname", ExcelData.getExcelData("customer_testdata", "last_name"));
+			click("master_brand_logo");
+
+			// phone number
+			sendkeys("master_calendar_event_phone_text", "88834" + random.nextInt(10000));
+			click("master_brand_logo");
+
+			// email
+			waitUntil("master_createcustomer_email");
+			sendkeys("master_createcustomer_email", "testau" + random.nextInt(10000) + "@gmail.com");
+			click("master_brand_logo");
+
+			// Month
+			waitUntil("master_createcustomer_month_dropdown");
+			click("master_createcustomer_month_dropdown");
+			waitUntil("master_sg_createcustomer_month");
+			click("master_sg_createcustomer_month");
+
+			// Year
+			waitUntil("master_createcustomer_year_dropdown");
+			click("master_createcustomer_year_dropdown");
+			waitUntil("master_sg_createcustomer_year");
+			click("master_sg_createcustomer_year");
+			// gender
+			waitUntil("master_createcustomer_gender_dropdown");
+			click("master_createcustomer_gender_dropdown");
+			Thread.sleep(2000);
+
+			String gender = "//XCUIElementTypeStaticText[@name=\""
+					+ ExcelData.getExcelData("customer_testdata", "gender_male").toString() + "\"]";
+			webdriverwait(driver.findElement(By.xpath(gender)));
+			driver.findElement(By.xpath(gender)).click();
+			// im an internation - checkbox
+
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_click_terms_and_conditions_checkbox_sg() {
+		try {
+			swipeScreenUntilElementVisible("master_sg_createcustomer_agree_checkbox1", Direction.UP);
+			waitUntilElementVisibleAndClick("master_sg_createcustomer_agree_checkbox1");
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_add_mailing_address_sg() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	public boolean user_add_member_details_nz() {
+		// TODO Auto-generated method stub
+
+		try {
+
+			// firstname
+			sendkeys("master_createcustomer_firstname", "Test" + RandomStringGenerate());
+			click("master_brand_logo");
+
+			// lastname
+			sendkeys("master_createcustomer_lastname", "Test" + RandomStringGenerate());
+			click("master_brand_logo");
+			// day
+			waitUntil("master_nz_createcustomer_day_dropdown");
+			click("master_nz_createcustomer_day_dropdown");
+			waitUntil("master_createcustomer_date");
+			click("master_createcustomer_date");
+			// Month
+			waitUntil("master_createcustomer_month_dropdown");
+			click("master_createcustomer_month_dropdown");
+			waitUntil("master_createcustomer_month");
+			click("master_createcustomer_month");
+
+			// Year
+			waitUntil("master_createcustomer_year_dropdown");
+			click("master_createcustomer_year_dropdown");
+			waitUntil("master_createcustomer_year");
+			click("master_createcustomer_year");
+
+			// gender
+			waitUntil("master_createcustomer_gender_dropdown");
+			click("master_createcustomer_gender_dropdown");
+			Thread.sleep(2000);
+
+			String gender = "//XCUIElementTypeStaticText[@name=\""
+					+ ExcelData.getExcelData("customer_testdata", "gender_male").toString() + "\"]";
+			webdriverwait(driver.findElement(By.xpath(gender)));
+			driver.findElement(By.xpath(gender)).click();
+			// im an internation - checkbox
+
+			// email
+			waitUntil("master_createcustomer_email");
+			sendkeys("master_createcustomer_email", "testau" + random.nextInt(10000) + "@gmail.com");
+			click("master_brand_logo");
+
+			// phone number
+			sendkeys("master_calendar_event_phone_text", "6161616161");
+			click("master_brand_logo");
+
+			return true;
+
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_click_terms_and_conditions_checkbox_nz() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	public boolean user_add_mailing_address_nz() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	public boolean user_add_communicate_channals_details_hk() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 
 }

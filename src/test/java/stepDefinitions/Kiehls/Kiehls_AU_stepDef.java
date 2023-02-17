@@ -478,13 +478,44 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	}
 
 	@Then("^tap on customer search dropdown$")
-	public void tap_on_customer_search_dropdown() throws InterruptedException {
-		Assert.assertTrue(c360Page.tap_on_customer_search_dropdown());
+	public void tap_on_customer_search_dropdown() throws InterruptedException, IOException {
+
+		String segment = ConfigReader.getData("app_segment");
+
+		if (segment.equals("NZ") || segment.equals("AU")) {
+			Assert.assertTrue(c360Page.tap_on_customer_search_dropdown_nz());
+
+		}
+
+		else {
+			Assert.assertTrue(c360Page.tap_on_customer_search_dropdown());
+
+		}
+
 	}
 
 	@Then("^Customer threeSixty screen should be display$")
-	public void customer_threesixty_screen_should_be_display() {
+	public void customer_threesixty_screen_should_be_display() throws IOException {
+
 		Assert.assertTrue(c360Page.customer_threesixty_screen_should_be_display());
+
+	}
+
+	@Then("^Customer threeSixty screen should be display on customer edit$")
+	public void customer_threesixty_screen_should_be_display_on_customer_edit()
+			throws IOException, InterruptedException {
+		String segment = ConfigReader.getData("app_segment");
+
+		if (segment.equals("AU") || segment.equals("NZ") || segment.equals("KR")) {
+			Assert.assertTrue(c360Page.customer_threesixty_screen_should_be_display_au());
+
+		} else if (segment.equals("MY")) {
+
+		} else {
+			Thread.sleep(4000);
+			Assert.assertTrue(c360Page.customer_threesixty_screen_should_be_display());
+
+		}
 	}
 
 	@And("^tap on Mobile Number from the dropdown list$")
@@ -492,14 +523,16 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 		String segment = ConfigReader.getData("app_segment");
 
-		if (segment.equals("AU")) {
+		if (segment.equals("JP")) {
 			Assert.assertTrue(c360Page.tap_on_mobile_number_from_the_dropdown_list());
 
-		} else if (segment.equals("JP")) {
-			Assert.assertTrue(c360Page.tap_on_mobile_number_from_the_dropdown_list());
-
-		} else if (segment.equals("KR") || segment.equals("TW")) {
+		} else if (segment.equals("KR") || segment.equals("TW") || segment.equals("HK")) { // cell1
 			Assert.assertTrue(c360Page.tap_on_mobile_number_from_the_dropdown_list_kr());
+
+		} else if (segment.equals("TH") || segment.equals("SG")) {
+			Assert.assertTrue(c360Page.tap_on_mobile_number_from_the_dropdown_list_th());
+
+		} else if (segment.equals("NZ") || segment.equals("AU")) {
 
 		}
 
@@ -511,13 +544,19 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		String segment = ConfigReader.getData("app_segment");
 
 		if (segment.equals("AU")) {
-			Assert.assertTrue(c360Page.enter_mobile_number_and_tap_on_search_button());
+			Assert.assertTrue(c360Page.enter_mobile_number_and_tap_on_search_button_au());
 
 		} else if (segment.equals("JP")) {
 			Assert.assertTrue(c360Page.enter_mobile_number_and_tap_on_search_button());
 
 		} else if (segment.equals("KR") || segment.equals("TW") || segment.equals("HK")) {
 			Assert.assertTrue(c360Page.enter_mobile_number_and_tap_on_search_button_kr());
+
+		} else if (segment.equals("TH") || segment.equals("SG")) {
+			Assert.assertTrue(c360Page.enter_mobile_number_and_tap_on_search_button_th());
+
+		} else if (segment.equals("NZ")) {
+			Assert.assertTrue(c360Page.enter_mobile_number_and_tap_on_search_button_nz());
 
 		}
 
@@ -607,12 +646,12 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	}
 
 	@And("^User click the Edit button and update member page should be displayed$")
-	public void user_click_the_edit_button_and_update_member_page_should_be_displayed() throws IOException {
-
+	public void user_click_the_edit_button_and_update_member_page_should_be_displayed()
+			throws IOException, InterruptedException {
 		String segment = ConfigReader.getData("app_segment");
 
 		if (segment.equals("AU")) {
-			Assert.assertTrue(c360Page.user_click_the_edit_button_and_update_member_page_should_be_displayed());
+			Assert.assertTrue(c360Page.user_click_the_edit_button_and_update_member_page_should_be_displayed_au());
 
 		} else if (segment.equals("JP")) {
 			Assert.assertTrue(c360Page.user_click_the_edit_button_and_update_member_page_should_be_displayed());
@@ -622,6 +661,9 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 		} else if (segment.equals("TW")) {
 			Assert.assertTrue(c360Page.user_click_the_edit_button_and_update_member_page_should_be_displayed_tw());
+
+		} else {
+			Assert.assertTrue(c360Page.user_click_the_edit_button_and_update_member_page_should_be_displayed_sg());
 
 		}
 	}
@@ -633,13 +675,11 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 		String segment = ConfigReader.getData("app_segment");
 
-		if (segment.equals("AU")) {
+		if (segment.equals("JP")) {
 			Assert.assertTrue(c360Page.user_edit_membership_info());
 
-		} else if (segment.equals("JP")) {
-			Assert.assertTrue(c360Page.user_edit_membership_info());
-
-		} else if (segment.equals("KR") || segment.equals("TW")) {
+		} else if (segment.equals("KR") || segment.equals("TW") || segment.equals("HK") || segment.equals("TH")
+				|| segment.equals("SG") || segment.equals("NZ") || segment.equals("AU")) {
 			Assert.assertTrue(c360Page.user_edit_membership_info_kr());
 
 		}
@@ -651,7 +691,7 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		String segment = ConfigReader.getData("app_segment");
 
 		if (segment.equals("AU")) {
-			Assert.assertTrue(c360Page.user_edit_member_details());
+			Assert.assertTrue(c360Page.user_edit_member_details_au());
 
 		} else if (segment.equals("JP")) {
 			Assert.assertTrue(c360Page.user_edit_member_details());
@@ -661,6 +701,18 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 		} else if (segment.equals("TW")) {
 			Assert.assertTrue(c360Page.user_edit_member_details_tw());
+
+		} else if (segment.equals("HK")) {
+			Assert.assertTrue(c360Page.user_edit_member_details_hk());
+
+		} else if (segment.equals("TH")) {
+			Assert.assertTrue(c360Page.user_edit_member_details_th());
+
+		} else if (segment.equals("SG")) {
+			Assert.assertTrue(c360Page.user_edit_member_details_sg());
+
+		} else if (segment.equals("NZ")) {
+			Assert.assertTrue(c360Page.user_edit_member_details_nz());
 
 		}
 	}
@@ -675,16 +727,16 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 		String segment = ConfigReader.getData("app_segment");
 
-		if (segment.equals("AU")) {
-			Assert.assertTrue(c360Page.user_edit_mailing_address());
-
-		} else if (segment.equals("JP")) {
+		if (segment.equals("JP")) {
 			Assert.assertTrue(c360Page.user_edit_mailing_address());
 
 		} else if (segment.equals("KR")) {
 			Assert.assertTrue(c360Page.user_edit_mailing_address_kr());
 
-		} else if (segment.equals("TW") || segment.equals("HK")) {
+		} else if (segment.equals("NZ")) {
+			Assert.assertTrue(c360Page.user_edit_mailing_address_nz());
+
+		} else {
 			Assert.assertTrue(c360Page.user_edit_mailing_address_tw());
 
 		}
@@ -803,7 +855,8 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		} else if (segment.equals("TW")) {
 			Assert.assertTrue(ccPage.user_add_membership_info_tw());
 
-		} else if (segment.equals("HK") || segment.equals("MY")) {
+		} else if (segment.equals("HK") || segment.equals("MY") || segment.equals("TH") || segment.equals("SG")
+				|| segment.equals("NZ")) {
 			Assert.assertTrue(ccPage.user_add_membership_info_hk());
 
 		}
@@ -833,6 +886,15 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		} else if (segment.equals("MY")) {
 			Assert.assertTrue(ccPage.user_add_member_details_my());
 
+		} else if (segment.equals("TH")) {
+			Assert.assertTrue(ccPage.user_add_member_details_th());
+
+		} else if (segment.equals("SG")) {
+			Assert.assertTrue(ccPage.user_add_member_details_sg());
+
+		} else if (segment.equals("NZ")) {
+			Assert.assertTrue(ccPage.user_add_member_details_nz());
+
 		}
 	}
 
@@ -857,13 +919,37 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 			Assert.assertTrue(ccPage.user_add_mailing_address_my());
 
+		} else if (segment.equals("HK")) {
+
+			Assert.assertTrue(ccPage.user_add_mailing_address_hk());
+
+		} else if (segment.equals("TH")) {
+
+			Assert.assertTrue(ccPage.user_add_mailing_address_th());
+
+		} else if (segment.equals("SG")) {
+
+			Assert.assertTrue(ccPage.user_add_mailing_address_sg());
+
+		} else if (segment.equals("NZ")) {
+
+			Assert.assertTrue(ccPage.user_add_mailing_address_nz());
+
 		}
 	}
 
 	@And("^User add communicate channals details$")
 	public void user_add_communicate_channals_details() throws IOException {
 
-		Assert.assertTrue(ccPage.user_add_communicate_channals_details());
+		String segment = ConfigReader.getData("app_segment");
+
+		if (segment.equals("HK")) {
+			Assert.assertTrue(ccPage.user_add_communicate_channals_details_hk());
+
+		} else {
+			Assert.assertTrue(ccPage.user_add_communicate_channals_details());
+
+		}
 
 	}
 
@@ -888,6 +974,15 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 		} else if (segment.equals("MY")) {
 			Assert.assertTrue(ccPage.user_click_terms_and_conditions_checkbox_my());
+
+		} else if (segment.equals("TH")) {
+			Assert.assertTrue(ccPage.user_click_terms_and_conditions_checkbox_th());
+
+		} else if (segment.equals("TH")) {
+			Assert.assertTrue(ccPage.user_click_terms_and_conditions_checkbox_sg());
+
+		} else if (segment.equals("NZ")) {
+			Assert.assertTrue(ccPage.user_click_terms_and_conditions_checkbox_nz());
 
 		}
 	}

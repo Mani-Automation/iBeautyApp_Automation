@@ -775,5 +775,17 @@ public class CommonActions {
 		// return false;
 
 		}
+
+		// ---------------------------------Common-Edit-Text-Methods----------------------------------//
+
 	}
+
+	public void sendkeysOnTextField(String locatorString, String sheet_name, String coloumn_name) throws IOException {
+
+		driver = DriverManager.getDriver();
+
+		driver.findElement(By.xpath(loc.getData(locatorString)))
+				.sendKeys(ExcelData.getExcelData(sheet_name, coloumn_name));
+	}
+
 }
