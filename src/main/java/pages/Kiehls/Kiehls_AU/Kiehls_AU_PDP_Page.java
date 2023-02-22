@@ -63,7 +63,7 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 
 		}
@@ -109,7 +109,7 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 
 		}
@@ -118,7 +118,6 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 	public boolean verify_the_product_description_tips_and_ingriedients_tabs_in_pdp() throws InterruptedException {
 
 		try {
-			Thread.sleep(3000);
 
 			swipeScreenUntilElementVisible("master_pdp_product_des_tab", Direction.UP);
 
@@ -132,7 +131,7 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 
 		}
@@ -151,7 +150,7 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 
 		}
@@ -173,7 +172,7 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 
 		}

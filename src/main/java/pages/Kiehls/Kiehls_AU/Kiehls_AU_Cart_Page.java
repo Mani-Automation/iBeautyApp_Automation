@@ -10,6 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 
 import com.reusableMethods.CommonActions;
 import com.utilities.ConfigReader;
+import com.utilities.ExcelData;
 import com.utilities.LocatorManager;
 
 import io.appium.java_client.AppiumDriver;
@@ -349,12 +350,54 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 	public boolean user_click_search_button_and_verify_the_changed_customer() throws InterruptedException {
 		try {
+
+			String seg = ConfigReader.getData("app_segment").toString();
+			String app = ConfigReader.getData("app").toString();
+
 			hideKeyboard();
 			waitUntilElementVisibleAndClick("master_pdp_adv_search_search_button");
-			waitUntil("master_cart_change_customer_button");
+
+			if (seg.equals("SG") && app.equals("Kiehls")) {
+				waitUntilElementVisibleAndClick("master_c360_search_result_first_cus");
+				waitUntil("master_cart_change_customer_button");
+
+			} else {
+				waitUntil("master_cart_change_customer_button");
+			}
 
 			return true;
 
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_select_phone_and_enter_the_number_sg() {
+		try {
+
+			waitUntilElementVisibleAndClick("master_cart_change_customer_customer_dropdown");
+
+			waitUntilElementVisibleAndClick("master_cell_1");
+
+			waitUntil("master_cart_change_cus_text_field");
+			sendkeys("master_cart_change_cus_text_field",
+					ExcelData.getExcelData("customer_testdata", "email_address2"));
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_click_the_checkout_button_to_redeem() {
+		try {
+			waitUntilElementVisibleAndClick("master_cart_checkout_button");
+
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 

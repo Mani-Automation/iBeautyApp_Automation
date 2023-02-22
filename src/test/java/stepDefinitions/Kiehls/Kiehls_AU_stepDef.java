@@ -466,6 +466,10 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	public void user_add_the_bonus_value_and_verify_the_estimation_points() throws InterruptedException {
 		Assert.assertTrue(cartPage.user_add_the_bonus_value_and_verify_the_estimation_points());
 	}
+	 @And("^User click the Checkout button to redeem$")
+	    public void user_click_the_checkout_button_to_redeem() throws Throwable {
+		 Assert.assertTrue(cartPage.user_click_the_checkout_button_to_redeem());
+	    }
 
 	@And("^User click the Checkout button$")
 	public void user_click_the_checkout_button() throws InterruptedException {
@@ -473,8 +477,19 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	}
 
 	@And("^User select phone and enter the number$")
-	public void user_select_phone_and_enter_the_number() throws InterruptedException {
-		Assert.assertTrue(cartPage.user_select_phone_and_enter_the_number());
+	public void user_select_phone_and_enter_the_number() throws InterruptedException, IOException {
+
+		String seg = ConfigReader.getData("app_segment").toString();
+		String app = ConfigReader.getData("app").toString();
+
+		if (seg.equals("SG") && app.equals("Kiehls") || seg.equals("AU") && app.equals("Kiehls")) {
+			Assert.assertTrue(cartPage.user_select_phone_and_enter_the_number_sg());
+
+		} else {
+			Assert.assertTrue(cartPage.user_select_phone_and_enter_the_number());
+
+		}
+
 	}
 
 	@Then("^tap on customer search dropdown$")
@@ -585,13 +600,6 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	@And("^User Select no of bottles to recycle on dropdown$")
 	public void user_select_no_of_bottles_to_recycle_on_dropdown() throws Throwable {
 		Assert.assertTrue(c360Page.user_select_no_of_bottles_to_recycle_on_dropdown());
-	}
-
-	// new
-
-	@And("^enter Email and tap on search button$")
-	public void enter_email_and_tap_on_search_button() throws InterruptedException {
-		Assert.assertTrue(c360Page.enter_email_and_tap_on_search_button());
 	}
 
 	@And("^Verify the customer Name$")

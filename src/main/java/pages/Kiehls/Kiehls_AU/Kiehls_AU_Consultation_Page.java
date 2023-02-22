@@ -39,9 +39,7 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 			waitUntil("master_survey_text_view_1");
 			sendkeys("master_survey_text_view_1", ExcelData.getExcelData("customer_testdata", "sample_text"));
-			waitUntil("master_survey_form_page");
-
-			click("master_survey_form_page");
+			waitUntilElementVisibleAndClick("master_survey_form_page");
 
 			return true;
 
@@ -267,16 +265,15 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 	public boolean user_click_something_button_and_verify_the_page(String con) throws IOException {
 
 		try {
-			String locator = "//XCUIElementTypeStaticText[@name=\"" + con + "\"]";
 
 			if (con.equals("Survey")) {
-				driver.findElement(By.xpath(locator)).click();
+				staticTextClick(con);
 				waitUntil("master_clear_all_button");
 				return true;
 
 			} else if (con.equals("SkinCare")) {
-
-				waitUntilElementVisibleAndClick("master_consultation_skincare_button");
+				staticTextClick(con);
+				waitUntil("master_clear_all_button");
 				return true;
 
 			} else {

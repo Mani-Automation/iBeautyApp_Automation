@@ -51,44 +51,6 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	/****************** Locators ******************/
 
-	/////////// mani
-
-	// 22
-
-	@FindBy(xpath = "//XCUIElementTypeOther[@name=\"viewSearchType\"]/XCUIElementTypeOther")
-	public WebElement C360_home_customer_search_dropdown;
-
-	@FindBy(xpath = "//XCUIElementTypeCell[@name=\"cell_Mobile Number\"]")
-	public WebElement C360_home_customer_search_dropdown_mobile_number_list;
-
-	@FindBy(xpath = "//XCUIElementTypeTextField[@name=\"txtSearch\"]")
-	public WebElement C360_home_customer_search_mobile_number_field;
-
-	@FindBy(xpath = "//XCUIElementTypeButton[@name=\"btnSearch\"]")
-	public WebElement C360_home_customer_search_button;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Purchase History\"]")
-	public WebElement C360_purchase_history;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"test R\"]")
-	public WebElement C360_profile_customer_name;
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"8667224536\"]")
-	public WebElement C360_profile_customer_phone_number;
-	@FindBy(xpath = "//XCUIElementTypeApplication[@name=\"Kiehls UAT\"]/XCUIElementTypeWindow[1]/XCUIElementTypeOther[3]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeOther[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeOther/XCUIElementTypeButton[1]")
-	public WebElement C360_profile_customer_edit_button;
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"01/02/1992\"]")
-	public WebElement C360_profile_customer_birth_date;
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"M\"]")
-	public WebElement C360_profile_customer_gender;
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"R12 Spending\"]")
-	public WebElement C360_profile_customer_r12_spending;
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"SMS / e-mail / Mail / Calls\"]")
-	public WebElement C360_profile_customer_opt_in;
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"07/27/2022 06:17:42\"]")
-	public WebElement C360_profile_customer_membership_since;
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Local Customer\"]")
-	public WebElement C360_profile_customer_type;
-
 	public boolean tap_on_customer_search_dropdown() throws InterruptedException {
 		try {
 
@@ -105,13 +67,21 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 		}
 	}
 
-	public boolean customer_threesixty_screen_should_be_display() {
+	public boolean customer_threesixty_screen_should_be_display() throws IOException {
 		try {
-			Thread.sleep(3000);
-			waitUntilElementVisibleAndClick("master_c360_search_result_first_cus");
-			waitUntil("master_c360_cus_name_label");
+			try {
+				Thread.sleep(3000);
+				waitUntilElementVisibleAndClick("master_c360_search_result_first_cus");
 
-			return true;
+				return true;
+			} catch (
+
+			Exception noSuchElementException) {
+				waitUntil("master_c360_cus_name_label");
+				return true;
+
+			}
+
 		} catch (
 
 		Exception e) {
@@ -119,6 +89,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 			return false;
 		}
+
 	}
 
 	public boolean tap_on_mobile_number_from_the_dropdown_list() throws InterruptedException {
@@ -138,26 +109,6 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 				return false;
 			}
 
-		} catch (
-
-		Exception e) {
-			e.printStackTrace();
-
-			return false;
-		}
-	}
-
-	@FindBy(xpath = "//XCUIElementTypeTextField[@name=\"txtSearch\"]")
-	public WebElement email_text;
-
-	public boolean enter_email_and_tap_on_search_button() throws InterruptedException {
-		try {
-			webdriverwait(email_text);
-			email_text.sendKeys(ExcelData.getExcelData("customer_testdata", "email_id"));
-
-			webdriverwait(C360_home_customer_search_button);
-			C360_home_customer_search_button.click();
-			return true;
 		} catch (
 
 		Exception e) {

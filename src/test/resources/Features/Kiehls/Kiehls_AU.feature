@@ -199,43 +199,6 @@ Feature: iBeauty Regression Test
     Then User click Add new button
     And Verify user able to navigate to calender page and see all calender events list popup
 
-  @master @smoke @Regression @BAtransaction @pass
-  Scenario: Verify the Transaction and Member history page
-    Then User is on home page
-    # BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS
-    And User click the BA Home button from right navigation and Click "TRANSACTIONS" then verify the page
-    Then User click the Member history and verify the page
-    And User click the Transaction history and verify the page
-
-  @master @smoke @Regression @BAtransaction @pass
-  Scenario: Verify the transaction details in first history
-    Then User is on home page
-    # BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS
-    And User click the BA Home button from right navigation and Click "TRANSACTIONS" then verify the page
-    And User click the Transaction history and verify the page
-    And Verify the Transcation id in transcation
-    And Verify the Transcation date in transcation
-    And Verify the Counter id in transcation
-    And Verify the BA id in transcation
-    And Verify the BA name in transcation
-    And Verify the Mars id in transcation
-    And Verify the Customer name in transcation
-    And Verify the Total product quantity in transcation
-    And Verify the Total transcation price in transcation
-
-  @master @smoke @Regression @BAtransaction @pass
-  Scenario: Verify the member details in first history
-    Then User is on home page
-    # BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS
-    And User click the BA Home button from right navigation and Click "TRANSACTIONS" then verify the page
-    Then User click the Member history and verify the page
-    And Verify the Submission date in member
-    And Verify the Counter id in member
-    And Verify the BA id in member
-    And Verify the BA name in member
-    And Verify the Customer name in member
-    And Verify the Customer number in member
-
   @master @smoke @Regression @Cart @pass
   Scenario: Verify user able to navigate cart page successfully
     Then User is on home page
@@ -408,7 +371,7 @@ Feature: iBeauty Regression Test
     And User click confirm button
     And User verify the consultation home page
 
-  @master @Regression @Customercreation @positive @AU @test @test1
+  @master @Regression @Customercreation @positive @AU
   Scenario: Verify if user is able to create a new customer with all fields
     Then User is on home page
     And User click the Create button on Customer search
@@ -420,25 +383,8 @@ Feature: iBeauty Regression Test
     And User click confirm button
     And User verify the consultation home page
 
-  @master @Regression @Customercreation @negative @AU
-  Scenario: Verify if user is able see mandatory error messages when without any entry
-    Then User is on home page
-    And User click the Create button on Customer search
-    And User click confirm button
-
-  #And User verify mandatory error messages
-  @master @Regression @Customercreation @negative @AU
-  Scenario: Verify if user is able see error messages when entered all except mandatory
-    Then User is on home page
-    And User click the Create button on Customer search
-    And User add mailing address
-    And User add communicate channals details
-    And User click terms and conditions checkbox
-    And User click confirm button
-
-  #And User verify mandatory error messages
   #--------------- Edit customer ---------------
-  @master @smoke @Regression @EditCustomer @AU @test @test2
+  @master @smoke @Regression @EditCustomer @AU
   Scenario: Verify user able to edit customer on C360 page with all field
     Then User is on home page
     Then tap on customer search dropdown
@@ -597,6 +543,43 @@ Feature: iBeauty Regression Test
     Then User enter confirm password
     And User click cancel button
 
+  @master @smoke @Regression @BAtransaction @pass
+  Scenario: Verify the Transaction and Member history page
+    Then User is on home page
+    # BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS
+    And User click the BA Home button from right navigation and Click "TRANSACTIONS" then verify the page
+    Then User click the Member history and verify the page
+    And User click the Transaction history and verify the page
+
+  @master @smoke @Regression @BAtransaction @pass
+  Scenario: Verify the transaction details in first history
+    Then User is on home page
+    # BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS
+    And User click the BA Home button from right navigation and Click "TRANSACTIONS" then verify the page
+    And User click the Transaction history and verify the page
+    And Verify the Transcation id in transcation
+    And Verify the Transcation date in transcation
+    And Verify the Counter id in transcation
+    And Verify the BA id in transcation
+    And Verify the BA name in transcation
+    And Verify the Mars id in transcation
+    And Verify the Customer name in transcation
+    And Verify the Total product quantity in transcation
+    And Verify the Total transcation price in transcation
+
+  @master @smoke @Regression @BAtransaction @pass
+  Scenario: Verify the member details in first history
+    Then User is on home page
+    # BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS
+    And User click the BA Home button from right navigation and Click "TRANSACTIONS" then verify the page
+    Then User click the Member history and verify the page
+    And Verify the Submission date in member
+    And Verify the Counter id in member
+    And Verify the BA id in member
+    And Verify the BA name in member
+    And Verify the Customer name in member
+    And Verify the Customer number in member
+
   @master_test @smoke @Regression @Recycle
   Scenario: Verify the user able see all setting options
     Then User is on home page
@@ -610,7 +593,7 @@ Feature: iBeauty Regression Test
     Then User click Done button
     Then Verify user able to see recent recycled bottles
 
-  @master_test @smoke @Regression @Gift
+  @master_test @smoke @Regression @Gift @test
   Scenario: Verify user able to add gift and verify
     Then User is on home page
     Then tap on customer search dropdown
@@ -623,10 +606,10 @@ Feature: iBeauty Regression Test
     And User click add to cart button
     Then User click proceed button
     And Verify the gift product on cart page
-    And User click the Checkout button
+    And User click the Checkout button to redeem
     Then validate redeem points popup
 
-  @master_test @smoke @Regression @Gift
+  @master_test @smoke @Regression @Gift @test
   Scenario: Verify user able to see points label and add more count from redemption page
     Then User is on home page
     Then tap on customer search dropdown
@@ -638,19 +621,9 @@ Feature: iBeauty Regression Test
     Then User verify the redemption page
     And Verify points label on Product in Redemption page
     Then Verify user can add more gifts from redemption page and validate total and balance points
-    And User click the Checkout button
-    Then validate total items and total points in cart page
-
-  @master_test @smoke @Regression @Gift
-  Scenario: Verify user able to navigate redemption from right side navigation
-    Then User is on home page
-    Then tap on customer search dropdown
-    And tap on Mobile Number from the dropdown list
-    And enter Mobile Number and tap on search button
-    Then Customer threeSixty screen should be display
-    And User click "Redemption" category on product from right navigation
-    Then User verify the redemption page
-    And Verify points label on Product in Redemption page
+    Then User click proceed button
+    And User click the Checkout button to redeem
+    Then validate redeem points popup
 
   @master_test @smoke @Regression @ServiceBooking
   Scenario: Verify the member details in first history
@@ -736,3 +709,6 @@ Feature: iBeauty Regression Test
     Then User enter the reservation id
     Then User click confirm button
     Then Validate product reservation success popup
+    
+    
+    

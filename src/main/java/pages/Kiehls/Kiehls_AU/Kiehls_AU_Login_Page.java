@@ -441,7 +441,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 				waitUntil("master_home_socialbutton1");
 				waitUntil("master_home_socialbutton2");
 				waitUntil("master_home_brandlogo");
-				waitUntil("master_home_membar_barcode");
+				// waitUntil("master_home_membar_barcode");
 				waitUntil("master_home_staff_button");
 				waitUntil("master_home_location_button");
 				waitUntil("master_home_lan_button");
@@ -453,7 +453,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 				waitUntil("master_home_socialbutton2");
 				waitUntil("master_home_socialbutton3");
 				waitUntil("master_home_brandlogo");
-				waitUntil("master_home_membar_barcode");
+				// waitUntil("master_home_membar_barcode");
 				waitUntil("master_home_staff_button");
 				waitUntil("master_home_location_button");
 				waitUntil("master_home_lan_button");
@@ -514,10 +514,16 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 		try {
 			waitUntil("master_home_search_type");
 			waitUntil("master_home_search_text");
-			waitUntil("master_home_membar_barcode");
 			waitUntil("master_home_search_button");
 			waitUntil("master_create_button");
-			waitUntil("master_home_advance_search_button");
+
+			String seg = ConfigReader.getData("app_segment").toString();
+
+			if (seg.equals("JP")) {
+				waitUntil("master_home_advance_search_button");
+
+			}
+
 			waitUntil("master_start_consultation_button");
 			return true;
 		} catch (
