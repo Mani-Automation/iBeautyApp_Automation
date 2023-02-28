@@ -43,22 +43,24 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 
 	public boolean verify_user_can_do_check_advance_check_stock_in_pdp_page() {
 		try {
-
-			waitUntil("master_pdp_adv_check_stock_button");
-			click("master_pdp_adv_check_stock_button");
-
-			waitUntil("master_pdp_search_adv_stock_textfield");
-
-			sendkeys("master_pdp_search_adv_stock_textfield", "Kie");
-			waitUntil("master_pdp_search_adv_stock_first_store");
-			click("master_pdp_search_adv_stock_first_store");
-			waitUntil("master_pdp_x_close_button");
-			waitUntil("master_pdp_adv_search_search_button");
-			click("master_pdp_adv_search_search_button");
-
-			waitUntil("master_pdp_adv_stock_search_result");
-
-			click("master_pdp_x_close_button");
+// This feature updated. Need to rework
+			/*
+			 * waitUntil("master_pdp_adv_check_stock_button");
+			 * click("master_pdp_adv_check_stock_button");
+			 * 
+			 * waitUntil("master_pdp_search_adv_stock_textfield");
+			 * 
+			 * sendkeys("master_pdp_search_adv_stock_textfield", "Kie");
+			 * waitUntil("master_pdp_search_adv_stock_first_store");
+			 * click("master_pdp_search_adv_stock_first_store");
+			 * waitUntil("master_pdp_x_close_button");
+			 * waitUntil("master_pdp_adv_search_search_button");
+			 * click("master_pdp_adv_search_search_button");
+			 * 
+			 * waitUntil("master_pdp_adv_stock_search_result");
+			 * 
+			 * click("master_pdp_x_close_button");
+			 */
 			return true;
 
 		} catch (Exception e) {

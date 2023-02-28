@@ -750,6 +750,17 @@ public class CommonActions {
 
 		}
 		//
+
+		// String seg = ConfigReader.getData("app_segment").toString();
+		// String app = ConfigReader.getData("app").toString();
+
+		if (app.equals("Kiehls") && seg.equals("AU")) {
+
+		} else {
+
+		}
+
+		//
 		String application = ConfigReader.getData("app").toString();
 
 		if (application.equals("Kiehls") || application.equals("Valentino")) {

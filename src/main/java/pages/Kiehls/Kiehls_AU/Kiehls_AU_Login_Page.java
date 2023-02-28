@@ -576,4 +576,36 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 		}
 	}
 
+	public boolean user_verify_active_customer_on_home_page() {
+		try {
+
+			waitUntil("master_home_product_category1");
+
+			return true;
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+
+		}
+	}
+
+	public boolean user_click_active_customer_on_home_page() {
+		try {
+
+			waitUntilElementVisibleAndClick("master_home_product_category1");
+
+			return true;
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+
+		}
+
+	}
 }

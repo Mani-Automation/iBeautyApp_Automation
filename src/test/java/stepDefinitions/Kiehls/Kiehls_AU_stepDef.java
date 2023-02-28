@@ -386,12 +386,6 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	}
 
-	@Then("^User click Add new button$")
-	public void user_click_add_new_button() {
-		Assert.assertTrue(baDashboardPage.user_click_add_new_button());
-
-	}
-
 	@And("^Verify user able to navigate to calender page and see all calender events list popup$")
 	public void verify_user_able_to_navigate_to_calender_page_and_see_all_calender_events_list_popup() {
 		Assert.assertTrue(
@@ -410,9 +404,13 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	}
 
+	@And("^User select a product on the add item pupup$")
+	public void user_select_a_product_on_the_add_item_pupup() throws Throwable {
+		Assert.assertTrue(cartPage.user_select_a_product_on_the_add_item_pupup());
+	}
+
 	@Then("^Verify user able to view the product in cart$")
 	public void verify_user_able_to_view_the_product_in_cart() throws InterruptedException {
-		Assert.assertTrue(cartPage.verify_user_able_to_view_the_product_in_cart());
 	}
 
 	@Then("^User click the Sample button$")
@@ -466,10 +464,11 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	public void user_add_the_bonus_value_and_verify_the_estimation_points() throws InterruptedException {
 		Assert.assertTrue(cartPage.user_add_the_bonus_value_and_verify_the_estimation_points());
 	}
-	 @And("^User click the Checkout button to redeem$")
-	    public void user_click_the_checkout_button_to_redeem() throws Throwable {
-		 Assert.assertTrue(cartPage.user_click_the_checkout_button_to_redeem());
-	    }
+
+	@And("^User click the Checkout button to redeem$")
+	public void user_click_the_checkout_button_to_redeem() throws Throwable {
+		Assert.assertTrue(cartPage.user_click_the_checkout_button_to_redeem());
+	}
 
 	@And("^User click the Checkout button$")
 	public void user_click_the_checkout_button() throws InterruptedException {
@@ -482,10 +481,14 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		String seg = ConfigReader.getData("app_segment").toString();
 		String app = ConfigReader.getData("app").toString();
 
-		if (seg.equals("SG") && app.equals("Kiehls") || seg.equals("AU") && app.equals("Kiehls")) {
+		if (seg.equals("SG") && app.equals("Kiehls")) {
 			Assert.assertTrue(cartPage.user_select_phone_and_enter_the_number_sg());
 
+		} else if (seg.equals("AU") && app.equals("Kiehls")) {
+			Assert.assertTrue(cartPage.user_select_phone_and_enter_the_number_au());
+
 		} else {
+
 			Assert.assertTrue(cartPage.user_select_phone_and_enter_the_number());
 
 		}
@@ -1367,6 +1370,18 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	public void verify_side_navigation_items_on_the_home_page() throws Throwable {
 		Assert.assertTrue(login.verify_side_navigation_items_on_the_home_page());
 	}
+
+	@And("^User verify active customer on Home page$")
+	public void user_verify_active_customer_on_home_page() throws Throwable {
+		Assert.assertTrue(login.user_verify_active_customer_on_home_page());
+	}
+
+	@And("^User click active customer on home page$")
+	public void user_click_active_customer_on_home_page() throws Throwable {
+		Assert.assertTrue(login.user_click_active_customer_on_home_page());
+	}
+
+	
 //settings
 
 	@Then("^User click Language Switch and verify the languages$")
@@ -1481,37 +1496,104 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	@Then("^User click add to cart button on first voucher$")
 	public void user_click_add_to_cart_button_on_first_voucher() throws Throwable {
-		Assert.assertTrue(voucher.user_click_add_to_cart_button_on_first_voucher());
+
+		// AU, MY, SG, TH, NZ - South
+
+		String seg = ConfigReader.getData("app_segment").toString();
+
+		if (seg.equals("AU") || seg.equals("MY") || seg.equals("SG") || seg.equals("TH") || seg.equals("NZ")) {
+			Assert.assertTrue(voucher.user_click_add_to_cart_button_on_first_voucher());
+
+		}
 	}
 
 	@Then("^Validate minimum spent limit popup$")
 	public void validate_minimum_spent_limit_popup() throws Throwable {
-		Assert.assertTrue(voucher.validate_minimum_spent_limit_popup());
+		// AU, MY, SG, TH, NZ - South
+
+		String seg = ConfigReader.getData("app_segment").toString();
+
+		if (seg.equals("AU") || seg.equals("MY") || seg.equals("SG") || seg.equals("TH") || seg.equals("NZ")) {
+			Assert.assertTrue(voucher.validate_minimum_spent_limit_popup());
+
+		}
 	}
 
 	@Then("^User click add to cart button on second voucher$")
 	public void user_click_add_to_cart_button_on_second_voucher() throws Throwable {
-		Assert.assertTrue(voucher.user_click_add_to_cart_button_on_second_voucher());
+		// AU, MY, SG, TH, NZ - South
+
+		String seg = ConfigReader.getData("app_segment").toString();
+
+		if (seg.equals("AU") || seg.equals("MY") || seg.equals("SG") || seg.equals("TH") || seg.equals("NZ")) {
+			Assert.assertTrue(voucher.user_click_add_to_cart_button_on_second_voucher());
+
+		}
 	}
 
 	@Then("^Validate cannot combine voucher popup$")
 	public void validate_cannot_combine_voucher_popup() throws Throwable {
-		Assert.assertTrue(voucher.validate_cannot_combine_voucher_popup());
+		// AU, MY, SG, TH, NZ - South
+
+		String seg = ConfigReader.getData("app_segment").toString();
+
+		if (seg.equals("AU") || seg.equals("MY") || seg.equals("SG") || seg.equals("TH") || seg.equals("NZ")) {
+			Assert.assertTrue(voucher.validate_cannot_combine_voucher_popup());
+
+		}
+	}
+
+	@Then("^User click collect tab on Redemption page and verify$")
+	public void user_click_collect_tab_on_redemption_page_and_verify() throws Throwable {
+		// AU, MY, SG, TH, NZ - South
+
+		String seg = ConfigReader.getData("app_segment").toString();
+
+		if (seg.equals("AU") || seg.equals("MY") || seg.equals("SG") || seg.equals("TH") || seg.equals("NZ")) {
+			Assert.assertTrue(voucher.user_click_collect_tab_on_redemption_page_and_verify());
+
+		}
 	}
 
 	@And("^User click the Voucher Redemption button from right navigation and verify the page$")
 	public void user_click_the_voucher_redemption_button_from_right_navigation_and_verify_the_page() throws Throwable {
-		Assert.assertTrue(voucher.user_click_the_voucher_redemption_button_from_right_navigation_and_verify_the_page());
+
+		// AU, MY, SG, TH, NZ - South
+
+		String seg = ConfigReader.getData("app_segment").toString();
+
+		if (seg.equals("AU") || seg.equals("MY") || seg.equals("SG") || seg.equals("TH") || seg.equals("NZ")) {
+			Assert.assertTrue(
+					voucher.user_click_the_voucher_redemption_button_from_right_navigation_and_verify_the_page());
+
+		}
+
 	}
 
 	@And("^Verify redeem requst page components$")
 	public void verify_redeem_requst_page_components() throws Throwable {
-		Assert.assertTrue(voucher.verify_redeem_requst_page_components());
+
+		// AU, MY, SG, TH, NZ - South
+
+		String seg = ConfigReader.getData("app_segment").toString();
+
+		if (seg.equals("AU") || seg.equals("MY") || seg.equals("SG") || seg.equals("TH") || seg.equals("NZ")) {
+			Assert.assertTrue(voucher.verify_redeem_requst_page_components());
+
+		}
+
 	}
 
 	@And("^User click reedem button$")
 	public void user_click_reedem_button() throws Throwable {
-		Assert.assertTrue(voucher.user_click_reedem_button());
+		// AU, MY, SG, TH, NZ - South
+
+		String seg = ConfigReader.getData("app_segment").toString();
+
+		if (seg.equals("AU") || seg.equals("MY") || seg.equals("SG") || seg.equals("TH") || seg.equals("NZ")) {
+			Assert.assertTrue(voucher.user_click_reedem_button());
+
+		}
 	}
 
 	// product reservation

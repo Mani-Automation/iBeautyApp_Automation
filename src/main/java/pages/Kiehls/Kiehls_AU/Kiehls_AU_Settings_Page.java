@@ -3,6 +3,7 @@ package pages.Kiehls.Kiehls_AU;
 import org.openqa.selenium.support.PageFactory;
 
 import com.reusableMethods.CommonActions;
+import com.utilities.ConfigReader;
 
 import io.appium.java_client.AppiumDriver;
 
@@ -17,10 +18,18 @@ public class Kiehls_AU_Settings_Page extends CommonActions {
 
 	public boolean user_click_language_switch_and_verify_the_languages() {
 		try {
+			String seg = ConfigReader.getData("app_segment").toString();
+			String app = ConfigReader.getData("app").toString();
 
 			waitUntilElementVisibleAndClick("master_setting_lang_switch_dropdown");
-			waitUntil("master_setting_lang_switch_english");
-			waitUntil("master_setting_lang_switch_japanes");
+
+			if (app.equals("Kiehls") && seg.equals("AU")) {
+				waitUntil("master_setting_lang_switch_english");
+
+			} else {
+				waitUntil("master_setting_lang_switch_english");
+				waitUntil("master_setting_lang_switch_japanes");
+			}
 
 			return true;
 		} catch (

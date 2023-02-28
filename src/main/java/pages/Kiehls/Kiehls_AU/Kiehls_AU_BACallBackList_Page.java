@@ -155,29 +155,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 		}
 	}
 
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@index=\"8\"]")
-	public WebElement ba_home_Callback_list_title;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@index=\"7\"]")
-	public WebElement ba_home_Callback_list_count;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@index=\"0\"]")
-	public WebElement ba_home_Callback_list_not_picked;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@index=\"1\"]")
-	public WebElement ba_home_Callback_list_called;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@index=\"2\"]")
-	public WebElement ba_home_Callback_list_missed_call;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@index=\"3\"]")
-	public WebElement ba_home_Callback_list_reminder;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@index=\"4\"]")
-	public WebElement ba_home_Callback_list_created_date;
-
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@index=\"5\"]")
-	public WebElement ba_home_Callback_list_updated_date;
+	
 
 	public boolean verify_the_title_in_callback_list() {
 
@@ -254,7 +232,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 			return true;
 
-		}
+		}    
 
 		catch (Exception e) {
 			e.printStackTrace();

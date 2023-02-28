@@ -61,7 +61,7 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -86,7 +86,7 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -111,7 +111,7 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
@@ -137,28 +137,12 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}
 
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Add New\"]")
-	public WebElement dashboard_calender_add_new_button;
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"ToDo List\"]")
-	public WebElement dashboard_calender_event_list_popup;
 
-	public boolean user_click_add_new_button() {
-		try {
-			webdriverwait(dashboard_calender_add_new_button);
-			dashboard_calender_add_new_button.click();
-
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-			return false;
-		}
-	}
 
 	public boolean verify_user_able_to_navigate_to_calender_page_and_see_all_calender_events_list_popup() {
 		try {
@@ -168,7 +152,7 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
-			
+
 			return false;
 		}
 	}

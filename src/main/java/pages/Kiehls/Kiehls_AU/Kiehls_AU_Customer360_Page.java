@@ -6,6 +6,7 @@ import com.reusableMethods.CommonActions;
 import com.reusableMethods.CommonActions.Direction;
 import com.utilities.ConfigReader;
 import com.utilities.ExcelData;
+import com.utilities.LocatorManager;
 
 import io.appium.java_client.AppiumDriver;
 import java.io.IOException;
@@ -43,6 +44,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 	AppiumDriver driver;
 	public static String segment;
 	Random random = new Random();
+	LocatorManager locator = new LocatorManager();
 
 	public Kiehls_AU_Customer360_Page(AppiumDriver driver) {
 		this.driver = driver;
@@ -756,11 +758,13 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 				waitUntil("master_c360_recycle_bottle_date");
 				waitUntil("master_c360_recycle_bottle_returned");
 				waitUntil("master_c360_recycle_bottle_store");
+				break;
 			}
 			case "MY": {
 				waitUntil("master_c360_recycle_bottle_date");
 				waitUntil("master_c360_recycle_bottle_returned");
 				waitUntil("master_c360_recycle_bottle_store");
+				break;
 			}
 			case "TW": {
 			}
@@ -793,11 +797,11 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 			switch (segment) {
 			case "AU": {
 				waitUntilElementVisibleAndClick("master_done_button");
-
+				break;
 			}
 			case "MY": {
 				waitUntilElementVisibleAndClick("master_done_button");
-
+				break;
 			}
 			case "TW": {
 			}
@@ -830,6 +834,26 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 			segment = ConfigReader.getData("app_segment").toString();
 			switch (segment) {
 			case "AU": {
+
+
+				Thread.sleep(6000);
+				if (driver.findElement(By.xpath(locator.getData("master_recycle_bottles_returned_label"))).getText()
+						.equals("4.0")) {
+					waitUntilElementVisibleAndClick("master_c360_recycle_bottle_dropdown");
+					waitUntilElementVisibleAndClick("master_cell_2");
+
+					waitUntilElementVisibleAndClick("master_done_button");
+
+					Thread.sleep(6000);
+
+					if (driver.findElement(By.xpath(locator.getData("master_recycle_bottles_returned_label"))).getText()
+							.equals("3.0")) {
+
+						return true;
+
+					}
+				}
+				break;
 			}
 			case "MY": {
 			}
@@ -851,7 +875,9 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 			}
 			}
 			return true;
-		} catch (Exception e) {
+		} catch (
+
+		Exception e) {
 			e.printStackTrace();
 			return false;
 		}
@@ -900,11 +926,15 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 			switch (segment) {
 			case "AU": {
 				waitUntilElementVisibleAndClick("master_c360_recycle_bottle_dropdown");
-				waitUntilElementVisibleAndClick("master_c360_recycle_bottle_dropdown_value_3");
+				waitUntilElementVisibleAndClick("master_cell_3");
+				break;
 			}
 			case "MY": {
 				waitUntilElementVisibleAndClick("master_c360_recycle_bottle_dropdown");
-				waitUntilElementVisibleAndClick("master_c360_recycle_bottle_dropdown_value_3");
+				waitUntilElementVisibleAndClick("master_cell_3");
+
+				// waitUntilElementVisibleAndClick("master_c360_recycle_bottle_dropdown_value_3");
+				break;
 			}
 			case "TW": {
 			}
@@ -1442,22 +1472,11 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 	public boolean enter_mobile_number_and_tap_on_search_button_au() {
 		try {
 
-			String application = ConfigReader.getData("app").toString();
+			waitUntil("master_home_search_text");
+			sendkeys("master_home_search_text", ExcelData.getExcelData("customer_testdata", "email_address2"));
 
-			if (application.equals("Kiehls")) {
-
-				waitUntil("master_home_search_text");
-				sendkeys("master_home_search_text", "a@a.com");
-
-				waitUntilElementVisibleAndClick("master_cart_additem_search_product_button");
-
-				return true;
-			} else if (application.equals("Valentino")) {
-
-				return true;
-			} else {
-				return false;
-			}
+			waitUntilElementVisibleAndClick("master_cart_additem_search_product_button");
+			return true;
 
 		} catch (
 
