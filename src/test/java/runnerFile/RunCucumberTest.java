@@ -19,18 +19,16 @@ import io.cucumber.junit.CucumberOptions;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = { "src/test/resources/Features" }, glue = { "stepDefinitions" }, dryRun = false, plugin = {
-		"pretty", "json:target/ResultsMobile/cucumber.json" }, monochrome = true, tags = "@master"
+		"pretty", "json:target/ResultsMobile/cucumber.json" }, monochrome = true, tags = "@ttest"
 
 )
 
 /*
- * 
- * @master
- * 
+                                                                                                                                  
+ * @master                                                   
+  
  * @AU,@MY,@TW,@SG,@NZ,@JP,@HK,@KR,@TH
- * 
- * 
- * 
+
  */
 
 public class RunCucumberTest {

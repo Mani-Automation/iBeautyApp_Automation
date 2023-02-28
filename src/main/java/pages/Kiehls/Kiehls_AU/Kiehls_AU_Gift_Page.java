@@ -1,5 +1,6 @@
 package pages.Kiehls.Kiehls_AU;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.support.PageFactory;
 
 import com.reusableMethods.CommonActions;
@@ -20,34 +21,15 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 
 	public boolean user_click_the_gift_button_on_cart_page() {
 		try {
+			// HK, KR, TW, JP - North
 
-			// HK, KR, TW, JP ,
-			String segment = ConfigReader.getData("app_segment").toString();
-			switch (segment) {
-			case "AU": {
-			}
-			case "MY": {
-			}
-			case "TW": {
+			String seg = ConfigReader.getData("app_segment").toString();
+
+			if (seg.equals("HK") || seg.equals("KR") || seg.equals("TW") || seg.equals("JP")) {
 				waitUntilElementVisibleAndClick("master_gift_button");
-			}
-			case "SG": {
-			}
-			case "HR": {
-			}
-			case "NZ": {
-			}
-			case "JP": {
-				waitUntilElementVisibleAndClick("master_gift_button");
-			}
-			case "HK": {
-				waitUntilElementVisibleAndClick("master_gift_button");
-			}
-			case "KR": {
-				waitUntilElementVisibleAndClick("master_gift_button");
-			}
-			case "TH": {
-			}
+
+			} else {
+
 			}
 
 			return true;
@@ -62,38 +44,13 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 
 	public boolean user_verify_the_redemption_page() {
 		try {
+			String seg = ConfigReader.getData("app_segment").toString();
 
-			// HK, KR, TW, JP ,
-			String segment = ConfigReader.getData("app_segment").toString();
-			switch (segment) {
-			case "AU": {
-			}
-			case "MY": {
-			}
-			case "TW": {
+			if (seg.equals("HK") || seg.equals("KR") || seg.equals("TW") || seg.equals("JP")) {
 				waitUntilElementVisibleAndClick("master_gift_redemption_tab");
 
-			}
-			case "SG": {
-			}
-			case "HR": {
-			}
-			case "NZ": {
-			}
-			case "JP": {
-				waitUntilElementVisibleAndClick("master_gift_redemption_tab");
+			} else {
 
-			}
-			case "HK": {
-				waitUntilElementVisibleAndClick("master_gift_redemption_tab");
-
-			}
-			case "KR": {
-				waitUntilElementVisibleAndClick("master_gift_redemption_tab");
-
-			}
-			case "TH": {
-			}
 			}
 
 			return true;
@@ -108,37 +65,13 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 
 	public boolean user_click_proceed_button() {
 		try {
-			// HK, KR, TW, JP ,
-			String segment = ConfigReader.getData("app_segment").toString();
-			switch (segment) {
-			case "AU": {
-			}
-			case "MY": {
-			}
-			case "TW": {
-				waitUntilElementVisibleAndClick("");
+			// HK, KR, TW, JP
+			String seg = ConfigReader.getData("app_segment").toString();
 
-			}
-			case "SG": {
-			}
-			case "HR": {
-			}
-			case "NZ": {
-			}
-			case "JP": {
-				waitUntilElementVisibleAndClick("");
+			if (seg.equals("HK") || seg.equals("KR") || seg.equals("TW") || seg.equals("JP")) {
+				waitUntilElementVisibleAndClick("master_gift_proceed_button");
+			} else {
 
-			}
-			case "HK": {
-				waitUntilElementVisibleAndClick("");
-
-			}
-			case "KR": {
-				waitUntilElementVisibleAndClick("");
-
-			}
-			case "TH": {
-			}
 			}
 
 			return true;
@@ -153,30 +86,15 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 
 	public boolean validate_redeem_points_popup() {
 		try {
-			// HK, KR, TW, JP ,
-			String segment = ConfigReader.getData("app_segment").toString();
-			switch (segment) {
-			case "AU": {
+			String seg = ConfigReader.getData("app_segment").toString();
+
+			if (seg.equals("HK") || seg.equals("KR") || seg.equals("TW") || seg.equals("JP")) {
+				waitUntil("master_gift_redeem_checkout_popup");
+				waitUntilElementVisibleAndClick("master_done_button");
+			} else {
+
 			}
-			case "MY": {
-			}
-			case "TW": {
-			}
-			case "SG": {
-			}
-			case "HR": {
-			}
-			case "NZ": {
-			}
-			case "JP": {
-			}
-			case "HK": {
-			}
-			case "KR": {
-			}
-			case "TH": {
-			}
-			}
+			
 			return true;
 		} catch (
 
@@ -189,31 +107,25 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 
 	public boolean verify_user_can_add_more_gifts_from_redemption_page_and_validate_total_and_balance_points() {
 		try {
-			// HK, KR, TW, JP ,
-			String segment = ConfigReader.getData("app_segment").toString();
-			switch (segment) {
-			case "AU": {
+
+			String seg = ConfigReader.getData("app_segment").toString();
+
+			if (seg.equals("HK") || seg.equals("KR") || seg.equals("TW") || seg.equals("JP")) {
+				waitUntilElementVisibleAndClick("master_gift_first_product_addtocart_button");
+				waitUntilElementVisibleAndClick("master_gift_second_product_addtocart_button");
+
+				if (driver.findElement(By.xpath(locator.getData("master_total_point_value_label"))).getText()
+						.equals("200 PT")) {
+					return true;
+
+				} else {
+					return false;
+				}
+			} else {
+				return true;
+
 			}
-			case "MY": {
-			}
-			case "TW": {
-			}
-			case "SG": {
-			}
-			case "HR": {
-			}
-			case "NZ": {
-			}
-			case "JP": {
-			}
-			case "HK": {
-			}
-			case "KR": {
-			}
-			case "TH": {
-			}
-			}
-			return true;
+
 		} catch (
 
 		Exception e) {
@@ -225,29 +137,12 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 
 	public boolean validate_total_items_and_total_points_in_cart_page() {
 		try {
-			// HK, KR, TW, JP ,
-			String segment = ConfigReader.getData("app_segment").toString();
-			switch (segment) {
-			case "AU": {
-			}
-			case "MY": {
-			}
-			case "TW": {
-			}
-			case "SG": {
-			}
-			case "HR": {
-			}
-			case "NZ": {
-			}
-			case "JP": {
-			}
-			case "HK": {
-			}
-			case "KR": {
-			}
-			case "TH": {
-			}
+			String seg = ConfigReader.getData("app_segment").toString();
+
+			if (seg.equals("HK") || seg.equals("KR") || seg.equals("TW") || seg.equals("JP")) {
+
+			} else {
+
 			}
 			return true;
 		} catch (
@@ -262,31 +157,14 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 	public boolean user_click_add_to_cart_button() {
 		try {
 			// HK, KR, TW, JP ,
-			String segment = ConfigReader.getData("app_segment").toString();
-			switch (segment) {
-			case "AU": {
-			}
-			case "MY": {
-			}
-			case "TW": {
-			}
-			case "SG": {
-			}
-			case "HR": {
-			}
-			case "NZ": {
-			}
-			case "JP": {
-			}
-			case "HK": {
-			}
-			case "KR": {
-			}
-			case "TH": {
-			}
-			}
 
-			waitUntilElementVisibleAndClick("");
+			String seg = ConfigReader.getData("app_segment").toString();
+
+			if (seg.equals("HK") || seg.equals("KR") || seg.equals("TW") || seg.equals("JP")) {
+				waitUntilElementVisibleAndClick("master_gift_first_product_addtocart_button");
+			} else {
+
+			}
 
 			return true;
 		} catch (
@@ -300,29 +178,14 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 
 	public boolean verify_points_label_on_product_in_redemption_page() {
 		try {
-			// HK, KR, TW, JP ,
-			String segment = ConfigReader.getData("app_segment").toString();
-			switch (segment) {
-			case "AU": {
-			}
-			case "MY": {
-			}
-			case "TW": {
-			}
-			case "SG": {
-			}
-			case "HR": {
-			}
-			case "NZ": {
-			}
-			case "JP": {
-			}
-			case "HK": {
-			}
-			case "KR": {
-			}
-			case "TH": {
-			}
+
+			String seg = ConfigReader.getData("app_segment").toString();
+
+			if (seg.equals("HK") || seg.equals("KR") || seg.equals("TW") || seg.equals("JP")) {
+				waitUntil("master_gift_first_product_price_label");
+
+			} else {
+
 			}
 
 			return true;
@@ -337,29 +200,13 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 
 	public boolean verify_the_gift_product_on_cart_page() {
 		try {
-			// HK, KR, TW, JP ,
-			String segment = ConfigReader.getData("app_segment").toString();
-			switch (segment) {
-			case "AU": {
-			}
-			case "MY": {
-			}
-			case "TW": {
-			}
-			case "SG": {
-			}
-			case "HR": {
-			}
-			case "NZ": {
-			}
-			case "JP": {
-			}
-			case "HK": {
-			}
-			case "KR": {
-			}
-			case "TH": {
-			}
+			String seg = ConfigReader.getData("app_segment").toString();
+
+			if (seg.equals("HK") || seg.equals("KR") || seg.equals("TW") || seg.equals("JP")) {
+				waitUntil("master_cart_first_product_name");
+
+			} else {
+
 			}
 			return true;
 		} catch (

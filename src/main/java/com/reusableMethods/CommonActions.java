@@ -332,7 +332,7 @@ public class CommonActions {
 
 	public static int generateRandomNumber() {
 		Random rand = new Random();
-		int randNumber = rand.nextInt(100000);
+		int randNumber = rand.nextInt(10000);
 		return randNumber;
 
 	}
@@ -750,6 +750,17 @@ public class CommonActions {
 
 		}
 		//
+
+		// String seg = ConfigReader.getData("app_segment").toString();
+		// String app = ConfigReader.getData("app").toString();
+
+		if (app.equals("Kiehls") && seg.equals("AU")) {
+
+		} else {
+
+		}
+
+		//
 		String application = ConfigReader.getData("app").toString();
 
 		if (application.equals("Kiehls") || application.equals("Valentino")) {
@@ -780,12 +791,45 @@ public class CommonActions {
 
 	}
 
-	public void sendkeysOnTextField(String locatorString, String sheet_name, String coloumn_name) throws IOException {
+	public void sendExcelData(String locatorString, String sheet_name, String coloumn_name) throws IOException {
 
 		driver = DriverManager.getDriver();
 
 		driver.findElement(By.xpath(loc.getData(locatorString)))
 				.sendKeys(ExcelData.getExcelData(sheet_name, coloumn_name));
+		clickLogoToHideKeyboard();
+
 	}
 
+	public void sendExcelDataWithRandomText(String locatorString, String sheet_name, String coloumn_name,
+			String random_data) throws IOException {
+
+		driver = DriverManager.getDriver();
+
+		driver.findElement(By.xpath(loc.getData(locatorString)))
+				.sendKeys(ExcelData.getExcelData(sheet_name, coloumn_name) + random_data);
+		clickLogoToHideKeyboard();
+
+	}
+
+	public void sendExcelDataWithRandomText(String locatorString, String sheet_name, String coloumn_name,
+			int random_data) throws IOException {
+
+		driver = DriverManager.getDriver();
+
+		driver.findElement(By.xpath(loc.getData(locatorString)))
+				.sendKeys(ExcelData.getExcelData(sheet_name, coloumn_name) + random_data);
+		clickLogoToHideKeyboard();
+
+	}
+
+	public String setRandomEmail() throws IOException {
+
+		return "test" + RandomStringGenerate() + generateRandomNumber() + "@gmail.com";
+
+	}
+
+	public void clickLogoToHideKeyboard() throws IOException {
+		click("master_brand_logo");
+	}
 }

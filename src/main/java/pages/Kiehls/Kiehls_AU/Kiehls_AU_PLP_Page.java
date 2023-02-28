@@ -13,6 +13,7 @@ import org.openqa.selenium.support.PageFactory;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.reusableMethods.CommonActions;
 import com.utilities.ConfigReader;
+import com.utilities.ExcelData;
 import com.utilities.LocatorManager;
 
 import io.appium.java_client.AppiumDriver;
@@ -317,11 +318,7 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 	public boolean verify_search_product_with_price() throws InterruptedException, IOException {
 
-		String product_name1 = "SP EYE GEL 15ML";
-
-		if (getApplicationName().equals("Valentino")) {
-			product_name1 = "VLTN ROSSO MATTE 107A";
-		}
+		String product_name1 = ExcelData.getExcelData("plp_pdp_testdata", getApplicationName() + "_product1");
 
 		sendkeys("master_plp_search_product_text", product_name1);
 
@@ -337,7 +334,6 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 			System.out.println("PLP Search Product - Product not able to search!");
 			return false;
 		}
-		//
 
 	}
 
@@ -350,7 +346,16 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 			String before_do = driver.findElement(By.xpath(locator.getData("master_plp_filter_first_product_name")))
 					.getText();
-			waitUntilElementVisibleAndClick("master_plp_sub_catagory_item");
+
+			String seg = ConfigReader.getData("app_segment").toString();
+
+			if (seg.equals("SG")) {
+				waitUntilElementVisibleAndClick("master_sg_plp_sub_catagory_item");
+
+			} else {
+				waitUntilElementVisibleAndClick("master_plp_sub_catagory_item");
+
+			}
 
 			waitUntil("master_plp_filtered_first_product_name");
 
