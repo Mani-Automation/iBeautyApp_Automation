@@ -122,9 +122,8 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			sendExcelData("master_createcustomer_katakana_firstname", "customer_testdata", "katakana_first_name");
 
 			// Email
-			waitUntil("master_createcustomer_email");
-			setRandomEmail();
-			clickLogoToHideKeyboard();
+			sendExcelData("master_createcustomer_email", "customer_testdata", "first_name" + generateRandomNumber());
+
 
 			// Domain Name
 			waitUntilElementVisibleAndClick("master_createcustomer_email_domain_dropdown");

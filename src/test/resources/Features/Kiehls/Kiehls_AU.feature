@@ -2,14 +2,14 @@ Feature: iBeauty Regression Test
 
   Background: 
     Given User launches the Application
-    When User select country and login to store then login to ba account
+    When User select country and login to Store and BA account
 
   @master @smoke @Regression @Login @positive @start
   Scenario: Verify user able to login the application
     Then User is on home page
 
   @master @smoke @Regression @Login @Negative
-  Scenario: Verify the user able to see the error message in store and BA page.
+  Scenario: Verify the user able to see the error message in Store and BA page.
     Then User is on home page
     And User click logout button on home page and click switch store button on BA page
     When User enter the wrong store credentials
@@ -30,7 +30,7 @@ Feature: iBeauty Regression Test
     And User click on login button in storePage
     Then User enter the ba credentials
     And User click on Reset Password
-    And User enters store Manager userName and passWord
+    And User enters store Manager userName and password
     And User click on close button in Pop Up
 
   @master @smoke @Regression @PLP
@@ -78,54 +78,6 @@ Feature: iBeauty Regression Test
     Then User is on home page
     #BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
     And User click the BA Home button from right navigation and Click "CALENDAR" then verify the page
-
-  @master @smoke @Regression @BACalendar
-  Scenario: Verify user able to create ToDo list in the calendar
-    Then User is on home page
-    #BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
-    And User click the BA Home button from right navigation and Click "CALENDAR" then verify the page
-    Then User click the Create Event button
-    And User click the ToDo list
-    And User enter the title in calender
-    And User click Save button in calender
-
-  #Then Verify user able to view created ToDo list Event
-  #And User click the Delete Event button
-  @master @smoke @Regression @BACalendar
-  Scenario: Verify user able to create Promotion Activity in the calendar
-    Then User is on home page
-    #BA HOME -> 1) DASHBOARD 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
-    And User click the BA Home button from right navigation and Click "CALENDAR" then verify the page
-    Then User click the Create Event button
-    And User click the Promotion Activity
-    And User select the Promotion in the Service type
-    And User enter the Customer name in calender
-    And User enter the Phone number in calendar
-    And User click Save button in calender
-
-  @master @smoke @Regression @BACalendar
-  Scenario: Verify user able to create Service booking in the calendar
-    Then User is on home page
-    #BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
-    And User click the BA Home button from right navigation and Click "CALENDAR" then verify the page
-    Then User click the Create Event button
-    And User click the Service booking
-    And User select the Service booking in the Service type
-    And User enter the Customer name in calender
-    And User enter the Phone number in calendar
-    And User click Save button in calender
-
-  @master @smoke @Regression @BACalendar
-  Scenario: Verify user able to create Event Reservation in the calendar
-    Then User is on home page
-    #BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
-    And User click the BA Home button from right navigation and Click "CALENDAR" then verify the page
-    Then User click the Create Event button
-    And User click the event reservaiton
-    And User select the Event reservaiton in the Service type
-    And User enter the Customer name in calender
-    And User enter the Phone number in calendar
-    And User click Save button in calender
 
   @master @smoke @Regression @BACallbacklist
   Scenario: Verify the customer callback list page
@@ -362,7 +314,17 @@ Feature: iBeauty Regression Test
     And User click the product and verify user get navigate to PDP page
     Then Verify the product description, tips and ingriedients tabs in PDP
 
-  #-------------------create------------------
+  #-------------------------------
+  @master @smoke @Regression @PDP @inprogress
+  Scenario: Verify user able to select store
+    Then User is on home page
+    And User click "Skincare" category on the Home page
+    Then User should navigate to PLP page successfully
+    And User click the product and verify user get navigate to PDP page
+    Then User click check other stores button on PLP and verfiy the popup
+    And User enter store name to find the store
+    Then Verify the store suggetion and select a store
+
   @master @Regression @Customercreation @positive @AU
   Scenario: Verify if user is able to create a new customer with only mandatory fields
     Then User is on home page
@@ -385,7 +347,6 @@ Feature: iBeauty Regression Test
     And User click confirm button
     And User verify the consultation home page
 
-  #--------------- Edit customer ---------------
   @master @smoke @Regression @EditCustomer @AU
   Scenario: Verify user able to edit customer on C360 page with all field
     Then User is on home page
@@ -647,7 +608,7 @@ Feature: iBeauty Regression Test
     Then Verifty the customer details
     And User click all bookings button and verify the list page
 
-  @master @smoke @Regression @VoucherRedemption @failed
+  @master @smoke @Regression @VoucherRedemption
   Scenario: Verify the Voucher Redemption page components
     Then User is on home page
     Then tap on customer search dropdown
@@ -657,7 +618,7 @@ Feature: iBeauty Regression Test
     And User click the Voucher Redemption button from right navigation and verify the page
     And Verify redeem requst page components
 
-  @master @smoke @Regression @VoucherRedemption @failed
+  @master @smoke @Regression @VoucherRedemption
   Scenario: Verify the Voucher Redemption minimum spent limit popup
     Then User is on home page
     Then tap on customer search dropdown
@@ -669,7 +630,7 @@ Feature: iBeauty Regression Test
     And User click reedem button
     Then Validate minimum spent limit popup
 
-  @master @smoke @Regression @VoucherRedemption @failed
+  @master @smoke @Regression @VoucherRedemption
   Scenario: Verify the Voucher Redemption cannot combine voucher popup on adding second voucher
     Then User is on home page
     Then tap on customer search dropdown
@@ -681,7 +642,7 @@ Feature: iBeauty Regression Test
     Then User click add to cart button on second voucher
     Then Validate cannot combine voucher popup
 
-  @master @smoke @Regression @VoucherRedemption @failed
+  @master @smoke @Regression @VoucherRedemption
   Scenario: Verify the Voucher Redemption collect page
     Then User is on home page
     Then tap on customer search dropdown
@@ -722,7 +683,17 @@ Feature: iBeauty Regression Test
     Then User click confirm button
     Then Validate product reservation success popup
 
-  @master @smoke @Regression @home @ttest
+  @master @smoke @Regression @home
+  Scenario: Verify user able to click active customer on Home page
+    Then User is on home page
+    Then tap on customer search dropdown
+    And tap on Mobile Number from the dropdown list
+    And enter Mobile Number and tap on search button
+    Then Customer threeSixty screen should be display
+    Then User click Home button and verify home page should be displayed
+    And User verify active customer on Home page
+
+  @master @smoke @Regression @home
   Scenario: Verify user able to click active customer on Home page
     Then User is on home page
     Then tap on customer search dropdown
@@ -733,3 +704,55 @@ Feature: iBeauty Regression Test
     And User verify active customer on Home page
     And User click active customer on home page
     Then Customer threeSixty screen should be display
+
+  @master1 @smoke @Regression @Enrollment
+  Scenario: Verify user able to enrol membership control
+    Then User is on home page
+    Then tap on customer search dropdown
+    And tap on Mobile Number from the dropdown list
+    And enter Mobile Number and tap on search button
+    Then Customer threeSixty screen should be display
+    Then User click Home button and verify home page should be displayed
+
+  @master1 @smoke @Regression @AdvanceCustomerSearch
+  Scenario: Verify user able to enrol membership control
+    Then User is on home page
+    And User click Advance Customer Search button on home page
+    Then User enter the customer details on the popup
+    And User click search button on the popup
+
+  @master1 @smoke @Regression @C360
+  Scenario: Verify if user able to view customer summary
+    Then User is on home page
+    Then tap on customer search dropdown
+    And tap on Mobile Number from the dropdown list
+    And enter Mobile Number and tap on search button
+    Then Customer threeSixty screen should be display
+    And User click slider icon on C360 page
+    Then User able to verify dashboard components
+
+  @master1 @smoke @Regression @C360
+  Scenario: Verify if user able to view customer summary
+    Then User is on home page
+    Then tap on customer search dropdown
+    And tap on Mobile Number from the dropdown list
+    And enter Mobile Number and tap on search button
+    Then Customer threeSixty screen should be display
+    And User click slider icon on C360 page
+    Then User able to verify dashboard components
+
+  @master1 @smoke @regression @C360
+  Scenario: Verify if user able to View Customer
+    Then User is on home page
+    Then Customer threeSixty screen should be display
+    And User click slider icon on C360 page
+
+  @master @smoke @Regression @home
+  Scenario: Verify user able to switch guest mode
+    Then User is on home page
+    And User click staff button on home page to switch guest mode
+    And User click "Skincare" category on the Home page
+    Then User should navigate to PLP page successfully
+    Then User should navigate to PLP page successfully
+    And User click the Cart button from right navigation and verify the cart page
+    
