@@ -75,7 +75,7 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 			switch (ConfigReader.getData("appEnv")) {
 			case "UAT": {
-				if (ConfigReader.getData("app").equals("Kiehls")) {
+				if (ConfigReader.getData("app").equals("Kiehls") || ConfigReader.getData("app").equals("YSL")) {
 					try {
 
 						String segment = ConfigReader.getData("app_segment");

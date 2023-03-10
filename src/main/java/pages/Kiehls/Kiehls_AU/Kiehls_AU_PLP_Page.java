@@ -143,10 +143,19 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 				product = "Makeup";
 			}
 
+			//
 			if (product.equalsIgnoreCase("Skincare")) {
 
-				waitUntilElementVisibleAndClick("master_skincare_button");
-				return true;
+				if (getApplicationName().equals("YSL")) {
+
+					waitUntilElementVisibleAndClick("master_home_product_category3");
+
+					return true;
+
+				} else {
+					waitUntilElementVisibleAndClick("master_skincare_button");
+					return true;
+				}
 
 			} else if (product.equalsIgnoreCase("Body")) {
 
@@ -210,6 +219,10 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 				return true;
 			} else if (application.equals("Lancome")) {
+				waitUntilElementVisibleAndClick("master_right_nav_skincare_button");
+
+				return true;
+			} else if (application.equals("YSL")) {
 				waitUntilElementVisibleAndClick("master_right_nav_skincare_button");
 
 				return true;
@@ -318,7 +331,7 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 	public boolean verify_search_product_with_price() throws InterruptedException, IOException {
 
-		String product_name1 = ExcelData.getExcelData("plp_pdp_testdata", getApplicationName() + "_product1");
+		String product_name1 = ExcelData.getExcelData("plp_pdp_testdata", "product1");
 
 		sendkeys("master_plp_search_product_text", product_name1);
 
@@ -391,10 +404,52 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 			return true;
 
 		} else {
+
 			System.out.println("Only one product exsist or product not found in PLP");
+
 			return false;
 		}
 
+	}
+
+	public boolean user_click_check_other_stores_button_on_plp_and_verfiy_the_popup() {
+		try {
+
+			waitUntilElementVisibleAndClick("master_pdp_adv_check_stock_button");
+
+			waitUntil("master_check_stock_popup");
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+
+		}
+	}
+
+	public boolean verify_the_store_suggetion_and_select_a_store() {
+		try {
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+
+		}
+	}
+
+	public boolean user_enter_store_name_to_find_the_store() {
+		try {
+			sendkeys("master_check_stock_search_text_field", "Kie");
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+
+		}
 	}
 
 }

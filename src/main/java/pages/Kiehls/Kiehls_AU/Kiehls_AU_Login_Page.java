@@ -42,8 +42,8 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 		try {
 
 			if (firstTest == "first") {
-				// Select Country
 
+				// Select Country
 				waitUntilElementVisibleAndClick("master_login_select_country");
 				waitUntil("master_login_select_country_list");
 				selectCountryByConfig();
@@ -79,12 +79,14 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 				return true;
 
 			} else {
+
 				waitUntilElementVisibleAndClick("master_ba_username_test_field");
 				clear("master_ba_username_test_field");
 				sendkeys("master_ba_username_test_field", ExcelData.getExcelData("ba_credentials", "valid_username"));
 				click("master_ba_password_test_field");
 				clear("master_ba_password_test_field");
 				sendkeys("master_ba_password_test_field", ExcelData.getExcelData("ba_credentials", "valid_password"));
+
 				// Click BA Login Button
 				click("master_login_button");
 
@@ -205,6 +207,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 	public boolean enterBaCredentials() throws InterruptedException, IOException {
 		try {
+
 			waitUntilElementVisibleAndClick("master_ba_username_test_field");
 			clear("master_ba_username_test_field");
 			sendkeys("master_ba_username_test_field", ExcelData.getExcelData("ba_credentials", "valid_username"));
@@ -225,6 +228,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 	public boolean clickLoginBtnInBaPage() throws InterruptedException, IOException {
 
 		try {
+
 			waitUntilElementVisibleAndClick("master_login_button");
 
 			return true;
@@ -239,6 +243,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 	public boolean verifuUserIsOnHomePage() throws InterruptedException, IOException {
 		boolean flag = false;
 		try {
+
 			waitUntil("master_home_search_button");
 
 			if (webElement("master_home_search_button").isDisplayed()) {
@@ -258,6 +263,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 	public boolean enterWrongStoreCredentials() throws InterruptedException, IOException {
 
 		try {
+
 			waitUntilElementVisibleAndClick("master_store_username_test_field");
 			clear("master_store_username_test_field");
 			sendkeys("master_store_username_test_field",
@@ -291,6 +297,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 			sendkeys("master_ba_password_test_field", ExcelData.getExcelData("ba_credentials", "invalid_password"));
 
 			return true;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 
@@ -303,6 +310,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 	public boolean clickResetPassword() throws InterruptedException, IOException {
 
 		try {
+
 			hideKeyboard();
 
 			waitUntilElementVisibleAndClick("master_reset_button");
@@ -320,6 +328,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 	public boolean enterStoreManagerCredentials() throws InterruptedException, IOException {
 		try {
+
 			waitUntilElementVisibleAndClick("master_store_manager_id");
 			clear("master_store_manager_id");
 			sendkeys("master_store_manager_id", ExcelData.getExcelData("ba_credentials", "valid_username"));
@@ -607,5 +616,21 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 		}
 
+	}
+
+	public boolean user_click_staff_button_on_home_page_to_switch_guest_mode() {
+		try {
+
+			waitUntilElementVisibleAndClick("master_home_staff_button");
+
+			return true;
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+
+		}
 	}
 }

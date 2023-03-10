@@ -278,7 +278,7 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 			hideKeyboard();
 			waitUntilElementVisibleAndClick("master_pdp_adv_search_search_button");
 
-			if (seg.equals("SG") && app.equals("Kiehls")) {
+			if (seg.equals("SG") && app.equals("Kiehls") || seg.equals("JP") && app.equals("YSL")) {
 				waitUntilElementVisibleAndClick("master_c360_search_result_first_cus");
 				waitUntil("master_cart_change_customer_button");
 
@@ -352,6 +352,27 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 			return false;
 		}
+	}
+
+	public boolean user_select_phone_and_enter_the_number_ysl_jp() {
+		try {
+
+			waitUntilElementVisibleAndClick("master_cart_change_customer_customer_dropdown");
+
+			waitUntilElementVisibleAndClick("master_cell_3");
+
+			waitUntil("master_cart_change_cus_text_field");
+			sendkeys("master_cart_change_cus_text_field", ExcelData.getExcelData("customer_testdata", "first_name"));
+
+			//
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+
 	}
 
 }

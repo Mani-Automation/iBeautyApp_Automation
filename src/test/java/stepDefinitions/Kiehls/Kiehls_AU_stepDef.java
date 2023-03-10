@@ -11,6 +11,7 @@ import com.utilities.ConfigReader;
 
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.en.*;
+import pages.Kiehls.Kiehls_AU.Kiehls_AU_AdvanceSearch_Page;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_BACalender_Page;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_BACallBackList_Page;
 import pages.Kiehls.Kiehls_AU.Kiehls_AU_BADashboard_Page;
@@ -64,6 +65,7 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	Kiehls_AU_ServiceBooking_Page service = new Kiehls_AU_ServiceBooking_Page(driver);
 
+	Kiehls_AU_AdvanceSearch_Page advSearch = new Kiehls_AU_AdvanceSearch_Page(driver);
 // BA Callback
 
 	@Then("^User click the first call back history and verify the customer list page$")
@@ -487,6 +489,9 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		} else if (seg.equals("AU") && app.equals("Kiehls")) {
 			Assert.assertTrue(cartPage.user_select_phone_and_enter_the_number_au());
 
+		} else if (seg.equals("JP") && app.equals("YSL")) {
+			Assert.assertTrue(cartPage.user_select_phone_and_enter_the_number_ysl_jp());
+
 		} else {
 
 			Assert.assertTrue(cartPage.user_select_phone_and_enter_the_number());
@@ -839,6 +844,17 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(c360Page.user_click_the_save_button());
 	}
 
+	@Then("^User able to verify dashboard components$")
+	public void user_able_to_verify_dashboard_components() throws Throwable {
+		Assert.assertTrue(c360Page.user_able_to_verify_dashboard_components());
+	}
+
+	@And("^User click slider icon on C360 page$")
+	public void user_click_slider_icon_on_c360_page() throws Throwable {
+		Assert.assertTrue(c360Page.user_click_slider_icon_on_c360_page());
+	}
+
+	// create customer
 	@Then("^Verify the Create new member page$")
 	public void verify_the_create_new_member_page() throws InterruptedException {
 		Assert.assertTrue(ccPage.verify_customer_creation_page());
@@ -1014,8 +1030,8 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	}
 
 	// login
-	@When("^User select country and login to store then login to ba account$")
-	public void user_select_country_and_login_to_store_then_login_to_ba_account() {
+	@When("^User select country and login to Store and BA account$")
+	public void user_select_country_and_login_to_Store_and_BA_account() {
 		Assert.assertTrue(login.user_select_country_and_login_to_store_then_login_to_ba_account());
 	}
 
@@ -1091,8 +1107,8 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(login.clickResetPassword());
 	}
 
-	@Then("User enters store Manager userName and passWord")
-	public void user_enters_store_manager_user_name_and_pass_word() throws InterruptedException, IOException {
+	@Then("User enters store Manager userName and password")
+	public void user_enters_store_manager_user_name_and_password() throws InterruptedException, IOException {
 
 		Assert.assertTrue(login.enterStoreManagerCredentials());
 	}
@@ -1204,6 +1220,22 @@ public class Kiehls_AU_stepDef extends CommonActions {
 			throws InterruptedException, IOException {
 		Assert.assertTrue(plpPage.verify_search_product_with_price());
 
+	}
+
+	//
+	@Then("^User click check other stores button on PLP and verfiy the popup$")
+	public void user_click_check_other_stores_button_on_plp_and_verfiy_the_popup() throws Throwable {
+		Assert.assertTrue(plpPage.user_click_check_other_stores_button_on_plp_and_verfiy_the_popup());
+	}
+
+	@Then("^Verify the store suggetion and select a store$")
+	public void verify_the_store_suggetion_and_select_a_store() throws Throwable {
+		Assert.assertTrue(plpPage.verify_the_store_suggetion_and_select_a_store());
+	}
+
+	@And("^User enter store name to find the store$")
+	public void user_enter_store_name_to_find_the_store() throws Throwable {
+		Assert.assertTrue(plpPage.user_enter_store_name_to_find_the_store());
 	}
 
 	// consultation start
@@ -1381,7 +1413,10 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(login.user_click_active_customer_on_home_page());
 	}
 
-	
+	@And("^User click staff button on home page to switch guest mode$")
+	public void user_click_staff_button_on_home_page_to_switch_guest_mode() throws Throwable {
+		Assert.assertTrue(login.user_click_staff_button_on_home_page_to_switch_guest_mode());
+	}
 //settings
 
 	@Then("^User click Language Switch and verify the languages$")
@@ -1661,6 +1696,23 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	@And("^User click all bookings button and verify the list page$")
 	public void user_click_all_bookings_button_and_verify_the_list_page() throws Throwable {
 		Assert.assertTrue(service.user_click_all_bookings_button_and_verify_the_list_page());
+	}
+
+	// Advance Search
+
+	@Then("^User enter the customer details on the popup$")
+	public void user_enter_the_customer_details_on_the_popup() throws Throwable {
+		Assert.assertTrue(advSearch.user_enter_the_customer_details_on_the_popup());
+	}
+
+	@And("^User click Advance Customer Search button on home page$")
+	public void user_click_advance_customer_search_button_on_home_page() throws Throwable {
+		Assert.assertTrue(advSearch.user_click_advance_customer_search_button_on_home_page());
+	}
+
+	@And("^User click search button on the popup$")
+	public void user_click_search_button_on_the_popup() throws Throwable {
+		Assert.assertTrue(advSearch.user_click_search_button_on_the_popup());
 	}
 
 }

@@ -107,8 +107,15 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 				waitUntilElementVisibleAndClick("master_c360_home_customer_search_lucid_list");
 				waitUntilElementVisibleAndClick("master_valentino_c360_abc_num_pad");
 				return true;
-			} else {
-				return false;
+			} else if (application.equals("YSL")) {
+
+				waitUntilElementVisibleAndClick("master_c360_home_customer_search_marsid_list");
+
+				return true;
+			}
+
+			else {
+				return true;
 			}
 
 		} catch (
@@ -432,7 +439,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean user_click_add_to_wishlist_icon() {
 		try {
-
+			Thread.sleep(4000);
 			waitUntilElementVisibleAndClick("master_pdp_wishlist_button");
 
 			return true;
@@ -652,7 +659,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 		try {
 
 			waitUntil("master_home_search_text");
-			sendkeys("master_home_search_text", "45CA0022781");
+			sendkeys("master_home_search_text", ExcelData.getExcelData("customer_testdata", "mars_id"));
 
 			waitUntilElementVisibleAndClick("master_cart_additem_search_product_button");
 
@@ -834,7 +841,6 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 			segment = ConfigReader.getData("app_segment").toString();
 			switch (segment) {
 			case "AU": {
-
 
 				Thread.sleep(6000);
 				if (driver.findElement(By.xpath(locator.getData("master_recycle_bottles_returned_label"))).getText()
@@ -1542,6 +1548,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean user_click_the_edit_button_and_update_member_page_should_be_displayed_sg() {
 		try {
+
 			String application = ConfigReader.getData("app").toString();
 
 			if (application.equals("Kiehls") || application.equals("Valentino")) {
@@ -1565,8 +1572,38 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 	}
 
 	public boolean user_edit_mailing_address_nz() {
-		// TODO Auto-generated method stub
+
 		return true;
+	}
+
+	public boolean user_able_to_verify_dashboard_components() {
+		try {
+
+			waitUntil("");
+
+			return true;
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_click_slider_icon_on_c360_page() {
+		try {
+
+			waitUntilElementVisibleAndClick("master_c360_dashboard_slider_icon");
+
+			return true;
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
 	}
 
 }
