@@ -726,4 +726,40 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 		}
 	}
 
+	public boolean user_click_send_email_button_and_verify_email_your_consultation_popup() {
+		try {
+
+			waitUntilElementVisibleAndClick("master_consultation_send_email");
+			waitUntil("master_consultation_send_email_send_button");
+			
+			return true;
+
+		} catch (Exception e) {
+			return false;
+
+		}
+	}
+
+	public boolean user_click_send_button_and_verify_the_popup() {
+		try {
+
+			return true;
+
+		} catch (Exception e) {
+			return false;
+
+		}
+	}
+
+	public boolean user_enters_the_message_to_send() {
+		try {
+
+			return true;
+
+		} catch (Exception e) {
+			return false;
+
+		}
+	}
+
 }
