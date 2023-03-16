@@ -221,7 +221,22 @@ Feature: iBeauty Regression Test
     And User click the membership tab and verify Membership screen should be displayed
 
   @master @smoke @Regression @C360
-  Scenario: Add Products to Wish List
+  Scenario: Add Products to Wish List from PLP
+    Then User is on home page
+    Then tap on customer search dropdown
+    And tap on Mobile Number from the dropdown list
+    And enter Mobile Number and tap on search button
+    Then Customer threeSixty screen should be display
+    Then User click Home button and verify home page should be displayed
+    And User click "Skincare" category on product from right navigation
+    Then User should navigate to PLP page successfully
+    And User click add to wishlist icon form PLP
+    Then User Click Customer 360 button from right navigation
+    And User click wishlist tab
+    Then User click wishlist product and verify PDP shold be displayed
+    
+      @master @smoke @Regression @C360
+  Scenario: Add Products to Wish List from PDP
     Then User is on home page
     Then tap on customer search dropdown
     And tap on Mobile Number from the dropdown list
@@ -480,6 +495,24 @@ Feature: iBeauty Regression Test
     And User click add or edit button on build routine page
     Then User edit product on build routine select page
     And User validate edited product on summary page
+    
+      @master @Regression @consultation
+  Scenario: Verify user able to send Email from consultaion
+    Then User is on home page
+    Then tap on customer search dropdown
+    And tap on Mobile Number from the dropdown list
+    And enter Mobile Number and tap on search button
+    Then Customer threeSixty screen should be display
+    Then User click Home button and verify home page should be displayed
+    And User click start consultation button
+    And User verify the consultation home page
+    Then User click add button and click start consultation
+    Then User click "SkinCare" button and verify the page
+    And User select skin options and click save button
+    And User verify the consultation report page
+    Then User click send Email button and Verify email your consultation popup
+    And User enters the message to send
+    Then User click send button and verify the popup
 
   @master @smoke @Regression @home
   Scenario: Verify the user able see all the components in Home page
@@ -753,6 +786,42 @@ Feature: iBeauty Regression Test
     And User click staff button on home page to switch guest mode
     And User click "Skincare" category on the Home page
     Then User should navigate to PLP page successfully
-    Then User should navigate to PLP page successfully
     And User click the Cart button from right navigation and verify the cart page
+    
+  @master @smoke @Regression @home
+  Scenario: User able to see product info on the home page
+    Then User is on home page
+    And User click product info button on the right nav
+    Then Verify user able to see brand images
+ 
+  @master @smoke @Regression @C360
+  Scenario: Add Products to Allergies from pdp
+    Then User is on home page
+    Then tap on customer search dropdown
+    And tap on Mobile Number from the dropdown list
+    And enter Mobile Number and tap on search button
+    Then Customer threeSixty screen should be display
+    Then User click Home button and verify home page should be displayed
+    And User click "Skincare" category on product from right navigation
+    Then User should navigate to PLP page successfully
+    And User click the product and verify user get navigate to PDP page
+    And User click add to allergy icon
+    Then User Click Customer 360 button from right navigation
+    And User click wishlist tab
+    Then User click allergy product and verify PDP shold be displayed
+    
+  @master @smoke @Regression @C360
+  Scenario: Add Products to Allergies from plp
+    Then User is on home page
+    Then tap on customer search dropdown
+    And tap on Mobile Number from the dropdown list
+    And enter Mobile Number and tap on search button
+    Then Customer threeSixty screen should be display
+    Then User click Home button and verify home page should be displayed
+    And User click "Skincare" category on product from right navigation
+    Then User should navigate to PLP page successfully
+    And User click add to allergy icon from plp
+    Then User Click Customer 360 button from right navigation
+    And User click wishlist tab
+    Then User click allergy product and verify PDP shold be displayed
     

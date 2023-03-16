@@ -66,6 +66,7 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	Kiehls_AU_ServiceBooking_Page service = new Kiehls_AU_ServiceBooking_Page(driver);
 
 	Kiehls_AU_AdvanceSearch_Page advSearch = new Kiehls_AU_AdvanceSearch_Page(driver);
+	
 // BA Callback
 
 	@Then("^User click the first call back history and verify the customer list page$")
@@ -545,9 +546,13 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	public void tap_on_Mobile_Number_from_the_dropdown_list() throws InterruptedException, IOException {
 
 		String segment = ConfigReader.getData("app_segment");
-
+		String app = ConfigReader.getData("app");
 		if (segment.equals("JP")) {
 			Assert.assertTrue(c360Page.tap_on_mobile_number_from_the_dropdown_list());
+
+		} else if (app.equals("YSL") && segment.equals("HK")) { // index 3
+
+			Assert.assertTrue(c360Page.tap_on_mobile_number_from_the_dropdown_list_index3());
 
 		} else if (segment.equals("KR") || segment.equals("TW") || segment.equals("HK")) { // cell1
 			Assert.assertTrue(c360Page.tap_on_mobile_number_from_the_dropdown_list_kr());
@@ -565,11 +570,12 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	public void enter_mobile_number_and_tap_on_search_button() throws IOException {
 
 		String segment = ConfigReader.getData("app_segment");
+		String app = ConfigReader.getData("app");
 
 		if (segment.equals("AU")) {
 			Assert.assertTrue(c360Page.enter_mobile_number_and_tap_on_search_button_au());
 
-		} else if (segment.equals("JP")) {
+		} else if (segment.equals("JP") || app.equals("YSL") && segment.equals("HK")) {
 			Assert.assertTrue(c360Page.enter_mobile_number_and_tap_on_search_button());
 
 		} else if (segment.equals("KR") || segment.equals("TW") || segment.equals("HK")) {
@@ -801,6 +807,27 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	public void user_click_wishlist_tab() {
 		Assert.assertTrue(c360Page.user_click_wishlist_tab());
 	}
+
+	@And("^User click add to allergy icon$")
+	public void user_click_add_to_allergy_icon() throws Throwable {
+		Assert.assertTrue(c360Page.user_click_add_to_allergy_icon());
+	}
+
+	@And("^User click add to allergy icon from plp$")
+	public void user_click_add_to_allergy_icon_from_plp() throws Throwable {
+		Assert.assertTrue(c360Page.user_click_add_to_allergy_icon_from_plp());
+	}
+
+	@Then("^User click allergy product and verify PDP shold be displayed$")
+	public void user_click_allergy_product_and_verify_pdp_shold_be_displayed() throws Throwable {
+		Assert.assertTrue(c360Page.user_click_allergy_product_and_verify_pdp_shold_be_displayed());
+	}
+
+	@And("^User click add to wishlist icon form PLP$")
+	public void user_click_add_to_wishlist_icon_form_plp() throws Throwable {
+		Assert.assertTrue(c360Page.user_click_add_to_wishlist_icon_form_plp());
+	}
+
 //26
 
 	@Then("^Verify user general information should be displayed$")
@@ -855,6 +882,7 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	}
 
 	// create customer
+	
 	@Then("^Verify the Create new member page$")
 	public void verify_the_create_new_member_page() throws InterruptedException {
 		Assert.assertTrue(ccPage.verify_customer_creation_page());
@@ -1376,6 +1404,21 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(consultationPage.user_validate_edited_product_on_summary_page());
 	}
 
+	@Then("^User click send Email button and Verify email your consultation popup$")
+	public void user_click_send_email_button_and_verify_email_your_consultation_popup() throws Throwable {
+		Assert.assertTrue(consultationPage.user_click_send_email_button_and_verify_email_your_consultation_popup());
+	}
+
+	@Then("^User click send button and verify the popup$")
+	public void user_click_send_button_and_verify_the_popup() throws Throwable {
+		Assert.assertTrue(consultationPage.user_click_send_button_and_verify_the_popup());
+	}
+
+	@And("^User enters the message to send$")
+	public void user_enters_the_message_to_send() throws Throwable {
+		Assert.assertTrue(consultationPage.user_enters_the_message_to_send());
+	}
+
 	// home
 
 	@Then("^Verify menu bar items on the home page$")
@@ -1417,6 +1460,17 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	public void user_click_staff_button_on_home_page_to_switch_guest_mode() throws Throwable {
 		Assert.assertTrue(login.user_click_staff_button_on_home_page_to_switch_guest_mode());
 	}
+
+	@Then("^Verify user able to see brand images$")
+	public void verify_user_able_to_see_brand_images() throws Throwable {
+		Assert.assertTrue(login.verify_user_able_to_see_brand_images());
+	}
+
+	@And("^User click product info button on the right nav$")
+	public void user_click_product_info_button_on_the_right_nav() throws Throwable {
+		Assert.assertTrue(login.user_click_product_info_button_on_the_right_nav());
+	}
+
 //settings
 
 	@Then("^User click Language Switch and verify the languages$")

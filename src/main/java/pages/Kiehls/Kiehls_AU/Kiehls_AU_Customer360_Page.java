@@ -51,8 +51,6 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 		PageFactory.initElements(driver, this);
 	}
 
-	/****************** Locators ******************/
-
 	public boolean tap_on_customer_search_dropdown() throws InterruptedException {
 		try {
 
@@ -1556,6 +1554,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 				waitUntilElementVisibleAndClick("master_c360_cus_edit_button");
 
 				return true;
+
 			}
 
 			else {
@@ -1602,6 +1601,69 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 		Exception e) {
 			e.printStackTrace();
 
+			return false;
+		}
+	}
+
+	public boolean user_click_add_to_allergy_icon() {
+		try {
+
+			waitUntilElementVisibleAndClick("");
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_click_add_to_allergy_icon_from_plp() {
+		try {
+
+			waitUntilElementVisibleAndClick("master_plp_allegy_button");
+			return true;
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_click_allergy_product_and_verify_pdp_shold_be_displayed() {
+		try {
+
+			return true;
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_click_add_to_wishlist_icon_form_plp() {
+		try {
+
+			waitUntilElementVisibleAndClick("master_plp_wishlist_button");
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean tap_on_mobile_number_from_the_dropdown_list_index3() {
+		try {
+
+			waitUntilElementVisibleAndClick("master_c360_home_customer_search_marsid_list");
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
