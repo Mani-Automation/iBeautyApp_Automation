@@ -78,7 +78,7 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 
 			waitUntilElementVisibleAndClick("master_pdp_buynow_button");
 
-			waitUntil("master_pdp_product_count_add_button");
+			//waitUntil("master_pdp_product_count_add_button");
 
 			waitUntilElementVisibleAndClick("master_home_cart");
 

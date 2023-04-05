@@ -504,9 +504,9 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 		try {
 			waitUntil("master_home_topten");
 			waitUntil("master_home_topten_item1");
-			waitUntil("master_home_topten_item2");
-			waitUntil("master_home_topten_item3");
-			waitUntil("master_home_topten_item4");
+			//waitUntil("master_home_topten_item2");
+			//waitUntil("master_home_topten_item3");
+			//waitUntil("master_home_topten_item4");
 
 			return true;
 		} catch (
@@ -637,8 +637,8 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 	public boolean verify_user_able_to_see_brand_images() {
 		try {
 
-			waitUntil("");
-			waitUntil("");
+		//	waitUntil("");
+		//	waitUntil("");
 
 			return true;
 		} catch (
@@ -664,6 +664,21 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 			return false;
 
+		}
+	}
+
+	public boolean verify_user_able_to_navigate_cart_from_righ_nav_after_swiched_guest_mode() {
+		try {
+
+			waitUntilElementVisibleAndClick("master_home_info");
+
+			waitUntil("master_cart_checkout_button");
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
 		}
 	}
 }

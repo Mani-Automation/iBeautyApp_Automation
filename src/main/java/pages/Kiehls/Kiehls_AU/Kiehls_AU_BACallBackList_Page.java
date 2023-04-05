@@ -135,8 +135,8 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 			} else if (ba_home.equalsIgnoreCase("SERVICE BOOKING")) {
 
-				String segment = ConfigReader.getData("app_segment").toString();
-				if (segment.equals("JP")) {
+				if (getCmsConfig("service_booking").equalsIgnoreCase("Yes")) {
+
 					driver.findElement(By.xpath(ba_home_item)).click();
 
 					waitUntil("master_transaction_history_tab");
@@ -155,8 +155,6 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 		}
 	}
 
-	
-
 	public boolean verify_the_title_in_callback_list() {
 
 		try {
@@ -173,126 +171,6 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 		}
 
-	}
-
-	public boolean verify_the_count_in_callback_list() {
-		try {
-
-			waitUntil("master_callbacklist_page_countLabel");
-
-			return true;
-		}
-
-		catch (Exception e) {
-			e.printStackTrace();
-
-			return false;
-
-		}
-	}
-
-	public boolean verify_the_not_picked_call_in_callback_list() {
-		try {
-
-			waitUntil("master_callbacklist_page_notYetCalledLabel");
-
-			return true;
-
-		}
-
-		catch (Exception e) {
-			e.printStackTrace();
-
-			return false;
-
-		}
-	}
-
-	public boolean verify_the_called_in_callback_list() {
-		try {
-
-			waitUntil("master_callbacklist_page_calledLabel");
-
-			return true;
-
-		}
-
-		catch (Exception e) {
-			e.printStackTrace();
-
-			return false;
-
-		}
-	}
-
-	public boolean verify_the_missed_call_in_callback_list() {
-		try {
-
-			waitUntil("master_callbacklist_page_didNotPickupLabel");
-
-			return true;
-
-		}    
-
-		catch (Exception e) {
-			e.printStackTrace();
-
-			return false;
-
-		}
-	}
-
-	public boolean verify_the_reminder_in_callback_list() {
-		try {
-
-			waitUntil("master_callbacklist_page_reservationLabel");
-
-			return true;
-
-		}
-
-		catch (Exception e) {
-			e.printStackTrace();
-
-			return false;
-
-		}
-	}
-
-	public boolean verify_the_created_date_in_callback_list() {
-		try {
-
-			waitUntil("master_callbacklist_page_createdDateLabel");
-
-			return true;
-
-		}
-
-		catch (Exception e) {
-			e.printStackTrace();
-
-			return false;
-
-		}
-	}
-
-	public boolean verify_the_updated_date_in_callback_list() {
-		try {
-
-			waitUntil("master_callbacklist_page_updatedDateLabel");
-
-			return true;
-
-		}
-
-		catch (
-
-		Exception e) {
-			e.printStackTrace();
-
-			return false;
-
-		}
 	}
 
 //
@@ -334,22 +212,6 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 		try {
 
 			// waitUntil("master_callbacklist_member_level_point_label");
-			return true;
-		}
-
-		catch (
-
-		Exception e) {
-			e.printStackTrace();
-
-			return false;
-
-		}
-	}
-
-	public boolean verify_the_balance_points() {
-		try {
-			waitUntil("master_callbacklist_balance_value_label");
 			return true;
 		}
 
