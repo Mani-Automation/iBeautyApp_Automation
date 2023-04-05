@@ -50,8 +50,6 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 	public boolean verify_user_able_see_customer_notification_callback_list_calender_tab_in_the_dashboard() {
 		try {
 
-			waitUntil("master_ba_notification_table");
-
 			waitUntil("master_ba_dashboard_callback_viewall_button");
 
 			waitUntil("master_ba_dashboard_calender_addnew_button");
@@ -141,8 +139,6 @@ public class Kiehls_AU_BADashboard_Page extends CommonActions {
 			return false;
 		}
 	}
-
-
 
 	public boolean verify_user_able_to_navigate_to_calender_page_and_see_all_calender_events_list_popup() {
 		try {

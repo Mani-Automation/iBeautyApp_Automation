@@ -66,7 +66,7 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	Kiehls_AU_ServiceBooking_Page service = new Kiehls_AU_ServiceBooking_Page(driver);
 
 	Kiehls_AU_AdvanceSearch_Page advSearch = new Kiehls_AU_AdvanceSearch_Page(driver);
-	
+
 // BA Callback
 
 	@Then("^User click the first call back history and verify the customer list page$")
@@ -86,41 +86,6 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(baCallbackPage.verify_the_title_in_callback_list());
 	}
 
-	@And("^Verify the Count in callback list$")
-	public void verify_the_count_in_callback_list() {
-		Assert.assertTrue(baCallbackPage.verify_the_count_in_callback_list());
-	}
-
-	@And("^Verify the Not picked call in callback list$")
-	public void verify_the_not_picked_call_in_callback_list() {
-		Assert.assertTrue(baCallbackPage.verify_the_not_picked_call_in_callback_list());
-	}
-
-	@And("^Verify the called in callback list$")
-	public void verify_the_called_in_callback_list() {
-		Assert.assertTrue(baCallbackPage.verify_the_called_in_callback_list());
-	}
-
-	@And("^Verify the missed call in callback list$")
-	public void verify_the_missed_call_in_callback_list() {
-		Assert.assertTrue(baCallbackPage.verify_the_missed_call_in_callback_list());
-	}
-
-	@And("^Verify the reminder in callback list$")
-	public void verify_the_reminder_in_callback_list() {
-		Assert.assertTrue(baCallbackPage.verify_the_reminder_in_callback_list());
-	}
-
-	@And("^Verify the Created date in callback list$")
-	public void verify_the_created_date_in_callback_list() {
-		Assert.assertTrue(baCallbackPage.verify_the_created_date_in_callback_list());
-	}
-
-	@And("^Verify the Updated date in callback list$")
-	public void verify_the_updated_date_in_callback_list() {
-		Assert.assertTrue(baCallbackPage.verify_the_updated_date_in_callback_list());
-	}
-
 	@And("^User click the first customer detials$")
 	public void user_click_the_first_customer_detials() throws InterruptedException {
 		Assert.assertTrue(baCallbackPage.user_click_the_first_customer_detials());
@@ -129,11 +94,6 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	@And("^Verify the Member level$")
 	public void verify_the_member_level() {
 		Assert.assertTrue(baCallbackPage.verify_the_member_level());
-	}
-
-	@And("^Verify the Balance points$")
-	public void verify_the_balance_points() {
-		Assert.assertTrue(baCallbackPage.verify_the_balance_points());
 	}
 
 	@And("^Verify the Points Expiring in 1 month$")
@@ -481,23 +441,7 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	@And("^User select phone and enter the number$")
 	public void user_select_phone_and_enter_the_number() throws InterruptedException, IOException {
 
-		String seg = ConfigReader.getData("app_segment").toString();
-		String app = ConfigReader.getData("app").toString();
-
-		if (seg.equals("SG") && app.equals("Kiehls")) {
-			Assert.assertTrue(cartPage.user_select_phone_and_enter_the_number_sg());
-
-		} else if (seg.equals("AU") && app.equals("Kiehls")) {
-			Assert.assertTrue(cartPage.user_select_phone_and_enter_the_number_au());
-
-		} else if (seg.equals("JP") && app.equals("YSL")) {
-			Assert.assertTrue(cartPage.user_select_phone_and_enter_the_number_ysl_jp());
-
-		} else {
-
-			Assert.assertTrue(cartPage.user_select_phone_and_enter_the_number());
-
-		}
+		Assert.assertTrue(cartPage.user_select_phone_and_enter_the_number());
 
 	}
 
@@ -516,6 +460,42 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 		}
 
+	}
+
+	@Then("^User login as a member$")
+	public void user_login_as_a_member() throws Throwable {
+		Assert.assertTrue(c360Page.user_login_as_a_member());
+	}
+
+	@Then("^User login as a member with mars id$")
+	public void user_login_as_a_member_with_mars_id() throws Throwable {
+		Assert.assertTrue(c360Page.user_login_as_a_member_with_mars_id());
+	}
+
+	@Then("^User login to member and verify the C360$")
+	public void user_login_to_member_and_verify_the_c360() throws Throwable {
+
+		String option = null;
+
+		String seg = ConfigReader.getData("app_segment").toString();
+		String app = ConfigReader.getData("app").toString();
+
+		// Mobile Number First Name Last Name Mars ID
+
+		if (app.equals("Kiehls") && seg.equals("MY") || app.equals("Biotherm") && seg.equals("TH")
+				|| app.equals("Lancome") && seg.equals("SG") || app.equals("YSL") && seg.equals("AU")) {
+			option = "Email";
+		} else if (app.equals("Kiehls") && seg.equals("KR")) {
+			option = "Name";
+		} else if (seg.equals("NZ") || seg.equals("AU")) {
+			option = null;
+		} else if (app.equals("Kiehls") || seg.equals("JP")) {
+			option = "Lucid";
+		} else if (app.equals("Kiehls") && seg.equals("TW")) {
+			option = "Client Name";
+		}
+
+		Assert.assertTrue(c360Page.user_login_to_member_and_verify_the_c360(option));
 	}
 
 	@Then("^Customer threeSixty screen should be display$")
@@ -627,8 +607,17 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	}
 
 	@And("^Verify the Edit button$")
-	public void verify_the_edit_button() {
-		Assert.assertTrue(c360Page.verify_the_edit_button());
+	public void verify_the_edit_button() throws IOException {
+		String seg = ConfigReader.getData("app_segment").toString();
+		String app = ConfigReader.getData("app").toString();
+
+		if (app.equals("Kiehls") && seg.equals("MY")) {
+
+		} else {
+			Assert.assertTrue(c360Page.verify_the_edit_button());
+
+		}
+
 	}
 
 	@And("^Verify the Birthday Date$")
@@ -659,6 +648,82 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	@And("^Verify the Customer type$")
 	public void verify_the_customer_type() {
 		Assert.assertTrue(c360Page.verify_the_customer_type());
+
+	}
+
+	@Then("^Verify dashboard note tile$")
+	public void verify_dashboard_note_tile() throws Throwable {
+		Assert.assertTrue(c360Page.verify_dashboard_note_tile());
+	}
+
+	@Then("^Verify user able to see Add Note button on dashboard$")
+	public void verify_user_able_to_see_add_note_button_on_dashboard() throws Throwable {
+		Assert.assertTrue(c360Page.verify_user_able_to_see_add_note_button_on_dashboard());
+	}
+
+	@And("^Verify the dashboard tab$")
+	public void verify_the_dashboard_tab() throws Throwable {
+		Assert.assertTrue(c360Page.verify_the_dashboard_tab());
+	}
+
+	@Then("^Verify user able to validate Purchase History Expand and collapse all$")
+	public void verify_user_able_to_validate_purchase_history_expand_and_collapse_all() throws Throwable {
+		Assert.assertTrue(c360Page.verify_user_able_to_validate_purchase_history_expand_and_collapse_all());
+	}
+
+	@And("^User click purchase history tab$")
+	public void user_click_purchase_history_tab() throws Throwable {
+		Assert.assertTrue(c360Page.user_click_purchase_history_tab());
+	}
+
+	@Then("^Verify user able to see YTD spent$")
+	public void verify_user_able_to_see_ytd_spent() throws Throwable {
+		Assert.assertTrue(c360Page.verify_user_able_to_see_ytd_spent());
+	}
+
+	@Then("^Verify user able to validate Membership Tier$")
+	public void verify_user_able_to_validate_membership_tier() throws Throwable {
+		Assert.assertTrue(c360Page.verify_user_able_to_validate_membership_tier());
+	}
+
+	@Then("^Verify user able to see Last consultation widget$")
+	public void verify_user_able_to_see_last_consultation_widget() throws Throwable {
+		Assert.assertTrue(c360Page.verify_user_able_to_see_last_consultation_widget());
+	}
+
+	@And("^User validate the date or click to start consultation$")
+	public void user_validate_the_date_or_click_to_start_consultation() throws Throwable {
+		Assert.assertTrue(c360Page.user_validate_the_date_or_click_to_start_consultation());
+	}
+
+	@And("^Verify note header title on dashobard$")
+	public void verify_note_header_title_on_dashobard() throws Throwable {
+		Assert.assertTrue(c360Page.verify_note_header_title_on_dashobard());
+	}
+
+	@And("^Verify note body text on dashobard$")
+	public void verify_note_body_text_on_dashobard() throws Throwable {
+		Assert.assertTrue(c360Page.verify_note_body_text_on_dashobard());
+	}
+
+	@And("^Verify note date on dashobard$")
+	public void verify_note_date_on_dashobard() throws Throwable {
+		Assert.assertTrue(c360Page.verify_note_date_on_dashobard());
+	}
+
+	@Then("^Verify user able to see Birthday notification$")
+	public void verify_user_able_to_see_birthday_notification() throws Throwable {
+		Assert.assertTrue(c360Page.verify_user_able_to_see_birthday_notification());
+	}
+
+	@Then("^User verify the recent purchases on dashboard$")
+	public void user_verify_the_recent_purchases_on_dashboard() throws Throwable {
+		Assert.assertTrue(c360Page.user_verify_the_recent_purchases_on_dashboard());
+	}
+
+	@And("^User click recent purchase and verify its navigate to PDP$")
+	public void user_click_recent_purchase_and_verify_its_navigate_to_pdp() throws Throwable {
+		Assert.assertTrue(c360Page.user_click_recent_purchase_and_verify_its_navigate_to_pdp());
 	}
 //23
 
@@ -684,10 +749,13 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		} else if (segment.equals("TW")) {
 			Assert.assertTrue(c360Page.user_click_the_edit_button_and_update_member_page_should_be_displayed_tw());
 
+		} else if (segment.equals("MY")) {
+
 		} else {
 			Assert.assertTrue(c360Page.user_click_the_edit_button_and_update_member_page_should_be_displayed_sg());
 
 		}
+
 	}
 
 //24
@@ -703,6 +771,8 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		} else if (segment.equals("KR") || segment.equals("TW") || segment.equals("HK") || segment.equals("TH")
 				|| segment.equals("SG") || segment.equals("NZ") || segment.equals("AU")) {
 			Assert.assertTrue(c360Page.user_edit_membership_info_kr());
+
+		} else if (segment.equals("MY")) {
 
 		}
 	}
@@ -736,6 +806,8 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		} else if (segment.equals("NZ")) {
 			Assert.assertTrue(c360Page.user_edit_member_details_nz());
 
+		} else if (segment.equals("MY")) {
+
 		}
 	}
 
@@ -757,6 +829,8 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 		} else if (segment.equals("NZ")) {
 			Assert.assertTrue(c360Page.user_edit_mailing_address_nz());
+
+		} else if (segment.equals("MY")) {
 
 		} else {
 			Assert.assertTrue(c360Page.user_edit_mailing_address_tw());
@@ -882,7 +956,7 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	}
 
 	// create customer
-	
+
 	@Then("^Verify the Create new member page$")
 	public void verify_the_create_new_member_page() throws InterruptedException {
 		Assert.assertTrue(ccPage.verify_customer_creation_page());
@@ -1047,9 +1121,22 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(ccPage.user_click_confirm_button());
 	}
 
+	@Then("^User verify welcome popup successfully$")
+	public void user_verify_welcome_popup_successfully() throws Throwable {
+		Assert.assertTrue(ccPage.user_verify_welcome_popup_successfully());
+	}
+
 	@Then("^User verify Customer ThreeSixty Screen should be displayed$")
 	public void user_verify_customer_threesixty_screen_should_be_displayed() throws Throwable {
-		Assert.assertTrue(ccPage.user_verify_customer_threesixty_screen_should_be_displayed());
+
+		String segment = ConfigReader.getData("app_segment");
+
+		if (segment.equals("MY")) {
+
+		} else {
+			Assert.assertTrue(ccPage.user_verify_customer_threesixty_screen_should_be_displayed());
+
+		}
 	}
 
 	@And("^User verify mandatory error messages$")
@@ -1207,17 +1294,14 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	}
 
-	@And("^User click \"([^\"]*)\" category on the Home page$")
-	public void user_click_something_category_on_the_home_page(String product) throws InterruptedException {
-
-		Assert.assertTrue(plpPage.click_category_from_home_page(product));
-
+	@Then("^User click a category on the home page$")
+	public void user_click_a_category_on_the_home_page() throws Throwable {
+		Assert.assertTrue(plpPage.click_category_from_home_page());
 	}
 
-	@And("^User click \"([^\"]*)\" category on product from right navigation$")
-	public void user_click_something_category_on_product_from_right_navigation(String product)
-			throws InterruptedException, IOException {
-		Assert.assertTrue(plpPage.click_category_from_right_navigation(product));
+	@And("^User click category on product from right navigation$")
+	public void user_click_category_on_product_from_right_navigation() throws InterruptedException, IOException {
+		Assert.assertTrue(plpPage.click_category_from_right_navigation());
 
 	}
 
@@ -1256,16 +1340,15 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(plpPage.user_click_check_other_stores_button_on_plp_and_verfiy_the_popup());
 	}
 
-	@Then("^Verify the store suggetion and select a store$")
-	public void verify_the_store_suggetion_and_select_a_store() throws Throwable {
-		Assert.assertTrue(plpPage.verify_the_store_suggetion_and_select_a_store());
-	}
-
 	@And("^User enter store name to find the store$")
 	public void user_enter_store_name_to_find_the_store() throws Throwable {
 		Assert.assertTrue(plpPage.user_enter_store_name_to_find_the_store());
 	}
 
+	@Then("^Verify the selected store on the popup$")
+	public void verify_the_selected_store_on_the_popup() throws Throwable {
+		Assert.assertTrue(plpPage.verify_the_selected_store_on_the_popup());
+	}
 	// consultation start
 
 	@Then("^User enter text look and feel of your skin on text field$")
@@ -1305,8 +1388,17 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	}
 
 	@Then("^User click add button and click start consultation$")
-	public void user_click_add_button_and_click_start_consultation() {
-		Assert.assertTrue(consultationPage.user_click_add_button_and_click_start_consultation());
+	public void user_click_add_button_and_click_start_consultation() throws IOException {
+
+		String seg = ConfigReader.getData("app_segment").toString();
+		String app = ConfigReader.getData("app").toString();
+
+		if (app.equals("Kiehls") && seg.equals("HK")) {
+			Assert.assertTrue(consultationPage.user_click_add_button_and_click_start_consultation_hk());
+		} else {
+			Assert.assertTrue(consultationPage.user_click_add_button_and_click_start_consultation());
+
+		}
 	}
 
 	@Then("^User verify is survey form created successfully$")
@@ -1461,6 +1553,11 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(login.user_click_staff_button_on_home_page_to_switch_guest_mode());
 	}
 
+	@Then("^Verify user able to navigate cart from righ nav after swiched guest mode$")
+	public void verify_user_able_to_navigate_cart_from_righ_nav_after_swiched_guest_mode() throws Throwable {
+		Assert.assertTrue(login.verify_user_able_to_navigate_cart_from_righ_nav_after_swiched_guest_mode());
+	}
+
 	@Then("^Verify user able to see brand images$")
 	public void verify_user_able_to_see_brand_images() throws Throwable {
 		Assert.assertTrue(login.verify_user_able_to_see_brand_images());
@@ -1586,103 +1683,52 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	@Then("^User click add to cart button on first voucher$")
 	public void user_click_add_to_cart_button_on_first_voucher() throws Throwable {
 
-		// AU, MY, SG, TH, NZ - South
+		Assert.assertTrue(voucher.user_click_add_to_cart_button_on_first_voucher());
 
-		String seg = ConfigReader.getData("app_segment").toString();
-
-		if (seg.equals("AU") || seg.equals("MY") || seg.equals("SG") || seg.equals("TH") || seg.equals("NZ")) {
-			Assert.assertTrue(voucher.user_click_add_to_cart_button_on_first_voucher());
-
-		}
 	}
 
 	@Then("^Validate minimum spent limit popup$")
 	public void validate_minimum_spent_limit_popup() throws Throwable {
-		// AU, MY, SG, TH, NZ - South
+		Assert.assertTrue(voucher.validate_minimum_spent_limit_popup());
 
-		String seg = ConfigReader.getData("app_segment").toString();
-
-		if (seg.equals("AU") || seg.equals("MY") || seg.equals("SG") || seg.equals("TH") || seg.equals("NZ")) {
-			Assert.assertTrue(voucher.validate_minimum_spent_limit_popup());
-
-		}
 	}
 
 	@Then("^User click add to cart button on second voucher$")
 	public void user_click_add_to_cart_button_on_second_voucher() throws Throwable {
-		// AU, MY, SG, TH, NZ - South
+		Assert.assertTrue(voucher.user_click_add_to_cart_button_on_second_voucher());
 
-		String seg = ConfigReader.getData("app_segment").toString();
-
-		if (seg.equals("AU") || seg.equals("MY") || seg.equals("SG") || seg.equals("TH") || seg.equals("NZ")) {
-			Assert.assertTrue(voucher.user_click_add_to_cart_button_on_second_voucher());
-
-		}
 	}
 
 	@Then("^Validate cannot combine voucher popup$")
 	public void validate_cannot_combine_voucher_popup() throws Throwable {
-		// AU, MY, SG, TH, NZ - South
+		Assert.assertTrue(voucher.validate_cannot_combine_voucher_popup());
 
-		String seg = ConfigReader.getData("app_segment").toString();
-
-		if (seg.equals("AU") || seg.equals("MY") || seg.equals("SG") || seg.equals("TH") || seg.equals("NZ")) {
-			Assert.assertTrue(voucher.validate_cannot_combine_voucher_popup());
-
-		}
 	}
 
 	@Then("^User click collect tab on Redemption page and verify$")
 	public void user_click_collect_tab_on_redemption_page_and_verify() throws Throwable {
-		// AU, MY, SG, TH, NZ - South
+		Assert.assertTrue(voucher.user_click_collect_tab_on_redemption_page_and_verify());
 
-		String seg = ConfigReader.getData("app_segment").toString();
-
-		if (seg.equals("AU") || seg.equals("MY") || seg.equals("SG") || seg.equals("TH") || seg.equals("NZ")) {
-			Assert.assertTrue(voucher.user_click_collect_tab_on_redemption_page_and_verify());
-
-		}
 	}
 
 	@And("^User click the Voucher Redemption button from right navigation and verify the page$")
 	public void user_click_the_voucher_redemption_button_from_right_navigation_and_verify_the_page() throws Throwable {
 
-		// AU, MY, SG, TH, NZ - South
-
-		String seg = ConfigReader.getData("app_segment").toString();
-
-		if (seg.equals("AU") || seg.equals("MY") || seg.equals("SG") || seg.equals("TH") || seg.equals("NZ")) {
-			Assert.assertTrue(
-					voucher.user_click_the_voucher_redemption_button_from_right_navigation_and_verify_the_page());
-
-		}
+		Assert.assertTrue(voucher.user_click_the_voucher_redemption_button_from_right_navigation_and_verify_the_page());
 
 	}
 
 	@And("^Verify redeem requst page components$")
 	public void verify_redeem_requst_page_components() throws Throwable {
 
-		// AU, MY, SG, TH, NZ - South
-
-		String seg = ConfigReader.getData("app_segment").toString();
-
-		if (seg.equals("AU") || seg.equals("MY") || seg.equals("SG") || seg.equals("TH") || seg.equals("NZ")) {
-			Assert.assertTrue(voucher.verify_redeem_requst_page_components());
-
-		}
+		Assert.assertTrue(voucher.verify_redeem_requst_page_components());
 
 	}
 
 	@And("^User click reedem button$")
 	public void user_click_reedem_button() throws Throwable {
-		// AU, MY, SG, TH, NZ - South
+		Assert.assertTrue(voucher.user_click_reedem_button());
 
-		String seg = ConfigReader.getData("app_segment").toString();
-
-		if (seg.equals("AU") || seg.equals("MY") || seg.equals("SG") || seg.equals("TH") || seg.equals("NZ")) {
-			Assert.assertTrue(voucher.user_click_reedem_button());
-
-		}
 	}
 
 	// product reservation

@@ -124,7 +124,6 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			// Email
 			sendExcelData("master_createcustomer_email", "customer_testdata", "first_name" + generateRandomNumber());
 
-
 			// Domain Name
 			waitUntilElementVisibleAndClick("master_createcustomer_email_domain_dropdown");
 			waitUntilElementVisibleAndClick("master_createcustomer_email_domain_name");
@@ -556,6 +555,7 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 
 			// Area Code
 			waitUntilElementVisibleAndClick("master_hk_createcustomer_areacode_dropdown");
+			Thread.sleep(2000);
 			staticTextClick("+" + ExcelData.getExcelData("customer_testdata", "area_code"));
 
 			// Mobile
@@ -870,6 +870,22 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 
 			return true;
 
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_verify_welcome_popup_successfully() {
+		try {
+
+			waitUntil("master_welcome_popup_image");
+			waitUntil("master_welcome_popup_text");
+
+			waitUntilElementVisibleAndClick("master_welcome_popup_close_button");
+
+			return true;
 		} catch (Exception e) {
 			e.printStackTrace();
 

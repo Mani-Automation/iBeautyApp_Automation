@@ -641,6 +641,18 @@ public class CommonActions {
 
 	}
 
+	public void hideKeyboard_by_click_search()
+
+	{
+		try {
+			driver.findElementByXPath(String.format("//XCUIElementTypeButton[@name='%s']", "search")).click();
+		} catch (NoSuchElementException e) {
+			driver.findElementByXPath(String.format("//XCUIElementTypeButton[@name='%s']", "Search")).click();
+
+		}
+
+	}
+
 	public void selectCountryByConfig() throws IOException, InterruptedException {
 
 		String country = getCountryName().toString();
@@ -798,6 +810,12 @@ public class CommonActions {
 		driver.findElement(By.xpath(loc.getData(locatorString)))
 				.sendKeys(ExcelData.getExcelData(sheet_name, coloumn_name));
 		clickLogoToHideKeyboard();
+
+	}
+
+	public String getCmsConfig(String configName) throws IOException {
+
+		return ExcelData.getExcelData("cms_configuration", configName);
 
 	}
 
