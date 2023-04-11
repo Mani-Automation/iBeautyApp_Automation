@@ -155,7 +155,6 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 		try {
 
 			// waitUntilElementVisibleAndClick("master_cart_check_stock_button");
-			Thread.sleep(3000);
 			// waitUntil("master_cart_product_check_stock_label");
 			return true;
 
@@ -277,9 +276,7 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 			if (getCmsConfig("gift").equalsIgnoreCase("Yes")) {
 				waitUntilElementVisibleAndClick("master_cart_checkout_button");
 
-			} else {
-
-			}
+			} 
 
 			return true;
 		} catch (Exception e) {

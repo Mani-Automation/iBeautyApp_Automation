@@ -168,6 +168,7 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 		waitUntilElementVisibleAndClick("master_home_products");
 
 		waitUntilElementVisibleAndClick("master_cellvalue_0");
+//   //XCUIElementTypeCell[@name="cell_0"]/XCUIElementTypeButton
 
 		return true;
 	}

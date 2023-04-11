@@ -116,14 +116,15 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			sendExcelData("master_createcustomer_katakana_lastname", "customer_testdata", "katakana_last_name");
 
 			// First Name
-			sendExcelData("master_createcustomer_lastname", "customer_testdata", "first_name");
+			sendExcelData("master_createcustomer_firstname", "customer_testdata", "first_name");
 
 			// Katakana First Name
 			sendExcelData("master_createcustomer_katakana_firstname", "customer_testdata", "katakana_first_name");
 
 			// Email
-			sendExcelData("master_createcustomer_email", "customer_testdata", "first_name" + generateRandomNumber());
+			sendkeys("master_createcustomer_email", "test" + generateRandomNumber());
 
+			Thread.sleep(4000);
 			// Domain Name
 			waitUntilElementVisibleAndClick("master_createcustomer_email_domain_dropdown");
 			waitUntilElementVisibleAndClick("master_createcustomer_email_domain_name");

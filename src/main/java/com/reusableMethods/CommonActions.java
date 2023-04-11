@@ -818,7 +818,11 @@ public class CommonActions {
 		return ExcelData.getExcelData("cms_configuration", configName);
 
 	}
+	public String getDataConfig(String configName) throws IOException {
 
+		return ExcelData.getExcelData("data_configuration", configName);
+
+	}
 	public void sendExcelDataWithRandomText(String locatorString, String sheet_name, String coloumn_name,
 			String random_data) throws IOException {
 

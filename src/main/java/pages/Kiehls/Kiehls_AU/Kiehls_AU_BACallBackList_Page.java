@@ -135,7 +135,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 			} else if (ba_home.equalsIgnoreCase("SERVICE BOOKING")) {
 
-				if (getCmsConfig("service_booking").equalsIgnoreCase("Yes")) {
+				if (getCmsConfig("service_booking").equalsIgnoreCase("TRUE")) {
 
 					driver.findElement(By.xpath(ba_home_item)).click();
 
