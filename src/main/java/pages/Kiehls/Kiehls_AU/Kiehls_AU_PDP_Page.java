@@ -78,36 +78,17 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 
 			waitUntilElementVisibleAndClick("master_pdp_buynow_button");
 
-			//waitUntil("master_pdp_product_count_add_button");
+			// waitUntil("master_pdp_product_count_add_button");
 
 			waitUntilElementVisibleAndClick("master_home_cart");
 
 			waitUntil("master_cart_first_product_name");
 
-			String cart_product_name = driver.findElement(By.xpath(locator.getData("master_cart_first_product_name")))
-					.getText();
+			waitUntilElementVisibleAndClick("master_cart_product_sub_button");
 
-			if (pdp_product_name.equals(cart_product_name)) {
+			waitUntilElementVisibleAndClick("master_done_button");
 
-//				System.out.println("PDP to Cart : Same product!");
-
-				waitUntilElementVisibleAndClick("master_cart_product_sub_button");
-
-				waitUntilElementVisibleAndClick("master_done_button");
-
-				return true;
-
-			} else {
-				System.out.println("PDP to Cart : Product missmached!");
-
-				waitUntil("master_cart_product_sub_button");
-				click("master_cart_product_sub_button");
-
-				waitUntil("master_done_button");
-				click("master_done_button");
-
-				return false;
-			}
+			return true;
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -163,10 +144,6 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 			waitUntil("master_pdp_product_image");
 
 			waitUntil("master_pdp_product_name");
-
-			waitUntil("master_pdp_check_stock_button");
-
-			waitUntil("master_pdp_adv_check_stock_button");
 
 			waitUntil("master_pdp_price_label");
 

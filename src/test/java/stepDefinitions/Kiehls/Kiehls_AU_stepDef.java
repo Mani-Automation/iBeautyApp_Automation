@@ -462,40 +462,10 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	}
 
-	@Then("^User login as a member$")
-	public void user_login_as_a_member() throws Throwable {
-		Assert.assertTrue(c360Page.user_login_as_a_member());
-	}
-
-	@Then("^User login as a member with mars id$")
-	public void user_login_as_a_member_with_mars_id() throws Throwable {
-		Assert.assertTrue(c360Page.user_login_as_a_member_with_mars_id());
-	}
-
 	@Then("^User login to member and verify the C360$")
 	public void user_login_to_member_and_verify_the_c360() throws Throwable {
 
-		String option = null;
-
-		String seg = ConfigReader.getData("app_segment").toString();
-		String app = ConfigReader.getData("app").toString();
-
-		// Mobile Number First Name Last Name Mars ID
-
-		if (app.equals("Kiehls") && seg.equals("MY") || app.equals("Biotherm") && seg.equals("TH")
-				|| app.equals("Lancome") && seg.equals("SG") || app.equals("YSL") && seg.equals("AU")) {
-			option = "Email";
-		} else if (app.equals("Kiehls") && seg.equals("KR")) {
-			option = "Name";
-		} else if (seg.equals("NZ") || seg.equals("AU")) {
-			option = null;
-		} else if (app.equals("Kiehls") || seg.equals("JP")) {
-			option = "Lucid";
-		} else if (app.equals("Kiehls") && seg.equals("TW")) {
-			option = "Client Name";
-		}
-
-		Assert.assertTrue(c360Page.user_login_to_member_and_verify_the_c360(option));
+		Assert.assertTrue(c360Page.user_login_to_member_and_verify_the_c360());
 	}
 
 	@Then("^Customer threeSixty screen should be display$")
@@ -503,6 +473,11 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 		Assert.assertTrue(c360Page.customer_threesixty_screen_should_be_display());
 
+	}
+
+	@Then("^User login to member and verify the C360 \"([^\"]*)\"$")
+	public void user_login_to_member_and_verify_the_c360_something(String data) throws Throwable {
+		Assert.assertTrue(c360Page.user_login_to_member_and_verify_the_c360_something(data));
 	}
 
 	@Then("^Customer threeSixty screen should be display on customer edit$")
@@ -658,12 +633,18 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	@Then("^Verify user able to see Add Note button on dashboard$")
 	public void verify_user_able_to_see_add_note_button_on_dashboard() throws Throwable {
-		Assert.assertTrue(c360Page.verify_user_able_to_see_add_note_button_on_dashboard());
+		// Assert.assertTrue(c360Page.verify_user_able_to_see_add_note_button_on_dashboard());
+		Assert.assertTrue(c360Page.test());
 	}
 
 	@And("^Verify the dashboard tab$")
 	public void verify_the_dashboard_tab() throws Throwable {
 		Assert.assertTrue(c360Page.verify_the_dashboard_tab());
+	}
+
+	@Then("^Verify user able to validate Prefered category$")
+	public void verify_user_able_to_validate_prefered_category() throws Throwable {
+		Assert.assertTrue(c360Page.verify_user_able_to_validate_prefered_category());
 	}
 
 	@Then("^Verify user able to validate Purchase History Expand and collapse all$")

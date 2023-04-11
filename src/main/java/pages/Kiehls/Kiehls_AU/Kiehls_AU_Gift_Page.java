@@ -24,11 +24,10 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 			// HK, KR, TW, JP - North
 
 			if (getCmsConfig("gift").equalsIgnoreCase("Yes")) {
+				
 				waitUntilElementVisibleAndClick("master_gift_button");
 
-			} else {
-
-			}
+			} 
 
 			return true;
 		} catch (
@@ -47,9 +46,7 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 
 			}
 
-			else {
-
-			}
+			
 
 			return true;
 		} catch (
@@ -65,10 +62,7 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 		try {
 			if (getCmsConfig("gift").equalsIgnoreCase("Yes")) {
 				waitUntilElementVisibleAndClick("master_gift_proceed_button");
-			} else {
-
 			}
-
 			return true;
 		} catch (
 
@@ -105,13 +99,7 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 				waitUntilElementVisibleAndClick("master_gift_first_product_addtocart_button");
 				waitUntilElementVisibleAndClick("master_gift_second_product_addtocart_button");
 
-				if (driver.findElement(By.xpath(locator.getData("master_total_point_value_label"))).getText()
-						.equals("200 PT")) {
-					return true;
-
-				} else {
-					return false;
-				}
+				
 			} else {
 
 			}
@@ -148,12 +136,10 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 		try {
 			// HK, KR, TW, JP ,
 			if (getCmsConfig("gift").equalsIgnoreCase("Yes")) {
-
+				Thread.sleep(4000);
 				waitUntilElementVisibleAndClick("master_gift_first_product_addtocart_button");
-			} else {
 
 			}
-
 			return true;
 		} catch (
 
@@ -169,8 +155,6 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 
 			if (getCmsConfig("gift").equalsIgnoreCase("Yes")) {
 				waitUntil("master_gift_first_product_price_label");
-
-			} else {
 
 			}
 

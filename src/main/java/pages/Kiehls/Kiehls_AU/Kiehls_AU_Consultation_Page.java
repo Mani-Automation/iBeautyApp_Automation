@@ -730,7 +730,7 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 		try {
 
 			waitUntilElementVisibleAndClick("master_consultation_send_email");
-			waitUntil("master_consultation_send_email_send_button");
+			//waitUntil("master_consultation_send_email_send_button");
 			
 			return true;
 
