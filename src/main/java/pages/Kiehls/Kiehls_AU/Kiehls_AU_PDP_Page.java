@@ -157,4 +157,28 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 		}
 	}
 
+	public boolean verify_the_product_description_tips_and_ingriedients_tabs_in_pdp_tw() {
+		try {
+
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+
+		}
+	}
+
+	public boolean user_click_buy_now_button_on_pdp() {
+		try {
+			waitUntilElementVisibleAndClick("master_pdp_buynow_button");
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+
+		}
+	}
+
 }

@@ -72,7 +72,7 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 
 	public boolean user_verify_the_consultation_home_page() {
 		try {
-
+			Thread.sleep(2000);
 			switch (ConfigReader.getData("appEnv")) {
 			case "UAT": {
 				if (ConfigReader.getData("app").equals("Kiehls") || ConfigReader.getData("app").equals("YSL")) {
@@ -730,8 +730,8 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 		try {
 
 			waitUntilElementVisibleAndClick("master_consultation_send_email");
-			//waitUntil("master_consultation_send_email_send_button");
-			
+			// waitUntil("master_consultation_send_email_send_button");
+
 			return true;
 
 		} catch (Exception e) {
@@ -766,6 +766,40 @@ public class Kiehls_AU_Consultation_Page extends CommonActions {
 		try {
 			waitUntilElementVisibleAndClick("master_add_consultation_button");
 			waitUntilElementVisibleAndClick("master_start_consultation_member_button_1");
+
+			return true;
+
+		} catch (Exception e) {
+			return false;
+
+		}
+	}
+
+	public boolean user_enter_text_look_and_feel_of_your_skin_on_text_field_jp() {
+		try {
+
+			String seg = ConfigReader.getData("app_segment").toString();
+			String app = ConfigReader.getData("app").toString();
+
+			waitUntil("master_au_survey_text_view_1");
+			sendkeys("master_au_survey_text_view_1", ExcelData.getExcelData("customer_testdata", "sample_text"));
+
+			waitUntilElementVisibleAndClick("master_survey_form_page");
+
+			return true;
+
+		} catch (Exception e) {
+			return false;
+
+		}
+	}
+
+	public boolean user_enter_text_look_and_feel_of_your_skin_on_text_field_th() {
+		try {
+
+			staticTextClick("Yes");
+
+			waitUntilElementVisibleAndClick("master_survey_form_page");
 
 			return true;
 

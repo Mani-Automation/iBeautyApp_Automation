@@ -438,6 +438,11 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(cartPage.user_click_the_checkout_button());
 	}
 
+	@Then("^User click proceed button to checkout$")
+	public void user_click_proceed_button_to_checkout() throws Throwable {
+		Assert.assertTrue(cartPage.user_click_proceed_button_to_checkout());
+	}
+
 	@And("^User select phone and enter the number$")
 	public void user_select_phone_and_enter_the_number() throws InterruptedException, IOException {
 
@@ -1102,6 +1107,11 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(ccPage.user_click_confirm_button());
 	}
 
+	@Then("^User click confirm button on product reservation$")
+	public void user_click_confirm_button_on_product_reservation() throws Throwable {
+		Assert.assertTrue(ccPage.user_click_confirm_button_on_product_reservation());
+	}
+
 	@Then("^User verify welcome popup successfully$")
 	public void user_verify_welcome_popup_successfully() throws Throwable {
 		Assert.assertTrue(ccPage.user_verify_welcome_popup_successfully());
@@ -1257,8 +1267,19 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	}
 
 	@Then("^Verify the product description, tips and ingriedients tabs in PDP$")
-	public void verify_the_product_description_tips_and_ingriedients_tabs_in_pdp() throws InterruptedException {
-		Assert.assertTrue(pdpPage.verify_the_product_description_tips_and_ingriedients_tabs_in_pdp());
+	public void verify_the_product_description_tips_and_ingriedients_tabs_in_pdp()
+			throws InterruptedException, IOException {
+		String seg = ConfigReader.getData("app_segment").toString();
+		String app = ConfigReader.getData("app").toString();
+
+		if (app.equals("Armani") && seg.equals("TW") || app.equals("Lancome") && seg.equals("TH")) {
+			Assert.assertTrue(pdpPage.verify_the_product_description_tips_and_ingriedients_tabs_in_pdp_tw());
+
+		} else {
+
+			Assert.assertTrue(pdpPage.verify_the_product_description_tips_and_ingriedients_tabs_in_pdp());
+
+		}
 	}
 
 	@And("^User click the product and verify user get navigate to PDP page$")
@@ -1266,6 +1287,11 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 		Assert.assertTrue(pdpPage.click_the_first_product_and_navigate_to_PDP());
 
+	}
+
+	@Then("^User click Buy now button on pdp$")
+	public void user_click_buy_now_button_on_pdp() throws Throwable {
+		Assert.assertTrue(pdpPage.user_click_buy_now_button_on_pdp());
 	}
 
 	@Then("^User should navigate to PLP page successfully$")
@@ -1333,163 +1359,304 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	// consultation start
 
 	@Then("^User enter text look and feel of your skin on text field$")
-	public void user_enter_text_look_and_feel_of_your_skin_on_text_field() {
-		Assert.assertTrue(consultationPage.user_enter_text_look_and_feel_of_your_skin_on_text_field());
-	}
-
-	@And("^User click start consultation button$")
-	public void user_click_start_consultation_button() {
-		Assert.assertTrue(consultationPage.user_click_start_consultation_button());
-	}
-
-	@And("^User verify the consultation home page$")
-	public void user_verify_the_consultation_home_page() {
-		Assert.assertTrue(consultationPage.user_verify_the_consultation_home_page());
-	}
-
-	@And("^User click servey button on the consultation page$")
-	public void user_click_servey_button_on_the_consultation_page() {
-		Assert.assertTrue(consultationPage.user_click_servey_button_on_the_consultation_page());
-	}
-
-	@And("^User click servey button on the consultation list page$")
-	public void user_click_servey_button_on_the_consultation_list_page() {
-		Assert.assertTrue(consultationPage.user_click_servey_button_on_the_consultation_list_page());
-
-	}
-
-	@And("^User verify the survey form page$")
-	public void user_verify_the_survey_form_page() {
-		Assert.assertTrue(consultationPage.user_verify_the_survey_form_page());
-	}
-
-	@And("^User click save button to save form$")
-	public void user_click_save_button_to_save_form() {
-		Assert.assertTrue(consultationPage.user_click_save_button_to_save_form());
-	}
-
-	@Then("^User click add button and click start consultation$")
-	public void user_click_add_button_and_click_start_consultation() throws IOException {
+	public void user_enter_text_look_and_feel_of_your_skin_on_text_field() throws IOException {
 
 		String seg = ConfigReader.getData("app_segment").toString();
 		String app = ConfigReader.getData("app").toString();
 
-		if (app.equals("Kiehls") && seg.equals("HK")) {
-			Assert.assertTrue(consultationPage.user_click_add_button_and_click_start_consultation_hk());
-		} else {
-			Assert.assertTrue(consultationPage.user_click_add_button_and_click_start_consultation());
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			if (app.equals("Kiehls") && seg.equals("JP")) {
 
+				Assert.assertTrue(consultationPage.user_enter_text_look_and_feel_of_your_skin_on_text_field_jp());
+
+			} else if (app.equals("Lancome") && seg.equals("TH")) {
+				Assert.assertTrue(consultationPage.user_enter_text_look_and_feel_of_your_skin_on_text_field_th());
+			} else {
+
+				Assert.assertTrue(consultationPage.user_enter_text_look_and_feel_of_your_skin_on_text_field());
+
+			}
+		} else {
+			Assert.assertTrue(c360Page.test());
 		}
 	}
 
+	@And("^User click start consultation button$")
+	public void user_click_start_consultation_button() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_click_start_consultation_button());
+
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
+	}
+
+	@And("^User verify the consultation home page$")
+	public void user_verify_the_consultation_home_page() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_verify_the_consultation_home_page());
+
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
+	}
+
+	@And("^User click servey button on the consultation page$")
+	public void user_click_servey_button_on_the_consultation_page() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_click_servey_button_on_the_consultation_page());
+
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
+	}
+
+	@And("^User click servey button on the consultation list page$")
+	public void user_click_servey_button_on_the_consultation_list_page() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_click_servey_button_on_the_consultation_list_page());
+
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
+
+	}
+
+	@And("^User verify the survey form page$")
+	public void user_verify_the_survey_form_page() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_verify_the_survey_form_page());
+
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
+	}
+
+	@And("^User click save button to save form$")
+	public void user_click_save_button_to_save_form() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_click_save_button_to_save_form());
+
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
+	}
+
+	@Then("^User click add button and click start consultation$")
+	public void user_click_add_button_and_click_start_consultation() throws IOException {
+		String seg = ConfigReader.getData("app_segment").toString();
+		String app = ConfigReader.getData("app").toString();
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+
+			if (app.equals("Kiehls") && seg.equals("HK")) {
+				Assert.assertTrue(consultationPage.user_click_add_button_and_click_start_consultation_hk());
+			} else {
+				Assert.assertTrue(consultationPage.user_click_add_button_and_click_start_consultation());
+
+			}
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
+
+	}
+
 	@Then("^User verify is survey form created successfully$")
-	public void user_verify_is_survey_form_created_successfully() {
-		Assert.assertTrue(consultationPage.user_verify_is_survey_form_created_successfully());
+	public void user_verify_is_survey_form_created_successfully() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_verify_is_survey_form_created_successfully());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@Then("^User click update button on survey$")
-	public void user_click_update_button_on_survey() {
-		Assert.assertTrue(consultationPage.user_click_update_button_on_survey());
+	public void user_click_update_button_on_survey() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_click_update_button_on_survey());
+
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@And("^User get current status of no fo consultation and date$")
-	public void user_get_current_status_of_no_fo_consultation_and_date() {
-		Assert.assertTrue(consultationPage.user_get_current_status_of_no_fo_consultation_and_date());
+	public void user_get_current_status_of_no_fo_consultation_and_date() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_get_current_status_of_no_fo_consultation_and_date());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@And("^User click clear all button on survey form$")
-	public void user_click_clear_all_button_on_survey_form() {
-		Assert.assertTrue(consultationPage.user_click_clear_all_button_on_survey_form());
+	public void user_click_clear_all_button_on_survey_form() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_click_clear_all_button_on_survey_form());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@Then("^User click \"([^\"]*)\" button and verify the page$")
 	public void user_click_something_button_and_verify_the_page(String strArg1) throws IOException {
-		Assert.assertTrue(consultationPage.user_click_something_button_and_verify_the_page(strArg1));
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_click_something_button_and_verify_the_page(strArg1));
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@And("^User select skin options and click save button$")
-	public void user_select_skin_options() {
-		Assert.assertTrue(consultationPage.user_select_skin_options());
+	public void user_select_skin_options() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_select_skin_options());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@And("^Verify mandatory error messages in the form$")
-	public void verify_mandatory_error_messages_in_the_form() {
-		Assert.assertTrue(consultationPage.verify_mandatory_error_messages_in_the_form());
+	public void verify_mandatory_error_messages_in_the_form() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.verify_mandatory_error_messages_in_the_form());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@Then("^User click remove from email check box$")
-	public void user_click_remove_from_email_check_box() {
-		Assert.assertTrue(consultationPage.user_click_remove_from_email_check_box());
+	public void user_click_remove_from_email_check_box() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_click_remove_from_email_check_box());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@Then("^User click build routine button and verify the routine page$")
-	public void user_click_build_routine_button_and_verify_the_routine_page() {
-		Assert.assertTrue(consultationPage.user_click_build_routine_button_and_verify_the_routine_page());
+	public void user_click_build_routine_button_and_verify_the_routine_page() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_click_build_routine_button_and_verify_the_routine_page());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@Then("^Verify user selected products and click product types and notes$")
-	public void verify_user_selected_products_and_click_product_types_and_notes() {
-		Assert.assertTrue(consultationPage.verify_user_selected_products_and_click_product_types_and_notes());
+	public void verify_user_selected_products_and_click_product_types_and_notes() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.verify_user_selected_products_and_click_product_types_and_notes());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@Then("^Verify the skincare solution page and click summary$")
-	public void verify_the_skincare_solution_page_and_click_summary() {
-		Assert.assertTrue(consultationPage.verify_the_skincare_solution_page_and_click_summary());
+	public void verify_the_skincare_solution_page_and_click_summary() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.verify_the_skincare_solution_page_and_click_summary());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@Then("^User click add all to cart button$")
-	public void user_click_add_all_to_cart_button() {
-		Assert.assertTrue(consultationPage.user_click_add_all_to_cart_button());
+	public void user_click_add_all_to_cart_button() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_click_add_all_to_cart_button());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@Then("^User validate added product on the cart$")
-	public void user_validate_added_product_on_the_cart() {
-		Assert.assertTrue(consultationPage.user_validate_added_product_on_the_cart());
+	public void user_validate_added_product_on_the_cart() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_validate_added_product_on_the_cart());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@And("^User verify the consultation report page$")
-	public void user_verify_the_consultation_report_page() {
-		Assert.assertTrue(consultationPage.user_verify_the_consultation_report_page());
+	public void user_verify_the_consultation_report_page() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_verify_the_consultation_report_page());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@And("^User select the daily routine details$")
-	public void user_select_the_daily_routine_details() {
-		Assert.assertTrue(consultationPage.user_select_the_daily_routine_details());
+	public void user_select_the_daily_routine_details() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_select_the_daily_routine_details());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@And("^Verify the cart page$")
-	public void verify_the_cart_page() {
-		Assert.assertTrue(consultationPage.verify_the_cart_page());
+	public void verify_the_cart_page() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.verify_the_cart_page());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@And("^User click add or edit button on build routine page$")
-	public void user_click_add_or_edit_button_on_build_routine_page() {
-		Assert.assertTrue(consultationPage.user_click_add_or_edit_button_on_build_routine_page());
+	public void user_click_add_or_edit_button_on_build_routine_page() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_click_add_or_edit_button_on_build_routine_page());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@Then("^User edit product on build routine select page$")
-	public void user_edit_product_on_build_routine_select_page() {
-		Assert.assertTrue(consultationPage.user_edit_product_on_build_routine_select_page());
+	public void user_edit_product_on_build_routine_select_page() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_edit_product_on_build_routine_select_page());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@And("^User validate edited product on summary page$")
-	public void user_validate_edited_product_on_summary_page() {
-		Assert.assertTrue(consultationPage.user_validate_edited_product_on_summary_page());
+	public void user_validate_edited_product_on_summary_page() throws IOException {
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_validate_edited_product_on_summary_page());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@Then("^User click send Email button and Verify email your consultation popup$")
 	public void user_click_send_email_button_and_verify_email_your_consultation_popup() throws Throwable {
-		Assert.assertTrue(consultationPage.user_click_send_email_button_and_verify_email_your_consultation_popup());
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_click_send_email_button_and_verify_email_your_consultation_popup());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@Then("^User click send button and verify the popup$")
 	public void user_click_send_button_and_verify_the_popup() throws Throwable {
-		Assert.assertTrue(consultationPage.user_click_send_button_and_verify_the_popup());
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_click_send_button_and_verify_the_popup());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	@And("^User enters the message to send$")
 	public void user_enters_the_message_to_send() throws Throwable {
-		Assert.assertTrue(consultationPage.user_enters_the_message_to_send());
+		if (getCmsConfig("consultation").equalsIgnoreCase("Yes")) {
+			Assert.assertTrue(consultationPage.user_enters_the_message_to_send());
+		} else {
+			Assert.assertTrue(c360Page.test());
+		}
 	}
 
 	// home

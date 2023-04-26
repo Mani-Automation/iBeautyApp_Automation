@@ -23,7 +23,6 @@ public class Kiehls_AU_ProductReservation_Page extends CommonActions {
 
 			if (getCmsConfig("product_reservation").equalsIgnoreCase("Yes")) {
 
-				waitUntil("");
 			}
 			return true;
 		} catch (
@@ -39,7 +38,6 @@ public class Kiehls_AU_ProductReservation_Page extends CommonActions {
 		try {
 			if (getCmsConfig("product_reservation").equalsIgnoreCase("Yes")) {
 
-				waitUntil("");
 			}
 			return true;
 		} catch (
@@ -55,7 +53,7 @@ public class Kiehls_AU_ProductReservation_Page extends CommonActions {
 		try {
 			if (getCmsConfig("product_reservation").equalsIgnoreCase("Yes")) {
 
-				waitUntil("");
+				waitUntilElementVisibleAndClick("master_proceed_button");
 			}
 			return true;
 		} catch (
@@ -71,7 +69,6 @@ public class Kiehls_AU_ProductReservation_Page extends CommonActions {
 		try {
 			if (getCmsConfig("product_reservation").equalsIgnoreCase("Yes")) {
 
-			waitUntil("");
 			}
 			return true;
 		} catch (
@@ -87,7 +84,6 @@ public class Kiehls_AU_ProductReservation_Page extends CommonActions {
 		try {
 			if (getCmsConfig("product_reservation").equalsIgnoreCase("Yes")) {
 
-				waitUntil("");
 			}
 			return true;
 		} catch (
@@ -103,7 +99,6 @@ public class Kiehls_AU_ProductReservation_Page extends CommonActions {
 		try {
 			if (getCmsConfig("product_reservation").equalsIgnoreCase("Yes")) {
 
-				waitUntil("");
 			}
 			return true;
 		} catch (
