@@ -75,8 +75,16 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 	public boolean user_click_the_first_call_back_history_and_verify_the_customer_list_page()
 			throws InterruptedException {
 		try {
+			// String segment = ConfigReader.getData("app_segment");
+			String app = ConfigReader.getData("app");
 
-			waitUntilElementVisibleAndClick("master_callbacklist_page_titleLabel");
+			if (app.equals("YSL")) {
+				waitUntil("master_callbacklist_page_titleLabel_ysl");
+
+			} else {
+				waitUntil("master_callbacklist_page_titleLabel");
+
+			}
 
 			waitUntil("master_callbacklist_total_cus_page");
 
@@ -98,36 +106,36 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 			waitUntilElementVisibleAndClick("master_home_right_nav_ba_button");
 
-			String ba_home_item = "//XCUIElementTypeStaticText[@name=\"" + ba_home + "\"]";
+			// String ba_home_item = "//XCUIElementTypeStaticText[@name=" + ba_home + "]";
 
 			if (ba_home.equalsIgnoreCase("DASHBOARD")) {
-				driver.findElement(By.xpath(ba_home_item)).click();
-
+				// driver.findElement(By.xpath(ba_home_item)).click();
+				staticLabelClick(ba_home);
 				waitUntil("master_ba_dashboard_calender_addnew_button");
 				return true;
 
 			} else if (ba_home.equalsIgnoreCase("NOTIFICATION")) {
-				driver.findElement(By.xpath(ba_home_item)).click();
+				staticLabelClick(ba_home);
 
 				Assert.assertTrue(ba_home_notification_page.isDisplayed());
 				return true;
 
 			} else if (ba_home.equalsIgnoreCase("CALLBACK LIST")) {
-				driver.findElement(By.xpath(ba_home_item)).click();
+				staticLabelClick(ba_home);
 
 				waitUntil("master_ba_callback_page");
 
 				return true;
 
 			} else if (ba_home.equalsIgnoreCase("CALENDAR")) {
-				driver.findElement(By.xpath(ba_home_item)).click();
+				staticLabelClick(ba_home);
 
 				waitUntil("master_calender_month_label");
 
 				return true;
 
 			} else if (ba_home.equalsIgnoreCase("TRANSACTIONS")) {
-				driver.findElement(By.xpath(ba_home_item)).click();
+				staticLabelClick(ba_home);
 
 				waitUntil("master_transaction_history_tab");
 
@@ -135,9 +143,9 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 			} else if (ba_home.equalsIgnoreCase("SERVICE BOOKING")) {
 
-				if (getCmsConfig("service_booking").equalsIgnoreCase("TRUE")) {
+				if (getCmsConfig("service_booking").equalsIgnoreCase("Yes")) {
 
-					driver.findElement(By.xpath(ba_home_item)).click();
+					staticLabelClick(ba_home);
 
 					waitUntil("master_transaction_history_tab");
 				}
@@ -159,12 +167,19 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 		try {
 
-			waitUntil("master_callbacklist_page_titleLabel");
+			// String segment = ConfigReader.getData("app_segment");
+			String app = ConfigReader.getData("app");
 
+			if (app.equals("YSL")) {
+				waitUntil("master_callbacklist_page_titleLabel_ysl");
+
+			} else {
+				waitUntil("master_callbacklist_page_titleLabel");
+
+			}
 			return true;
-		}
 
-		catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 
 			return false;
@@ -192,7 +207,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 	public boolean user_click_the_first_customer_detials() throws InterruptedException {
 		try {
 
-			waitUntilElementVisibleAndClick("master_callbacklist_downarrow_button");
+			//waitUntilElementVisibleAndClick("master_callbacklist_downarrow_button");
 			Thread.sleep(5000);
 			return true;
 

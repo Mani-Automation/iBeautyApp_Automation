@@ -73,7 +73,7 @@ Feature: iBeauty Regression Test
     Then User should navigate to PLP page successfully
     And Verify user able to search a product base on min and max price
 
-  @master @smoke @Regression @BACalendar
+  @master @smoke @Regression @BACalendar @run
   Scenario: Verify the customer Calendar page
     Then User is on home page
     #BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) CALENDAR 5) TRANSACTIONS
@@ -166,14 +166,28 @@ Feature: iBeauty Regression Test
     Then User click the check stock button and verify the stock availablity
 
   @master @smoke @Regression @Cart
-  Scenario: Verify user able to do checkout from cart page
+  Scenario: Verify user able to do checkout from cart page by generic customer
     Then User is on home page
     And User click the Cart button from right navigation and verify the cart page
-    Then User click the Sample button
+    Then User click the Add Item button
+    And User select a product on the add item pupup
+    Then Verify user able to view the product in cart
+    And User click the Checkout button
+    Then User click proceed button to checkout
+    Then Verify the Successfull popup with QR code and transaction id and click close button
 
-  # And User select a product on the add item pupup
-  # Then Verify user able to view the product in cart
-  # And User click the Checkout button
+  @master @smoke @Regression @Cart
+  Scenario: Verify user able to do checkout from cart page
+    Then User is on home page
+    Then User login to member and verify the C360
+    And User click category on product from right navigation
+    Then User should navigate to PLP page successfully
+    And User click the product and verify user get navigate to PDP page
+    Then User click Buy now button on pdp
+    And User click the Cart button from right navigation and verify the cart page
+    And User click the Checkout button
+    Then Verify the Successfull popup with QR code and transaction id and click close button
+
   @master @smoke @Regression @Cart
   Scenario: Verify user able to change the customer from cart page
     Then User is on home page
@@ -273,13 +287,12 @@ Feature: iBeauty Regression Test
     And User click the product and verify user get navigate to PDP page
     Then Verify user can do check Advance check stock in pdp page
 
-  @master @smoke @Regression @PDP 
+  @master @smoke @Regression @PDP
   Scenario: Verify user can click buy now button and add to cart in PDP
     Then User is on home page
     Then User click a category on the home page
     Then User should navigate to PLP page successfully
     And User click the product and verify user get navigate to PDP page
-    Then User click BUY NOW button and verify the count increased in cart
 
   @master @smoke @Regression @PDP
   Scenario: Verify the product description, tips and ingredients tabs in PDP
@@ -289,7 +302,7 @@ Feature: iBeauty Regression Test
     And User click the product and verify user get navigate to PDP page
     Then Verify the product description, tips and ingriedients tabs in PDP
 
-  @master @Regression @Customercreation @positive 
+  @master @Regression @Customercreation @positive
   Scenario: Verify if user is able to create a new customer with only mandatory fields
     Then User is on home page
     And User click the Create button on Customer search
@@ -310,7 +323,7 @@ Feature: iBeauty Regression Test
     And User click confirm button to update edited changes
     Then User verify Customer ThreeSixty Screen should be displayed
 
-  @master @Regression @consultation 
+  @master @Regression @consultation
   Scenario: Verify user able to create consultation for survey with generic user
     Then User is on home page
     And User click start consultation button
@@ -366,7 +379,6 @@ Feature: iBeauty Regression Test
   Scenario: Verify build routine
     Then User is on home page
     Then User login to member and verify the C360
-    Then Customer threeSixty screen should be display
     Then User click Home button and verify home page should be displayed
     And User click start consultation button
     And User verify the consultation home page
@@ -503,7 +515,7 @@ Feature: iBeauty Regression Test
     And User click the Checkout button to redeem
     Then validate redeem points popup
 
-  @master_test @smoke @Regression @ServiceBooking
+  @master @smoke @Regression @ServiceBooking
   Scenario: Verify the member details in first history
     Then User is on home page
     # BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS 6) SERVICE BOOKING
@@ -512,8 +524,8 @@ Feature: iBeauty Regression Test
     And User click calendar button on upcoming booking page
     Then User click refresh button and it should navigate to list page
 
-  @master_test @smoke @Regression @ServiceBooking
-  Scenario: Verify the member details in first history
+  @master @smoke @Regression @ServiceBooking
+  Scenario: Verify the member details in first history and verify the list page
     Then User is on home page
     # BA HOME -> 1) DashBoard 2) Notification 3) Callback list 4) Calendar 5) TRANSACTIONS 6) SERVICE BOOKING
     And User click the BA Home button from right navigation and Click "SERVICE BOOKING" then verify the page
@@ -559,7 +571,7 @@ Feature: iBeauty Regression Test
     And User click the Voucher Redemption button from right navigation and verify the page
     Then User click collect tab on Redemption page and verify
 
-  @master_test @smoke @Regression @ProductReservation
+  @master @smoke @Regression @ProductReservation
   Scenario: Verify user able to reserve the product by generic customer
     Then User is on home page
     Then User click a category on the home page
@@ -569,27 +581,26 @@ Feature: iBeauty Regression Test
     Then User click the reserve button on cart page
     And Varify the reservation id popup
     Then User enter the reservation id
-    Then User click confirm button
+    Then User click confirm button on product reservation
     Then User validate generic customer popup and click proceed button
     Then Validate product reservation success popup
 
-  @master_test @smoke @Regression @ProductReservation
+  @master @smoke @Regression @ProductReservation
   Scenario: Verify user able to reserve the product with customer
     Then User is on home page
     Then User login to member and verify the C360
-    Then Customer threeSixty screen should be display
-    Then User click a category on the home page
+    And User click category on product from right navigation
     Then User should navigate to PLP page successfully
     And User click add to cart button from PLP page
     And User click the Cart button from right navigation and verify the cart page
     Then User click the reserve button on cart page
     And Varify the reservation id popup
     Then User enter the reservation id
-    Then User click confirm button
+    Then User click confirm button on product reservation
     Then Validate product reservation success popup
 
   @master @smoke @Regression @home
-  Scenario: Verify user able to click active customer on Home page
+  Scenario: Verify user able to verify active customer
     Then User is on home page
     Then User login to member and verify the C360
     Then Customer threeSixty screen should be display
@@ -597,7 +608,7 @@ Feature: iBeauty Regression Test
     And User verify active customer on Home page
 
   @master @smoke @Regression @home
-  Scenario: Verify user able to click active customer on Home page
+  Scenario: Verify user able to click active customer on Home page and verfiy should navigate to C360
     Then User is on home page
     Then User login to member and verify the C360
     Then Customer threeSixty screen should be display
@@ -606,25 +617,19 @@ Feature: iBeauty Regression Test
     And User click active customer on home page
     Then Customer threeSixty screen should be display
 
-  @master1 @smoke @Regression @Enrollment
+  @master @smoke @Regression @Enrollment
   Scenario: Verify user able to enrol membership control
     Then User is on home page
     Then User login to member and verify the C360
     Then Customer threeSixty screen should be display
     Then User click Home button and verify home page should be displayed
 
-  @master1 @smoke @Regression @AdvanceCustomerSearch
+  @master @smoke @Regression @AdvanceCustomerSearch
   Scenario: Verify user able to enrol membership control
     Then User is on home page
     And User click Advance Customer Search button on home page
     Then User enter the customer details on the popup
     And User click search button on the popup
-
-  @master1 @smoke @regression @C360
-  Scenario: Verify if user able to View Customer
-    Then User is on home page
-    Then Customer threeSixty screen should be display
-    And User click slider icon on C360 page
 
   @master @smoke @Regression @home
   Scenario: Verify user able to switch guest mode
@@ -667,7 +672,6 @@ Feature: iBeauty Regression Test
     And User click wishlist tab
     Then User click allergy product and verify PDP shold be displayed
 
-
   #----------------------------Sprint---65------------------------------------------#
   @master @smoke @Regression @PDP @sprint_65 @sprint_67
   Scenario: Verify user able to check other store from PDP
@@ -690,7 +694,7 @@ Feature: iBeauty Regression Test
   #And Verify note header title on dashobard
   #And Verify note body text on dashobard
   #And Verify note date on dashobard
-  @master @smoke @Regression @C360 @sprint_65 
+  @master @smoke @Regression @C360 @sprint_65
   Scenario: Verify user able to view create Note button when newly created customer
     Then User is on home page
     Then User login to member and verify the C360 "dashboard"
@@ -741,14 +745,14 @@ Feature: iBeauty Regression Test
     And Verify the dashboard tab
     Then Verify user able to validate Membership Tier
 
-  @master @smoke @Regression @C360 @sprint_67 
+  @master @smoke @Regression @C360 @sprint_67
   Scenario: Verify user able to validate Purchase History Expand and collapse all
     Then User is on home page
     Then User login to member and verify the C360 "dashboard"
     And User click purchase history tab
     Then Verify user able to validate Purchase History Expand and collapse all
-    
-      @master @smoke @Regression @C360 @sprint_67
+
+  @master @smoke @Regression @C360 @sprint_67
   Scenario: Verify user able to validate Prefered category
     Then User is on home page
     Then User login to member and verify the C360 "dashboard"

@@ -572,6 +572,15 @@ public class CommonActions {
 		element.click();
 	}
 
+	public void staticLabelClick(String string) {
+
+		WebDriverWait wait = new WebDriverWait(driver, 10);
+		String str = "//XCUIElementTypeStaticText[@label='" + string + "']";
+		MobileElement element = (MobileElement) driver.findElementByXPath(str);
+		wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(str))));
+		element.click();
+	}
+
 	public void webdriverwait(WebElement locator) {
 		driver = DriverManager.getDriver();
 
@@ -818,11 +827,13 @@ public class CommonActions {
 		return ExcelData.getExcelData("cms_configuration", configName);
 
 	}
+
 	public String getDataConfig(String configName) throws IOException {
 
 		return ExcelData.getExcelData("data_configuration", configName);
 
 	}
+
 	public void sendExcelDataWithRandomText(String locatorString, String sheet_name, String coloumn_name,
 			String random_data) throws IOException {
 

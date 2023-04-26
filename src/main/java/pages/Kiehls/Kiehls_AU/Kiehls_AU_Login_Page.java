@@ -454,7 +454,6 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 				waitUntil("master_home_staff_button");
 				waitUntil("master_home_location_button");
 				waitUntil("master_home_lan_button");
-				return true;
 			} else if (application.equals("Valentino")) {
 
 				waitUntil("master_home_ba_name");
@@ -466,11 +465,18 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 				waitUntil("master_home_staff_button");
 				waitUntil("master_home_location_button");
 				waitUntil("master_home_lan_button");
-				return true;
 			} else {
-				System.out.println("Error - Application name not found!");
-				return false;
+
+				waitUntil("master_home_ba_name");
+				waitUntil("master_home_socialbutton1");
+				waitUntil("master_home_socialbutton2");
+				waitUntil("master_home_brandlogo");
+				// waitUntil("master_home_membar_barcode");
+				waitUntil("master_home_staff_button");
+				waitUntil("master_home_location_button");
+				waitUntil("master_home_lan_button");
 			}
+			return true;
 
 		} catch (
 
@@ -504,9 +510,9 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 		try {
 			waitUntil("master_home_topten");
 			waitUntil("master_home_topten_item1");
-			//waitUntil("master_home_topten_item2");
-			//waitUntil("master_home_topten_item3");
-			//waitUntil("master_home_topten_item4");
+			// waitUntil("master_home_topten_item2");
+			// waitUntil("master_home_topten_item3");
+			// waitUntil("master_home_topten_item4");
 
 			return true;
 		} catch (
@@ -637,8 +643,8 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 	public boolean verify_user_able_to_see_brand_images() {
 		try {
 
-		//	waitUntil("");
-		//	waitUntil("");
+			// waitUntil("");
+			// waitUntil("");
 
 			return true;
 		} catch (

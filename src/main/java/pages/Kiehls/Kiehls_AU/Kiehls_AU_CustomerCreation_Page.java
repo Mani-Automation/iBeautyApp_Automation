@@ -124,26 +124,30 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			// Email
 			sendkeys("master_createcustomer_email", "test" + generateRandomNumber());
 
-			Thread.sleep(4000);
 			// Domain Name
 			waitUntilElementVisibleAndClick("master_createcustomer_email_domain_dropdown");
-			waitUntilElementVisibleAndClick("master_createcustomer_email_domain_name");
+
+			sendkeys("master_createcustomer_email_domain_dropdown", "gmail.com");
+
+			// waitUntilElementVisibleAndClick("master_createcustomer_email_domain_name");
 
 			// DOB Year
-			waitUntilElementVisibleAndClick("master_createcustomer_year_dropdown");
-			waitUntilElementVisibleAndClick("master_createcustomer_year");
+			// waitUntilElementVisibleAndClick("master_createcustomer_year_dropdown");
+			// waitUntilElementVisibleAndClick("master_createcustomer_year");
 
 			// DOB Month
-			waitUntilElementVisibleAndClick("master_createcustomer_month_dropdown");
-			waitUntilElementVisibleAndClick("master_createcustomer_month");
+			// waitUntilElementVisibleAndClick("master_createcustomer_month_dropdown");
+			// waitUntilElementVisibleAndClick("master_createcustomer_month");
 
 			// DOB Date
-			waitUntilElementVisibleAndClick("master_createcustomer_day_dropdown");
-			waitUntilElementVisibleAndClick("master_createcustomer_date");
+			// waitUntilElementVisibleAndClick("master_createcustomer_day_dropdown");
+			// waitUntilElementVisibleAndClick("master_createcustomer_date");
 
 			// Gender
-			waitUntilElementVisibleAndClick("master_createcustomer_gender_dropdown");
-			staticTextClick(ExcelData.getExcelData("customer_testdata", "gender_male"));
+			// waitUntilElementVisibleAndClick("master_createcustomer_gender_dropdown");
+			// staticTextClick(ExcelData.getExcelData("customer_testdata", "gender_male"));
+
+			waitUntilElementVisibleAndClick("master_brand_logo");
 
 			return true;
 
@@ -475,11 +479,11 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 		try {
 
 			// Last Name
-			sendExcelDataWithRandomText("master_createcustomer_lastname", "customer_testdata", "test_name",
+			sendExcelDataWithRandomText("master_createcustomer_lastname", "customer_testdata", "first_name",
 					RandomStringGenerate());
 
 			// phone number
-			sendExcelDataWithRandomText("master_calendar_event_phone_text", "customer_testdata", "mobile_number_rand",
+			sendExcelDataWithRandomText("master_calendar_event_phone_text", "customer_testdata", "mobile_number",
 					random.nextInt(10000));
 
 			// Year
@@ -557,10 +561,10 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			// Area Code
 			waitUntilElementVisibleAndClick("master_hk_createcustomer_areacode_dropdown");
 			Thread.sleep(2000);
-			staticTextClick("+" + ExcelData.getExcelData("customer_testdata", "area_code"));
+			staticTextClick("+852");
 
 			// Mobile
-			sendExcelData("master_calendar_event_phone_text", "customer_testdata", "mobile_number");
+			sendkeys("master_calendar_event_phone_text", "9863" + random.nextInt(10000));
 
 			// Email
 			waitUntil("master_createcustomer_email");
@@ -587,7 +591,6 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 		try {
 
 			swipeScreenUntilElementVisible("master_hk_createcustomer_agree_checkbox1", Direction.UP);
-			waitUntilElementVisibleAndClick("master_hk_createcustomer_agree_checkbox1");
 
 			swipeScreenUntilElementVisible("master_hk_createcustomer_agree_checkbox2", Direction.UP);
 			waitUntilElementVisibleAndClick("master_hk_createcustomer_agree_checkbox2");
@@ -887,6 +890,35 @@ public class Kiehls_AU_CustomerCreation_Page extends CommonActions {
 			waitUntilElementVisibleAndClick("master_welcome_popup_close_button");
 
 			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_click_confirm_button_on_product_reservation() {
+		try {
+			if (getCmsConfig("product_reservation").equalsIgnoreCase("Yes")) {
+				String seg = ConfigReader.getData("app_segment").toString();
+
+				if (seg.equals("SG")) {
+					swipeScreenUntilElementVisible("master_createcustomer_confirm_button", Direction.UP);
+					waitUntilElementVisibleAndClick("master_createcustomer_confirm_button");
+					waitUntilElementVisibleAndClick("master_sg_createcustomer_proceed_button");
+				} else if (seg.equals("HK")) {
+					swipeScreenUntilElementVisible("master_hk_update_button", Direction.UP);
+					waitUntilElementVisibleAndClick("master_hk_update_button");
+
+				} else {
+
+					swipeScreenUntilElementVisible("master_createcustomer_confirm_button", Direction.UP);
+					waitUntilElementVisibleAndClick("master_createcustomer_confirm_button");
+
+				}
+			}
+			return true;
+
 		} catch (Exception e) {
 			e.printStackTrace();
 

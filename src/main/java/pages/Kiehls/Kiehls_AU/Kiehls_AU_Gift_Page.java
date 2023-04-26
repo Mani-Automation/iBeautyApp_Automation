@@ -24,10 +24,10 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 			// HK, KR, TW, JP - North
 
 			if (getCmsConfig("gift").equalsIgnoreCase("Yes")) {
-				
+
 				waitUntilElementVisibleAndClick("master_gift_button");
 
-			} 
+			}
 
 			return true;
 		} catch (
@@ -45,8 +45,6 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 				waitUntilElementVisibleAndClick("master_gift_redemption_tab");
 
 			}
-
-			
 
 			return true;
 		} catch (
@@ -78,6 +76,10 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 			if (getCmsConfig("gift").equalsIgnoreCase("Yes")) {
 				waitUntil("master_gift_redeem_checkout_popup");
 				waitUntilElementVisibleAndClick("master_done_button");
+
+				waitUntilElementVisibleAndClick("master_cart_product_sub_button");
+
+				waitUntilElementVisibleAndClick("master_done_button");
 			} else {
 
 			}
@@ -99,7 +101,6 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 				waitUntilElementVisibleAndClick("master_gift_first_product_addtocart_button");
 				waitUntilElementVisibleAndClick("master_gift_second_product_addtocart_button");
 
-				
 			} else {
 
 			}
@@ -172,12 +173,14 @@ public class Kiehls_AU_Gift_Page extends CommonActions {
 		try {
 			String seg = ConfigReader.getData("app_segment").toString();
 
-			if (seg.equals("HK") || seg.equals("KR") || seg.equals("TW") || seg.equals("JP")) {
-				waitUntil("master_cart_first_product_name");
+			if (getCmsConfig("gift").equalsIgnoreCase("Yes")) {
+				waitUntil("master_gift_first_product_price_label");
+				if (seg.equals("HK") || seg.equals("KR") || seg.equals("TW") || seg.equals("JP")) {
+					waitUntil("master_cart_first_product_name");
 
-			} else {
-
+				}
 			}
+
 			return true;
 		} catch (
 

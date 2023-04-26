@@ -172,7 +172,7 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 			case "UAT": {
 
 				waitUntilElementVisibleAndClick("master_cart_checkout_button");
-				waitUntilElementVisibleAndClick("master_setting_change_pwd_popup_cancel_button");
+				// waitUntilElementVisibleAndClick("master_setting_change_pwd_popup_cancel_button");
 
 				return true;
 			}
@@ -199,26 +199,12 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 	public boolean verify_the_successfull_popup_with_qr_code_and_transaction_id_and_click_close_button() {
 		try {
 
-			switch (ConfigReader.getData("appEnv")) {
-			case "UAT": {
+			waitUntil("master_purchase_successful_qr_code");
+			waitUntil("master_purchase_successful_transaction_code");
 
-				waitUntil("master_purchase_successful_qr_code");
-				waitUntil("master_purchase_successful_transaction_code");
+			waitUntilElementVisibleAndClick("master_purchase_successful_popup_close_button");
 
-				waitUntilElementVisibleAndClick("master_purchase_successful_popup_close_button");
-
-				return true;
-			}
-			case "PROD": {
-				return true;
-
-			}
-
-			default: {
-			}
-				return false;
-
-			}
+			return true;
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -276,7 +262,7 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 			if (getCmsConfig("gift").equalsIgnoreCase("Yes")) {
 				waitUntilElementVisibleAndClick("master_cart_checkout_button");
 
-			} 
+			}
 
 			return true;
 		} catch (Exception e) {
@@ -288,8 +274,22 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 
 	public boolean user_select_a_product_on_the_add_item_pupup() {
 		try {
-			Thread.sleep(4000);
+			Thread.sleep(2000);
 			waitUntilElementVisibleAndClick("master_cart_additem_search_product_first_item");
+
+			return true;
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+			return false;
+		}
+	}
+
+	public boolean user_click_proceed_button_to_checkout() {
+		try {
+
+			waitUntilElementVisibleAndClick("master_kr_createcustomer_popup");
 
 			return true;
 		} catch (Exception e) {

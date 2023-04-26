@@ -179,7 +179,7 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 		click("master_plp_small_gird_button");
 		System.out.println("small :" + plp_add_to_cart_button_1st_position.getSize());
 ///small :(100, 18)
-		
+
 		return true;
 
 	}
@@ -216,6 +216,7 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 	public boolean verify_plp_filter() throws InterruptedException {
 		try {
+
 			Thread.sleep(3000);
 
 			waitUntilElementVisibleAndClick("master_plp_filter_button");
@@ -269,8 +270,6 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 		}
 	}
-
-	
 
 	public boolean user_enter_store_name_to_find_the_store() {
 		try {
