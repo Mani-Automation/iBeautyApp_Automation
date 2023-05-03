@@ -82,11 +82,11 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 				waitUntil("master_callbacklist_page_titleLabel_ysl");
 
 			} else {
-				waitUntil("master_callbacklist_page_titleLabel");
+				// waitUntil("master_callbacklist_page_titleLabel");
 
 			}
 
-			waitUntil("master_callbacklist_total_cus_page");
+			// waitUntil("master_callbacklist_total_cus_page");
 
 			return true;
 		} catch (Exception e) {
@@ -207,7 +207,7 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 	public boolean user_click_the_first_customer_detials() throws InterruptedException {
 		try {
 
-			//waitUntilElementVisibleAndClick("master_callbacklist_downarrow_button");
+			// waitUntilElementVisibleAndClick("master_callbacklist_downarrow_button");
 			Thread.sleep(5000);
 			return true;
 

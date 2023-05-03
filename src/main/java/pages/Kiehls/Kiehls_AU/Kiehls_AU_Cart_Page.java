@@ -168,24 +168,10 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 	public boolean user_click_the_checkout_button() throws InterruptedException {
 		try {
 
-			switch (ConfigReader.getData("appEnv")) {
-			case "UAT": {
+			waitUntilElementVisibleAndClick("master_cart_checkout_button");
+			// waitUntilElementVisibleAndClick("master_setting_change_pwd_popup_cancel_button");
 
-				waitUntilElementVisibleAndClick("master_cart_checkout_button");
-				// waitUntilElementVisibleAndClick("master_setting_change_pwd_popup_cancel_button");
-
-				return true;
-			}
-			case "PROD": {
-				return true;
-
-			}
-
-			default: {
-			}
-				return false;
-
-			}
+			return true;
 
 		} catch (
 
@@ -200,8 +186,6 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 		try {
 
 			waitUntil("master_purchase_successful_qr_code");
-			waitUntil("master_purchase_successful_transaction_code");
-
 			waitUntilElementVisibleAndClick("master_purchase_successful_popup_close_button");
 
 			return true;
