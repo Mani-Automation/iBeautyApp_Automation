@@ -37,7 +37,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 	String firstTest = DriverManager.first_test;
 
-	public boolean user_select_country_and_login_to_store_then_login_to_ba_account() {
+	public boolean user_select_country_and_login_to_store_then_login_to_ba_account() { // use
 
 		try {
 
@@ -103,7 +103,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 	}
 
-	public boolean loginDescriptionMessage() throws Exception {
+	public boolean loginDescriptionMessage() throws Exception { // use
 
 		try {
 
@@ -240,7 +240,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 		}
 	}
 
-	public boolean verifuUserIsOnHomePage() throws InterruptedException, IOException {
+	public boolean verifuUserIsOnHomePage() throws InterruptedException, IOException { // use
 		boolean flag = false;
 		try {
 

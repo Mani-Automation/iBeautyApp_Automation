@@ -759,3 +759,20 @@ Feature: iBeauty Regression Test
     Then Customer threeSixty screen should be display
     And Verify the dashboard tab
     Then Verify user able to validate Prefered category
+
+  #----------------------------Sprint---68------------------------------------------#
+  @master @smoke @Regression @C360 @sprint_68
+  Scenario: Verify user able to validate monthly spent by category in dashboard
+    Then User is on home page
+    Then User login to member and verify the C360 "dashboard"
+    Then Customer threeSixty screen should be display
+    And Verify the dashboard tab
+    Then Verify user able to validate monthly spent by category in dashboard
+
+  @master @smoke @Regression @C360 @sprint_68
+  Scenario: Verify user able to validate build routine in dashboard
+    Then User is on home page
+    Then User login to member and verify the C360 "dashboard"
+    Then Customer threeSixty screen should be display
+    And Verify the dashboard tab
+    Then Verify user able to validate build routine in dashboard

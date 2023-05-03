@@ -1545,6 +1545,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 				waitUntil("master_c360_dashboard");
 
 			}
+			System.out.println("");
 
 			return true;
 		} catch (Exception e) {
@@ -1803,4 +1804,43 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 		}
 	}
 
+	public boolean verify_user_able_to_validate_monthly_spent_by_category_in_dashboard() {
+		try {
+			String config = ExcelData.getExcelData("cms_configuration", "dashboard");
+			if (config.equalsIgnoreCase("Yes")) {
+				waitUntil("master_dashboard_monthly_spent_category");
+				System.out.println("");
+
+				System.out.println("");
+
+			}
+			return true;
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean verify_user_able_to_validate_build_routine_in_dashboard() {
+		try {
+			String config = ExcelData.getExcelData("cms_configuration", "dashboard");
+			if (config.equalsIgnoreCase("Yes")) {
+				waitUntil("master_dashboard_day_routine");
+				waitUntil("master_dashboard_night_routine");
+				System.out.println("");
+				System.out.println("");
+				System.out.println("");
+				System.out.println("");
+
+			}
+			return true;
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 }

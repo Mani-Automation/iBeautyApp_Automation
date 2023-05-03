@@ -647,6 +647,16 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(c360Page.verify_the_dashboard_tab());
 	}
 
+	@Then("^Verify user able to validate monthly spent by category in dashboard$")
+	public void verify_user_able_to_validate_monthly_spent_by_category_in_dashboard() throws Throwable {
+		Assert.assertTrue(c360Page.verify_user_able_to_validate_monthly_spent_by_category_in_dashboard());
+	}
+
+	@Then("^Verify user able to validate build routine in dashboard$")
+	public void verify_user_able_to_validate_build_routine_in_dashboard() throws Throwable {
+		Assert.assertTrue(c360Page.verify_user_able_to_validate_build_routine_in_dashboard());
+	}
+
 	@Then("^Verify user able to validate Prefered category$")
 	public void verify_user_able_to_validate_prefered_category() throws Throwable {
 		Assert.assertTrue(c360Page.verify_user_able_to_validate_prefered_category());
@@ -1136,12 +1146,12 @@ public class Kiehls_AU_stepDef extends CommonActions {
 	}
 
 	// login
-	@When("^User select country and login to Store and BA account$")
+	@When("^User select country and login to Store and BA account$") // use
 	public void user_select_country_and_login_to_Store_and_BA_account() {
 		Assert.assertTrue(login.user_select_country_and_login_to_store_then_login_to_ba_account());
 	}
 
-	@Given("User launches the Application")
+	@Given("User launches the Application") // use
 	public void user_launches_the_application() throws Exception {
 
 		Assert.assertTrue(login.loginDescriptionMessage());
@@ -1184,7 +1194,7 @@ public class Kiehls_AU_stepDef extends CommonActions {
 		Assert.assertTrue(login.clickLoginBtnInBaPage());
 	}
 
-	@Then("User is on home page")
+	@Then("User is on home page") // use
 	public void user_is_on_home_page() throws Exception {
 		Assert.assertTrue(login.verifuUserIsOnHomePage());
 
