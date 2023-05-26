@@ -745,22 +745,6 @@ Feature: iBeauty Regression Test
     And Verify the dashboard tab
     Then Verify user able to validate Membership Tier
 
-  @master @smoke @Regression @C360 @sprint_67
-  Scenario: Verify user able to validate Purchase History Expand and collapse all
-    Then User is on home page
-    Then User login to member and verify the C360 "dashboard"
-    And User click purchase history tab
-    Then Verify user able to validate Purchase History Expand and collapse all
-
-  @master @smoke @Regression @C360 @sprint_67
-  Scenario: Verify user able to validate Prefered category
-    Then User is on home page
-    Then User login to member and verify the C360 "dashboard"
-    Then Customer threeSixty screen should be display
-    And Verify the dashboard tab
-    Then Verify user able to validate Prefered category
-
-  #----------------------------Sprint---68------------------------------------------#
   @master @smoke @Regression @C360 @sprint_68
   Scenario: Verify user able to validate monthly spent by category in dashboard
     Then User is on home page
@@ -776,3 +760,28 @@ Feature: iBeauty Regression Test
     Then Customer threeSixty screen should be display
     And Verify the dashboard tab
     Then Verify user able to validate build routine in dashboard
+
+  @master @smoke @Regression @C360 @sprint_67
+  Scenario: Verify user able to validate Purchase History Expand and collapse all
+    Then User is on home page
+    Then User login to member and verify the C360 "dashboard"
+    And User click purchase history tab
+    Then Verify user able to validate Purchase History Expand and collapse all
+
+  @master @smoke @Regression @C360 @sprint_67
+  Scenario: Verify user able to validate Prefered category
+    Then User is on home page
+    Then User login to member and verify the C360 "dashboard"
+    Then Customer threeSixty screen should be display
+    And Verify the dashboard tab
+    Then Verify user able to validate Prefered category
+
+  #----------------------------Sprint---70------------------------------------------#
+  @master_test @smoke @Regression @C360 @sprint_70 @dashboard
+  Scenario: Verify user able to validate Prefered category
+    Then User is on home page
+    Then User login to member and verify the C360 "dashboard"
+    Then Customer threeSixty screen should be display
+    And Verify the dashboard tab
+    Then Verify the dashboard left section elements
+    Then Verify the dashboard main section elements

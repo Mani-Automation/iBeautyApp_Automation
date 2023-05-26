@@ -99,49 +99,54 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 	}
 
 	public boolean user_click_the_ba_home_button_from_right_navigation_and_click_something_then_verify_the_page(
-			String ba_home) {
+			String ba_home) throws IOException {
 		// BA HOME -> 1) Dashboard 2) Notification 3) CALLBACK LIST 4) CALENDAR 5)
 		// Transactions
+
+		if (getApplicationName().equals("Shuuemura")) {
+			
+			ba_home = ba_home.toLowerCase().toString();
+		}
 		try {
 
 			waitUntilElementVisibleAndClick("master_home_right_nav_ba_button");
 
 			// String ba_home_item = "//XCUIElementTypeStaticText[@name=" + ba_home + "]";
 
-			if (ba_home.equalsIgnoreCase("DASHBOARD")) {
+			if (ba_home.equalsIgnoreCase("DASHBOARD") || ba_home.equalsIgnoreCase("dashboard")) {
 				// driver.findElement(By.xpath(ba_home_item)).click();
 				staticLabelClick(ba_home);
 				waitUntil("master_ba_dashboard_calender_addnew_button");
 				return true;
 
-			} else if (ba_home.equalsIgnoreCase("NOTIFICATION")) {
+			} else if (ba_home.equalsIgnoreCase("NOTIFICATION") || ba_home.equalsIgnoreCase("notification")) {
 				staticLabelClick(ba_home);
 
 				Assert.assertTrue(ba_home_notification_page.isDisplayed());
 				return true;
 
-			} else if (ba_home.equalsIgnoreCase("CALLBACK LIST")) {
+			} else if (ba_home.equalsIgnoreCase("CALLBACK LIST") || ba_home.equalsIgnoreCase("callback list")) {
 				staticLabelClick(ba_home);
 
 				waitUntil("master_ba_callback_page");
 
 				return true;
 
-			} else if (ba_home.equalsIgnoreCase("CALENDAR")) {
+			} else if (ba_home.equalsIgnoreCase("CALENDAR") || ba_home.equalsIgnoreCase("calendar")) {
 				staticLabelClick(ba_home);
 
 				waitUntil("master_calender_month_label");
 
 				return true;
 
-			} else if (ba_home.equalsIgnoreCase("TRANSACTIONS")) {
+			} else if (ba_home.equalsIgnoreCase("TRANSACTIONS") || ba_home.equalsIgnoreCase("transactions")) {
 				staticLabelClick(ba_home);
 
 				waitUntil("master_transaction_history_tab");
 
 				return true;
 
-			} else if (ba_home.equalsIgnoreCase("SERVICE BOOKING")) {
+			} else if (ba_home.equalsIgnoreCase("SERVICE BOOKING") || ba_home.equalsIgnoreCase("service booking")) {
 
 				if (getCmsConfig("service_booking").equalsIgnoreCase("Yes")) {
 
