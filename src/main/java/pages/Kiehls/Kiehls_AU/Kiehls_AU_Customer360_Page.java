@@ -70,6 +70,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 			return false;
 		}
 	}
+	
 
 	public boolean customer_threesixty_screen_should_be_display() throws IOException {
 		/*
@@ -1538,7 +1539,6 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 	public boolean verify_the_dashboard_tab() {
 		try {
-			Thread.sleep(6000);
 			String config = ExcelData.getExcelData("cms_configuration", "dashboard");
 			if (config.equalsIgnoreCase("Yes")) {
 
@@ -1638,11 +1638,11 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 			staticTextClick(searchName);
 
-			waitUntil("master_home_search_text");
+			waitUntil("master_home_search_text");	
 
 			sendkeys("master_home_search_text", ExcelData.getExcelData("member_data", searchName));
 			Thread.sleep(3000);
-			// sendkeys("master_home_search_text", "3101900587231"); // LAN TH
+			// sendkeys("master_home_search_text", "16970033466"); // LAN TH
 
 			waitUntilElementVisibleAndClick("master_cart_additem_search_product_button");
 			Thread.sleep(3000);
@@ -1776,7 +1776,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 			sendkeys("master_home_search_text", ExcelData.getExcelData("member_data", search));
 			Thread.sleep(3000);
 
-			// sendkeys("master_home_search_text", "3101900587231"); // LAN TH
+			// sendkeys("master_home_search_text", "16970033466"); // LAN TH
 			waitUntilElementVisibleAndClick("master_cart_additem_search_product_button");
 
 			return true;
@@ -1835,6 +1835,33 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 				System.out.println("");
 
 			}
+			return true;
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean verify_the_dashboard_left_section_elements() {
+		try {
+
+		//	waitUntil("master_dashboard_left_buying_behaviours");
+		//	waitUntil("master_dashboard_left_note_title");
+
+			return true;
+		} catch (
+
+		Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
+	public boolean verify_the_dashboard_main_section_elements() {
+		try {
+
 			return true;
 		} catch (
 

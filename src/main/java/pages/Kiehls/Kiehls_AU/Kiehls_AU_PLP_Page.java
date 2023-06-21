@@ -37,13 +37,13 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 	@FindBy(xpath = "//XCUIElementTypeTable[@name=\"tblCategory\"]/XCUIElementTypeButton[3]")
 	public WebElement plp_filter_by_product_line;
 
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Face Wash\"]")
+	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"face wash\"]")
 	public WebElement plp_filter_by_sub_category_facewash;
 
 	@FindBy(xpath = "(//XCUIElementTypeCell[@name=\"cell_0\"])[2]/XCUIElementTypeOther[1]/XCUIElementTypeOther[1]/XCUIElementTypeOther/XCUIElementTypeStaticText[1]")
 	public WebElement plp_first_product_name;
 
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"Search results for\"]")
+	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"search results for\"]")
 	public WebElement plp_search_product_result_text;
 
 	@FindBy(xpath = "//XCUIElementTypeButton[@name=\"btnSort\"]")
@@ -70,19 +70,19 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 	@FindBy(xpath = "//XCUIElementTypeButton[@name=\"listViewButton\"]")
 	public WebElement plp_list_view_button;
 
-	@FindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"ADD TO CART\"])[1]")
+	@FindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"add to cart\"])[1]")
 	public WebElement plp_add_to_cart_button_1st_position;
 
 	@FindBy(xpath = "(//XCUIElementTypeButton[@name=\"addToCartButton\"])[1]")
 	public WebElement plp_add_to_cart_button_1st_position_2;
 
-	@FindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"ADD TO CART\"])[10]")
+	@FindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"add to cart\"])[10]")
 	public WebElement plp_add_to_cart_button_10th_position;
 
 	@FindBy(xpath = "(//XCUIElementTypeButton[@name=\"addToCartButton\"])[10]")
 	public WebElement plp_add_to_cart_button_10th_position_2;
 
-	@FindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"ADD TO CART\"])[12]")
+	@FindBy(xpath = "(//XCUIElementTypeStaticText[@name=\"add to cart\"])[12]")
 	public WebElement plp_add_to_cart_button_12th_position;
 
 	@FindBy(xpath = "(//XCUIElementTypeButton[@name=\"addToCartButton\"])[12]")
@@ -129,7 +129,7 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 
 //verify plp page
 
-	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"From\"]")
+	@FindBy(xpath = "//XCUIElementTypeStaticText[@name=\"from\"]")
 	public WebElement plp_min_price;
 
 	@FindBy(xpath = "//XCUIElementTypeButton[@name=\"btnFilter\"]")
@@ -218,10 +218,11 @@ public class Kiehls_AU_PLP_Page extends CommonActions {
 		try {
 
 			Thread.sleep(3000);
+			System.out.println("Before filter :" + plp_add_to_cart_button_1st_position.getSize());
 
 			waitUntilElementVisibleAndClick("master_plp_filter_button");
-
-			waitUntil("master_plp_by_sub_catagory");
+			
+			System.out.println("After filter :" + plp_add_to_cart_button_1st_position.getSize());
 
 			return true;
 
