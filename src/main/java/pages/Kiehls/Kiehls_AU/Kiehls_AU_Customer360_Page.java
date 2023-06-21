@@ -70,6 +70,7 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 			return false;
 		}
 	}
+	
 
 	public boolean customer_threesixty_screen_should_be_display() throws IOException {
 		/*

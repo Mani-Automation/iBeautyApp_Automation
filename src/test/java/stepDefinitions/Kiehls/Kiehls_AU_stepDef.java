@@ -638,8 +638,8 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	@Then("^Verify user able to see Add Note button on dashboard$")
 	public void verify_user_able_to_see_add_note_button_on_dashboard() throws Throwable {
-		// Assert.assertTrue(c360Page.verify_user_able_to_see_add_note_button_on_dashboard());
-		Assert.assertTrue(c360Page.test());
+	 Assert.assertTrue(c360Page.verify_user_able_to_see_add_note_button_on_dashboard());
+	//	Assert.assertTrue(c360Page.test());
 	}
 
 	@And("^Verify the dashboard tab$")

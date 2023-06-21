@@ -455,7 +455,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 				waitUntil("master_home_ba_name");
 				waitUntil("master_home_socialbutton1");
-				waitUntil("master_home_socialbutton2");
+				// waitUntil("master_home_socialbutton2");
 				waitUntil("master_home_brandlogo");
 				// waitUntil("master_home_membar_barcode");
 				waitUntil("master_home_staff_button");
@@ -465,8 +465,8 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 				waitUntil("master_home_ba_name");
 				waitUntil("master_home_socialbutton1");
-				waitUntil("master_home_socialbutton2");
-				waitUntil("master_home_socialbutton3");
+				// waitUntil("master_home_socialbutton2");
+				// waitUntil("master_home_socialbutton3");
 				waitUntil("master_home_brandlogo");
 				// waitUntil("master_home_membar_barcode");
 				waitUntil("master_home_staff_button");
@@ -476,7 +476,7 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 
 				waitUntil("master_home_ba_name");
 				waitUntil("master_home_socialbutton1");
-				waitUntil("master_home_socialbutton2");
+				// waitUntil("master_home_socialbutton2");
 				waitUntil("master_home_brandlogo");
 				// waitUntil("master_home_membar_barcode");
 				waitUntil("master_home_staff_button");
