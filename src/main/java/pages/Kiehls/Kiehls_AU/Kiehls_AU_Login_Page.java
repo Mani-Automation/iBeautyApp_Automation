@@ -79,18 +79,52 @@ public class Kiehls_AU_Login_Page extends CommonActions {
 				return true;
 
 			} else {
+				try {
 
-				waitUntilElementVisibleAndClick("master_ba_username_test_field");
-				clear("master_ba_username_test_field");
-				sendkeys("master_ba_username_test_field", ExcelData.getExcelData("ba_credentials", "valid_username"));
-				click("master_ba_password_test_field");
-				clear("master_ba_password_test_field");
-				sendkeys("master_ba_password_test_field", ExcelData.getExcelData("ba_credentials", "valid_password"));
+					waitUntilElementVisibleAndClick("master_ba_username_test_field");
+					clear("master_ba_username_test_field");
+					sendkeys("master_ba_username_test_field",
+							ExcelData.getExcelData("ba_credentials", "valid_username"));
+					click("master_ba_password_test_field");
+					clear("master_ba_password_test_field");
+					sendkeys("master_ba_password_test_field",
+							ExcelData.getExcelData("ba_credentials", "valid_password"));
 
-				// Click BA Login Button
-				click("master_login_button");
+					// Click BA Login Button
+					click("master_login_button");
 
-				return true;
+					return true;
+
+				} catch (NoSuchElementException e) {
+					// Enter Store Credential
+					waitUntilElementVisibleAndClick("master_store_username_test_field");
+					clear("master_store_username_test_field");
+					sendkeys("master_store_username_test_field",
+							ExcelData.getExcelData("store_credentials", "valid_username"));
+
+					click("master_store_password_test_field");
+					clear("master_store_password_test_field");
+					sendkeys("master_store_password_test_field",
+							ExcelData.getExcelData("store_credentials", "valid_password"));
+
+					// Click Login Button
+					click("master_login_button");
+
+					waitUntilElementVisibleAndClick("master_ba_username_test_field");
+					clear("master_ba_username_test_field");
+					sendkeys("master_ba_username_test_field",
+							ExcelData.getExcelData("ba_credentials", "valid_username"));
+					click("master_ba_password_test_field");
+					clear("master_ba_password_test_field");
+					sendkeys("master_ba_password_test_field",
+							ExcelData.getExcelData("ba_credentials", "valid_password"));
+
+					// Click BA Login Button
+					click("master_login_button");
+
+					return true;
+
+				}
 
 			}
 		} catch (

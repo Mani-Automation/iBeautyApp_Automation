@@ -1,6 +1,5 @@
 package com.driverfactory.manager;
 
-import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -9,15 +8,12 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.driverfactory.DriverFactory.PlatformList;
 import com.driverfactory.DriverFactory.Target;
-import com.driverfactory.DriverManager;
 import com.driverfactory.Factory;
-import com.utilities.ConfigReader;
 
 import exceptions.TargetNotValidException;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.ios.IOSElement;
+
 import io.appium.java_client.remote.MobileCapabilityType;
 
 public class AndriodDriverManager extends Factory {

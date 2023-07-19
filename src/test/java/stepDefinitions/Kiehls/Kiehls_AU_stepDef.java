@@ -6,7 +6,6 @@ import org.junit.Assert;
 
 import com.driverfactory.DriverManager;
 import com.reusableMethods.CommonActions;
-import com.reusableMethods.CommonActions.Direction;
 import com.utilities.ConfigReader;
 
 import io.appium.java_client.AppiumDriver;
@@ -31,6 +30,7 @@ import pages.Kiehls.Kiehls_AU.Kiehls_AU_Voucher_page;
 
 public class Kiehls_AU_stepDef extends CommonActions {
 
+	@SuppressWarnings("rawtypes")
 	AppiumDriver driver = DriverManager.getDriver();
 
 	Kiehls_AU_PDP_Page pdpPage = new Kiehls_AU_PDP_Page(driver);
@@ -465,8 +465,10 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 		}
 
+	
+	
+		
 	}
-
 	@Then("^User login to member and verify the C360$")
 	public void user_login_to_member_and_verify_the_c360() throws Throwable {
 

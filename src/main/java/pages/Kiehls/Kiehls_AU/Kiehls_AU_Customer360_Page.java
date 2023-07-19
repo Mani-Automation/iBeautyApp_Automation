@@ -1640,9 +1640,10 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 			waitUntil("master_home_search_text");
 
-			sendkeys("master_home_search_text", ExcelData.getExcelData("member_data", searchName));
+			// sendkeys("master_home_search_text", ExcelData.getExcelData("member_data",
+			// searchName));
 			Thread.sleep(3000);
-			// sendkeys("master_home_search_text", "3101900587231"); // LAN TH
+			sendkeys("master_home_search_text", "51992100111"); // LAN TH
 
 			waitUntilElementVisibleAndClick("master_cart_additem_search_product_button");
 			Thread.sleep(3000);
@@ -1773,10 +1774,11 @@ public class Kiehls_AU_Customer360_Page extends CommonActions {
 
 			waitUntil("master_home_search_text");
 
-			sendkeys("master_home_search_text", ExcelData.getExcelData("member_data", search));
+			// sendkeys("master_home_search_text", ExcelData.getExcelData("member_data",
+			// search));
 			Thread.sleep(3000);
 
-			// sendkeys("master_home_search_text", "3101900587231"); // LAN TH
+			sendkeys("master_home_search_text", "51992100111"); // LAN TH
 			waitUntilElementVisibleAndClick("master_cart_additem_search_product_button");
 
 			return true;

@@ -3,17 +3,13 @@ package stepDefinitions.Kiehls;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
-
 import com.driverfactory.DriverFactory;
 import com.driverfactory.DriverFactory.Target;
 import com.driverfactory.DriverManager;
 import com.utilities.ConfigReader;
-import com.utilities.ExcelData;
-
 import io.appium.java_client.AppiumDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -22,6 +18,7 @@ import io.cucumber.java.Scenario;
 public class Hooks {
 
 	private DriverFactory driverFactory;
+	@SuppressWarnings("rawtypes")
 	private AppiumDriver driver;
 	private ConfigReader configReader;
 
@@ -34,6 +31,7 @@ public class Hooks {
 		
 		try {
 			this.scenario = scenario;
+			@SuppressWarnings("static-access")
 			String target = configReader.getData("target");
 
 			if ((new File(screenshotdir)).exists())

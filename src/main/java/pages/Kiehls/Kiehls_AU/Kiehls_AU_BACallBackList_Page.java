@@ -22,6 +22,7 @@ import com.google.common.collect.ImmutableMap;
 
 import com.reusableMethods.CommonActions;
 import com.utilities.ConfigReader;
+import com.utilities.LocatorManager;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
@@ -69,13 +70,9 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 	@FindBy(xpath = "(//XCUIElementTypeTable[@name=\"Empty list\"])[2]/XCUIElementTypeOther[1]")
 	public WebElement ba_home_button;
 
-	// XCUIElementTypeButton[@name="Day"]
-	// XCUIElementTypeButton[@name="navHome"]
-
 	public boolean user_click_the_first_call_back_history_and_verify_the_customer_list_page()
 			throws InterruptedException {
 		try {
-			// String segment = ConfigReader.getData("app_segment");
 			String app = ConfigReader.getData("app");
 
 			if (app.equals("YSL")) {
@@ -106,17 +103,14 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 			waitUntilElementVisibleAndClick("master_home_right_nav_ba_button");
 
-			// String ba_home_item = "//XCUIElementTypeStaticText[@name=" + ba_home + "]";
-
 			if (ba_home.equalsIgnoreCase("DASHBOARD")) {
-				// driver.findElement(By.xpath(ba_home_item)).click();
 				staticLabelClick(ba_home);
 				waitUntil("master_ba_dashboard_calender_addnew_button");
 				return true;
 
 			} else if (ba_home.equalsIgnoreCase("NOTIFICATION")) {
 				staticLabelClick(ba_home);
-
+				
 				Assert.assertTrue(ba_home_notification_page.isDisplayed());
 				return true;
 
@@ -167,7 +161,6 @@ public class Kiehls_AU_BACallBackList_Page extends CommonActions {
 
 		try {
 
-			// String segment = ConfigReader.getData("app_segment");
 			String app = ConfigReader.getData("app");
 
 			if (app.equals("YSL")) {
