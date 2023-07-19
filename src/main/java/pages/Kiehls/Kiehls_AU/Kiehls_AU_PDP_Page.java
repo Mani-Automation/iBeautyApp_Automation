@@ -105,8 +105,11 @@ public class Kiehls_AU_PDP_Page extends CommonActions {
 			swipeScreenUntilElementVisible("master_pdp_product_des_tab", Direction.UP);
 
 			waitUntilElementVisibleAndClick("master_pdp_product_tip_tab");
-			// waitUntilElementVisibleAndClick("master_pdp_product_ingridents_tab");
-			// waitUntilElementVisibleAndClick("master_pdp_product_des_tab");
+			waitUntilElementVisibleAndClick("master_pdp_product_ingridents_tab");
+			waitUntilElementVisibleAndClick("master_pdp_product_des_tab");
+
+			swipeScreenUntilElementVisible("master_pdp_product_up_arrow", Direction.UP);
+			click("master_pdp_product_up_arrow");
 
 			return true;
 		} catch (Exception e) {

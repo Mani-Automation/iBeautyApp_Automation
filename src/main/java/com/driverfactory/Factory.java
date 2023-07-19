@@ -3,7 +3,6 @@ package com.driverfactory;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Iterator;
 import java.util.Map;
@@ -22,7 +21,6 @@ import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
-import io.appium.java_client.android.StartsActivity;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
 
@@ -140,6 +138,7 @@ public abstract class Factory {
 					IOSDriver<IOSElement> driver = new IOSDriver(new URL("http://" + username + ":" + accessKey + "@" + config.get("server") + "/wd/hub"),capabilities);
 					driver.closeApp();
 					driver.installApp("bs://1e7476e0c5ed6613270530ce264efb0e6e6972fb");
+					@SuppressWarnings("unused")
 					Activity activity = new Activity(APP_PKG, APP_ACT);
 					driver.launchApp();
 				}

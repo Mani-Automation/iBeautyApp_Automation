@@ -30,7 +30,7 @@ import io.cucumber.junit.CucumberOptions;
 
 public class RunCucumberTest {
 
-	static ReportWeb report = new ReportWeb();	
+	static ReportWeb report = new ReportWeb();
 	static String start_time;
 
 	@BeforeClass

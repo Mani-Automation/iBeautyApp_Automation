@@ -259,7 +259,7 @@ public class Kiehls_AU_Cart_Page extends CommonActions {
 	public boolean user_select_a_product_on_the_add_item_pupup() {
 		try {
 			Thread.sleep(2000);
-		//	waitUntilElementVisibleAndClick("master_cart_additem_search_product_first_item");
+			waitUntilElementVisibleAndClick("master_cart_additem_search_product_first_item");
 
 			return true;
 		} catch (Exception e) {

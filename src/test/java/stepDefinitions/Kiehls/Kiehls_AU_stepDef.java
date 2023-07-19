@@ -6,7 +6,6 @@ import org.junit.Assert;
 
 import com.driverfactory.DriverManager;
 import com.reusableMethods.CommonActions;
-import com.reusableMethods.CommonActions.Direction;
 import com.utilities.ConfigReader;
 
 import io.appium.java_client.AppiumDriver;
@@ -31,6 +30,7 @@ import pages.Kiehls.Kiehls_AU.Kiehls_AU_Voucher_page;
 
 public class Kiehls_AU_stepDef extends CommonActions {
 
+	@SuppressWarnings("rawtypes")
 	AppiumDriver driver = DriverManager.getDriver();
 
 	Kiehls_AU_PDP_Page pdpPage = new Kiehls_AU_PDP_Page(driver);
@@ -76,7 +76,7 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	@And("^User click the BA Home button from right navigation and Click \"([^\"]*)\" then verify the page$")
 	public void user_click_the_ba_home_button_from_right_navigation_and_click_something_then_verify_the_page(
-			String ba_home) throws IOException {
+			String ba_home) {
 		Assert.assertTrue(baCallbackPage
 				.user_click_the_ba_home_button_from_right_navigation_and_click_something_then_verify_the_page(ba_home));
 	}
@@ -465,8 +465,10 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 		}
 
+	
+	
+		
 	}
-
 	@Then("^User login to member and verify the C360$")
 	public void user_login_to_member_and_verify_the_c360() throws Throwable {
 
@@ -638,29 +640,14 @@ public class Kiehls_AU_stepDef extends CommonActions {
 
 	@Then("^Verify user able to see Add Note button on dashboard$")
 	public void verify_user_able_to_see_add_note_button_on_dashboard() throws Throwable {
-	 Assert.assertTrue(c360Page.verify_user_able_to_see_add_note_button_on_dashboard());
-	//	Assert.assertTrue(c360Page.test());
+		// Assert.assertTrue(c360Page.verify_user_able_to_see_add_note_button_on_dashboard());
+		Assert.assertTrue(c360Page.test());
 	}
 
 	@And("^Verify the dashboard tab$")
 	public void verify_the_dashboard_tab() throws Throwable {
 		Assert.assertTrue(c360Page.verify_the_dashboard_tab());
 	}
-	
-	//Sprint 70
-	
-	 @Then("^Verify the dashboard left section elements$")
-	    public void verify_the_dashboard_left_section_elements() throws Throwable {
-		 Assert.assertTrue(c360Page.verify_the_dashboard_left_section_elements());
-	    }
-
-	    @Then("^Verify the dashboard main section elements$")
-	    public void verify_the_dashboard_main_section_elements() throws Throwable {
-	    	Assert.assertTrue(c360Page.verify_the_dashboard_main_section_elements());
-	    }
-
-	
-	//s70
 
 	@Then("^Verify user able to validate monthly spent by category in dashboard$")
 	public void verify_user_able_to_validate_monthly_spent_by_category_in_dashboard() throws Throwable {

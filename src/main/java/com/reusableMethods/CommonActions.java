@@ -3,7 +3,6 @@ package com.reusableMethods;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Driver;
 import java.time.Duration;
 import java.util.Date;
 import java.util.HashMap;
@@ -35,12 +34,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.driverfactory.DriverManager;
 import com.google.common.collect.ImmutableMap;
 import com.relevantcodes.extentreports.ExtentTest;
-import com.relevantcodes.extentreports.LogStatus;
 import com.utilities.ConfigReader;
 import com.utilities.LocatorManager;
 import com.utilities.ExcelData;
-import com.utilities.Screenshots;
-
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.MobileElement;
@@ -132,6 +128,7 @@ public class CommonActions {
 		exwait.until(ExpectedConditions.visibilityOf(element));
 	}
 
+	@SuppressWarnings("rawtypes")
 	public static void swipeDown() {
 
 		Dimension dimension = DriverManager.getDriver().manage().window().getSize();
@@ -142,6 +139,7 @@ public class CommonActions {
 				.release().perform();
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void swipeScreen(int dynamicEdgeBorder, Direction dir) {
 		// Animation default time:
 		// - Android: 300 ms
@@ -197,6 +195,7 @@ public class CommonActions {
 	}
 
 	public static void scrollAndClick(By listItems, String Text) throws InterruptedException {
+		@SuppressWarnings("unused")
 		boolean flag = false;
 		while (true) {
 			for (WebElement el : driver.findElements(listItems)) {
@@ -213,6 +212,7 @@ public class CommonActions {
 
 	public static void horizontalSwipe(List<MobileElement> e) {
 		MobileElement firdelement = e.get(0);
+		@SuppressWarnings("unused")
 		MobileElement secondElement = e.get(1);
 		MobileElement thirdElement = e.get(2);
 
@@ -220,6 +220,7 @@ public class CommonActions {
 		int fromXLocation = thirdElement.getLocation().x;
 		int toXLocation = firdelement.getLocation().x;
 
+		@SuppressWarnings("rawtypes")
 		TouchAction action = new TouchAction((PerformsTouchActions) DriverManager.getDriver());
 		action.press(PointOption.point(fromXLocation, midOfY))
 				.waitAction(WaitOptions.waitOptions(Duration.ofSeconds(3)))
@@ -234,6 +235,7 @@ public class CommonActions {
 		int midOfY = secondElement.getLocation().y + (secondElement.getSize().height / 2);
 		int fromXLocation = secondElement.getLocation().x;
 		int toXLocation = firdelement.getLocation().x;
+		@SuppressWarnings("rawtypes")
 		TouchAction action = new TouchAction((PerformsTouchActions) DriverManager.getDriver());
 		action.press(PointOption.point(fromXLocation, midOfY))
 				.waitAction(WaitOptions.waitOptions(Duration.ofSeconds(3)))
@@ -241,7 +243,7 @@ public class CommonActions {
 
 	}
 
-	public static boolean hidemobileKeyboard(AndroidDriver app) {
+	public static boolean hidemobileKeyboard(@SuppressWarnings("rawtypes") AndroidDriver app) {
 		boolean isKeyboardHideResult = false;
 		try {
 			app.hideKeyboard();
@@ -354,7 +356,6 @@ public class CommonActions {
 		try {
 			mainWindow = DriverManager.getDriver().getWindowHandle();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return mainWindow;
@@ -365,7 +366,6 @@ public class CommonActions {
 		try {
 			DriverManager.getDriver().switchTo().window(mainWindow);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -417,7 +417,7 @@ public class CommonActions {
 		int scrollEnd = (int) (dimension.getWidth() * 0.4);
 		int y = (int) (dimension.getHeight() / 2);
 		new TouchAction((PerformsTouchActions) driver).press(PointOption.point(scrollStart, y))
-				.waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1))).moveTo(PointOption.point(scrollEnd, y))
+				.waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1))).moveTo(PointOption.point(scrollEnd, y))                      
 				.release().perform();
 	}
 
